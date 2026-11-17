@@ -1,6 +1,7 @@
 """生成 G4～G15 的高质量单文件交互式 HTML 讲义（内嵌 SVG 全局地图、完整五段式概念卡、可点按发声 SVG 指板、持续音伴奏、练习、分歧点、5 道自测与歌曲试听）。"""
 import html
 import json
+import subprocess
 from pathlib import Path
 from lesson_specs_a import SPECS_A
 from lesson_specs_b import SPECS_B
@@ -361,3 +362,5 @@ for s in SPECS_A + SPECS_B:
     )
     (LESSONS_DIR / s["file"]).write_text(out, encoding="utf-8")
     print("Generated rich interactive lesson:", s["file"])
+
+subprocess.run(["node", str(ROOT / "build" / "embed_lesson_readings.js")], check=True)

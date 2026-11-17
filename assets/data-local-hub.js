@@ -24,7 +24,7 @@
         "【跨弦自动对齐】在任意单弦或双弦上只要认出当前处于“矩形”还是“堆叠”，就能不背 5 个死盒子直接斜向滑通 0～15 品（遇到 3→2 弦把上层积木往右推 1 品即可）！",
         "【五声变七音调式】在“宽边（相隔 3 品的两个五声音之间）”填进 1 个中间音（4 级或 7 级），五声积木瞬间变成多利亚、混合利底亚或自然大小调。"
       ],
-      local: ["lessons/2026-12-16-pentatonic-positions.html", "打开 G10 讲义交互矩形+堆叠图解"]
+      local: ["lessons/2026-12-16-pentatonic-5pos.html", "打开 G10 讲义交互矩形+堆叠图解"]
     },
     signals: {
       summary: "Signals Music Studio（Jake Lizzio）：用吉他和弦进行写歌与听辨调式",
@@ -40,7 +40,7 @@
         "【先弹 3 音和 7 音】和弦的根音由贝斯手负责，5 音不决定性质；吉他手伴奏用 1–3–7 壳和弦（Shell Voicing），独奏强拍瞄准 3 音和 7 音，就能只用 2～3 个音把整个 ii–V–I 交代清楚。",
         "【半音包围（Enclosure）】在目标和弦音（比如第 1 拍的 3 音）到来前的第 4 拍，先弹它上方顺阶邻音 + 下方半音，再落回目标音，立刻消除“背琶音练习曲”的机械感。"
       ],
-      local: ["lessons/2026-12-31-chord-tone-soloing.html", "打开 G13 讲义练习 3–7 引导线与包围音"]
+      local: ["lessons/2026-12-31-chord-tones-improv.html", "打开 G13 讲义练习 3–7 引导线与包围音"]
     },
     tomoFujita: {
       summary: "Tomo Fujita（伯克利教授）：密排三和弦转位、极简声部连接与右手控制",
@@ -72,7 +72,7 @@
         "【四和弦循环的驱动力】现代流行乐常不靠强烈的 V7–I 终结，而是利用 vi、IV、I、V 四个和弦首尾相接形成永动循环（Loop），靠配器加减与鼓点切换区分主副歌。",
         "【双调性模糊】像《Sweet Home Alabama》（D–C–G）或《Smells Like Teen Spirit》这类进行故意在关系调/调式之间留出模糊地带，旋律落哪哪里就像家。"
       ],
-      local: ["lessons/2026-12-06-functions-progressions.html", "打开 G8 讲义查看流行四和弦与终止式"]
+      local: ["lessons/2026-12-08-harmony-cadences.html", "打开 G8 讲义查看流行四和弦与终止式"]
     },
     neely: {
       summary: "Adam Neely：节奏细分底层认知、摇摆比（Swing Ratio）与现代和声",
@@ -114,7 +114,7 @@
         "【大横按扫弦主力】完整 5～6 根弦扫弦最实用的是 E 型（6 弦根音）和 A 型（5 弦根音），C 型次之；完整的 G 型和 D 型大横按反人类，实战中一律只截取其中 3～4 根弦！",
         "【指型 = 琶音骨架】每个 CAGED 把位不光能按和弦，它直接就是该把位五声音阶和七音音阶的 1–3–5 骨架。"
       ],
-      local: ["lessons/2026-11-26-triads-caged.html", "打开 G5 三和弦与 CAGED 讲义"]
+      local: ["lessons/2026-11-25-triads-caged.html", "打开 G5 三和弦与 CAGED 讲义"]
     },
     jgBlues1: {
       summary: "JustinGuitar Essential Blues Lead：Pattern 1 + B.B. Box 与布鲁斯推弦词库",
@@ -136,7 +136,7 @@
       points: [
         "【♭5 只路过不停留】小调五声（1 ♭3 4 5 ♭7）加上 ♭5 得到布鲁斯音阶。在 A 调 P1 中，♭5（E♭）位于 5 弦 6 品和 3 弦 8 品——弹到它必须顺势滑向 5 音（E）或退回 4 音（D），绝不长时间停在上面。"
       ],
-      local: ["lessons/2026-12-21-blues.html", "打开 G11 布鲁斯交互讲义"]
+      local: ["lessons/2026-12-21-blues-12bar.html", "打开 G11 布鲁斯交互讲义"]
     },
     jgIntermediate: {
       summary: "JustinGuitar 中级进阶：把 CAGED 和弦音、五声与调式融为一炉",
@@ -175,7 +175,7 @@
         "【Unitrib（单弦练习）】规定今天只在第 3 弦（或第 2 弦）一根弦上弹完整个大调、多利亚或琶音即兴！没有了跨弦指型拐杖，你被迫真正听见音程距离并学会滑音造句。",
         "【相邻双弦与限制练习】规定只在 3–2 弦第 5～9 品这 4×2 个格子里伴奏和即兴 5 分钟——限制越严格，大脑开发的音乐创意越深。"
       ],
-      local: ["lessons/2026-12-16-pentatonic-positions.html", "打开 G10 讲义体验三音受限与单弦思维"]
+      local: ["lessons/2026-12-16-pentatonic-5pos.html", "打开 G10 讲义体验三音受限与单弦思维"]
     },
     govan: {
       summary: "Guthrie Govan《Creative Guitar》：让电吉他发出“人声说话感”的细节",
@@ -227,7 +227,7 @@
       points: [
         "【外声部优先（Bass & Soprano）】一段和弦进行好不好听，最重要是最高音旋律与最低音贝斯（Bassline）是否形成了平稳级进或反向运动——这也是吉他斜杠和弦（如 C → G/B → Am → Am/G → F）动听的原因。"
       ],
-      local: ["lessons/2026-12-01-diatonic-chords.html", "打开 G7 顺阶和弦与斜杠低音讲义"]
+      local: ["lessons/2026-12-04-diatonic-roman.html", "打开 G7 顺阶和弦与斜杠低音讲义"]
     },
 
     // 在线工具与练习网站的“本站零跳转内置平替”
@@ -292,7 +292,7 @@
       points: [
         "【扒歌四遍法则】第 1 遍不拿琴跟着原曲哼出主音定调；第 2 遍专听最低频贝斯抓每小节根音；第 3 遍用耳朵或三音测试定大小/七和弦性质；第 4 遍抓旋律与独奏强拍级数。"
       ],
-      local: ["lessons/2026-01-10-transcribing-form.html", "打开 G15 扒歌与曲式交互讲义"]
+      local: ["lessons/2027-01-09-transcribe-form.html", "打开 G15 扒歌与曲式交互讲义"]
     },
     jgYT: {
       summary: "JustinGuitar 视频频道核心练习法（已提炼进本站讲义与精读卡）",
@@ -306,7 +306,7 @@
       points: [
         "【A–B 逐小节锁定】扒快速度独奏时，每次只圈出 1～2 小节降速到 50%～75%（保持原音高），先用嘴跟唱准节奏落点，再在吉他上找到对应把位。"
       ],
-      local: ["lessons/2026-01-10-transcribing-form.html", "打开 G15 扒歌流程交互讲义"]
+      local: ["lessons/2027-01-09-transcribe-form.html", "打开 G15 扒歌流程交互讲义"]
     },
     teoria: {
       summary: "teoria.com 综合乐理与听辨训练（本站练耳室已内置同款功能）",
@@ -329,6 +329,30 @@
         "【逆时针降号调口诀】F(1♭) → B♭(2♭) → E♭(3♭) → A♭(4♭) → D♭(5♭) → G♭(6♭)，降号顺序：B–E–A–D–G–C–F（倒数第二个降号即大调主音）。"
       ],
       local: ["#/fretboard", "在本站指板页底部直接使用交互式五度圈"]
+    },
+    mtn31: {
+      summary: "音程性质（Specific Intervals）符号与 12 半音速查",
+      points: [
+        "【纯音程家族 1/4/5/8 vs 大小音程家族 2/3/6/7】纯度减半音=减(d)、加半音=增(A)；大小家族大(M)减半音=小(m)、再减=减(d)、大加半音=增(A)。",
+        "【指板验证】P4=5 半音（相邻弦同品，过 3–2 弦 +1 品）、P5=7 半音、M3=4 半音、m3=3 半音、TT 三全音=6 半音。"
+      ],
+      local: ["#/ear?tab=int", "在本站「音程听辨器」直接听辨与校验 12 音程"]
+    },
+    mtn33: {
+      summary: "音程转位（Interval Inversion）核心 9 减法则",
+      points: [
+        "【度数相加=9，性质互换】原位度数 + 转位度数 = 9（3↔6、2↔7、4↔5）；半音数相加 = 12；性质变化：大↔小，增↔减，纯→纯。",
+        "【吉他实战意义】比如 C→E 是大三度(4半音)，反过来 E→C 就是小六度(8半音)；这也是双吉他三/六度和声与三和弦转位的对称原理。"
+      ],
+      local: ["lessons/2026-11-17-intervals.html#concepts", "回到 G3 音程讲义概念卡对照指板形状"]
+    },
+    mtn43: {
+      summary: "大调顺阶三和弦（Diatonic Triads）：I ii iii IV V vi vii°",
+      points: [
+        "【固定顺阶性质表】任何大调只用调内音隔位叠三度，永远是 I大 – ii小 – iii小 – IV大 – V大 – vi小 – vii°减。",
+        "【本站五度圈直查】打开指板页面底部的五度圈并点击任意大调，7 个顺阶三和弦、七和弦一键高亮并可直接点按听声。"
+      ],
+      local: ["#/fretboard", "在本站五度圈一键点听任意调顺阶和弦"]
     }
   };
 
