@@ -23,7 +23,13 @@ WEEK_P4 = {
                     "text": "琴放在腿上走完讲义 ① ② ③ ④，逐个切换第 3 节交互指板的 Pattern 1～5 聚焦窗口并打开 A 持续音即兴两分钟。",
                     "anchors": [["map", "1 全局地图"], ["c1", "① 为什么五声安全"], ["c2", "② 一图两用 A小=C大"], ["c3", "③ 5 把位挂 CAGED"], ["lab", "3 交互指板与伴奏实验室"]]
                 },
-                "reading": [],
+                "reading": [{
+                    "time": "15 分钟", "title": "OMT 五声和声原文（上）：五声音阶、伴奏音集与三和弦匹配",
+                    "links": [{"res": "omtPenta", "note": "OMT Pentatonic Harmony 原章直达"}],
+                    "keys": ["penta-col", "penta-base"],
+                    "look": ["一个五声音阶音集（Pitch Collection）为什么能同时覆盖主歌和副歌的多种大/小和弦", "只用大调/小调五声音阶作为背景和声底色（Base）时怎么判断中心归属"],
+                    "try": "把今天弹过的 Pattern 1 与 Pattern 2 五声指型，对照 OMT 的音集与三和弦匹配逻辑在琴上试听。"
+                }],
                 "questionsTime": "",
                 "questions": [
                     "小调五声和大调五声各自从七声音阶里删掉了哪两个音？为什么这让它几乎不刺耳？",
@@ -58,7 +64,7 @@ WEEK_P4 = {
             {
                 "title": "打通 Pattern 3/4/5 与 Fret Science 矩形+堆叠",
                 "lead": "今天进入第 4 步精读！学透 Fret Science 的“矩形与堆叠（Rectangle & Stack）”几何视角，再把 Pattern 3、4、5 一次性串满 0～15 品整条琴颈！",
-                "loopNote": "今天精读 g10-penta-sys 双语卡片并勾掉第 4 步，同时完成练习 1 全部五把位串联！",
+                "loopNote": "今天精读 OMT 五声和声原文（Hey Joe 实例）与 Fret Science 几何卡片并勾掉第 4 步，同时完成练习 1 全部五把位串联！",
                 "schedule": [
                     ["5 分钟", "三层递进：P1/P2 与 CAGED 对应", ""],
                     ["10 分钟", "日练：musictheory.net 指板音阶识别", ""],
@@ -70,10 +76,10 @@ WEEK_P4 = {
                 "warm": {"time": "5 分钟", "cmd": "/quiz 三层 五声音阶 P1/P2 与和弦锚点", "text": "速问 P1 和 P2 里的根音与 ♭3 所在弦。"},
                 "lesson": {"time": "", "text": "对照讲义 ③ ④ 并把交互指板切到 P3/P4/P5：", "anchors": [["c3", "③ 5 把位挂 CAGED"], ["c4", "④ 矩形+堆叠与呼吸法则"], ["lab", "3 交互指板与伴奏实验室"]]},
                 "reading": [{
-                    "time": "25 分钟", "title": "五声音阶和声原理、CAGED 锚点与 Fret Science 几何",
+                    "time": "25 分钟", "title": "OMT 五声和声实例原文（Hey Joe）& Fret Science CAGED 几何",
                     "links": [{"res": "omtPenta", "note": "OMT Pentatonic Harmony"}, {"res": "fretscience", "note": "Fret Science 矩形+堆叠视频/讲义"}, {"res": "jgBlues2", "note": "JustinGuitar Pattern 3–5"}],
-                    "keys": ["g10-penta-sys"],
-                    "look": ["宽 3 品的“矩形（Rectangle）”和宽 2 品的“堆叠（Stack）”里各自装了哪几个级数", "为什么跨过 3–2 弦时矩形和堆叠的拼接点必须右移 1 品", "P3(Cm型)、P4(Am型)、P5(Gm型) 各自包住的 Am 根音位置"],
+                    "keys": ["penta-heyjoe", "g10-penta-sys"],
+                    "look": ["OMT 原文怎么分析五声旋律如何凌驾在摇滚多和弦进行（如 Hey Joe）之上", "宽 3 品的“矩形（Rectangle）”和宽 2 品的“堆叠（Stack）”里各自装了哪几个级数", "为什么跨过 3–2 弦时矩形和堆叠的拼接点必须右移 1 品"],
                     "try": "把吉他拿在手里，不看盒子，只靠“矩形+堆叠（跨 3–2 弦右移 1 品）”从 6 弦 5 品一步步推导并弹到 1 弦 12 品！"
                 }],
                 "questionsTime": "",
@@ -104,8 +110,8 @@ WEEK_P4 = {
                 "songs": [{"id": "s52", "how": "在《Gravity》（G 调，3 品起手 P1 与 5–8 品 P2 之间穿梭）上即兴弹填补句（fills），体会 John Mayer 怎么在 3 弦与 2 弦间靠滑音把大/小五声穿在一起。"}],
                 "drillTime": "10 分钟",
                 "drillNote": "每天花 5 分钟用“沿着单根弦（3 弦或 2 弦）”的方式横向弹五声音阶。",
-                "evening": {"time": "5 分钟", "cmd": "/quiz 五声 5 把位串联与几何逻辑", "items": ["勾掉 g10-penta-sys 卡片与循环第 4 步"]},
-                "done": ["g10-penta-sys 精读完成", "5 个把位全颈打通并绘出标度图", "一条复盘日志"]
+                "evening": {"time": "5 分钟", "cmd": "/quiz 五声 5 把位串联与几何逻辑", "items": ["勾掉本节 OMT 原文、几何卡片与循环第 4 步"]},
+                "done": ["OMT 五声原文与 Fret Science 卡片精读完成", "5 个把位全颈打通并绘出标度图", "一条复盘日志"]
             },
             {
                 "title": "一盒两用：同一把位以 A 和 C 为家对比即兴",
@@ -294,7 +300,13 @@ WEEK_P4 = {
                     "text": "琴放在腿上走完整份讲义。把 ① ② ③ ④ 全部的 ▶ 示范按钮按响并在琴上弹出，同时去第 3 节交互指板切开布鲁斯音阶看红色 ♭5 位置。",
                     "anchors": [["map", "1 全局地图"], ["c1", "① 12 小节原型与 AAB"], ["c2", "② 为什么全是属七"], ["c4", "④ Turnaround 与目标音"], ["lab", "3 交互指板与伴奏实验室"]]
                 },
-                "reading": [],
+                "reading": [{
+                    "time": "15 分钟", "title": "OMT 布鲁斯和声原文（上）：布鲁斯历史与 12 小节原型",
+                    "links": [{"res": "omtBluesHarmony", "note": "OMT Blues Harmony 原章直达"}],
+                    "keys": ["bl-intro", "bl-12bar"],
+                    "look": ["标准 12 小节布鲁斯三段式在和声节奏上的分配规律", "为什么布鲁斯里 I、IV、V 可以统统用大小七和弦（属七性质）作稳态色底"],
+                    "try": "对照 OMT 原章的 12 小节模板图，核对今天弹过的 A 调 Shuffle 每小节和弦与 Quick Change。"
+                }],
                 "questionsTime": "",
                 "questions": [
                     "写出标准 12 小节布鲁斯每一个小节的罗马数字（含 Quick Change 变体和第 12 小节 Turnaround）。",
@@ -329,7 +341,7 @@ WEEK_P4 = {
             {
                 "title": "属七壳和弦走 12 小节 & 精读布鲁斯和声原理",
                 "lead": "今天开始第 4 步精读 OMT「Blues Harmony」，弄明白为什么布鲁斯和弦可以“违背”古典规矩全用属七，并用练习 2 的属七壳和弦听着半音引导线走完 12 小节！",
-                "loopNote": "今天精读 g11-blues-harm 卡片并完成练习 2，明天读蓝调音卡片后勾选第 4 步。",
+                "loopNote": "今天精读 OMT 爵士布鲁斯与变格和声原理原文并完成练习 2，明天读蓝调旋律与音阶原文后勾选第 4 步。",
                 "schedule": [
                     ["5 分钟", "三层递进：12 小节框架与 Turnaround", ""],
                     ["10 分钟", "日练：本站「练耳与节奏」属七和弦与 12/8 节拍器体验", ""],
@@ -341,10 +353,10 @@ WEEK_P4 = {
                 "warm": {"time": "5 分钟", "cmd": "/quiz 三层 12 小节布鲁斯结构", "text": "提问第 5、9、10、11 小节分别是什么和弦，以及 Quick Change 作用。"},
                 "lesson": {"time": "", "text": "先看讲义 ② 与第 5 节小调布鲁斯对比：", "anchors": [["c2", "② 为什么全是属七"], ["choices", "5 分歧点对照"]]},
                 "reading": [{
-                    "time": "25 分钟", "title": "布鲁斯属七和声逻辑与小调布鲁斯变体",
+                    "time": "25 分钟", "title": "OMT 布鲁斯原文（中）：爵士布鲁斯扩展 & 布鲁斯变格终止模式",
                     "links": [{"res": "omtBluesHarmony", "note": "OMT Blues Harmony 整章"}, {"res": "omtBluesSchemas", "note": "OMT Blues-Based Schemas"}, {"res": "tomoFujita", "note": "Tomo Fujita 布鲁斯小七/属七伴奏"}],
-                    "keys": ["g11-blues-harm"],
-                    "look": ["为什么在布鲁斯里 I7（A7）不会强烈想解决到 D，而是像稳定的家", "V–IV–I 在布鲁斯第 9–11 小节里如何取代古典 V–I 成为结构终止", "小调布鲁斯（Minor Blues）在 12 小节第 9–10 小节的经典改造（♭VI7 – V7）"],
+                    "keys": ["bl-jazz", "bl-plagal"],
+                    "look": ["爵士布鲁斯（Jazz Blues）如何把标准 12 小节最后四小节改成 ii–V–I 与副属连接", "V–IV–I 变格运动（Plagal motion）在摇滚和布鲁斯中如何替代古典 V–I 成为结构回归", "小调布鲁斯与大调布鲁斯在和声结构上的对接点"],
                     "try": "在吉他上分别弹一遍古典终止 A7→D→E7→A 和布鲁斯回归 E7→D7→A7，体会 V–IV–I 的独有蓝调沧桑感。"
                 }],
                 "questionsTime": "",
@@ -375,13 +387,13 @@ WEEK_P4 = {
                 "songs": [{"id": "s35", "how": "放《Red House》（12/8 慢布鲁斯），跟着原曲数“1 2 3, 2 2 3, 3 2 3, 4 2 3”，用手里的壳和弦跟走完 12 小节。"}],
                 "drillTime": "10 分钟",
                 "drillNote": "打开本站「练耳与节奏」→ 节拍器选 `12/8` 模式 55 BPM，用闷音体会慢布鲁斯的重力切分。",
-                "evening": {"time": "5 分钟", "cmd": "/quiz 布鲁斯属七与壳和弦连接", "items": ["勾掉 g11-blues-harm 卡片", "勾掉练习 2"]},
-                "done": ["g11-blues-harm 精读完成", "属七壳和弦走通 12 小节", "体验 12/8 慢布鲁斯律动", "一条复盘日志"]
+                "evening": {"time": "5 分钟", "cmd": "/quiz 布鲁斯属七与壳和弦连接", "items": ["勾掉两节 OMT 布鲁斯原文", "勾掉练习 2"]},
+                "done": ["OMT 布鲁斯和声与变格原文精读完成", "属七壳和弦走通 12 小节", "体验 12/8 慢布鲁斯律动", "一条复盘日志"]
             },
             {
                 "title": "布鲁斯音阶 ♭5 经过音与“微推弦蓝调音”",
-                "lead": "今天精读蓝调音与布鲁斯音阶卡片（完成循环第 4 步），用练习 3 在 Pattern 1 上驯服极具危险与魅惑感的 ♭5 音，并通过四分之一推弦真正发出“钢琴弹不出来的蓝调音”！",
-                "loopNote": "今天读完 g11-blues-note 即可勾掉循环第 4 步，并完成练习 3。",
+                "lead": "今天精读 OMT 布鲁斯旋律与布鲁斯音阶原文（完成循环第 4 步），用练习 3 在 Pattern 1 上驯服极具危险与魅惑感的 ♭5 音，并通过四分之一推弦真正发出“钢琴弹不出来的蓝调音”！",
+                "loopNote": "今天读完 OMT 布鲁斯音阶两节原文即可勾掉循环第 4 步，并完成练习 3。",
                 "schedule": [
                     ["5 分钟", "三层递进：布鲁斯属七与壳和弦", ""],
                     ["10 分钟", "日练：5 把位五声快速换调", ""],
@@ -393,10 +405,10 @@ WEEK_P4 = {
                 "warm": {"time": "5 分钟", "cmd": "/quiz 三层 布鲁斯属七与壳和弦", "text": "速问 A7→D7 壳和弦半音变化及小调布鲁斯结尾。"},
                 "lesson": {"time": "", "text": "回顾讲义 ③ 并去第 3 节交互实验室切换“A 布鲁斯音阶”和“A 大调布鲁斯音阶”：", "anchors": [["c3", "③ 蓝调音与布鲁斯音阶"], ["lab", "3 交互指板与伴奏实验室"]]},
                 "reading": [{
-                    "time": "25 分钟", "title": "蓝调音（Blue Notes）微音高与大小布鲁斯音阶",
+                    "time": "25 分钟", "title": "OMT 布鲁斯旋律原文：蓝调音微音高与布鲁斯音阶构成",
                     "links": [{"res": "omtBluesScale", "note": "OMT Blues Melodies & Scale"}, {"res": "jgBluesScale", "note": "JustinGuitar: Blues Scale"}],
-                    "keys": ["g11-blues-note"],
-                    "look": ["为什么 OMT 把布鲁斯音阶里的 ♭5 写成 ♯4（视作推往 5 音的上行经过音）", "为什么真正的蓝调音落在小三度与大三度之间，钢琴上找不到，而吉他一推就有", "大调布鲁斯音阶（1 2 ♭3 3 5 6）和标准小调布鲁斯音阶（1 ♭3 4 ♭5 5 ♭7）组成对比"],
+                    "keys": ["bl-mel", "bl-scale"],
+                    "look": ["为什么真正的蓝调音（Blue Notes）游走于大小三度或七度之间，用微推弦表达比钢琴更地道", "OMT 怎么把布鲁斯音阶从五声音阶加上经过音推导出来", "大调与小调布鲁斯音阶的声学和弦碰撞感"],
                     "try": "打开本站「指板」页切换 A blues 和 A majorBlues，记住那两个被红色标出的核心音（E♭ vs C）各在什么位置。"
                 }],
                 "questionsTime": "",
@@ -427,8 +439,8 @@ WEEK_P4 = {
                 "songs": [{"id": "s33", "how": "在 7 品起手的 B 小调五声（加 ♭5=F 在 3弦10品）跟着《The Thrill Is Gone》即兴；特别注意第 10 小节进 F♯7 时，大胆试着落在 2 弦 11 品或 3 弦 6 品/1 弦 6 品的 A♯（F♯7 的三音）！"}],
                 "drillTime": "10 分钟",
                 "drillNote": "把 Pattern 1 和 Pattern 2（B.B. Box）里的所有 ♭5 位置连起来走一遍。",
-                "evening": {"time": "5 分钟", "cmd": "/quiz 蓝调音微音高与 ♭5 运用", "items": ["勾掉 g11-blues-note 卡片与循环第 4 步", "勾掉练习 3"]},
-                "done": ["g11-blues-note 精读完毕", "P1 ♭5 经过音与 1/4 推弦练熟", "一条复盘日志"]
+                "evening": {"time": "5 分钟", "cmd": "/quiz 蓝调音微音高与 ♭5 运用", "items": ["勾掉两节 OMT 布鲁斯旋律原文与循环第 4 步", "勾掉练习 3"]},
+                "done": ["OMT 布鲁斯音阶与蓝调音原文精读完毕", "P1 ♭5 经过音与 1/4 推弦练熟", "一条复盘日志"]
             },
             {
                 "title": "问答呼吸乐句与“Playing the Changes”目标音预备",
@@ -566,7 +578,13 @@ WEEK_P4 = {
                     "text": "走完整份讲义 ①～④，打开第 3 节的持续音开关（默认锁定 A），然后切换伊奥尼亚→混合利底亚→利底亚→爱奥利亚→多利亚→弗里几亚，亲耳听红色特征音如何改写气氛！",
                     "anchors": [["map", "1 全局地图"], ["c1", "① 平行思路 vs 相对思路"], ["c2", "② 大调类调式"], ["c3", "③ 小调类调式"], ["lab", "3 交互指板与伴奏实验室"]]
                 },
-                "reading": [],
+                "reading": [{
+                    "time": "15 分钟", "title": "OMT 调式导言与平行思路原文",
+                    "links": [{"res": "omtModes", "note": "OMT Diatonic Modes 原章直达"}],
+                    "keys": ["mod-par", "mod-intro"],
+                    "look": ["平行思路（把各调式跟同主音大小调比）与相对轮转思路的本质区别", "七个自然教会调式名称与音级排列特征"],
+                    "try": "开着持续音 A 听完六个调式后，对照 OMT 平行调式表再在 1 弦弹出特征音差异。"
+                }],
                 "questionsTime": "",
                 "questions": [
                     "大调类三大调式（伊奥尼亚、混合利底亚、利底亚）各自跟大调相比差哪一个音？",
@@ -601,7 +619,7 @@ WEEK_P4 = {
             {
                 "title": "录 4 段调式 Vamp 即兴，精读平行调式原理",
                 "lead": "今天开始第 4 步精读 OMT「Diatonic Modes」，并在吉他上亲自录下 4 段经典的“两和弦 Vamp”（Am7–D、A–G、A–B、Am–B♭），反复落在特征音上听调式如何在真实伴奏中确立中心！",
-                "loopNote": "今天读完 g12-modes-par 卡片并完成练习 2，明天读判断流程卡片后勾选第 4 步。",
+                "loopNote": "今天读完 OMT 调式模板原文（混合利底亚/多利亚/利底亚）并完成练习 2，明天读调式听辨流程原文后勾选第 4 步。",
                 "schedule": [
                     ["5 分钟", "三层递进：六调式特征音与亮暗序", ""],
                     ["10 分钟", "日练：开 E 持续音弹 6 个调式单音对比", ""],
@@ -613,10 +631,10 @@ WEEK_P4 = {
                 "warm": {"time": "5 分钟", "cmd": "/quiz 三层 平行调式对比", "text": "抽考任意调式和同主音大/小调只差哪一个音。"},
                 "lesson": {"time": "", "text": "先看讲义 ② ③ 里的四个 Vamp ▶ 示例听一遍味道：", "anchors": [["c2", "② 大调类调式与 Vamp"], ["c3", "③ 小调类调式与 Vamp"]]},
                 "reading": [{
-                    "time": "25 分钟", "title": "平行调式理论、伴奏定调与特征音强调",
-                    "links": [{"res": "omtModes", "note": "OMT Diatonic Modes"}, {"res": "signals", "note": "Signals Music Studio 调式作曲演示"}],
-                    "keys": ["g12-modes-par"],
-                    "look": ["为什么在 Dm7–G7–Cmaj7 上弹 D 多利亚实际上听起来只是 C 大调", "在调式音乐（Modal Music）里，为什么每个和弦停留得越久、和弦越少，调式感越强", "特征音如何从 Vamp 伴奏的第二个和弦里自然冒出来"],
+                    "time": "25 分钟", "title": "OMT 调式进行模板原文：混合利底亚、多利亚与利底亚",
+                    "links": [{"res": "omtModes", "note": "OMT Diatonic Modes"}, {"res": "omtModalSchemas", "note": "OMT Modal Schemas"}, {"res": "signals", "note": "Signals Music Studio 调式作曲演示"}],
+                    "keys": ["msch-mix", "msch-dor", "msch-lyd"],
+                    "look": ["在调式音乐（Modal Music）里，为什么每个和弦停留得越久、和弦越少，调式感越强", "特征音如何分别在 Mixolydian (I–♭VII)、Dorian (i–IV)、Lydian (I–II) 的 Vamp 伴奏里立住中心", "为什么说 Dm7–G7–Cmaj7 上弹 D 多利亚实际上听起来只是 C 大调"],
                     "skip": "20 世纪后调性作曲家用的复合多调式（Polymodality）跳过，先把单一和弦/Vamp 上的教会调式听感立稳。",
                     "try": "试着分别弹一遍 Am7–D9（A 多利亚 i–IV）和 Am7–Dm7（A 爱奥利亚 i–iv），耳听第二个和弦是大还是小如何一锤定音。"
                 }],
@@ -649,13 +667,13 @@ WEEK_P4 = {
                 "songs": [{"id": "s40", "how": "在 E 上分别弹一遍 E 大调（含 D♯）和 E 混合利底亚（含 D♮），然后跟着《Norwegian Wood》哼唱主旋律（5–6–5–4–3–2–♭7? 原曲是从 5 往下去到 D♮），亲手摸到那颗 ♭7 音。"}],
                 "drillTime": "10 分钟",
                 "drillNote": "把昨天做的 4 个 Vamp 循环挑两个喜欢的，放进手机里散步时听着锻炼分辨调式耳朵。",
-                "evening": {"time": "5 分钟", "cmd": "/quiz Vamp 定调式与特征音落脚", "items": ["勾掉 g12-modes-par 卡片", "勾掉练习 2"]},
-                "done": ["g12-modes-par 精读完成", "完成 4 段 Vamp 即兴录音", "一条复盘日志"]
+                "evening": {"time": "5 分钟", "cmd": "/quiz Vamp 定调式与特征音落脚", "items": ["勾掉三节 OMT 调式模板原文", "勾掉练习 2"]},
+                "done": ["OMT 混合利底亚/多利亚/利底亚原文精读完成", "完成 4 段 Vamp 即兴录音", "一条复盘日志"]
             },
             {
                 "title": "五声+1 特征音法 & OMT 调式三步判断法",
-                "lead": "今天读完 OMT 调式识别三步流程卡片（完成循环第 4 步），教给你吉他手实战最偷懒也最高效的妙招——“五声 + 1 个特征音”秒变多利亚、爱奥利亚与混合利底亚（练习 3）！",
-                "loopNote": "今天读完 g12-modes-id 即可勾掉循环第 4 步，同时完成练习 3。",
+                "lead": "今天读完 OMT 调式听辨流程原文（完成循环第 4 步），教给你吉他手实战最偷懒也最高效的妙招——“五声 + 1 个特征音”秒变多利亚、爱奥利亚与混合利底亚（练习 3）！",
+                "loopNote": "今天读完 OMT 调式听辨流程原文即可勾掉循环第 4 步，同时完成练习 3。",
                 "schedule": [
                     ["5 分钟", "三层递进：4 段 Vamp 与特征音", ""],
                     ["10 分钟", "日练：开持续音测试五声 + 1 个特征音", ""],
@@ -667,10 +685,10 @@ WEEK_P4 = {
                 "warm": {"time": "5 分钟", "cmd": "/quiz 三层 调式 Vamp 与特征音", "text": "速问看到 Am–D、A–G、Am–B♭ 分别是什么调式、看哪个特征音。"},
                 "lesson": {"time": "", "text": "回顾讲义 ④ 和第 5 节分歧点：", "anchors": [["c4", "④ OMT 三步法与弗里几亚属"], ["choices", "5 分歧点对照"]]},
                 "reading": [{
-                    "time": "25 分钟", "title": "OMT 调式判别流程与摇滚调式进行",
+                    "time": "25 分钟", "title": "OMT 调式判别听音流程原文与摇滚调式进行",
                     "links": [{"res": "omtModalSchemas", "note": "OMT Modal Schemas"}, {"res": "davidBennett", "note": "David Bennett 流行调式视频合集"}],
-                    "keys": ["g12-modes-id"],
-                    "look": ["OMT 三步判别流程：主和弦大小 → 7 级位置 → 特征音位置", "遇到《Sweet Home Alabama》或《Sweet Child O' Mine》这类摇滚进行，为什么经常存在“混合利底亚 vs 大调 IV”双解", "如何从和声小调第 5 级切出金属吉他最爱的“弗里几亚属音阶”"],
+                    "keys": ["msch-ear"],
+                    "look": ["OMT 听音判别流程：主和弦大小 → 7 级位置 → 特征音位置", "遇到《Sweet Home Alabama》或《Sweet Child O' Mine》这类摇滚进行，为什么经常存在“混合利底亚 vs 大调 IV”双解", "如何从和声小调第 5 级切出金属吉他最爱的“弗里几亚属音阶”"],
                     "try": "试着不看任何资料，在 A 小调五声 P1（5-8品）里先加一个 F♯（3弦11/2弦7/4弦4），再换成加 F（4弦3/2弦6），听一音变脸。"
                 }],
                 "questionsTime": "",
@@ -703,8 +721,8 @@ WEEK_P4 = {
                 "songs": [{"id": "s39", "how": "在《Sweet Home Alabama》的 D–C–G 上，第一遍用 D 混合利底亚（重点落 D/F♯/C）即兴，第二遍用 G 大调（重点落 G/B）即兴，自己用耳朵决定哪一种听起来更“回家”。"}],
                 "drillTime": "10 分钟",
                 "drillNote": "准备阶段四双录音（A 调布鲁斯 3 chorus + A 多利亚 vamp 即兴）的最终磨合！",
-                "evening": {"time": "5 分钟", "cmd": "/quiz OMT 调式三步判断与五声加味", "items": ["勾掉 g12-modes-id 卡片与循环第 4 步", "勾掉练习 3"]},
-                "done": ["g12-modes-id 精读完毕", "掌握五声+1 特征音快捷即兴法", "一条复盘日志"]
+                "evening": {"time": "5 分钟", "cmd": "/quiz OMT 调式三步判断与五声加味", "items": ["勾掉本节 OMT 原文与循环第 4 步", "勾掉练习 3"]},
+                "done": ["OMT 调式听辨流程原文精读完毕", "掌握五声+1 特征音快捷即兴法", "一条复盘日志"]
             },
             {
                 "title": "打磨阶段四双作品（布鲁斯 + 多利亚 Vamp）",

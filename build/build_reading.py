@@ -29,6 +29,7 @@ UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like 
 IMG_DIR = ROOT / "assets" / "reading" / "omt"
 UNITS_TXT = ROOT / "build" / "omt_units.txt"
 ZH_TXT = ROOT / "build" / "omt_zh.txt"
+ZH_EXT_TXT = ROOT / "build" / "omt_zh_g3_g15.txt"
 OUT_JS = ROOT / "assets" / "data-reading.js"
 
 # 章节 slug -> 中文章名
@@ -41,9 +42,37 @@ CHAPTERS = {
     "compound-meters-and-time-signatures": "复拍子与拍号",
     "swing-rhythms": "摇摆节奏",
     "rhythm-and-meter-in-pop-music": "流行音乐里的节奏与节拍",
+    "intervals": "音程",
+    "major-scales": "大调音阶、音级与调号",
+    "triads": "三和弦",
+    "inversion": "和弦转位",
+    "seventh-chords": "七和弦",
+    "chord-symbols": "和弦标记符号",
+    "jazz-voicings": "爵士声部排列与连接",
+    "roman-numerals": "罗马数字和声分析",
+    "intro-to-harmony": "和声、终止式与乐句结尾",
+    "4-chord-schemas": "流行四和弦模板",
+    "ii-v-i": "ii–V–I 进行",
+    "minor-scales": "小调音阶、音级与调号",
+    "modal-schemas": "调式和声模板",
+    "intro-to-diatonic-modes-and-the-chromatic-scale": "自然调式与半音阶引论",
+    "pentatonic-harmony": "五声音阶和声",
+    "blues-harmony": "布鲁斯和声",
+    "blues-melodies-and-the-blues-scale": "布鲁斯旋律与布鲁斯音阶",
+    "blues-based-schemas": "源自布鲁斯的和声模板",
+    "diatonic-modes": "自然调式体系",
+    "chord-scale-theory": "和弦-音阶对应理论",
+    "embellishing-tones": "修饰音（和弦外音）",
+    "melody-and-phrasing": "旋律与乐句结构",
+    "tonicization": "离调（副属和弦）",
+    "modal-mixture": "调式互换（借用和弦）",
+    "extended-tonicization-and-modulation-to-closely-related-keys": "扩展离调与近关系转调",
+    "intro-to-form-in-popular-music": "流行音乐曲式导论",
+    "verse-chorus-form": "主歌-副歌曲式",
+    "aaba-and-strophic-form": "AABA 与分节歌曲式",
 }
 
-# 摘录清单：键 -> (章节, 小节编号)；0 = 章首（要点框 + 第一个小节之前的引言）
+# 摘录清单：键 -> (章节, 小节编号或列表)；0 = 章首（要点框 + 第一个小节之前的引言）
 EXCERPTS = {
     # G1 第 2 天
     "hs-intro": ("half-and-whole-steps", 0),
@@ -79,6 +108,91 @@ EXCERPTS = {
     "pop-intro": ("rhythm-and-meter-in-pop-music", 0),
     "pop-sync": ("rhythm-and-meter-in-pop-music", 1),
     "pop-tresillo": ("rhythm-and-meter-in-pop-music", 2),
+    # G3 音程
+    "int-intro": ("intervals", 0),
+    "int-size": ("intervals", 1),
+    "int-qual": ("intervals", 2),
+    "int-majmethod": ("intervals", 3),
+    "int-augdim": ("intervals", 4),
+    "int-inv": ("intervals", 7),
+    "int-cons": ("intervals", 8),
+    # G4 大调与五度圈
+    "maj-intro": ("major-scales", 0),
+    "maj-scale": ("major-scales", 1),
+    "maj-deg": ("major-scales", 2),
+    "maj-ksig": ("major-scales", 3),
+    "maj-cof": ("major-scales", [4, 5]),
+    # G5 三和弦与转位
+    "tri-intro": ("triads", 0),
+    "tri-def": ("triads", 1),
+    "tri-qual": ("triads", 2),
+    "tri-sym": ("triads", 3),
+    "tri-majmin": ("triads", 4),
+    "inv-tri": ("inversion", 1),
+    # G6 七和弦、符号与爵士声部
+    "sev-intro": ("seventh-chords", 0),
+    "sev-def": ("seventh-chords", 1),
+    "sev-qual": ("seventh-chords", 2),
+    "csym-intro": ("chord-symbols", 0),
+    "csym-ext": ("chord-symbols", 2),
+    "csym-addsus": ("chord-symbols", 3),
+    "jv-omit": ("jazz-voicings", 3),
+    "jv-vl": ("jazz-voicings", 4),
+    # G7 顺阶与罗马数字
+    "rn-intro": ("roman-numerals", 0),
+    "rn-qual": ("roman-numerals", 1),
+    "rn-sev": ("roman-numerals", 2),
+    "rn-ana": ("roman-numerals", 3),
+    # G8 功能、终止与流行進行
+    "harm-intro": ("intro-to-harmony", 1),
+    "harm-cad": ("intro-to-harmony", 2),
+    "harm-ac": ("intro-to-harmony", 3),
+    "harm-hc": ("intro-to-harmony", [4, 5]),
+    "fch-doowop": ("4-chord-schemas", 1),
+    "fch-hop": ("4-chord-schemas", 3),
+    "iivi-schema": ("ii-v-i", 1),
+    "iivi-turn": ("ii-v-i", 3),
+    # G9 小调体系
+    "min-intro": ("minor-scales", 0),
+    "min-types": ("minor-scales", [1, 2, 3, 4]),
+    "min-relpar": ("minor-scales", 6),
+    "min-majmin": ("minor-scales", 9),
+    "msch-aeol": ("modal-schemas", 3),
+    # G10 五声音阶
+    "penta-col": ("intro-to-diatonic-modes-and-the-chromatic-scale", 2),
+    "penta-base": ("pentatonic-harmony", [0, 1]),
+    "penta-heyjoe": ("pentatonic-harmony", 6),
+    # G11 布鲁斯
+    "bl-intro": ("blues-harmony", 0),
+    "bl-12bar": ("blues-harmony", 1),
+    "bl-jazz": ("blues-harmony", 4),
+    "bl-mel": ("blues-melodies-and-the-blues-scale", 1),
+    "bl-scale": ("blues-melodies-and-the-blues-scale", 2),
+    "bl-plagal": ("blues-based-schemas", 1),
+    # G12 调式
+    "mod-par": ("intro-to-diatonic-modes-and-the-chromatic-scale", 1),
+    "mod-intro": ("diatonic-modes", 0),
+    "msch-mix": ("modal-schemas", 2),
+    "msch-dor": ("modal-schemas", 4),
+    "msch-lyd": ("modal-schemas", 5),
+    "msch-ear": ("modal-schemas", 6),
+    # G13 和弦音即兴与修饰音
+    "emb-over": ("embellishing-tones", 1),
+    "emb-step": ("embellishing-tones", 2),
+    "emb-leap": ("embellishing-tones", 3),
+    "mel-intro": ("melody-and-phrasing", 0),
+    "cs-basic": ("chord-scale-theory", 1),
+    # G14 调外和弦与转调
+    "ton-intro": ("tonicization", 0),
+    "ton-other": ("tonicization", 2),
+    "mix-intro": ("modal-mixture", 0),
+    "mix-comm": ("modal-mixture", 1),
+    "modl-vs": ("extended-tonicization-and-modulation-to-closely-related-keys", 3),
+    # G15 曲式与扒歌
+    "form-sec": ("intro-to-form-in-popular-music", 1),
+    "form-term": ("intro-to-form-in-popular-music", 2),
+    "form-vc": ("verse-chorus-form", 0),
+    "form-aaba": ("aaba-and-strophic-form", 2),
 }
 
 INLINE_KEEP = {"em": "em", "i": "em", "strong": "strong", "b": "strong", "sup": "sup", "sub": "sub"}
@@ -106,12 +220,17 @@ def is_tail(el):
 
 
 def latex(s):
-    """OMT 用 [latex] 写拍号和级数，换成普通文字：^4_4 → 4/4，\\hat{6} → 6̂。"""
+    """OMT 用 [latex] 写拍号和级数，换成普通文字/上下标：^4_4 → 4/4，\\hat{6} → 6̂，\\mathrm{V^6_5} → V6/5。"""
     def conv(m):
-        t = m.group(1).replace("\\:", "")
+        t = m.group(1).replace("\\:", "").replace("\\ ", " ")
         t = re.sub(r"\\mathbf\{\^\{?(\d+)\}?_\{?(\d+)\}?\}", r"\1/\2", t)
+        t = re.sub(r"\\text\{([^}]*)\}", r"\1", t)
         t = t.replace("\\quad", "　").replace("\\downarrow", "↓").replace("\\uparrow", "↑")
-        t = re.sub(r"\\hat\{(\d)\}", "\\1\u0302", t)
+        t = re.sub(r"\\hat\{\\mathsf\{(\d)\}\}", "\\1\u0302", t)
+        t = re.sub(r"\\hat\{?(\d)\}?", "\\1\u0302", t)
+        t = re.sub(r"\^\{?(\\text\{ø\}|ø|\d+)\}?_\{?(\d+)\}?", r"<sup>\1</sup><sub>\2</sub>", t)
+        t = re.sub(r"\\mathrm\{(.*)\}", r"\1", t)
+        t = t.replace("{", "").replace("}", "")
         return re.sub(r"\s+", " ", t).strip()
     return re.sub(r"\[latex\](.*?)\[/latex\]", conv, s)
 
@@ -143,11 +262,13 @@ def pick_img(img):
 class Cleaner:
     """把 OMT 的 HTML 转成本站的格式。每一段要翻译的文字登记成一个句段，先输出占位符，最后再替换成双语。"""
 
-    def __init__(self, base_url, glossary, download, footnotes=None):
+    def __init__(self, base_url, glossary, download, footnotes=None, slug="", img_url_map=None):
         self.base = base_url
         self.glossary = glossary
         self.download = download
         self.footnotes = footnotes or {}
+        self.slug = slug
+        self.img_url_map = img_url_map if img_url_map is not None else {}
         self.used_fn = []
         self.units = []
         self.images = []
@@ -239,8 +360,15 @@ class Cleaner:
         img = el.find("img")
         out = ""
         if img is not None:
-            url = pick_img(img)
-            name = Path(urlparse(url).path).name
+            url = urljoin(self.base, pick_img(img))
+            raw_name = Path(urlparse(url).path).name
+            # 若同名文件来自不同章节路径，加章节前缀防止互相覆盖
+            prev_url = self.img_url_map.get(raw_name)
+            if prev_url and prev_url != url and self.slug:
+                name = f"{self.slug}--{raw_name}"
+            else:
+                name = raw_name
+                self.img_url_map[raw_name] = url
             if self.download:
                 fetch(url, IMG_DIR / name)
             self.images.append(name)
@@ -322,7 +450,7 @@ class Cleaner:
 
 
 def chapter_parts(soup):
-    """章节正文按 h1.section-header 切开：parts[0] 是章首，parts[k] 是第 k 个小节。"""
+    """章节正文按 h1.section-header 切开（若整章无 h1.section-header 且含 h2 则按 h2 切）：parts[0] 是章首。"""
     sec = soup.select_one("section.chapter")
     parts = [[]]
     heads = [None]
@@ -336,6 +464,18 @@ def chapter_parts(soup):
             heads.append(c)
             continue
         parts[-1].append(c)
+    if len(parts) == 1 and any(isinstance(c, Tag) and c.name == "h2" for c in sec.children):
+        parts, heads = [[]], [None]
+        for c in sec.children:
+            if isinstance(c, Tag) and c.name == "header":
+                continue
+            if is_tail(c):
+                break
+            if isinstance(c, Tag) and c.name == "h2":
+                parts.append([c])
+                heads.append(c)
+                continue
+            parts[-1].append(c)
     return sec, parts, heads
 
 
@@ -363,19 +503,20 @@ def chapter_meta(soup):
 
 def load_zh():
     zh, key = {}, None
-    if not ZH_TXT.exists():
-        return zh
-    for ln, line in enumerate(ZH_TXT.read_text(encoding="utf-8").splitlines(), 1):
-        if not line.strip() or line.startswith("#"):
+    for path in (ZH_TXT, ZH_EXT_TXT):
+        if not path.exists():
             continue
-        if line.startswith("@@ "):
-            key = line[3:].strip()
-            zh.setdefault(key, {})
-            continue
-        m = re.match(r"^(\d+)\s(.*)$", line)
-        if not m or key is None:
-            raise SystemExit(f"omt_zh.txt 第 {ln} 行格式不对：{line[:40]}")
-        zh[key][int(m.group(1))] = m.group(2).strip()
+        for ln, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+            if not line.strip() or line.startswith("#"):
+                continue
+            if line.startswith("@@ "):
+                key = line[3:].strip()
+                zh.setdefault(key, {})
+                continue
+            m = re.match(r"^(\d+)\s(.*)$", line)
+            if not m or key is None:
+                raise SystemExit(f"{path.name} 第 {ln} 行格式不对：{line[:40]}")
+            zh[key][int(m.group(1))] = m.group(2).strip()
     return zh
 
 
@@ -391,17 +532,20 @@ def main():
     soups, metas = {}, {}
     result, dump = {}, []
     zh = load_zh() if mode == "build" else {}
+    img_url_map = {}
     missing = []
-    for key, (slug, idx) in EXCERPTS.items():
+    for key, (slug, idxs) in EXCERPTS.items():
         if slug not in soups:
             soups[slug] = BeautifulSoup((raw_dir / f"{slug}.html").read_text(encoding="utf-8"), "html.parser")
             metas[slug] = chapter_meta(soups[slug])
         title, authors, glossary, media, footnotes = metas[slug]
         _, parts, heads = chapter_parts(soups[slug])
         url = OMT + slug + "/"
-        cl = Cleaner(url, glossary, download, footnotes)
-        nodes = parts[idx]
-        if idx == 0:
+        cl = Cleaner(url, glossary, download, footnotes, slug=slug, img_url_map=img_url_map)
+        idx_list = [idxs] if isinstance(idxs, int) else list(idxs)
+        first_idx = idx_list[0]
+        nodes = [n for i in idx_list for n in parts[i]]
+        if first_idx == 0:
             # 章首没有小节标题，用章名当标题
             cl.headings = 1
             body = f"<h4>\u0000T\u0000</h4>" + "".join(cl.node(n) for n in nodes)
@@ -409,8 +553,8 @@ def main():
             anchor = url
         else:
             body = "".join(cl.node(n) for n in nodes)
-            sec_title = norm_ws(heads[idx].get_text(" ")).strip()
-            anchor = f"{url}#{heads[idx].get('id')}"
+            sec_title = norm_ws(heads[first_idx].get_text(" ")).strip()
+            anchor = f"{url}#{heads[first_idx].get('id')}"
         body += cl.footnote_block()
         body = re.sub(r"<p>\s*</p>", "", body)
         dump.append(f"@@ {key}    〔{title} · {sec_title}〕")
@@ -444,10 +588,10 @@ def main():
         extra = [i for i in tz if i >= len(cl.units)]
         if extra:
             missing.append(f"{key} 多出了译文 {extra}")
-        heading_zh = CHAPTERS[slug] if idx == 0 else plain(tz.get(0, ""))
+        heading_zh = CHAPTERS[slug] if first_idx == 0 else plain(tz.get(0, ""))
         result[key] = {
             "t": heading_zh or sec_title,
-            "te": sec_title if idx else title,
+            "te": sec_title if first_idx else title,
             "src": f"Open Music Theory · {CHAPTERS[slug]}（{title}）",
             "u": anchor,
             "credit": f"原文作者：{authors}。Open Music Theory, Version 2，CC BY-SA 4.0。中文为本站翻译，以英文原文为准。"

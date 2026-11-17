@@ -52,7 +52,7 @@ python -m http.server 8766 --directory guitar-theory
 - `data-resources.js`：资料链接
 - `data-method.js`：方法论文案与提示词模板
 - `data-week.js`：每一天的学习内容（「本周」页），已完整覆盖 **G1～G15 全部 65 个练习日**。改完跑一次 `node build/check_week.js`，检查引用的摘录、曲目、练习编号和讲义锚点是否都存在
-- `data-reading.js`：嵌在每日页面里的原文，**自动生成，不要手改**，见下一节
+- `data-reading.js`：嵌在 **G1～G15** 每日页面里的 OMT 原文章节与本地谱例图（**自动生成，不要手改**，见下一节）；`data-reading-ext.js`：电吉他指板与名师实战双语补充卡片（由 `build/gen_reading_ext.py` 生成）
 - `music.js`：音阶与和弦定义、音名拼写、拨弦合成
 
 曲目里的和弦与调性以常见记谱为准，不同版本、不同调弦会有出入，最后以原录音为准。
@@ -61,12 +61,13 @@ python -m http.server 8766 --directory guitar-theory
 
 ## 嵌在页面里的原文
 
-「本周」每日页面里的精读材料摘自 [Open Music Theory, Version 2](https://viva.pressbooks.pub/openmusictheory/)（摘录章节的作者是 Chelsey Hamm、Mark Gotham、Bryn Hughes、Megan Lavengood、Kris Shaffer，CC BY-SA 4.0）。英文只做了排版清理，内容没改；中文是本站翻译，同样以 CC BY-SA 4.0 提供，有出入以英文为准。每一节都标了原作者和原文链接，谱例图片的版权说明在每节末尾。
+「本周」与「今日」每日页面里的精读原文已全面覆盖 **G1～G15**，摘自 [Open Music Theory, Version 2](https://viva.pressbooks.pub/openmusictheory/)（CC BY-SA 4.0，共 101 节原文与 63 张本地谱例图，另在 G3～G15 配套 11 张电吉他指板与名师实战双语卡片）。英文只做了排版清理，内容没改；中文是本站翻译，同样以 CC BY-SA 4.0 提供，有出入以英文为准。每一节都标了原作者和原文链接，谱例图片的版权说明在每节末尾。
 
 重新生成（需要 [uv](https://docs.astral.sh/uv/)；原始页面放在 `.raw/omt/`，文件名是章节 slug 加 `.html`）：
 
 ```bash
 uv run --no-project --python 3.12 --with beautifulsoup4 python -I build/build_reading.py build .raw/omt
+python build/gen_reading_ext.py
 ```
 
-要加新的摘录：在 `build/build_reading.py` 的 `EXCERPTS` 里登记“键 → (章节, 小节编号)”，先用 `dump` 模式列出待译句段（写到 `build/omt_units.txt`），把译文按同样的编号写进 `build/omt_zh.txt`，再用 `build` 模式生成。缺译文时脚本会报错，不会生成半成品。
+要加新的摘录：在 `build/build_reading.py` 的 `EXCERPTS` 里登记“键 → (章节, 小节编号)”，先用 `dump` 模式列出待译句段（写到 `build/omt_units.txt`），把译文按同样的编号写进 `build/omt_zh.txt`（或 G3～G15 的 `build/omt_zh_g3_g15.txt`），再用 `build` 模式生成。缺译文时脚本会报错，不会生成半成品。

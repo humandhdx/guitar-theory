@@ -812,7 +812,28 @@ window.WEEKPLAN.G3 = {
           ]
         ]
       },
-      "reading": [],
+      "reading": [
+        {
+          "time": "15 分钟",
+          "title": "OMT 音程原文（上）：音程概念、度数与性质",
+          "links": [
+            {
+              "res": "omtIntervals",
+              "note": "OMT Intervals 原章直达"
+            }
+          ],
+          "keys": [
+            "int-intro",
+            "int-size",
+            "int-qual"
+          ],
+          "look": [
+            "字母度数（Size）和半音性质（Quality）怎么分开算",
+            "为什么纯音程家族（1/4/5/8）和大小音程家族（2/3/6/7）互不混用"
+          ],
+          "try": "把今天讲义里的 ① ② 和这三节 OMT 原文对照看，每读完一节就在页面末尾勾上“读完了”。"
+        }
+      ],
       "questionsTime": "",
       "questions": [
         "音程名字的“度数”和“性质”各由什么决定？为什么不存在“纯三度”或“大五度”？",
@@ -947,11 +968,11 @@ window.WEEKPLAN.G3 = {
       "reading": [
         {
           "time": "25 分钟",
-          "title": "音程核心规范、转位与等音程",
+          "title": "OMT 音程原文（下）：大音阶推算法、增减与转位",
           "links": [
             {
               "res": "omtIntervals",
-              "note": "OMT 原章：精读 Specific Intervals 与 Inversion"
+              "note": "OMT 原章：精读 Major Scale Method、增减音程与转位"
             },
             {
               "res": "mtn33",
@@ -963,13 +984,14 @@ window.WEEKPLAN.G3 = {
             }
           ],
           "keys": [
-            "g3-int-name",
-            "g3-int-inv"
+            "int-majmethod",
+            "int-augdim",
+            "int-inv"
           ],
           "look": [
-            "字母度数和半音性质各自负责什么（为什么 C–D♯ 与 C–E♭ 不同）",
-            "转位度数相加为何等于 9，大小增减纯各自怎么变",
-            "三全音拼成增四度 vs 减五度时解决方向有什么区别"
+            "用大调音阶当作“尺子”快速判断任意音程的性质（先想上方音在不在下方音的大调里）",
+            "增音程与减音程怎么从纯/大小音程微调半音得到",
+            "转位度数相加为何等于 9，大小增减纯各自怎么变"
           ],
           "skip": "复音程（9、11、13 度）今天只需知道减 7 即可换算回单音程，G6 讲扩展音和弦时再细练。",
           "try": "在吉他 5 弦 3 品 C → 4 弦 2 品 E 弹大三度；再把 C 挪高八度到 3 弦 5 品，弹 4 弦 2 品 E → 3 弦 5 品 C，亲耳听大三度转位成小六度。"
@@ -1028,12 +1050,12 @@ window.WEEKPLAN.G3 = {
         "cmd": "/quiz 等音程与音程转位",
         "items": [
           "完成上面 3 问与自测",
-          "把双语卡片勾上“读完了”",
+          "把三节 OMT 原文勾上“读完了”",
           "勾掉练习 2"
         ]
       },
       "done": [
-        "两张双语精读卡勾上已读",
+        "三节 OMT 原文勾上已读",
         "12 音程参考曲表制作完毕",
         "练耳基础 5 种记录成绩",
         "一条复盘日志"
@@ -1101,8 +1123,12 @@ window.WEEKPLAN.G3 = {
       "reading": [
         {
           "time": "25 分钟",
-          "title": "吉他指板音程几何规律与练耳突破",
+          "title": "OMT 协和与不协和音程 & 吉他指板音程几何",
           "links": [
+            {
+              "res": "omtIntervals",
+              "note": "OMT 原章：Consonance and Dissonance"
+            },
             {
               "res": "tonedearInt",
               "note": "ToneDear 音程专项"
@@ -1113,9 +1139,11 @@ window.WEEKPLAN.G3 = {
             }
           ],
           "keys": [
+            "int-cons",
             "g3-int-fret"
           ],
           "look": [
+            "古典乐理为什么把三度六度归为不完全协和、纯四度在双声部中视为不协和",
             "为什么向高音弦挪一根 = 减 5 半音（过 3–2 弦只减 4 半音）",
             "隔一根弦（如 6→4 弦、5→3 弦）时同品正好是什么音程"
           ],
@@ -1389,7 +1417,27 @@ window.WEEKPLAN.G4 = {
           ]
         ]
       },
-      "reading": [],
+      "reading": [
+        {
+          "time": "15 分钟",
+          "title": "OMT 大调原文（上）：大调公式与对称四音列",
+          "links": [
+            {
+              "res": "omtMajor",
+              "note": "OMT Major Scales 原章直达"
+            }
+          ],
+          "keys": [
+            "maj-intro",
+            "maj-scale"
+          ],
+          "look": [
+            "W–W–H–W–W–W–H 全半音模型与八度内半音级数位置（3–4、7–8）",
+            "为什么拿上一个调的后半四音列作下半段必然生出下一调"
+          ],
+          "try": "把刚刚在 1 弦、5 弦弹过的单弦品格差和 OMT 的大调音阶原文一一对齐。"
+        }
+      ],
       "questionsTime": "",
       "questions": [
         "大调音阶的全半音公式是什么？为什么说它由两个相同的四音列组成？",
@@ -1518,7 +1566,7 @@ window.WEEKPLAN.G4 = {
       "reading": [
         {
           "time": "25 分钟",
-          "title": "大调四音列、音级名称与调号规则",
+          "title": "OMT 大调原文（下）：音级名称、导音与调号规则",
           "links": [
             {
               "res": "omtMajor",
@@ -1534,13 +1582,13 @@ window.WEEKPLAN.G4 = {
             }
           ],
           "keys": [
-            "g4-maj-tetra",
-            "g4-maj-deg"
+            "maj-deg",
+            "maj-ksig"
           ],
           "look": [
-            "为什么把 C 大调后半四音列拿来做起点必然生出 F♯",
+            "七个音级名称与导音（Leading Tone）向主音解决的张力",
             "升号顺序 F C G D A E B 与降号顺序 B E A D G C F 的速算口诀",
-            "为什么 F 大调必须写 B♭ 不能写 A♯"
+            "为什么自然音阶七个字母必须各用一次（F 大调写 B♭ 不写 A♯）"
           ],
           "skip": "冷门大调如 C♯ 大调、C♭ 大调（7 个升降号）知道怎么推即可，实战几乎一律写成等音调 D♭ 或 B 大调。",
           "try": "用讲义第 3 节交互指板分别点开“G 大调 E 型把位”和“D 大调 A 型把位”，切到“级数”模式对照每根弦有几个音。"
@@ -1667,8 +1715,12 @@ window.WEEKPLAN.G4 = {
       "reading": [
         {
           "time": "25 分钟",
-          "title": "五度圈几何规律与吉他实战应用",
+          "title": "OMT 五度圈原文 & 吉他 CAGED / 3NPS 应用",
           "links": [
+            {
+              "res": "omtMajor",
+              "note": "OMT 五度圈原节"
+            },
             {
               "res": "wikiCircle",
               "note": "Wikipedia: Circle of Fifths"
@@ -1683,6 +1735,7 @@ window.WEEKPLAN.G4 = {
             }
           ],
           "keys": [
+            "maj-cof",
             "g4-cof-use"
           ],
           "look": [
@@ -1745,7 +1798,7 @@ window.WEEKPLAN.G4 = {
         "time": "5 分钟",
         "cmd": "/quiz 五度圈应用与调性关系",
         "items": [
-          "勾掉 g4-cof-use 卡片",
+          "勾掉 OMT 五度圈原文与吉他应用卡",
           "勾掉循环第 4 步和练习 3"
         ]
       },
@@ -1963,7 +2016,28 @@ window.WEEKPLAN.G5 = {
           ]
         ]
       },
-      "reading": [],
+      "reading": [
+        {
+          "time": "15 分钟",
+          "title": "OMT 三和弦原文（上）：定义与四种三和弦性质",
+          "links": [
+            {
+              "res": "omtTriads",
+              "note": "OMT Triads 原章直达"
+            }
+          ],
+          "keys": [
+            "tri-intro",
+            "tri-def",
+            "tri-qual"
+          ],
+          "look": [
+            "如何从根音往上数两个三度来定义大、小、减、增三和弦",
+            "四种三和弦的音程间隔差异和听觉稳定度对比"
+          ],
+          "try": "对照 OMT 原文例谱在 3-2-1 弦把大、小、减、增依次按一遍并单音报出 3/5 音的升降。"
+        }
+      ],
       "questionsTime": "",
       "questions": [
         "大三、小三、减三、增三和弦各自怎么叠出来？用 1 3 5 符号各怎么写？",
@@ -2085,7 +2159,7 @@ window.WEEKPLAN.G5 = {
       "reading": [
         {
           "time": "25 分钟",
-          "title": "三和弦构造、转位与低音符号规则",
+          "title": "OMT 三和弦与转位原文：和弦记号与低音规则",
           "links": [
             {
               "res": "omtTriads",
@@ -2101,11 +2175,13 @@ window.WEEKPLAN.G5 = {
             }
           ],
           "keys": [
-            "g5-triad-q"
+            "tri-sym",
+            "tri-majmin",
+            "inv-tri"
           ],
           "look": [
-            "怎么通过数“大三+小三”快速判定任何三个音组成的和弦性质",
-            "为什么第二转位（如 C/G）在古典与流行里功能不一样",
+            "OMT 怎么通过数大三度+小三度与和弦符号写大/小/减/增三和弦",
+            "为什么转位只看最低音是谁，以及低音变化怎么在流行谱面写成斜线和弦",
             "在 2-3-4 弦（无 3–2 弦外框）和 3-4-5 弦（完全纯四度调弦！）上的形状为什么和 3-2-1 弦不一样"
           ],
           "try": "把昨天学的 3-2-1 弦 C 原位（5-5-3）往低音弦平移成 2-3-4 弦（5-5-5 是 C/G）和 3-4-5 弦（3-2-0 是 C 原位），体会跨过 3–2 弦时 2 弦需要升高 1 品的规律。"
@@ -2163,7 +2239,7 @@ window.WEEKPLAN.G5 = {
         "time": "5 分钟",
         "cmd": "/quiz 三弦组转位与 CAGED 切片",
         "items": [
-          "勾掉 g5-triad-q 卡片",
+          "勾掉三节 OMT 三和弦原文",
           "记录 2-3-4 弦最顺手的转位"
         ]
       },
@@ -2313,12 +2389,12 @@ window.WEEKPLAN.G5 = {
         "time": "5 分钟",
         "cmd": "/quiz CAGED 改造小三与截取策略",
         "items": [
-          "勾掉 g5-caged 阅读卡片与循环第 4 步",
+          "勾掉 CAGED 逻辑精读卡与循环第 4 步",
           "勾掉练习 2 和练习 3"
         ]
       },
       "done": [
-        "g5-caged 精读完毕",
+        "CAGED 逻辑卡片精读完毕",
         "C 与 A 的大/小 CAGED 全指板位置过关",
         "一条复盘日志"
       ]
@@ -2672,7 +2748,28 @@ window.WEEKPLAN.G6 = {
           ]
         ]
       },
-      "reading": [],
+      "reading": [
+        {
+          "time": "15 分钟",
+          "title": "OMT 七和弦原文：定义与五种核心性质",
+          "links": [
+            {
+              "res": "omtSeventh",
+              "note": "OMT Seventh Chords 原章直达"
+            }
+          ],
+          "keys": [
+            "sev-intro",
+            "sev-def",
+            "sev-qual"
+          ],
+          "look": [
+            "五种核心七和弦（maj7、7、m7、m7♭5、dim7）各自的三和弦底座+七度音程组合",
+            "全减七与半减七的记谱区分和声音紧张感差异"
+          ],
+          "try": "跟着 OMT 五种七和弦分类表，在 6 弦 5 品 A 上依次改一个音弹完四种，再按 dim7。"
+        }
+      ],
       "questionsTime": "",
       "questions": [
         "五种核心七和弦（maj7、7、m7、m7♭5、dim7）分别由哪几个级数组成？",
@@ -2794,7 +2891,7 @@ window.WEEKPLAN.G6 = {
       "reading": [
         {
           "time": "25 分钟",
-          "title": "七和弦符号默认规则与三全音解决",
+          "title": "OMT 和弦记号规范 & 爵士省略音与声部连接",
           "links": [
             {
               "res": "omtSeventh",
@@ -2805,19 +2902,25 @@ window.WEEKPLAN.G6 = {
               "note": "OMT Chord Symbols"
             },
             {
+              "res": "omtJazzVoicings",
+              "note": "OMT Jazz Voicings"
+            },
+            {
               "res": "jensLarsen",
               "note": "Jens Larsen 壳和弦应用"
             }
           ],
           "keys": [
-            "g6-sev-types"
+            "csym-intro",
+            "jv-omit",
+            "jv-vl"
           ],
           "look": [
-            "为什么不写 maj 或 m 时，“7”、“9”、“11”、“13”默认都带小七度 ♭7",
-            "属七和弦里的 3 音和 ♭7 音如何构成三全音",
-            "Cdim7 里 𝄫7 为什么不能直接写成大六度 6"
+            "流行爵士和弦符号为什么能一眼说明基础三和弦、七度音与延伸音",
+            "为什么吉他手在编配壳和弦/爵士按法时可以省略 5 音甚至根音（绝不能省 3 和 7 音）",
+            "属七和弦里的 3 音和 ♭7 音如何构成三全音并做最省力的半音下行解决"
           ],
-          "try": "在吉他上只弹 4 弦 5 品 G 和 3 弦 4 品 B（不对，G7 里的 B 和 F 是 4 弦 3 品 F 和 3 弦 4 品 B），紧接着同时把 F 降半音到 E(4弦2品)、B 升半音到 C(3弦5品)，亲耳听 C7/G7 三全音怎么瞬间归位。"
+          "try": "在吉他上弹 4 弦 3 品 F 和 3 弦 4 品 B（G7 三全音），紧接着把 F 降半音到 E(4弦2品)、B 升半音到 C(3弦5品)，亲耳听 G7 三全音怎么瞬间归位到 C。"
         }
       ],
       "questionsTime": "",
@@ -2872,12 +2975,12 @@ window.WEEKPLAN.G6 = {
         "time": "5 分钟",
         "cmd": "/quiz 壳和弦与引导声部",
         "items": [
-          "勾掉 g6-sev-types 卡片",
+          "勾掉本节三节 OMT 原文",
           "勾掉练习 2"
         ]
       },
       "done": [
-        "g6-sev-types 精读完成",
+        "OMT 和弦记号与声部连接原文精读完成",
         "A7-D7-E7 与 Am7-D7-Gmaj7 壳和弦流畅弹出",
         "一条复盘日志"
       ]
@@ -2944,8 +3047,12 @@ window.WEEKPLAN.G6 = {
       "reading": [
         {
           "time": "25 分钟",
-          "title": "壳和弦原理与复杂符号规则",
+          "title": "OMT 扩展音与 sus/add 规范 + 吉他壳和弦实战",
           "links": [
+            {
+              "res": "omtSymbols",
+              "note": "OMT Chord Symbols（Extensions / add & sus）"
+            },
             {
               "res": "omtJazzVoicings",
               "note": "OMT Jazz Voicings"
@@ -2960,11 +3067,13 @@ window.WEEKPLAN.G6 = {
             }
           ],
           "keys": [
+            "csym-ext",
+            "csym-addsus",
             "g6-shell"
           ],
           "look": [
+            "为什么 9/11/13 和弦默认包含小七度，而 add9 与 sus2/sus4 各自不含七音或取代三音",
             "为什么吉他只有 4 根手指却能弹响 C9 或 C13？（5 音甚至根音都可以省，唯独 3、7、扩展音必留）",
-            "C6（C E G A）和 Am7（A C E G）怎么靠低音区分",
             "斜线和弦哪时表示转位，哪时表示复合低音（如 D/C、F/G）"
           ],
           "try": "在吉他按出流行的 D9sus4（例如 F/G：3-x-3-2-1-1 或 5 弦 G 根音的 x-10-10-10-10-x），再对照 Oolimo 看看除了 G9sus4 它还叫什么名字！"
@@ -3022,12 +3131,12 @@ window.WEEKPLAN.G6 = {
         "time": "5 分钟",
         "cmd": "/quiz 扩展音与和弦符号解码",
         "items": [
-          "勾掉 g6-shell 卡片与循环第 4 步",
+          "勾掉本节扩展音与壳和弦精读 + 循环第 4 步",
           "勾掉练习 3"
         ]
       },
       "done": [
-        "g6-shell 精读完毕",
+        "OMT 扩展音与壳和弦精读完毕",
         "10 个复杂符号解码表完成",
         "一条复盘日志"
       ]
@@ -3235,7 +3344,26 @@ window.WEEKPLAN.G7 = {
           ]
         ]
       },
-      "reading": [],
+      "reading": [
+        {
+          "time": "15 分钟",
+          "title": "OMT 罗马数字原文（上）：级数分析的引入",
+          "links": [
+            {
+              "res": "omtRoman",
+              "note": "OMT Roman Numerals 原章直达"
+            }
+          ],
+          "keys": [
+            "rn-intro"
+          ],
+          "look": [
+            "罗马数字和纯字母和弦符号到底各自负责记录什么信息",
+            "为什么移调演歌时看罗马数字比死背和弦名字省十倍力气"
+          ],
+          "try": "把今天手写的 C/G/D/A/E 五调顺阶表摆在旁边，对比 OMT 导言的标记例谱。"
+        }
+      ],
       "questionsTime": "",
       "questions": [
         "大调顺阶三和弦从 I 到 vii° 各自是什么性质？哪个是唯一的大/小以外的和弦？",
@@ -3301,7 +3429,7 @@ window.WEEKPLAN.G7 = {
     {
       "title": "罗马数字、级数横按平移与 OMT 精读",
       "lead": "今天开始第 4 步精读（OMT Roman Numerals），理解数字分析如何让你的脑子彻底脱离死记字母；上琴用 5 弦根音横按只靠平移把位，一口气在 3 个调弹出 I–IV–V–vi。",
-      "loopNote": "今天精读 g7-roman 卡片并完成练习 2，明天读定调与 Capo 卡片后勾选第 4 步。",
+      "loopNote": "今天精读 OMT 罗马数字规范原文并完成练习 2，明天读和声分析流程与定调卡片后勾选第 4 步。",
       "schedule": [
         [
           "5 分钟",
@@ -3356,7 +3484,7 @@ window.WEEKPLAN.G7 = {
       "reading": [
         {
           "time": "25 分钟",
-          "title": "罗马数字分析法与七和弦标号",
+          "title": "OMT 罗马数字原文（下）：大小调标记规范与七和弦标号",
           "links": [
             {
               "res": "omtRoman",
@@ -3372,10 +3500,11 @@ window.WEEKPLAN.G7 = {
             }
           ],
           "keys": [
-            "g7-roman"
+            "rn-qual",
+            "rn-sev"
           ],
           "look": [
-            "罗马数字大小写与数字 7/ø7/° 在主流教材里的统一规范",
+            "罗马数字大小写与数字 7/ø7/° 在 OMT 教材里的统一规范",
             "看到一段和弦进行出现不在顺阶表里的和弦（例如 E 调出现 D），为什么先单独画圈标记而不是强行硬套进表里"
           ],
           "skip": "古典数字低音（6/4、4/3、4/2）只需了解基本转位含义，流行吉他主要看斜线记号（如 I/3 = C/E）。",
@@ -3434,12 +3563,12 @@ window.WEEKPLAN.G7 = {
         "time": "5 分钟",
         "cmd": "/quiz 罗马数字与指板级数几何框",
         "items": [
-          "勾掉 g7-roman 卡片",
+          "勾掉两节 OMT 罗马数字原文",
           "勾掉练习 2"
         ]
       },
       "done": [
-        "g7-roman 精读完成",
+        "OMT 罗马数字规范原文精读完成",
         "掌握 6 弦根音顺阶几何框",
         "三调连弹通过",
         "一条复盘日志"
@@ -3447,8 +3576,8 @@ window.WEEKPLAN.G7 = {
     },
     {
       "title": "真谱定调三线索与 5 首歌罗马数字实战",
-      "lead": "拿到任何一份网上下载的和弦谱，怎么 3 分钟内确定它在什么调、辨别它是大调还是关系小调？今天精读定调线索卡片并亲自分析 5 首真实歌曲！",
-      "loopNote": "今天读完 g7-keyfind 卡片即可勾掉循环第 4 步，并完成练习 3。",
+      "lead": "拿到任何一份网上下载的和弦谱，怎么 3 分钟内确定它在什么调、辨别它是大调还是关系小调？今天精读 OMT 分析流程原文与定调线索卡片，并亲自分析 5 首真实歌曲！",
+      "loopNote": "今天读完 OMT 分析流程原文与定调 Capo 卡片即可勾掉循环第 4 步，并完成练习 3。",
       "schedule": [
         [
           "5 分钟",
@@ -3503,8 +3632,12 @@ window.WEEKPLAN.G7 = {
       "reading": [
         {
           "time": "25 分钟",
-          "title": "定调三线索、关系大小调分辨与 Capo 理论",
+          "title": "OMT 罗马数字和声分析方法 & 定调三线索与 Capo",
           "links": [
+            {
+              "res": "omtRoman",
+              "note": "OMT Analyzing with Roman Numerals"
+            },
             {
               "res": "hookBook",
               "note": "Hooktheory I 流行和声分析"
@@ -3515,11 +3648,12 @@ window.WEEKPLAN.G7 = {
             }
           ],
           "keys": [
+            "rn-ana",
             "g7-keyfind"
           ],
           "look": [
             "当和弦列表同时符合 C 大调和 A 小调时，听哪三个地方区分它们",
-            "为什么网络吉他谱经常误标原调（尤其是强力和弦或借用和弦多的时候）",
+            "如何套用 OMT 逐步分析法从真实乐谱里标出罗马数字",
             "Capo 夹品数与实际音高的加法逻辑"
           ],
           "try": "自己心里想一个和弦进行如 Am–F–C–G，用吉他把尾巴分别停在 G→C 和 E7→Am 上，体会整个调性中心的翻转。"
@@ -3577,12 +3711,12 @@ window.WEEKPLAN.G7 = {
         "time": "5 分钟",
         "cmd": "/quiz 真实歌曲定调与罗马数字分析",
         "items": [
-          "勾掉 g7-keyfind 与循环第 4 步",
+          "勾掉本节原文与定调卡片 + 循环第 4 步",
           "勾掉练习 3"
         ]
       },
       "done": [
-        "g7-keyfind 精读完毕",
+        "OMT 和声分析流程与定调卡片精读完毕",
         "5 首歌罗马数字分析表完成",
         "勾完循环第 4 步",
         "一条复盘日志"
@@ -3795,7 +3929,27 @@ window.WEEKPLAN.G8 = {
           ]
         ]
       },
-      "reading": [],
+      "reading": [
+        {
+          "time": "15 分钟",
+          "title": "OMT 和声导言原文：调性乐句、功能分类与终止式概览",
+          "links": [
+            {
+              "res": "omtIntroHarmony",
+              "note": "OMT Intro to Harmony 原章直达"
+            }
+          ],
+          "keys": [
+            "harm-intro",
+            "harm-cad"
+          ],
+          "look": [
+            "调性乐句中 T–S–D（主→预属→属→主）三大功能区的划分依据",
+            "正格、半终止、变格与阻碍终止在古典乐理原文中的标准定义"
+          ],
+          "try": "对照 OMT 原文里关于功能与终止的说明，回想刚刚在 G 调四条进行里听到的“离开→紧张→回家”对比。"
+        }
+      ],
       "questionsTime": "",
       "questions": [
         "主功能(T)、下属功能(S)、属功能(D)各包含哪几个级数？各自的情感方向是什么？",
@@ -3861,7 +4015,7 @@ window.WEEKPLAN.G8 = {
     {
       "title": "四种终止式细节、V7 解决与功能级数练耳",
       "lead": "今天开始第 4 步精读 OMT「Introduction to Harmony & Cadences」，弄透 V7 导音解决的物理动力，并用 Functional Ear Trainer / 本站练耳室正式开始训练“听出级数”！",
-      "loopNote": "今天读完 g8-func 双语卡片并完成练习 2，明天读流行模板卡片后勾选第 4 步。",
+      "loopNote": "今天读完 OMT 正格与半终止原文并完成练习 2，明天读流行模板与 ii–V–I 原文后勾选第 4 步。",
       "schedule": [
         [
           "5 分钟",
@@ -3916,7 +4070,7 @@ window.WEEKPLAN.G8 = {
       "reading": [
         {
           "time": "25 分钟",
-          "title": "和声功能句法与终止式原理",
+          "title": "OMT 终止式细节原文：正格终止（IAC/PAC）与半终止",
           "links": [
             {
               "res": "omtIntroHarmony",
@@ -3932,12 +4086,13 @@ window.WEEKPLAN.G8 = {
             }
           ],
           "keys": [
-            "g8-func"
+            "harm-ac",
+            "harm-hc"
           ],
           "look": [
-            "V7→I 的两大半音解决动力（7→1 上行，4→3 下行）",
-            "为什么很多流行歌和摇滚歌喜欢用 IV–I 或 ♭VII–IV–I 而故意躲开 V–I",
-            "ii7 替代 IV 与 vi 替代 I 背后的共同音机制"
+            "完满正格终止（PAC）与不完满正格终止（IAC）的区别：旋律停在 1 级还是 3/5 级",
+            "半终止（Half Cadence）停在 V 上时，乐句怎样天然留出悬念",
+            "V7→I 导音上行与 4→3 下行的声部解决动力"
           ],
           "skip": "古典四部和声的声部避忌规则（禁止平行五八度等）现在不要求写，但要知道“避免低音大跳”对吉他伴奏一样有效。",
           "try": "在吉他上弹 G7 壳和弦（3-x-3-4-x-x: G-F-B）到 C（x-3-2-0-x-x 或 3-x-2-5-x-x: C-E-C），亲眼看 4 弦 3 品 F 怎么跌到 2 品 E、3 弦 4 品 B 怎么升到 5 品 C。"
@@ -3995,20 +4150,20 @@ window.WEEKPLAN.G8 = {
         "time": "5 分钟",
         "cmd": "/quiz V7 解决动力与听级数方法",
         "items": [
-          "勾掉 g8-func 卡片",
+          "勾掉两节 OMT 终止式原文",
           "勾掉练习 2"
         ]
       },
       "done": [
-        "g8-func 精读完成",
+        "OMT 正格与半终止原文精读完成",
         "完成功能级数与和弦进行听辨",
         "一条复盘日志"
       ]
     },
     {
       "title": "流行四和弦模板、ii–V–I 与问句答句旋律",
-      "lead": "今天精读流行四和弦 Schema 与 ii–V–I 卡片（完成循环第 4 步），用练习 3 弹同一句旋律体验半终止与正格终止的戏剧差别，再用练习 4 在 Hooktheory 验证 5 首流行歌！",
-      "loopNote": "今天读完 g8-schemas 即可勾掉循环第 4 步，由于明天验收，记得把今天写的模板表整理清楚。",
+      "lead": "今天精读 OMT 流行四和弦 Schema 与 ii–V–I 原文章节（完成循环第 4 步），用练习 3 弹同一句旋律体验半终止与正格终止的戏剧差别，再用练习 4 在 Hooktheory 验证 5 首流行歌！",
+      "loopNote": "今天读完 OMT 四和弦模板与 ii–V–I 原文即可勾掉循环第 4 步，由于明天验收，记得把今天写的模板表整理清楚。",
       "schedule": [
         [
           "5 分钟",
@@ -4067,7 +4222,7 @@ window.WEEKPLAN.G8 = {
       "reading": [
         {
           "time": "25 分钟",
-          "title": "流行四和弦模板与 ii–V–I 引擎",
+          "title": "OMT 流行四和弦模板与 ii–V–I 原文",
           "links": [
             {
               "res": "omt4chord",
@@ -4083,12 +4238,15 @@ window.WEEKPLAN.G8 = {
             }
           ],
           "keys": [
-            "g8-schemas"
+            "fch-doowop",
+            "fch-hop",
+            "iivi-schema",
+            "iivi-turn"
           ],
           "look": [
-            "Doo-wop、Singer/Songwriter、Hopscotch 三大模板各自情感特点",
-            "为什么同一组四个和弦改变起始小节就变了整首歌的调性中心",
-            "ii7–V7–Imaj7 里 3 音和 7 音怎么形成无缝半音下行阶梯"
+            "Doo-wop、Hopscotch 等四和弦流行模板为什么不追求古典 V–I 终结",
+            "为什么同一组四个和弦改变起始小节（rotation）就彻底变了调性中心",
+            "ii7–V7–Imaj7 与 Turnaround 在爵士和流行中如何推动和声接力"
           ],
           "try": "在 5～8 品把位分别弹一段 C–F–G–C 和一段 Dm7–G7–Cmaj7，体会 ii7 代替 IV 带来的丝滑精致感。"
         }
@@ -4143,12 +4301,12 @@ window.WEEKPLAN.G8 = {
         "time": "5 分钟",
         "cmd": "/quiz 流行四和弦与 ii–V–I",
         "items": [
-          "勾掉 g8-schemas 与循环第 4 步",
+          "勾掉本节 OMT 模板原文与循环第 4 步",
           "勾掉练习 3"
         ]
       },
       "done": [
-        "g8-schemas 精读完毕",
+        "OMT 四和弦模板与 ii–V–I 原文精读完毕",
         "完成问答终止对比练习",
         "完成 Fly Me to the Moon 练习",
         "一条复盘日志"
@@ -4361,7 +4519,27 @@ window.WEEKPLAN.G9 = {
           ]
         ]
       },
-      "reading": [],
+      "reading": [
+        {
+          "time": "15 分钟",
+          "title": "OMT 小调原文（上）：自然/和声/旋律三种小调构造",
+          "links": [
+            {
+              "res": "omtMinor",
+              "note": "OMT Minor Scales 原章直达"
+            }
+          ],
+          "keys": [
+            "min-intro",
+            "min-types"
+          ],
+          "look": [
+            "自然小调、和声小调、旋律小调各自在音阶公式上的微调",
+            "为什么古典旋律小调讲究上行升 6/7、下行还原，而摇滚与爵士可以统称为小调变体音集"
+          ],
+          "try": "把刚刚弹过的 A 自然、A 和声、A 旋律小调对照 OMT 原章谱例检查第 6、7 级记号。"
+        }
+      ],
       "questionsTime": "",
       "questions": [
         "自然小调、和声小调、旋律小调（爵士用法）各自相对大调是哪些级数？",
@@ -4427,7 +4605,7 @@ window.WEEKPLAN.G9 = {
     {
       "title": "小调的大 V、安达卢西亚终止与 OMT 精读",
       "lead": "今天进入第 4 步精读 OMT「Minor Scales」，重点实战为什么摇滚和经典老歌在小调里如此偏爱把 v 换成大三/属七 V，并通过练习 2 亲耳对比 Am–G–F–E 与 Am–G–F–G 的巨大差异。",
-      "loopNote": "今天读完 g9-minor 卡片并完成练习 2，明天读模板卡片后勾选第 4 步。",
+      "loopNote": "今天精读 OMT 小调调号与大小调比较原文并完成练习 2，明天读关系调与小调模板原文后勾选第 4 步。",
       "schedule": [
         [
           "5 分钟",
@@ -4482,7 +4660,7 @@ window.WEEKPLAN.G9 = {
       "reading": [
         {
           "time": "25 分钟",
-          "title": "三种小调、小调顺阶与和声小调大 V",
+          "title": "OMT 小调原文（下）：小调调号与大小调顺阶体系对比",
           "links": [
             {
               "res": "omtMinor",
@@ -4498,12 +4676,12 @@ window.WEEKPLAN.G9 = {
             }
           ],
           "keys": [
-            "g9-minor"
+            "min-majmin"
           ],
           "look": [
-            "小调音阶在现代谱面上顺阶罗马数字怎么标（i ii° ♭III iv v/V ♭VI ♭VII）",
-            "为什么古典旋律小调上行下行不一样，而爵士和流行吉他不需要下行还原",
-            "为什么和声小调里除了 V 变大，vii°（如 G♯°）也变成了新导音和弦"
+            "小调音阶与和声在谱面上如何标注罗马数字（i ii° ♭III iv v/V ♭VI ♭VII）",
+            "为什么为了制造强导音和声小调会把小调 7 级升半音，把 v 变成大三/属七 V",
+            "大小调顺阶系统的结构对应与音程差异"
           ],
           "try": "弹一遍 A 自然小调的 i–iv–v–i（Am–Dm–Em–Am），再立刻把 Em 换成 E7（Am–Dm–E7–Am），亲耳听这一下从“淡淡叹气”变成“强烈拉回”。"
         }
@@ -4560,12 +4738,12 @@ window.WEEKPLAN.G9 = {
         "time": "5 分钟",
         "cmd": "/quiz 和声小调大 V 与安达卢西亚",
         "items": [
-          "勾掉 g9-minor 卡片",
+          "勾掉本节 OMT 小调原文",
           "勾掉练习 2"
         ]
       },
       "done": [
-        "g9-minor 精读完毕",
+        "OMT 小调原文精读完毕",
         "对比录音完成",
         "熟记小调 iiø7–V7–i",
         "一条复盘日志"
@@ -4573,8 +4751,8 @@ window.WEEKPLAN.G9 = {
     },
     {
       "title": "关系调 vs 同主音调与 3 首小调金曲分析",
-      "lead": "今天读完关系大小调与小调模板卡片（完成循环第 4 步），拆解 S3 的 3 首小调代表作，并在吉他上亲自做“一个把位，分别以 C 和 A 为家”的家感切换训练。",
-      "loopNote": "今天读完 g9-schemas 后即可勾掉循环第 4 步，同时完成练习 3。",
+      "lead": "今天读完 OMT 关系/同主音大小调与爱奥利亚模板原文（完成循环第 4 步），拆解 S3 的 3 首小调代表作，并在吉他上亲自做“一个把位，分别以 C 和 A 为家”的家感切换训练。",
+      "loopNote": "今天读完 OMT 关系调与小调模板原文后即可勾掉循环第 4 步，同时完成练习 3。",
       "schedule": [
         [
           "5 分钟",
@@ -4629,8 +4807,12 @@ window.WEEKPLAN.G9 = {
       "reading": [
         {
           "time": "25 分钟",
-          "title": "关系/同主音区分与流行小调四大模板",
+          "title": "OMT 关系/同主音大小调原文 & 爱奥利亚小调进行模板",
           "links": [
+            {
+              "res": "omtMinor",
+              "note": "OMT Parallel & Relative Keys"
+            },
             {
               "res": "omtModalSchemas",
               "note": "OMT Modal Schemas"
@@ -4641,11 +4823,12 @@ window.WEEKPLAN.G9 = {
             }
           ],
           "keys": [
-            "g9-schemas"
+            "min-relpar",
+            "msch-aeol"
           ],
           "look": [
-            "关系调与同主音调各自在吉他指法、作曲上的不同用处",
-            "爱奥利亚往返（i–♭VII–♭VI）、爱奥利亚终止（♭VI–♭VII–i）、Lament bass（i–♭VII–♭VI–v/V）的识别",
+            "关系调与同主音调各自在吉他指法、调号与编曲上的区分",
+            "爱奥利亚进行（Aeolian progressions / i–♭VII–♭VI 等）在流行摇滚中的识别",
             "一段同时能当 C 大调或 A 小调听的进行，音乐家靠什么打破平衡确立某一方当家"
           ],
           "try": "把 C 大调进行 F–G–Am 改成 F–G–C 对比一下，感受短短两个小节的结尾和弦如何改写全曲调性归属。"
@@ -4703,12 +4886,12 @@ window.WEEKPLAN.G9 = {
         "time": "5 分钟",
         "cmd": "/quiz 关系调 vs 同主音与小调模板",
         "items": [
-          "勾掉 g9-schemas 与循环第 4 步",
+          "勾掉本节 OMT 原文与循环第 4 步",
           "勾掉练习 3"
         ]
       },
       "done": [
-        "g9-schemas 精读完毕",
+        "OMT 关系调与爱奥利亚模板原文精读完毕",
         "3 首小调歌分析完成",
         "勾完循环第 4 步",
         "一条复盘日志"
@@ -4921,7 +5104,27 @@ window.WEEKPLAN.G10 = {
           ]
         ]
       },
-      "reading": [],
+      "reading": [
+        {
+          "time": "15 分钟",
+          "title": "OMT 五声和声原文（上）：五声音阶、伴奏音集与三和弦匹配",
+          "links": [
+            {
+              "res": "omtPenta",
+              "note": "OMT Pentatonic Harmony 原章直达"
+            }
+          ],
+          "keys": [
+            "penta-col",
+            "penta-base"
+          ],
+          "look": [
+            "一个五声音阶音集（Pitch Collection）为什么能同时覆盖主歌和副歌的多种大/小和弦",
+            "只用大调/小调五声音阶作为背景和声底色（Base）时怎么判断中心归属"
+          ],
+          "try": "把今天弹过的 Pattern 1 与 Pattern 2 五声指型，对照 OMT 的音集与三和弦匹配逻辑在琴上试听。"
+        }
+      ],
       "questionsTime": "",
       "questions": [
         "小调五声和大调五声各自从七声音阶里删掉了哪两个音？为什么这让它几乎不刺耳？",
@@ -4987,7 +5190,7 @@ window.WEEKPLAN.G10 = {
     {
       "title": "打通 Pattern 3/4/5 与 Fret Science 矩形+堆叠",
       "lead": "今天进入第 4 步精读！学透 Fret Science 的“矩形与堆叠（Rectangle & Stack）”几何视角，再把 Pattern 3、4、5 一次性串满 0～15 品整条琴颈！",
-      "loopNote": "今天精读 g10-penta-sys 双语卡片并勾掉第 4 步，同时完成练习 1 全部五把位串联！",
+      "loopNote": "今天精读 OMT 五声和声原文（Hey Joe 实例）与 Fret Science 几何卡片并勾掉第 4 步，同时完成练习 1 全部五把位串联！",
       "schedule": [
         [
           "5 分钟",
@@ -5046,7 +5249,7 @@ window.WEEKPLAN.G10 = {
       "reading": [
         {
           "time": "25 分钟",
-          "title": "五声音阶和声原理、CAGED 锚点与 Fret Science 几何",
+          "title": "OMT 五声和声实例原文（Hey Joe）& Fret Science CAGED 几何",
           "links": [
             {
               "res": "omtPenta",
@@ -5062,12 +5265,13 @@ window.WEEKPLAN.G10 = {
             }
           ],
           "keys": [
+            "penta-heyjoe",
             "g10-penta-sys"
           ],
           "look": [
+            "OMT 原文怎么分析五声旋律如何凌驾在摇滚多和弦进行（如 Hey Joe）之上",
             "宽 3 品的“矩形（Rectangle）”和宽 2 品的“堆叠（Stack）”里各自装了哪几个级数",
-            "为什么跨过 3–2 弦时矩形和堆叠的拼接点必须右移 1 品",
-            "P3(Cm型)、P4(Am型)、P5(Gm型) 各自包住的 Am 根音位置"
+            "为什么跨过 3–2 弦时矩形和堆叠的拼接点必须右移 1 品"
           ],
           "try": "把吉他拿在手里，不看盒子，只靠“矩形+堆叠（跨 3–2 弦右移 1 品）”从 6 弦 5 品一步步推导并弹到 1 弦 12 品！"
         }
@@ -5124,11 +5328,11 @@ window.WEEKPLAN.G10 = {
         "time": "5 分钟",
         "cmd": "/quiz 五声 5 把位串联与几何逻辑",
         "items": [
-          "勾掉 g10-penta-sys 卡片与循环第 4 步"
+          "勾掉本节 OMT 原文、几何卡片与循环第 4 步"
         ]
       },
       "done": [
-        "g10-penta-sys 精读完成",
+        "OMT 五声原文与 Fret Science 卡片精读完成",
         "5 个把位全颈打通并绘出标度图",
         "一条复盘日志"
       ]
@@ -5622,7 +5826,27 @@ window.WEEKPLAN.G11 = {
           ]
         ]
       },
-      "reading": [],
+      "reading": [
+        {
+          "time": "15 分钟",
+          "title": "OMT 布鲁斯和声原文（上）：布鲁斯历史与 12 小节原型",
+          "links": [
+            {
+              "res": "omtBluesHarmony",
+              "note": "OMT Blues Harmony 原章直达"
+            }
+          ],
+          "keys": [
+            "bl-intro",
+            "bl-12bar"
+          ],
+          "look": [
+            "标准 12 小节布鲁斯三段式在和声节奏上的分配规律",
+            "为什么布鲁斯里 I、IV、V 可以统统用大小七和弦（属七性质）作稳态色底"
+          ],
+          "try": "对照 OMT 原章的 12 小节模板图，核对今天弹过的 A 调 Shuffle 每小节和弦与 Quick Change。"
+        }
+      ],
       "questionsTime": "",
       "questions": [
         "写出标准 12 小节布鲁斯每一个小节的罗马数字（含 Quick Change 变体和第 12 小节 Turnaround）。",
@@ -5688,7 +5912,7 @@ window.WEEKPLAN.G11 = {
     {
       "title": "属七壳和弦走 12 小节 & 精读布鲁斯和声原理",
       "lead": "今天开始第 4 步精读 OMT「Blues Harmony」，弄明白为什么布鲁斯和弦可以“违背”古典规矩全用属七，并用练习 2 的属七壳和弦听着半音引导线走完 12 小节！",
-      "loopNote": "今天精读 g11-blues-harm 卡片并完成练习 2，明天读蓝调音卡片后勾选第 4 步。",
+      "loopNote": "今天精读 OMT 爵士布鲁斯与变格和声原理原文并完成练习 2，明天读蓝调旋律与音阶原文后勾选第 4 步。",
       "schedule": [
         [
           "5 分钟",
@@ -5743,7 +5967,7 @@ window.WEEKPLAN.G11 = {
       "reading": [
         {
           "time": "25 分钟",
-          "title": "布鲁斯属七和声逻辑与小调布鲁斯变体",
+          "title": "OMT 布鲁斯原文（中）：爵士布鲁斯扩展 & 布鲁斯变格终止模式",
           "links": [
             {
               "res": "omtBluesHarmony",
@@ -5759,12 +5983,13 @@ window.WEEKPLAN.G11 = {
             }
           ],
           "keys": [
-            "g11-blues-harm"
+            "bl-jazz",
+            "bl-plagal"
           ],
           "look": [
-            "为什么在布鲁斯里 I7（A7）不会强烈想解决到 D，而是像稳定的家",
-            "V–IV–I 在布鲁斯第 9–11 小节里如何取代古典 V–I 成为结构终止",
-            "小调布鲁斯（Minor Blues）在 12 小节第 9–10 小节的经典改造（♭VI7 – V7）"
+            "爵士布鲁斯（Jazz Blues）如何把标准 12 小节最后四小节改成 ii–V–I 与副属连接",
+            "V–IV–I 变格运动（Plagal motion）在摇滚和布鲁斯中如何替代古典 V–I 成为结构回归",
+            "小调布鲁斯与大调布鲁斯在和声结构上的对接点"
           ],
           "try": "在吉他上分别弹一遍古典终止 A7→D→E7→A 和布鲁斯回归 E7→D7→A7，体会 V–IV–I 的独有蓝调沧桑感。"
         }
@@ -5821,12 +6046,12 @@ window.WEEKPLAN.G11 = {
         "time": "5 分钟",
         "cmd": "/quiz 布鲁斯属七与壳和弦连接",
         "items": [
-          "勾掉 g11-blues-harm 卡片",
+          "勾掉两节 OMT 布鲁斯原文",
           "勾掉练习 2"
         ]
       },
       "done": [
-        "g11-blues-harm 精读完成",
+        "OMT 布鲁斯和声与变格原文精读完成",
         "属七壳和弦走通 12 小节",
         "体验 12/8 慢布鲁斯律动",
         "一条复盘日志"
@@ -5834,8 +6059,8 @@ window.WEEKPLAN.G11 = {
     },
     {
       "title": "布鲁斯音阶 ♭5 经过音与“微推弦蓝调音”",
-      "lead": "今天精读蓝调音与布鲁斯音阶卡片（完成循环第 4 步），用练习 3 在 Pattern 1 上驯服极具危险与魅惑感的 ♭5 音，并通过四分之一推弦真正发出“钢琴弹不出来的蓝调音”！",
-      "loopNote": "今天读完 g11-blues-note 即可勾掉循环第 4 步，并完成练习 3。",
+      "lead": "今天精读 OMT 布鲁斯旋律与布鲁斯音阶原文（完成循环第 4 步），用练习 3 在 Pattern 1 上驯服极具危险与魅惑感的 ♭5 音，并通过四分之一推弦真正发出“钢琴弹不出来的蓝调音”！",
+      "loopNote": "今天读完 OMT 布鲁斯音阶两节原文即可勾掉循环第 4 步，并完成练习 3。",
       "schedule": [
         [
           "5 分钟",
@@ -5890,7 +6115,7 @@ window.WEEKPLAN.G11 = {
       "reading": [
         {
           "time": "25 分钟",
-          "title": "蓝调音（Blue Notes）微音高与大小布鲁斯音阶",
+          "title": "OMT 布鲁斯旋律原文：蓝调音微音高与布鲁斯音阶构成",
           "links": [
             {
               "res": "omtBluesScale",
@@ -5902,12 +6127,13 @@ window.WEEKPLAN.G11 = {
             }
           ],
           "keys": [
-            "g11-blues-note"
+            "bl-mel",
+            "bl-scale"
           ],
           "look": [
-            "为什么 OMT 把布鲁斯音阶里的 ♭5 写成 ♯4（视作推往 5 音的上行经过音）",
-            "为什么真正的蓝调音落在小三度与大三度之间，钢琴上找不到，而吉他一推就有",
-            "大调布鲁斯音阶（1 2 ♭3 3 5 6）和标准小调布鲁斯音阶（1 ♭3 4 ♭5 5 ♭7）组成对比"
+            "为什么真正的蓝调音（Blue Notes）游走于大小三度或七度之间，用微推弦表达比钢琴更地道",
+            "OMT 怎么把布鲁斯音阶从五声音阶加上经过音推导出来",
+            "大调与小调布鲁斯音阶的声学和弦碰撞感"
           ],
           "try": "打开本站「指板」页切换 A blues 和 A majorBlues，记住那两个被红色标出的核心音（E♭ vs C）各在什么位置。"
         }
@@ -5964,12 +6190,12 @@ window.WEEKPLAN.G11 = {
         "time": "5 分钟",
         "cmd": "/quiz 蓝调音微音高与 ♭5 运用",
         "items": [
-          "勾掉 g11-blues-note 卡片与循环第 4 步",
+          "勾掉两节 OMT 布鲁斯旋律原文与循环第 4 步",
           "勾掉练习 3"
         ]
       },
       "done": [
-        "g11-blues-note 精读完毕",
+        "OMT 布鲁斯音阶与蓝调音原文精读完毕",
         "P1 ♭5 经过音与 1/4 推弦练熟",
         "一条复盘日志"
       ]
@@ -6325,7 +6551,27 @@ window.WEEKPLAN.G12 = {
           ]
         ]
       },
-      "reading": [],
+      "reading": [
+        {
+          "time": "15 分钟",
+          "title": "OMT 调式导言与平行思路原文",
+          "links": [
+            {
+              "res": "omtModes",
+              "note": "OMT Diatonic Modes 原章直达"
+            }
+          ],
+          "keys": [
+            "mod-par",
+            "mod-intro"
+          ],
+          "look": [
+            "平行思路（把各调式跟同主音大小调比）与相对轮转思路的本质区别",
+            "七个自然教会调式名称与音级排列特征"
+          ],
+          "try": "开着持续音 A 听完六个调式后，对照 OMT 平行调式表再在 1 弦弹出特征音差异。"
+        }
+      ],
       "questionsTime": "",
       "questions": [
         "大调类三大调式（伊奥尼亚、混合利底亚、利底亚）各自跟大调相比差哪一个音？",
@@ -6391,7 +6637,7 @@ window.WEEKPLAN.G12 = {
     {
       "title": "录 4 段调式 Vamp 即兴，精读平行调式原理",
       "lead": "今天开始第 4 步精读 OMT「Diatonic Modes」，并在吉他上亲自录下 4 段经典的“两和弦 Vamp”（Am7–D、A–G、A–B、Am–B♭），反复落在特征音上听调式如何在真实伴奏中确立中心！",
-      "loopNote": "今天读完 g12-modes-par 卡片并完成练习 2，明天读判断流程卡片后勾选第 4 步。",
+      "loopNote": "今天读完 OMT 调式模板原文（混合利底亚/多利亚/利底亚）并完成练习 2，明天读调式听辨流程原文后勾选第 4 步。",
       "schedule": [
         [
           "5 分钟",
@@ -6446,11 +6692,15 @@ window.WEEKPLAN.G12 = {
       "reading": [
         {
           "time": "25 分钟",
-          "title": "平行调式理论、伴奏定调与特征音强调",
+          "title": "OMT 调式进行模板原文：混合利底亚、多利亚与利底亚",
           "links": [
             {
               "res": "omtModes",
               "note": "OMT Diatonic Modes"
+            },
+            {
+              "res": "omtModalSchemas",
+              "note": "OMT Modal Schemas"
             },
             {
               "res": "signals",
@@ -6458,12 +6708,14 @@ window.WEEKPLAN.G12 = {
             }
           ],
           "keys": [
-            "g12-modes-par"
+            "msch-mix",
+            "msch-dor",
+            "msch-lyd"
           ],
           "look": [
-            "为什么在 Dm7–G7–Cmaj7 上弹 D 多利亚实际上听起来只是 C 大调",
             "在调式音乐（Modal Music）里，为什么每个和弦停留得越久、和弦越少，调式感越强",
-            "特征音如何从 Vamp 伴奏的第二个和弦里自然冒出来"
+            "特征音如何分别在 Mixolydian (I–♭VII)、Dorian (i–IV)、Lydian (I–II) 的 Vamp 伴奏里立住中心",
+            "为什么说 Dm7–G7–Cmaj7 上弹 D 多利亚实际上听起来只是 C 大调"
           ],
           "skip": "20 世纪后调性作曲家用的复合多调式（Polymodality）跳过，先把单一和弦/Vamp 上的教会调式听感立稳。",
           "try": "试着分别弹一遍 Am7–D9（A 多利亚 i–IV）和 Am7–Dm7（A 爱奥利亚 i–iv），耳听第二个和弦是大还是小如何一锤定音。"
@@ -6522,20 +6774,20 @@ window.WEEKPLAN.G12 = {
         "time": "5 分钟",
         "cmd": "/quiz Vamp 定调式与特征音落脚",
         "items": [
-          "勾掉 g12-modes-par 卡片",
+          "勾掉三节 OMT 调式模板原文",
           "勾掉练习 2"
         ]
       },
       "done": [
-        "g12-modes-par 精读完成",
+        "OMT 混合利底亚/多利亚/利底亚原文精读完成",
         "完成 4 段 Vamp 即兴录音",
         "一条复盘日志"
       ]
     },
     {
       "title": "五声+1 特征音法 & OMT 调式三步判断法",
-      "lead": "今天读完 OMT 调式识别三步流程卡片（完成循环第 4 步），教给你吉他手实战最偷懒也最高效的妙招——“五声 + 1 个特征音”秒变多利亚、爱奥利亚与混合利底亚（练习 3）！",
-      "loopNote": "今天读完 g12-modes-id 即可勾掉循环第 4 步，同时完成练习 3。",
+      "lead": "今天读完 OMT 调式听辨流程原文（完成循环第 4 步），教给你吉他手实战最偷懒也最高效的妙招——“五声 + 1 个特征音”秒变多利亚、爱奥利亚与混合利底亚（练习 3）！",
+      "loopNote": "今天读完 OMT 调式听辨流程原文即可勾掉循环第 4 步，同时完成练习 3。",
       "schedule": [
         [
           "5 分钟",
@@ -6590,7 +6842,7 @@ window.WEEKPLAN.G12 = {
       "reading": [
         {
           "time": "25 分钟",
-          "title": "OMT 调式判别流程与摇滚调式进行",
+          "title": "OMT 调式判别听音流程原文与摇滚调式进行",
           "links": [
             {
               "res": "omtModalSchemas",
@@ -6602,10 +6854,10 @@ window.WEEKPLAN.G12 = {
             }
           ],
           "keys": [
-            "g12-modes-id"
+            "msch-ear"
           ],
           "look": [
-            "OMT 三步判别流程：主和弦大小 → 7 级位置 → 特征音位置",
+            "OMT 听音判别流程：主和弦大小 → 7 级位置 → 特征音位置",
             "遇到《Sweet Home Alabama》或《Sweet Child O' Mine》这类摇滚进行，为什么经常存在“混合利底亚 vs 大调 IV”双解",
             "如何从和声小调第 5 级切出金属吉他最爱的“弗里几亚属音阶”"
           ],
@@ -6663,12 +6915,12 @@ window.WEEKPLAN.G12 = {
         "time": "5 分钟",
         "cmd": "/quiz OMT 调式三步判断与五声加味",
         "items": [
-          "勾掉 g12-modes-id 卡片与循环第 4 步",
+          "勾掉本节 OMT 原文与循环第 4 步",
           "勾掉练习 3"
         ]
       },
       "done": [
-        "g12-modes-id 精读完毕",
+        "OMT 调式听辨流程原文精读完毕",
         "掌握五声+1 特征音快捷即兴法",
         "一条复盘日志"
       ]
@@ -6998,7 +7250,27 @@ window.WEEKPLAN.G13 = {
           ]
         ]
       },
-      "reading": [],
+      "reading": [
+        {
+          "time": "15 分钟",
+          "title": "OMT 装饰音原文（上）：和弦外音总览与级进装饰音",
+          "links": [
+            {
+              "res": "omtEmbellish",
+              "note": "OMT Embellishing Tones 原章直达"
+            }
+          ],
+          "keys": [
+            "emb-over",
+            "emb-step"
+          ],
+          "look": [
+            "怎么通过“怎么进入、怎么离开”把外音分类成经过音（Passing）与邻音（Neighbor）",
+            "强拍外音与弱拍外音在和声推动力上的差异"
+          ],
+          "try": "把今天练的 A7–D7 半音趋近句对照 OMT 级进装饰音图例看一遍。"
+        }
+      ],
       "questionsTime": "",
       "questions": [
         "为什么五声音阶弹得很熟的人，一碰到快速和弦进行却经常听起来和伴奏各弹各的？",
@@ -7065,7 +7337,7 @@ window.WEEKPLAN.G13 = {
     {
       "title": "把琶音挂在 CAGED 上走 Am7–D7–Gmaj7（精读 OMT）",
       "lead": "今天开始第 4 步精读 OMT「Embellishing Tones」，弄透经过音、邻音、倚音等非和弦音的规范用法；上琴把 Am7–D7–Gmaj7 的四音琶音挂进 5 弦根音把位，70 BPM 四分音符稳稳跟住和弦走！",
-      "loopNote": "今天精读 g13-embellish 卡片并完成练习 2，明天读动机卡片后勾选第 4 步。",
+      "loopNote": "今天精读 OMT 跳进装饰音与和弦音阶基础原文并完成练习 2，明天读旋律与乐句原文后勾选第 4 步。",
       "schedule": [
         [
           "5 分钟",
@@ -7120,7 +7392,7 @@ window.WEEKPLAN.G13 = {
       "reading": [
         {
           "time": "25 分钟",
-          "title": "修饰音分类、CAGED 琶音网与引导线原则",
+          "title": "OMT 修饰音（下）与和弦-音阶理论基础原文",
           "links": [
             {
               "res": "omtEmbellish",
@@ -7136,11 +7408,12 @@ window.WEEKPLAN.G13 = {
             }
           ],
           "keys": [
-            "g13-embellish"
+            "emb-leap",
+            "cs-basic"
           ],
           "look": [
-            "经过音（Passing）、邻音（Neighbor）、倚音（Appoggiatura）、先现音（Anticipation）各自怎么连接和弦音",
-            "为什么强拍上也可以偶尔弹非和弦音（倚音）并听起来极动人",
+            "跳进切入/离开的非和弦音（倚音 Appoggiatura、先现音 Anticipation、逃音）如何创造表情",
+            "和弦-音阶理论（Chord-Scale Theory）怎么把爵士和弦符号映射为对应音阶与避用音",
             "如何不用死记孤立琶音，直接拆开你熟记的 CAGED 和弦指型得琶音"
           ],
           "try": "按住一个 C 型 Gmaj7 或 A 型 Am7 横按，把里面 6 根弦或 5 根弦按住的音依次单音拨响，再加入隔壁的 7 音，亲眼看“和弦按法就是静态的琶音”。"
@@ -7198,20 +7471,20 @@ window.WEEKPLAN.G13 = {
         "time": "5 分钟",
         "cmd": "/quiz 非和弦修饰音与把位内琶音连接",
         "items": [
-          "勾掉 g13-embellish 卡片",
+          "勾掉两节 OMT 修饰音与和弦音阶原文",
           "勾掉练习 2"
         ]
       },
       "done": [
-        "g13-embellish 精读完成",
+        "OMT 修饰音与和弦音阶原文精读完成",
         "Am7–D7–Gmaj7 原位把位琶音连续走通",
         "一条复盘日志"
       ]
     },
     {
       "title": "动机发展：一个 2 小节动机撑起整段独奏",
-      "lead": "今天读完旋律与动机卡片（完成循环第 4 步），并通过练习 3 学习大师们最核心的秘密——怎么用一个极其简单的 2 小节小动机，靠重复、变节奏与随和弦改结尾音变成动人独奏！",
-      "loopNote": "今天读完 g13-motif 即可勾掉循环第 4 步，并完成练习 3。",
+      "lead": "今天读完 OMT 旋律与分句原文（完成循环第 4 步），并通过练习 3 学习大师们最核心的秘密——怎么用一个极其简单的 2 小节小动机，靠重复、变节奏与随和弦改结尾音变成动人独奏！",
+      "loopNote": "今天读完 OMT 旋律与分句原文即可勾掉循环第 4 步，并完成练习 3。",
       "schedule": [
         [
           "5 分钟",
@@ -7266,7 +7539,7 @@ window.WEEKPLAN.G13 = {
       "reading": [
         {
           "time": "25 分钟",
-          "title": "旋律写作、乐句组织与动机发展",
+          "title": "OMT 旋律写作与分句组织原文",
           "links": [
             {
               "res": "omtMelody",
@@ -7278,10 +7551,10 @@ window.WEEKPLAN.G13 = {
             }
           ],
           "keys": [
-            "g13-motif"
+            "mel-intro"
           ],
           "look": [
-            "一个短短 3～5 个音的动机（Motif）靠哪四种手法就能发展成整段独奏",
+            "一个短短 3～5 个音的动机（Motif）在旋律组织中靠哪些手法演变成整段乐句",
             "为什么听众记住的是“轮廓（高低的形状与节奏）”而不是孤立复杂的音阶",
             "如何通过把动机的尾音改落在新和弦的 3 音上，既保留了统一性又完美贴合和声变化"
           ],
@@ -7340,12 +7613,12 @@ window.WEEKPLAN.G13 = {
         "time": "5 分钟",
         "cmd": "/quiz 旋律动机发展与和弦跟随",
         "items": [
-          "勾掉 g13-motif 卡片与循环第 4 步",
+          "勾掉 OMT 旋律与分句原文及循环第 4 步",
           "勾掉练习 3"
         ]
       },
       "done": [
-        "g13-motif 精读完毕",
+        "OMT 旋律与分句原文精读完毕",
         "完成 12 小节动机 6 次变奏录音",
         "一条复盘日志"
       ]
@@ -7697,7 +7970,27 @@ window.WEEKPLAN.G14 = {
           ]
         ]
       },
-      "reading": [],
+      "reading": [
+        {
+          "time": "15 分钟",
+          "title": "OMT 离调与副属原文：什么是副属和弦（V/x）",
+          "links": [
+            {
+              "res": "omtTonic",
+              "note": "OMT Tonicization 原章直达"
+            }
+          ],
+          "keys": [
+            "ton-intro",
+            "ton-other"
+          ],
+          "look": [
+            "一个临时的 V/x 离调（Tonicization）怎样把大调的 ii、iii、iv、vi 等顺阶和弦变成临时目标",
+            "副属和弦在乐谱记号和变音记号（如 C♯、F♯、G♯）上的规律"
+          ],
+          "try": "把刚刚在 C 调弹的 C–A7–Dm、C–E7–Am、C–D7–G 对照 OMT 的离调标记规则在谱例上认出来。"
+        }
+      ],
       "questionsTime": "",
       "questions": [
         "什么是副属和弦（V/x）？在 C 调里 D7、A7、E7、C7 各自是谁的副属？",
@@ -7765,7 +8058,7 @@ window.WEEKPLAN.G14 = {
     {
       "title": "借用和弦（调式互换）：IV–iv–I 叹息线与精读",
       "lead": "今天开始第 4 步精读 OMT「Tonicization」和「Modal Mixture」，攻克现代摇滚与流行乐最催泪、最史诗的和声手法——从同主音小调借和弦（♭III、iv、♭VI、♭VII），并做练习 2 亲耳感受叹息终止！",
-      "loopNote": "今天精读 g14-sec-dom 卡片并完成练习 2，明天读借用卡片后勾选第 4 步。",
+      "loopNote": "今天精读 OMT 调式互换（借用和弦）原文并完成练习 2，明天读离调与转调分界原文后勾选第 4 步。",
       "schedule": [
         [
           "5 分钟",
@@ -7820,26 +8113,27 @@ window.WEEKPLAN.G14 = {
       "reading": [
         {
           "time": "25 分钟",
-          "title": "副属离调与转调界线",
+          "title": "OMT 调式互换原文：同主音借用和弦与常见组合",
           "links": [
             {
-              "res": "omtTonic",
-              "note": "OMT Tonicization 整章"
+              "res": "omtMixture",
+              "note": "OMT Modal Mixture 整章"
             },
             {
-              "res": "omtModulation",
-              "note": "OMT Extended Tonicization & Modulation"
+              "res": "omtTonic",
+              "note": "OMT Tonicization"
             }
           ],
           "keys": [
-            "g14-sec-dom"
+            "mix-intro",
+            "mix-comm"
           ],
           "look": [
-            "一个孤立的 V/x 离调（Tonicization）和真转调（Modulation）怎么在听觉上界定",
-            "为什么顺阶所有的大小调和弦里独独没有 V/vii°",
-            "遇到“一串连续副属链（如 E7→A7→D7→G7→C）”时怎么顺畅读谱"
+            "大调如何从同主音小调借用降级音和弦（♭III、iv、♭VI、♭VII 等）",
+            "常见调式互换进行的声部走向与 6–♭6–5 叹息感从何而来",
+            "为什么副属链和借用和弦往往在同一首歌里联手制造戏剧转折"
           ],
-          "try": "在吉他上弹一串五度链条副属和弦：<code>E7 → A7 → D7 → G7 → C</code>（都在 5–7 品壳和弦框内），听每一个属七都把你推向下一个新目标直到落进 C！"
+          "try": "在吉他上弹一串五度链条副属和弦：<code>E7 → A7 → D7 → G7 → C</code>（都在 5–7 品壳和弦框内），紧接着再来一组 <code>C → F → Fm → C</code> 对比这两种截然不同的离调感。"
         }
       ],
       "questionsTime": "",
@@ -7894,21 +8188,21 @@ window.WEEKPLAN.G14 = {
         "time": "5 分钟",
         "cmd": "/quiz 借用和弦与叹息终止",
         "items": [
-          "勾掉 g14-sec-dom 卡片",
+          "勾掉两节 OMT 调式互换原文",
           "勾掉练习 2"
         ]
       },
       "done": [
-        "g14-sec-dom 精读完毕",
+        "OMT 调式互换原文精读完毕",
         "唱出并弹出 IV–iv–I 与 ♭VI–♭VII–I",
         "拆通《Creep》3 弦半音线",
         "一条复盘日志"
       ]
     },
     {
-      "title": "拆解经典调外曲目 & 调式互换全精读",
-      "lead": "今天读完 Modal Mixture 借用和弦与半音中音卡片（完成循环第 4 步），完成练习 3（深度拆解《Yesterday》《Creep》《Man in the Mirror》《While My Guitar》全部调外处理），同时总结 4 类调外识别卡。",
-      "loopNote": "今天读完 g14-mixture 即可勾掉循环第 4 步，同时完成练习 3。",
+      "title": "拆解经典调外曲目 & 离调与转调分界精读",
+      "lead": "今天读完 OMT 离调 vs 转调分界原文（完成循环第 4 步），完成练习 3（深度拆解《Yesterday》《Creep》《Man in the Mirror》《While My Guitar》全部调外处理），同时总结 4 类调外识别卡。",
+      "loopNote": "今天读完 OMT 离调与转调原文即可勾掉循环第 4 步，同时完成练习 3。",
       "schedule": [
         [
           "5 分钟",
@@ -7967,11 +8261,11 @@ window.WEEKPLAN.G14 = {
       "reading": [
         {
           "time": "25 分钟",
-          "title": "调式互换（借用）、半音化中音与即兴变音对策",
+          "title": "OMT 延伸离调与转调原文：离调 vs 转调的听觉边界",
           "links": [
             {
-              "res": "omtMixture",
-              "note": "OMT Modal Mixture"
+              "res": "omtModulation",
+              "note": "OMT Extended Tonicization & Modulation"
             },
             {
               "res": "omtNeoR",
@@ -7983,11 +8277,11 @@ window.WEEKPLAN.G14 = {
             }
           ],
           "keys": [
-            "g14-mixture"
+            "modl-vs"
           ],
           "look": [
+            "一两小节短暂离调（Tonicization）与彻底建立新调中心（Modulation）如何从终止式和长度上界定",
             "遇到任何同主音借用和弦或副属和弦时，独奏吉他手“精准换哪 1～2 个音”就能过关",
-            "什么是半音化中音（Chromatic Mediant，例如 G→B 或 C→A♭，根音隔三度而改变大/小性质）",
             "在《While My Guitar Gently Weeps》中，主歌（A 小调）如何转进桥段（A 大调）"
           ],
           "try": "在吉他上弹两个根音隔大三度的大三和弦：<code>G – E♭</code> 或 <code>C – E</code>，听一下现代电影配乐（如 Hans Zimmer / 摇滚史诗）最爱用的“半音化中音”色彩冲击！"
@@ -8049,12 +8343,12 @@ window.WEEKPLAN.G14 = {
         "time": "5 分钟",
         "cmd": "/quiz 半音中音、转调与曲目剖析",
         "items": [
-          "勾掉 g14-mixture 卡片与循环第 4 步",
+          "勾掉 OMT 离调与转调原文及循环第 4 步",
           "勾掉练习 3"
         ]
       },
       "done": [
-        "g14-mixture 精读完毕",
+        "OMT 离调与转调原文精读完毕",
         "《调外和弦识别卡》整理完成",
         "勾完循环第 4 步",
         "一条复盘日志"
@@ -8262,7 +8556,26 @@ window.WEEKPLAN.G15 = {
           ]
         ]
       },
-      "reading": [],
+      "reading": [
+        {
+          "time": "15 分钟",
+          "title": "OMT 流行曲式导言原文：常见歌曲段落角色",
+          "links": [
+            {
+              "res": "omtFormPop",
+              "note": "OMT Intro to Form in Popular Music"
+            }
+          ],
+          "keys": [
+            "form-sec"
+          ],
+          "look": [
+            "流行歌里主歌、预副歌、副歌、桥段、尾奏各担什么结构职责",
+            "听觉与和声能量曲线怎么区分哪个段落才是真正的“中心核心”"
+          ],
+          "try": "拿起刚刚挑出来盲扒的歌曲片段，用 OMT 的段落标签标出它在整首歌的哪个功能位置。"
+        }
+      ],
       "questionsTime": "",
       "questions": [
         "写出专业乐手标准扒歌流程的 6 个先后步骤。",
@@ -8328,7 +8641,7 @@ window.WEEKPLAN.G15 = {
     {
       "title": "流行曲式精读（OMT）& 一页完整歌曲分析表",
       "lead": "今天开始第 4 步精读 OMT「Popular Music Form」系列章节，完成昨天那段扒谱的收尾并写出一页专业的“整曲解剖分析表”（练习 2），看透一首歌从前奏到桥段的能量曲线。",
-      "loopNote": "今天精读 g15-form 卡片即可勾掉循环第 4 步，并完成练习 1 收尾与练习 2！",
+      "loopNote": "今天精读 OMT 流行曲式系列原文章节即可勾掉循环第 4 步，并完成练习 1 收尾与练习 2！",
       "schedule": [
         [
           "5 分钟",
@@ -8383,7 +8696,7 @@ window.WEEKPLAN.G15 = {
       "reading": [
         {
           "time": "25 分钟",
-          "title": "流行曲式：Verse–Chorus、AABA 与分节歌",
+          "title": "OMT 流行曲式原文：小节术语、Verse–Chorus、AABA 与分节歌",
           "links": [
             {
               "res": "omtFormPop",
@@ -8399,7 +8712,9 @@ window.WEEKPLAN.G15 = {
             }
           ],
           "keys": [
-            "g15-form"
+            "form-term",
+            "form-vc",
+            "form-aaba"
           ],
           "look": [
             "主歌（Verse）、预副歌（Pre-Chorus）、副歌（Chorus）、桥段（Bridge）各自在和声与能量上担什么角色",
@@ -8461,12 +8776,12 @@ window.WEEKPLAN.G15 = {
         "time": "5 分钟",
         "cmd": "/quiz 流行曲式与整曲解剖逻辑",
         "items": [
-          "勾掉 g15-form 卡片与循环第 4 步",
+          "勾掉三节 OMT 流行曲式原文与循环第 4 步",
           "勾掉练习 1 和练习 2"
         ]
       },
       "done": [
-        "g15-form 精读完成",
+        "OMT 流行曲式三节原文精读完成",
         "独立扒谱 + 一页歌曲分析表存档",
         "确定毕业原创短曲蓝图",
         "一条复盘日志"

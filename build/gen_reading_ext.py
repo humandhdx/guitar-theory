@@ -1,4 +1,4 @@
-"""生成 G3～G15 的双语精读核心资料（assets/data-reading-ext.js），支持站内 中文 / 中英对照 / English 切换与读完勾选。"""
+"""生成 G3～G15 的电吉他指板与实战双语精读卡片（assets/data-reading-ext.js），补足 OMT 教材外的吉他把位与名师体系。"""
 import json
 import html
 from pathlib import Path
@@ -7,29 +7,9 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "assets" / "data-reading-ext.js"
 
 # 每条：(key, zh_title, en_title, omt_url, src_label, blocks)
-# blocks 里是 [("h5", en, zh), ("p", en, zh), ("note", en_title, zh_title, [(en, zh), ...]), ("table", [(en, zh), ...], [[(en, zh), ...]])]
+# blocks 里是 [("p", en, zh), ...]；本文件仅保留电吉他指板与名师实战卡，大学乐理正文章节均由 data-reading.js 提供 OMT 原文
 CARDS = [
-    # ── G3 音程 ──
-    ("g3-int-name", "音程的度数与性质", "Interval Size and Quality",
-     "https://viva.pressbooks.pub/openmusictheory/chapter/intervals/",
-     "双语精读 · 对应 OMT: Intervals", [
-         ("p", "An <b class=\"gl\" title=\"The distance between two pitches\">interval</b> has two parts: size (a number like 3rd or 5th) and quality (major, minor, perfect, augmented, or diminished).",
-          "一个<b class=\"gl\" title=\"The distance between two pitches\">音程</b>由两部分组成：度数（如三度、五度）和性质（大、小、纯、增、减）。"),
-         ("p", "Size depends strictly on letter names, counting both the starting and ending letters. From C to E♭ is a 3rd (C–D–E), whereas from C to D♯ is a 2nd (C–D), even though both span 3 semitones on the guitar.",
-          "度数完全由字母距离决定（包含首尾字母）。C 到 E♭ 经过 C–D–E，是三度；而 C 到 D♯ 只经过 C–D，是二度，即使两者在吉他上都相差 3 个半音。"),
-         ("p", "Unisons, fourths, fifths, and octaves belong to the <b>perfect</b> family (they are never major or minor). Seconds, thirds, sixths, and sevenths belong to the <b>major/minor</b> family (they are never perfect).",
-          "一度、四度、五度、八度属于<b>纯音程家族</b>（没有大小之分）；二度、三度、六度、七度属于<b>大小音程家族</b>（没有纯的说法）。")
-     ]),
-    ("g3-int-inv", "音程转位与等音程", "Interval Inversion and Enharmonic Intervals",
-     "https://viva.pressbooks.pub/openmusictheory/chapter/intervals/",
-     "双语精读 · 对应 OMT: Intervals", [
-         ("p", "To <b>invert</b> an interval, move the lower note up an octave (or the upper note down an octave). The two sizes always add up to <b>9</b>, and the semitones add up to <b>12</b>.",
-          "把低音升高八度（或高音降低八度）称为<b>转位</b>。原位与转位音程的度数之和永远等于 <b>9</b>，半音数之和永远等于 <b>12</b>。"),
-         ("p", "Under inversion: Major becomes minor (and vice versa), Augmented becomes diminished (and vice versa), and Perfect stays Perfect. Thus a major 3rd (4 semitones) inverts to a minor 6th (8 semitones).",
-          "转位后的性质规律：大↔小，增↔减，纯保持为纯。因此大三度（4 半音）转位后就是小六度（8 半音）。"),
-         ("p", "<b>Tritone</b> (6 semitones) can be spelled either as an augmented 4th (C–F♯) or a diminished 5th (C–G♭). Spelling indicates harmonic resolution: A4 tends to expand outward, while d5 tends to contract inward.",
-          "<b>三全音</b>（6 半音）既能拼成增四度（C–F♯），也能拼成减五度（C–G♭）。拼写指明了和声走向：增四度倾向向外扩张解决，减五度倾向向内收缩解决。")
-     ]),
+    # ── G3 音程（指板几何） ──
     ("g3-int-fret", "吉他指板上的音程几何与 3–2 弦补偿", "Fretboard Interval Geometry & the B-String Shift",
      "https://www.justinguitar.com/modules/notes-sharps-flats-octaves",
      "双语精读 · 吉他指板专题", [
@@ -39,23 +19,7 @@ CARDS = [
           "因此往高音弦换一根弦等同于减 5 个半音；只要跨过 3–2 弦只减了 4 个半音，所以<b>任何跨过 3–2 弦的音程与八度形状都要向高品多挪 1 品</b>。")
      ]),
 
-    # ── G4 大调与五度圈 ──
-    ("g4-maj-tetra", "大调公式与对称四音列", "The Major Scale Formula & Tetrachords",
-     "https://viva.pressbooks.pub/openmusictheory/chapter/major-scales/",
-     "双语精读 · 对应 OMT: Major Scales", [
-         ("p", "A <b class=\"gl\" title=\"A scale with pattern W-W-H-W-W-W-H\">major scale</b> follows the fixed pattern of whole (W) and half (H) steps: <b>W–W–H–W–W–W–H</b> (2–2–1–2–2–2–1 frets on one guitar string).",
-          "<b class=\"gl\" title=\"A scale with pattern W-W-H-W-W-W-H\">大调音阶</b>遵循固定的全半音步公式：<b>全–全–半–全–全–全–半</b>（在单根吉他弦上就是 2–2–1–2–2–2–1 品）。"),
-         ("p", "It consists of two identical <b>tetrachords</b> (four-note W–W–H patterns) separated by a whole step. Taking the upper tetrachord of C major (G–A–B–C) as the lower tetrachord of a new scale generates G major (requiring F♯).",
-          "它可以拆成两个完全相同的<b>四音列（全–全–半）</b>中间隔一个全音。拿 C 大调的后半四音列（G–A–B–C）作起点，只需把 7 级升成 F♯，就自动生成高纯五度的 G 大调。")
-     ]),
-    ("g4-maj-deg", "音级名称、导音与调号速算", "Scale Degrees, Leading Tone & Key Signatures",
-     "https://viva.pressbooks.pub/openmusictheory/chapter/major-scales/",
-     "双语精读 · 对应 OMT: Major Scales", [
-         ("p", "The seven scale degrees are named: 1 Tonic, 2 Supertonic, 3 Mediant, 4 Subdominant, 5 Dominant, 6 Submediant, and <b>7 Leading Tone</b> (a half step below tonic, pulling upward toward 1).",
-          "七个音级依次叫：1 主音、2 上主音、3 中音、4 下属音、5 属音、6 下中音、<b>7 导音</b>（离主音仅差半音，产生强烈往上解决到 1 级的牵引力）。"),
-         ("p", "Every diatonic scale uses each of the seven letters A–G exactly once. Order of sharps: <b>F–C–G–D–A–E–B</b> (last sharp + 1 half step = Tonic). Order of flats: <b>B–E–A–D–G–C–F</b> (second-to-last flat = Tonic, with 1 flat = F).",
-          "自然音阶必须把七个字母各用一次。升号顺序 <b>F–C–G–D–A–E–B</b>（最后一个升号上半音 = 主音）；降号顺序 <b>B–E–A–D–G–C–F</b>（1 降 = F，2 个以上倒数第二个降号 = 主音）。")
-     ]),
+    # ── G4 五度圈与 CAGED/3NPS 视野 ──
     ("g4-cof-use", "五度圈与吉他 CAGED / 3NPS 视野", "Circle of Fifths, CAGED & 3NPS on Guitar",
      "https://en.wikipedia.org/wiki/Circle_of_fifths",
      "双语精读 · 五度圈与指板视野", [
@@ -65,15 +29,7 @@ CARDS = [
           "在吉他上，<b>CAGED 把位</b>把音阶锚定在可按出的和弦指型上（最利和弦内音即兴），而<b>三音一弦（3NPS）</b>强迫每弦 3 个音（最利连奏与交替拨弦速度）。")
      ]),
 
-    # ── G5 三和弦与 CAGED ──
-    ("g5-triad-q", "四种三和弦与转位记号", "Triad Qualities and Inversions",
-     "https://viva.pressbooks.pub/openmusictheory/chapter/triads/",
-     "双语精读 · 对应 OMT: Triads & Inversion", [
-         ("p", "A <b class=\"gl\" title=\"A three-note chord stacked in thirds\">triad</b> stacks two thirds above a root: <b>Major</b> (M3+m3: 1–3–5), <b>Minor</b> (m3+M3: 1–♭3–5), <b>Diminished</b> (m3+m3: 1–♭3–♭5), and <b>Augmented</b> (M3+M3: 1–3–♯5).",
-          "<b class=\"gl\" title=\"A three-note chord stacked in thirds\">三和弦</b>由两个三度叠成：<b>大三</b>（1–3–5）、<b>小三</b>（1–♭3–5）、<b>减三</b>（1–♭3–♭5）和<b>增三</b>（1–3–♯5）。三音定大小，五音定稳定度。"),
-         ("p", "Inversion depends strictly on the <b>lowest-sounding pitch (bass note)</b>: root position (1 in bass), first inversion (3 in bass, e.g. <code>C/E</code>), and second inversion (5 in bass, e.g. <code>C/G</code>).",
-          "转位完全取决于<b>最低音</b>是谁：原位（根音在低音）、第一转位（三音在低音，记作 <code>C/E</code>）、第二转位（五音在低音，记作 <code>C/G</code>）。")
-     ]),
+    # ── G5 三和弦 CAGED 与声部连接 ──
     ("g5-caged", "CAGED 几何逻辑与三弦组声部连接", "CAGED Logic & String-Set Voice Leading",
      "https://www.justinguitar.com/guitar-lessons/caged-logic-ch-900",
      "双语精读 · 对应 JustinGuitar CAGED Logic", [
@@ -83,33 +39,17 @@ CARDS = [
           "在乐队伴奏中，只在 1-2-3 或 2-3-4 三根弦上弹三和弦转位并做<b>声部连接</b>（共同音不动、其余音级进），颗粒最干净且绝不和贝斯打架。")
      ]),
 
-    # ── G6 七和弦 ──
-    ("g6-sev-types", "五种核心七和弦与符号默认规则", "Five Seventh Chord Qualities & Symbol Defaults",
-     "https://viva.pressbooks.pub/openmusictheory/chapter/seventh-chords/",
-     "双语精读 · 对应 OMT: Seventh Chords & Chord Symbols", [
-         ("p", "Five core seventh chords: <b>maj7</b> (1–3–5–7), <b>7</b> (dominant, 1–3–5–♭7), <b>m7</b> (1–♭3–5–♭7), <b>m7♭5 / ø7</b> (half-diminished, 1–♭3–♭5–♭7), and <b>dim7</b> (fully diminished, 1–♭3–♭5–𝄫7).",
-          "五种核心七和弦：<b>maj7</b>（大七 1–3–5–7）、<b>7</b>（属七 1–3–5–♭7）、<b>m7</b>（小七 1–♭3–5–♭7）、<b>m7♭5/ø7</b>（半减七 1–♭3–♭5–♭7）、<b>dim7</b>（减七 1–♭3–♭5–𝄫7）。"),
-         ("p", "Chord symbol defaults: a plain letter means a major triad; a plain number <code>7</code> (or <code>9/11/13</code>) <b>implies a minor 7th (♭7)</b>; major 7ths require <code>maj7</code>; <code>add9</code> omits the 7th; <code>sus2/sus4</code> replace the 3rd.",
-          "符号默认规则：单独字母 = 大三；单独写 <code>7</code>（或 <code>9/11/13</code>）<b>默认含小七度 ♭7</b>；大七度必须写 <code>maj7</code>；<code>add9</code> 没有七音；<code>sus2/sus4</code> 用 2 或 4 音彻底替代了 3 音。")
-     ]),
-    ("g6-shell", "壳和弦（1-3-7）与引导声部", "Shell Voicings (1-3-7) and Guide Tones",
-     "https://viva.pressbooks.pub/openmusictheory/chapter/jazz-voicings/",
-     "双语精读 · 对应 OMT: Jazz Voicings", [
+    # ── G6 壳和弦指板编配 ──
+    ("g6-shell", "吉他壳和弦（1-3-7）与引导声部", "Guitar Shell Voicings (1-3-7) and Guide Tones",
+     "https://www.youtube.com/@JensLarsen",
+     "双语精读 · 吉他壳和弦实战编配", [
          ("p", "In chord voicings on guitar, the <b>3rd and 7th</b> define the chord's major/minor and functional identity, whereas the <b>5th</b> adds weight without defining quality and is routinely omitted.",
           "吉他按弦编配时，<b>3 音和 7 音</b>决定了和弦的大小性质与功能倾向；而纯五度 <b>5 音</b>不提供核心色彩，最常被省略。"),
          ("p", "<b>Shell voicings</b> use only Root + 3rd + 7th (on strings 6-4-3 or 5-4-3). In a 12-bar blues or ii–V–I, the 7th of each chord resolves down by half step to the 3rd of the next chord.",
           "<b>壳和弦</b>只弹 1–3–7 三根弦（常放在 6-4-3 或 5-4-3 弦）。在布鲁斯或 ii–V–I 里，前一个和弦的 7 音正好能半音下行落入下一个和弦的 3 音。")
      ]),
 
-    # ── G7 顺阶与罗马数字 ──
-    ("g7-roman", "大调顺阶和弦与罗马数字分析", "Diatonic Chords and Roman Numeral Analysis",
-     "https://viva.pressbooks.pub/openmusictheory/chapter/roman-numerals/",
-     "双语精读 · 对应 OMT: Roman Numerals", [
-         ("p", "Stacking thirds using only notes of the major scale yields seven <b class=\"gl\" title=\"Belonging exclusively to the prevailing key\">diatonic</b> triads: <b>I – ii – iii – IV – V – vi – vii°</b> (Major, minor, minor, Major, Major, minor, diminished).",
-          "仅用大调音阶内音叠三度，必然生成 7 个<b class=\"gl\" title=\"Belonging exclusively to the prevailing key\">顺阶</b>三和弦：<b>I – ii – iii – IV – V – vi – vii°</b>（大小小大大 小减）。"),
-         ("p", "Adding a diatonic 7th produces: <b>Imaj7 – ii7 – iii7 – IVmaj7 – V7 – vi7 – viiø7</b>. Notice that <b>V7 is the only dominant seventh</b> naturally occurring in a major key, making it a clear signpost for key finding.",
-          "再叠七度得到 <b>Imaj7 – ii7 – iii7 – IVmaj7 – V7 – vi7 – viiø7</b>。全大调<b>只有 V7 是唯一的属七和弦</b>，因此看到属七往往就暴露了调性坐标。")
-     ]),
+    # ── G7 实战定调与 Capo 移调 ──
     ("g7-keyfind", "定调三线索与 Capo 级数转换", "Finding the Key & Capo Transposition",
      "https://www.hooktheory.com/books/one",
      "双语精读 · 实战定调与移调", [
@@ -119,132 +59,14 @@ CARDS = [
           "<b>变调夹（Capo）</b>将所有开放和弦的实际音高升高 N 个半音，但指型之间的罗马数字级数关系纹丝不动（G 指型 + Capo 2 = A 调）。")
      ]),
 
-    # ── G8 功能与终止 ──
-    ("g8-func", "和声功能（T–S–D）与终止式", "Harmonic Function & Cadences",
-     "https://viva.pressbooks.pub/openmusictheory/chapter/intro-to-harmony/",
-     "双语精读 · 对应 OMT: Intro to Harmony", [
-         ("p", "Classical tonal syntax follows <b>Tonic (T: I, vi, iii) → Subdominant/Pre-dominant (S: IV, ii) → Dominant (D: V, vii°) → Tonic (T)</b>. Substitutions work because of shared tones (ii shares 4 & 6 with IV; vi shares 1 & 3 with I).",
-          "调性基本句法是 <b>主功能 T (I, vi, iii) → 预属/下属功能 S (IV, ii) → 属功能 D (V, vii°) → 主功能 T</b>。替代关系靠共同音成立：ii 与 IV 共用 4、6 级，vi 与 I 共用 1、3 级。"),
-         ("p", "Four main cadences: <b>Authentic (V–I)</b>, <b>Plagal (IV–I)</b>, <b>Half (ending on V)</b>, and <b>Deceptive (V–vi)</b>. In rock and blues, ♭VII–IV–I and IV–I act as primary structural cadences.",
-          "四种终止式：<b>正格（V–I）</b>像句号、<b>变格（IV–I）</b>柔和、<b>半终止（停在 V）</b>像问号、<b>阻碍（V–vi）</b>突然拐弯。摇滚中常见 ♭VII–IV–I 双变格回归。")
-     ]),
-    ("g8-schemas", "流行四和弦模板与 ii–V–I", "Pop Four-Chord Schemas & ii–V–I",
-     "https://viva.pressbooks.pub/openmusictheory/chapter/4-chord-schemas/",
-     "双语精读 · 对应 OMT: 4-Chord Schemas & ii-V-I", [
-         ("p", "Pop songs frequently rely on looping four-chord schemas instead of teleological V–I closure: <b>Doo-wop</b> (<code>I–vi–IV–V</code>), <b>Singer/Songwriter</b> (<code>I–V–vi–IV</code> / <code>vi–IV–I–V</code>), and <b>Hopscotch</b> (<code>IV–V–vi–I</code>).",
-          "当代流行乐极常采用循环四和弦模板，而非追求终结感：<b>Doo-wop</b>（I–vi–IV–V）、<b>Singer/Songwriter</b>（I–V–vi–IV 或 vi–IV–I–V）以及 <b>Hopscotch</b>（IV–V–vi–I）。"),
-         ("p", "In jazz and R&B, <b>ii–V–I</b> drives harmony counterclockwise around the Circle of Fifths, linking guide tones smoothly by half step (e.g. Dm7's C → G7's B; G7's F → Cmaj7's E).",
-          "在爵士与 R&B 中，<b>ii–V–I</b> 沿五度圈逆时针落下，让 7 音与 3 音靠半音下行无缝接力（Dm7 的 C→G7 的 B；G7 的 F→Cmaj7 的 E）。")
-     ]),
-
-    # ── G9 小调体系 ──
-    ("g9-minor", "三种小调与小调的“大 V”", "Natural, Harmonic, and Melodic Minor",
-     "https://viva.pressbooks.pub/openmusictheory/chapter/minor-scales/",
-     "双语精读 · 对应 OMT: Minor Scales", [
-         ("p", "<b>Natural minor</b> (Aeolian: 1 2 ♭3 4 5 ♭6 ♭7) produces diatonic chords <code>i ii° ♭III iv v ♭VI ♭VII</code>. Because v is minor without a leading tone, composers raise ♭7 to 7, yielding <b>Harmonic minor</b> and turning v into a major/dominant <b>V</b>.",
-          "<b>自然小调</b>（1 2 ♭3 4 5 ♭6 ♭7）的顺阶和弦是 <code>i ii° ♭III iv v ♭VI ♭VII</code>。为得到强回主推力，将 ♭7 升成导音 7 得到<b>和声小调</b>，把小 v 变成了大三/属七 <b>V</b>（代价是 ♭6–7 出现增二度）。"),
-         ("p", "<b>Melodic minor</b> raises both 6 and 7 (1 2 ♭3 4 5 6 7) to smooth out the augmented second. In jazz, this ascending form is used both up and down; in rock/pop, all three minor flavors mix freely within one song.",
-          "<b>旋律小调</b>将 6、7 级同时升高消除增二度；爵士里上下行都用 1 2 ♭3 4 5 6 7；摇滚与流行常在同一首歌里自由混用这三种小调色彩。")
-     ]),
-    ("g9-schemas", "关系调 vs 同主音调与小调模板", "Relative vs. Parallel Minor & Minor Schemas",
-     "https://viva.pressbooks.pub/openmusictheory/chapter/modal-schemas/",
-     "双语精读 · 对应 OMT: Modal Schemas", [
-         ("p", "<b>Relative keys</b> share the same key signature and pitch set (C major & A minor); <b>Parallel keys</b> share the same tonic (C major & C minor). Relative keys govern scale shapes; parallel keys govern modal mixture.",
-          "<b>关系大小调</b>同调号不同主音（C 与 Am）；<b>同主音大小调</b>同主音不同调号（C 与 Cm）。关系调用于复用指型，同主音调用于对比色彩与借用和弦。"),
-         ("p", "Two ubiquitous minor schemas: the <b>Aeolian shuttle/cadence</b> (<code>i–♭VII–♭VI–♭VII</code> or <code>♭VI–♭VII–i</code>) and the <b>Andalusian cadence / Lament bass</b> (<code>i–♭VII–♭VI–V</code>, ending on a major V).",
-          "小调两大黄金模板：<b>爱奥利亚往返/终止</b>（i–♭VII–♭VI–♭VII 与 ♭VI–♭VII–i）与<b>安达卢西亚终止</b>（i–♭VII–♭VI–V，末尾换成和声小调大 V）。")
-     ]),
-
-    # ── G10 五声音阶 ──
-    ("g10-penta-sys", "五声音阶、关系共用与 Fret Science 几何", "Pentatonic Harmony, Relative Pairs & Fretboard Geometry",
-     "https://viva.pressbooks.pub/openmusictheory/chapter/pentatonic-harmony/",
-     "双语精读 · 对应 OMT: Pentatonic & Fret Science", [
+    # ── G10 五声 CAGED 锚点与 Fret Science 几何 ──
+    ("g10-penta-sys", "五声音阶 5 把位挂 CAGED 与 Fret Science 矩形+堆叠", "Pentatonic CAGED Anchors & Fret Science Rectangle+Stack",
+     "https://www.youtube.com/@FretScience",
+     "双语精读 · JustinGuitar & Fret Science 指板几何", [
          ("p", "Minor pentatonic (<code>1 ♭3 4 5 ♭7</code>) removes 2 and ♭6 from natural minor; Major pentatonic (<code>1 2 3 5 6</code>) removes 4 and 7 from major. Stripping out half steps and tritones ensures every note blends smoothly over basic chords.",
           "小调五声（1 ♭3 4 5 ♭7）去掉了 2 和 ♭6，大调五声（1 2 3 5 6）去掉了 4 和 7。剔除半音冲突和三全音，使它极度安全顺耳；代价是缺乏变化、随和弦切换不明显。"),
          ("p", "Each of the 5 pentatonic patterns wraps around one of the 5 CAGED minor/major chord shapes (e.g., A minor pentatonic Pattern 1 at fret 5 wraps around the E-shape Am barre chord). Across adjacent strings, notes form alternating 3-fret <b>rectangles</b> and 2-fret <b>stacks</b>.",
           "五声 5 个把位精准包住 5 个 CAGED 和弦指型（例如第 5 品 A 小调五声 P1 包住 E 型 Am）。相邻弦几何上可简化为宽 3 品的<b>矩形</b>与宽 2 品的<b>堆叠</b>拼接。")
-     ]),
-
-    # ── G11 布鲁斯 ──
-    ("g11-blues-harm", "12 小节布鲁斯结构与属七和弦体系", "12-Bar Blues Form and Dominant Harmony",
-     "https://viva.pressbooks.pub/openmusictheory/chapter/blues-harmony/",
-     "双语精读 · 对应 OMT: Blues Harmony", [
-         ("p", "The standard 12-bar blues forms three 4-bar phrases (AAB lyric structure): <code>| I | I | I | I | IV | IV | I | I | V | IV | I | I (or V) |</code>. Variants include the <b>quick change</b> (IV in bar 2) and a final-bar <b>turnaround</b>.",
-          "标准 12 小节布鲁斯由三个 4 小节乐句（AAB 歌词结构）组成：<code>| I | I | I | I | IV | IV | I | I | V | IV | I | I/V |</code>。常见变体包括第 2 小节先去 IV（Quick Change）及末小节 Turnaround。"),
-         ("p", "Unlike classical tonality, <b>I7, IV7, and V7 are all dominant seventh chords</b>, and structural closure happens via a plagal motion (IV–I inside V–IV–I) rather than V–I.",
-          "与古典规则不同，布鲁斯里 <b>I7、IV7、V7 全部带小七度</b>，且大调进行结尾靠变格运动（V–IV–I 里的 IV–I）完成回归。")
-     ]),
-    ("g11-blues-note", "蓝调音微音高、布鲁斯音阶与 Turnaround", "Blue Notes, the Blues Scale & Turnarounds",
-     "https://viva.pressbooks.pub/openmusictheory/chapter/blues-melodies-and-the-blues-scale/",
-     "双语精读 · 对应 OMT: Blues Melodies & Scale", [
-         ("p", "<b>Blue notes</b> sit flexibly between equal-tempered pitches (notably between ♭3 and 3, and between ♭7 and 7). On electric guitar, quarter-tone bends and slides express this tension directly over major/dominant chords.",
-          "<b>蓝调音</b>往往游走于十二平均律相邻两音之间（尤其是 ♭3 与大三度 3 之间），电吉他正好靠四分之一推弦、揉弦与滑音精准表达这种撕裂张力。"),
-         ("p", "Adding ♭5 (♯4) as a passing tone to minor pentatonic gives the <b>blues scale</b> (1 ♭3 4 ♭5 5 ♭7). In bars 11–12, a classic chromatic descending turnaround (1–♭7–6–♭6–5) propels the chorus back to V7.",
-          "小调五声加入经过音 ♭5（OMT 记作 ♯4）即为<b>布鲁斯音阶</b>；第 11–12 小节常用 1–♭7–6–♭6–5 的高音弦半音下行 Turnaround 推回 V7 重新开始。")
-     ]),
-
-    # ── G12 调式 ──
-    ("g12-modes-par", "平行调式思路与特征音光谱", "Parallel Modes and Color Notes",
-     "https://viva.pressbooks.pub/openmusictheory/chapter/diatonic-modes/",
-     "双语精读 · 对应 OMT: Diatonic Modes", [
-         ("p", "Think of modes <b>in parallel</b> from the same tonic rather than as rotations of C major: Major-3rd modes are <b>Lydian</b> (major + ♯4), <b>Ionian</b> (major), and <b>Mixolydian</b> (major + ♭7). Minor-3rd modes are <b>Dorian</b> (minor + ♮6), <b>Aeolian</b> (minor), <b>Phrygian</b> (minor + ♭2), and <b>Locrian</b> (♭2, ♭5).",
-          "实战学调式必须用<b>平行思路</b>与同一主音的大/小调比较：大三度家族为<b>利底亚（+♯4）</b>、伊奥尼亚、<b>混合利底亚（+♭7）</b>；小三度家族为<b>多利亚（+♮6）</b>、爱奥利亚、<b>弗里几亚（+♭2）</b>和洛克里亚（♭2, ♭5）。"),
-         ("p", "Each mode's signature lies in its single <b>characteristic color note</b>. Without a modal vamp or drone establishing the tonic center, playing D Dorian over Dm7–G7–Cmaj7 simply sounds like C major.",
-          "每个调式的味道全系于那个唯一的<b>特征音</b>。如果没有持续音或 Vamp 确立中心，在 Dm7–G7–Cmaj7 上弹“D 多利亚”听起来依然是 C 大调。")
-     ]),
-    ("g12-modes-id", "OMT 调式判断三步法与 Vamp 进行", "OMT Modal Identification Flow & Modal Vamps",
-     "https://viva.pressbooks.pub/openmusictheory/chapter/modal-schemas/",
-     "双语精读 · 对应 OMT: Diatonic Modes & Modal Schemas", [
-         ("p", "Three-step identification: (1) Find the tonic and check whether the tonic triad is major or minor; (2) check the 7th degree (7 vs ♭7); (3) listen for the color alteration (♯4 = Lydian, ♮6 = Dorian, ♭2 = Phrygian).",
-          "OMT 三步判别法：1) 找定家，判断主和弦是大还是小；2) 听第 7 级（导音还是 ♭7）；3) 抓特征音（♯4 为利底亚，♮6 为多利亚，♭2 为弗里几亚）。"),
-         ("p", "Standard two-chord modal vamps highlight the color note in the second chord: Dorian <code>i–IV</code> (Am7–D9), Mixolydian <code>I–♭VII</code> (A–G), Lydian <code>I–II</code> (A–B), and Phrygian <code>i–♭II</code> (Am–B♭).",
-          "典型双和弦调式 Vamp 把特征音直接藏在第二个和弦里：多利亚 <code>i–IV</code>（Am7–D9 含 F♯）、混合利底亚 <code>I–♭VII</code>（A–G 含 G）、利底亚 <code>I–II</code>（A–B 含 D♯）、弗里几亚 <code>i–♭II</code>（Am–B♭ 含 B♭）。")
-     ]),
-
-    # ── G13 和弦音即兴 ──
-    ("g13-embellish", "强拍和弦音、修饰音与引导线", "Chord Tones, Embellishing Tones & Guide Tones",
-     "https://viva.pressbooks.pub/openmusictheory/chapter/embellishing-tones/",
-     "双语精读 · 对应 OMT: Embellishing Tones", [
-         ("p", "Great solos outline the chord progression by placing <b>chord tones (1, 3, 5, 7)</b> on strong beats and using other scale or chromatic tones as <b>embellishing tones</b> (passing, neighbor, appoggiatura, anticipation).",
-          "动听的独奏把<b>和弦音（1 3 5 7）</b>稳放在强拍上勾勒和声，其余音则充当弱拍的<b>修饰音</b>（经过音、邻音、倚音、先现音）。"),
-         ("p", "<b>Guide tones (3rds and 7ths)</b> connect smoothly across fifth-related changes: in A7→D7, the ♭7 of A7 (G) drops a half step to the 3rd of D7 (F♯), while C♯ drops to C.",
-          "<b>引导线（3 音与 7 音）</b>在五度下行进行里极其丝滑：A7 的 ♭7（G）降半音就是 D7 的 3 音（F♯），A7 的 3 音（C♯）降半音就是 D7 的 ♭7（C）。")
-     ]),
-    ("g13-motif", "趋近、包围与旋律动机发展", "Approach Notes, Enclosures & Motivic Development",
-     "https://viva.pressbooks.pub/openmusictheory/chapter/melody-and-phrasing/",
-     "双语精读 · 对应 OMT: Melody & Phrasing", [
-         ("p", "Target tones shine when approached via a <b>lower chromatic half step</b> or a three-note <b>enclosure</b> (diatonic step above → chromatic half step below → target tone).",
-          "用<b>下方半音趋近</b>或<b>上下包围（上方音阶音 → 下方半音 → 目标音）</b>进出目标音，会让吉他琶音瞬间拥有唱片级的旋律流动感。"),
-         ("p", "Instead of playing endless unrelated notes, repeat a short 3–5 note <b>motif</b> and develop it across chord changes via rhythmic displacement, transposition, or call-and-response.",
-          "用<b>动机发展</b>代替无休止跑音阶：反复出现一个 3～5 音短动机，仅随和弦微调结尾目标音或改变节奏落点，让听众真正记住你的独奏。")
-     ]),
-
-    # ── G14 调外和弦 ──
-    ("g14-sec-dom", "副属和弦（V/x）与离调 vs 转调", "Tonicization (Applied Dominants) vs. Modulation",
-     "https://viva.pressbooks.pub/openmusictheory/chapter/tonicization/",
-     "双语精读 · 对应 OMT: Tonicization & Modulation", [
-         ("p", "A <b class=\"gl\" title=\"A non-diatonic dominant chord resolving to a diatonic chord other than I\">secondary dominant (V/x)</b> temporarily treats a diatonic chord other than I as a local tonic—most visibly by turning an expected minor chord (ii, iii, vi) into a major or dominant 7th chord resolving down a fifth.",
-          "<b class=\"gl\" title=\"A non-diatonic dominant chord resolving to a diatonic chord other than I\">副属和弦（V/x）</b>短暂把顺阶某个非主和弦当成临时老板（离调），特征是原本应为小三和弦的级数变成了大三或属七并往下五度解决（如 C 调的 E7→Am、D7→G）。"),
-         ("p", "Brief visits (1–2 bars) are <b>tonicization</b>; establishing a new tonic with its own cadences (or shifting up a half/whole step—'truck driver's modulation') is true <b>modulation</b>.",
-          "一两小节过客称为<b>离调（Tonicization）</b>；在新调上站稳并完成新终止式（或直接整体升半音/全音的“卡车司机式转调”）才是真<b>转调（Modulation）</b>。")
-     ]),
-    ("g14-mixture", "调式互换（借用和弦）与半音中音", "Modal Mixture (Borrowed Chords) & Chromatic Mediants",
-     "https://viva.pressbooks.pub/openmusictheory/chapter/modal-mixture/",
-     "双语精读 · 对应 OMT: Modal Mixture", [
-         ("p", "<b>Modal mixture</b> borrows chords from the parallel minor into a major key—most commonly <b>♭III, iv, ♭VI, and ♭VII</b>. Signature progression: <code>IV–iv–I</code> (the plagal sigh, featuring 6–♭6–5 chromatic voice leading).",
-          "<b>调式互换（借用和弦）</b>通常从同主音小调借入降级音和弦：最常见 <b>♭III、iv、♭VI、♭VII</b>。经典模板 <code>IV–iv–I</code>（叹息终止，内声部走 6–♭6–5 半音下行）。"),
-         ("p", "When improvising over any chromatic chord, temporarily alter only the conflicting scale note to match the chord's defining accidental (e.g. play C♯ over A7 = V/ii in C; play A♭ over Fm = iv).",
-          "遇到调外和弦即兴时不必丢掉整张音阶地图，只需在该小节<b>精准点亮那个新变音</b>（如 C 调里 E7 弹 G♯、Fm 弹 A♭）。")
-     ]),
-
-    # ── G15 扒歌与曲式 ──
-    ("g15-form", "流行曲式（主副歌、AABA、分节歌）与扒歌流程", "Popular Song Forms & Standard Transcription Workflow",
-     "https://viva.pressbooks.pub/openmusictheory/chapter/intro-to-form-in-popular-music/",
-     "双语精读 · 对应 OMT: Form in Popular Music", [
-         ("p", "Three core popular forms: <b>Verse–Chorus</b> (with optional pre-chorus and contrasting bridge), <b>AABA</b> (32-bar classic/jazz standard form), and <b>Strophic</b> (repeating section such as 12-bar blues). Choruses typically ground the tonic chord with tighter harmonic rhythm.",
-          "三大流行曲式：<b>主歌–副歌</b>（常配预副歌蓄力与桥段对比）、<b>AABA</b>（32 小节标准曲）、<b>分节歌</b>（如 12 小节布鲁斯反复）。副歌常直接落地主和弦、和声更规整，桥段常去往新和声区。"),
-         ("p", "Reliable transcription starts with your ears, not internet TABs: sing the melody first → locate tonic & bass movement → slow down hard phrases in Transcribe!/Soundslice → notate TAB + Roman numerals/degrees relative to each chord.",
-          "高效扒歌永远从耳朵出发而非盲搜误差极高的网络 TAB：先能哼唱 → 定调找低音 → 用减速工具分段抓音高节奏 → 记下 TAB 与每个强拍相对和弦的级数。")
      ]),
 
     # ── 补充：5 篇名师与经典教材实战双语精读卡（免跳外网直接读透）──
@@ -305,13 +127,13 @@ for key, zh_t, en_t, url, src, blocks in CARDS:
         "src": src,
         "u": url,
         "verbatim": False,
-        "credit": "课程核心双语精读（依据 Open Music Theory v2 与电吉他实用乐理体系精编）。点右下方链接可直达原教材整章对照。",
+        "credit": "电吉他指板与名师实战双语精读（与上面嵌页的 OMT 大学乐理原文互补，涵盖指板几何、CAGED、壳和弦与大师手法）。可切换中/英与术语悬停。",
         "h": f'<h4><span class="en">{html.escape(en_t)}</span><span class="zh">{html.escape(zh_t)}</span></h4>' + body
     }
 
 header = (
-    "// G3～G15 课程核心双语精读卡片（由 build/gen_reading_ext.py 生成，与 data-reading.js 合并进 window.READING）\n"
-    "// 每条带英文对照、术语悬停释义与原教材直达链接\n"
+    "// G3～G15 电吉他指板与实战双语精读卡片（由 build/gen_reading_ext.py 生成，与 data-reading.js 合并进 window.READING）\n"
+    "// 大学乐理正文原文由 data-reading.js 提供；本文件保留吉他指板几何与名师实战核心卡片\n"
 )
 OUT.write_text(header + "window.READING = Object.assign(window.READING || {}, " + json.dumps(out_obj, ensure_ascii=False, indent=2) + ");\n", encoding="utf-8")
 print("Generated", len(out_obj), "bilingual reading cards in", OUT)

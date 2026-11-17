@@ -1,5 +1,5 @@
 // 离线缓存 Service Worker（PWA 支持，手机添加到主屏幕后可脱机秒开）
-const CACHE_NAME = "guitar-theory-pwa-v2";
+const CACHE_NAME = "guitar-theory-pwa-v3";
 const CORE_ASSETS = [
   "./",
   "./index.html",

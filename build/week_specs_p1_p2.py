@@ -29,7 +29,13 @@ WEEK_P1_P2 = {
                     "text": "琴放在腿上从头走完整份讲义。①②⑤ 和第 3 节交互实验室要逐个点 ▶ 听并在琴上按出；③④ 先快速扫过，明天读双语精读卡片时细抠。",
                     "anchors": [["map", "1 全局地图"], ["c1", "① 音程的两半"], ["c2", "② 12 个半音程表"], ["c5", "⑤ 指板相邻弦形状"], ["lab", "3 指板音程形状实验室"]]
                 },
-                "reading": [],
+                "reading": [{
+                    "time": "15 分钟", "title": "OMT 音程原文（上）：音程概念、度数与性质",
+                    "links": [{"res": "omtIntervals", "note": "OMT Intervals 原章直达"}],
+                    "keys": ["int-intro", "int-size", "int-qual"],
+                    "look": ["字母度数（Size）和半音性质（Quality）怎么分开算", "为什么纯音程家族（1/4/5/8）和大小音程家族（2/3/6/7）互不混用"],
+                    "try": "把今天讲义里的 ① ② 和这三节 OMT 原文对照看，每读完一节就在页面末尾勾上“读完了”。"
+                }],
                 "questionsTime": "",
                 "questions": [
                     "音程名字的“度数”和“性质”各由什么决定？为什么不存在“纯三度”或“大五度”？",
@@ -79,10 +85,10 @@ WEEK_P1_P2 = {
                 "warm": {"time": "5 分钟", "cmd": "/quiz 三层 音程度数与 3–2 弦偏移", "text": "检验能不能不加思索弹出 4–3 弦和 3–2 弦的 M3 与 P5。"},
                 "lesson": {"time": "", "text": "精读前先回看讲义 ③ ④ ⑥ 核对概念：", "anchors": [["c3", "③ 等音程"], ["c4", "④ 音程转位"], ["c6", "⑥ 协和与不协和"], ["reading", "6 读原资料指南"]]},
                 "reading": [{
-                    "time": "25 分钟", "title": "音程核心规范、转位与等音程",
-                    "links": [{"res": "omtIntervals", "note": "OMT 原章：精读 Specific Intervals 与 Inversion"}, {"res": "mtn33", "note": "转位速览"}, {"res": "aug", "note": "建议配合 Scotty West 第 3～5 课"}],
-                    "keys": ["g3-int-name", "g3-int-inv"],
-                    "look": ["字母度数和半音性质各自负责什么（为什么 C–D♯ 与 C–E♭ 不同）", "转位度数相加为何等于 9，大小增减纯各自怎么变", "三全音拼成增四度 vs 减五度时解决方向有什么区别"],
+                    "time": "25 分钟", "title": "OMT 音程原文（下）：大音阶推算法、增减与转位",
+                    "links": [{"res": "omtIntervals", "note": "OMT 原章：精读 Major Scale Method、增减音程与转位"}, {"res": "mtn33", "note": "转位速览"}, {"res": "aug", "note": "建议配合 Scotty West 第 3～5 课"}],
+                    "keys": ["int-majmethod", "int-augdim", "int-inv"],
+                    "look": ["用大调音阶当作“尺子”快速判断任意音程的性质（先想上方音在不在下方音的大调里）", "增音程与减音程怎么从纯/大小音程微调半音得到", "转位度数相加为何等于 9，大小增减纯各自怎么变"],
                     "skip": "复音程（9、11、13 度）今天只需知道减 7 即可换算回单音程，G6 讲扩展音和弦时再细练。",
                     "try": "在吉他 5 弦 3 品 C → 4 弦 2 品 E 弹大三度；再把 C 挪高八度到 3 弦 5 品，弹 4 弦 2 品 E → 3 弦 5 品 C，亲耳听大三度转位成小六度。"
                 }],
@@ -114,8 +120,8 @@ WEEK_P1_P2 = {
                 "songs": [{"id": "s07", "how": "在 5 弦 3 品 C 弹到 4 弦 4 品 F♯，停半秒听三全音悬空，再滑上 4 弦 5 品 G 感受释放。"}],
                 "drillTime": "10 分钟",
                 "drillNote": "在本站「练耳与节奏」开“基础 5 种”连续做 20 题，记录正确率变化。",
-                "evening": {"time": "5 分钟", "cmd": "/quiz 等音程与音程转位", "items": ["完成上面 3 问与自测", "把双语卡片勾上“读完了”", "勾掉练习 2"]},
-                "done": ["两张双语精读卡勾上已读", "12 音程参考曲表制作完毕", "练耳基础 5 种记录成绩", "一条复盘日志"]
+                "evening": {"time": "5 分钟", "cmd": "/quiz 等音程与音程转位", "items": ["完成上面 3 问与自测", "把三节 OMT 原文勾上“读完了”", "勾掉练习 2"]},
+                "done": ["三节 OMT 原文勾上已读", "12 音程参考曲表制作完毕", "练耳基础 5 种记录成绩", "一条复盘日志"]
             },
             {
                 "title": "隔弦形状、先唱后弹与练耳过 80%",
@@ -132,10 +138,10 @@ WEEK_P1_P2 = {
                 "warm": {"time": "5 分钟", "cmd": "/quiz 三层 音程转位与等音程", "text": "抽查转位口诀与增四度/减五度解决区别。"},
                 "lesson": {"time": "", "text": "回顾讲义 ⑤ 和第 5 节分歧点：", "anchors": [["c5", "⑤ 指板相邻弦形状"], ["choices", "5 分歧点对照"], ["lab", "3 指板音程形状实验室"]]},
                 "reading": [{
-                    "time": "25 分钟", "title": "吉他指板音程几何规律与练耳突破",
-                    "links": [{"res": "tonedearInt", "note": "ToneDear 音程专项"}, {"res": "mtnExFretInt", "note": "musictheory.net 指板音程识别"}],
-                    "keys": ["g3-int-fret"],
-                    "look": ["为什么向高音弦挪一根 = 减 5 半音（过 3–2 弦只减 4 半音）", "隔一根弦（如 6→4 弦、5→3 弦）时同品正好是什么音程"],
+                    "time": "25 分钟", "title": "OMT 协和与不协和音程 & 吉他指板音程几何",
+                    "links": [{"res": "omtIntervals", "note": "OMT 原章：Consonance and Dissonance"}, {"res": "tonedearInt", "note": "ToneDear 音程专项"}, {"res": "mtnExFretInt", "note": "musictheory.net 指板音程识别"}],
+                    "keys": ["int-cons", "g3-int-fret"],
+                    "look": ["古典乐理为什么把三度六度归为不完全协和、纯四度在双声部中视为不协和", "为什么向高音弦挪一根 = 减 5 半音（过 3–2 弦只减 4 半音）", "隔一根弦（如 6→4 弦、5→3 弦）时同品正好是什么音程"],
                     "try": "在 6 弦 5 品 A 与 4 弦 5 品 G 同时拨响，记住“隔一弦同品 = 小七度”；4 弦挪到 6 品 G♯ 就是大七度，7 品 A 就是八度。"
                 }],
                 "questionsTime": "",
@@ -251,7 +257,13 @@ WEEK_P1_P2 = {
                     "text": "重点走完 ① ② ③ ⑤ 和第 3 节交互指板（点开“C 大调全指板”和“G 大调把位”预设）。",
                     "anchors": [["map", "1 全局地图"], ["c1", "① 公式与对称四音列"], ["c2", "② 音级名称与导音"], ["lab", "3 交互指板与伴奏实验室"]]
                 },
-                "reading": [],
+                "reading": [{
+                    "time": "15 分钟", "title": "OMT 大调原文（上）：大调公式与对称四音列",
+                    "links": [{"res": "omtMajor", "note": "OMT Major Scales 原章直达"}],
+                    "keys": ["maj-intro", "maj-scale"],
+                    "look": ["W–W–H–W–W–W–H 全半音模型与八度内半音级数位置（3–4、7–8）", "为什么拿上一个调的后半四音列作下半段必然生出下一调"],
+                    "try": "把刚刚在 1 弦、5 弦弹过的单弦品格差和 OMT 的大调音阶原文一一对齐。"
+                }],
                 "questionsTime": "",
                 "questions": [
                     "大调音阶的全半音公式是什么？为什么说它由两个相同的四音列组成？",
@@ -298,10 +310,10 @@ WEEK_P1_P2 = {
                 "warm": {"time": "5 分钟", "cmd": "/quiz 三层 大调公式与级数思维", "text": "考单弦大调品位推导及为什么 7 级最想回家。"},
                 "lesson": {"time": "", "text": "先看讲义 ③ ④ ⑤ 和第 5 节 CAGED vs 3NPS 对比：", "anchors": [["c3", "③ 调号规则"], ["c5", "⑤ 两把位与 CAGED/3NPS"], ["choices", "5 分歧点对照"], ["reading", "6 读原资料指南"]]},
                 "reading": [{
-                    "time": "25 分钟", "title": "大调四音列、音级名称与调号规则",
+                    "time": "25 分钟", "title": "OMT 大调原文（下）：音级名称、导音与调号规则",
                     "links": [{"res": "omtMajor", "note": "OMT 原章：Major Scales & Key Signatures"}, {"res": "mtn21", "note": "The Major Scale 互动课"}, {"res": "aug", "note": "建议配合 Scotty West 第 6～7 课"}],
-                    "keys": ["g4-maj-tetra", "g4-maj-deg"],
-                    "look": ["为什么把 C 大调后半四音列拿来做起点必然生出 F♯", "升号顺序 F C G D A E B 与降号顺序 B E A D G C F 的速算口诀", "为什么 F 大调必须写 B♭ 不能写 A♯"],
+                    "keys": ["maj-deg", "maj-ksig"],
+                    "look": ["七个音级名称与导音（Leading Tone）向主音解决的张力", "升号顺序 F C G D A E B 与降号顺序 B E A D G C F 的速算口诀", "为什么自然音阶七个字母必须各用一次（F 大调写 B♭ 不写 A♯）"],
                     "skip": "冷门大调如 C♯ 大调、C♭ 大调（7 个升降号）知道怎么推即可，实战几乎一律写成等音调 D♭ 或 B 大调。",
                     "try": "用讲义第 3 节交互指板分别点开“G 大调 E 型把位”和“D 大调 A 型把位”，切到“级数”模式对照每根弦有几个音。"
                 }],
@@ -351,9 +363,9 @@ WEEK_P1_P2 = {
                 "warm": {"time": "5 分钟", "cmd": "/quiz 三层 调号速算与大调把位", "text": "10 秒抽查 4 个冷门调（B、E♭、D♭、F♯）。"},
                 "lesson": {"time": "", "text": "回顾讲义 ④ 并去主站「指板与五度圈」把五度圈 12 个调点一遍：", "anchors": [["c4", "④ 五度圈底层逻辑"], ["c5", "⑤ 两把位与 CAGED/3NPS"]]},
                 "reading": [{
-                    "time": "25 分钟", "title": "五度圈几何规律与吉他实战应用",
-                    "links": [{"res": "wikiCircle", "note": "Wikipedia: Circle of Fifths"}, {"res": "muted", "note": "Muted.io 交互五度圈"}, {"res": "mtn25", "note": "Key Signature Calculation"}],
-                    "keys": ["g4-cof-use"],
+                    "time": "25 分钟", "title": "OMT 五度圈原文 & 吉他 CAGED / 3NPS 应用",
+                    "links": [{"res": "omtMajor", "note": "OMT 五度圈原节"}, {"res": "wikiCircle", "note": "Wikipedia: Circle of Fifths"}, {"res": "muted", "note": "Muted.io 交互五度圈"}, {"res": "mtn25", "note": "Key Signature Calculation"}],
+                    "keys": ["maj-cof", "g4-cof-use"],
                     "look": ["顺时针纯五度加升号 vs 逆时针纯四度加降号", "五度圈相邻两调为什么只差一个音", "在吉他上标准调弦 E–A–D–G 与五度圈的神奇重合"],
                     "try": "打开本站「指板与五度圈」页，连续点击五度圈上的 C → G → D → A，观察每次多出的那唯一一个新升号。"
                 }],
@@ -385,7 +397,7 @@ WEEK_P1_P2 = {
                 "songs": [{"id": "s14", "how": "如果不用 Capo 7，直接用 E 型或 A 型横按在 A 大调第 5 品把位弹一遍主歌进行；并用嘴数出桥段 11/8 + 4/4 + 7/8 的不规则拍子变化。"}],
                 "drillTime": "10 分钟",
                 "drillNote": "打开本站「练耳与节奏」→ 功能级数，用 1/3/5 练耳 5 分钟，体会主和弦音的稳定性。",
-                "evening": {"time": "5 分钟", "cmd": "/quiz 五度圈应用与调性关系", "items": ["勾掉 g4-cof-use 卡片", "勾掉循环第 4 步和练习 3"]},
+                "evening": {"time": "5 分钟", "cmd": "/quiz 五度圈应用与调性关系", "items": ["勾掉 OMT 五度圈原文与吉他应用卡", "勾掉循环第 4 步和练习 3"]},
                 "done": ["1 分钟默写五度圈达标", "制作一页大调与五度圈速查表", "勾完循环第 4 步", "一条复盘日志"]
             },
             {
@@ -469,7 +481,13 @@ WEEK_P1_P2 = {
                     "text": "琴放腿上走完整份讲义。①②④⑤ 的 ▶ 按钮逐个听一遍；第 3 节切开 C/A/G/E/D 五个预设先看个大概，明天后天再细练。",
                     "anchors": [["map", "1 全局地图"], ["c1", "① 四种三和弦"], ["c2", "② 转位与三弦组"], ["c5", "⑤ 五度强力和弦"], ["lab", "3 交互指板与伴奏实验室"]]
                 },
-                "reading": [],
+                "reading": [{
+                    "time": "15 分钟", "title": "OMT 三和弦原文（上）：定义与四种三和弦性质",
+                    "links": [{"res": "omtTriads", "note": "OMT Triads 原章直达"}],
+                    "keys": ["tri-intro", "tri-def", "tri-qual"],
+                    "look": ["如何从根音往上数两个三度来定义大、小、减、增三和弦", "四种三和弦的音程间隔差异和听觉稳定度对比"],
+                    "try": "对照 OMT 原文例谱在 3-2-1 弦把大、小、减、增依次按一遍并单音报出 3/5 音的升降。"
+                }],
                 "questionsTime": "",
                 "questions": [
                     "大三、小三、减三、增三和弦各自怎么叠出来？用 1 3 5 符号各怎么写？",
@@ -516,10 +534,10 @@ WEEK_P1_P2 = {
                 "warm": {"time": "5 分钟", "cmd": "/quiz 三层 四种三和弦与转位", "text": "随机抽问任意和弦（如 Bm、F°、A+）的组成音和 3-2-1 弦第一转位位置。"},
                 "lesson": {"time": "", "text": "先看讲义 ② 的 2-3-4 弦位置对照：", "anchors": [["c2", "② 转位与三弦组"], ["c3", "③ CAGED 逻辑"]]},
                 "reading": [{
-                    "time": "25 分钟", "title": "三和弦构造、转位与低音符号规则",
+                    "time": "25 分钟", "title": "OMT 三和弦与转位原文：和弦记号与低音规则",
                     "links": [{"res": "omtTriads", "note": "OMT Triads 整章"}, {"res": "omtInversion", "note": "OMT Inversion 整章"}, {"res": "mtn42", "note": "Triad Inversion 图解"}],
-                    "keys": ["g5-triad-q"],
-                    "look": ["怎么通过数“大三+小三”快速判定任何三个音组成的和弦性质", "为什么第二转位（如 C/G）在古典与流行里功能不一样", "在 2-3-4 弦（无 3–2 弦外框）和 3-4-5 弦（完全纯四度调弦！）上的形状为什么和 3-2-1 弦不一样"],
+                    "keys": ["tri-sym", "tri-majmin", "inv-tri"],
+                    "look": ["OMT 怎么通过数大三度+小三度与和弦符号写大/小/减/增三和弦", "为什么转位只看最低音是谁，以及低音变化怎么在流行谱面写成斜线和弦", "在 2-3-4 弦（无 3–2 弦外框）和 3-4-5 弦（完全纯四度调弦！）上的形状为什么和 3-2-1 弦不一样"],
                     "try": "把昨天学的 3-2-1 弦 C 原位（5-5-3）往低音弦平移成 2-3-4 弦（5-5-5 是 C/G）和 3-4-5 弦（3-2-0 是 C 原位），体会跨过 3–2 弦时 2 弦需要升高 1 品的规律。"
                 }],
                 "questionsTime": "",
@@ -550,7 +568,7 @@ WEEK_P1_P2 = {
                 "songs": [{"id": "s15", "how": "弹出 C♯m–A–B–F♯m（1–5–9 跨度指型），然后试着在里面找回失去的三音位置补上去，感受色彩从“极简冷峻”变成“饱满情绪”。"}],
                 "drillTime": "10 分钟",
                 "drillNote": "随机挑一个大三和弦（比如 G 或 D），在 2-3-4 弦上从小品位一路弹完三个转位。",
-                "evening": {"time": "5 分钟", "cmd": "/quiz 三弦组转位与 CAGED 切片", "items": ["勾掉 g5-triad-q 卡片", "记录 2-3-4 弦最顺手的转位"]},
+                "evening": {"time": "5 分钟", "cmd": "/quiz 三弦组转位与 CAGED 切片", "items": ["勾掉三节 OMT 三和弦原文", "记录 2-3-4 弦最顺手的转位"]},
                 "done": ["三组弦 × 3 转位指板图完整绘出", "C 的 CAGED 五指型走通", "一条复盘日志"]
             },
             {
@@ -602,8 +620,8 @@ WEEK_P1_P2 = {
                 "songs": [{"id": "s12", "how": "在 5～10 品之间弹《Knockin' on Heaven's Door》：G(5-8品 D型或7-10品?)、D(5-7品 A型)、Am(5-8品 Em型)、C(5-8品 G型或8-10品 E型)，体验手不离开中间把位弹整首歌。"}],
                 "drillTime": "10 分钟",
                 "drillNote": "到 musictheory.net 做 5 分钟指板和弦识别练习（Fretboard Chord Identification）。",
-                "evening": {"time": "5 分钟", "cmd": "/quiz CAGED 改造小三与截取策略", "items": ["勾掉 g5-caged 阅读卡片与循环第 4 步", "勾掉练习 2 和练习 3"]},
-                "done": ["g5-caged 精读完毕", "C 与 A 的大/小 CAGED 全指板位置过关", "一条复盘日志"]
+                "evening": {"time": "5 分钟", "cmd": "/quiz CAGED 改造小三与截取策略", "items": ["勾掉 CAGED 逻辑精读卡与循环第 4 步", "勾掉练习 2 和练习 3"]},
+                "done": ["CAGED 逻辑卡片精读完毕", "C 与 A 的大/小 CAGED 全指板位置过关", "一条复盘日志"]
             },
             {
                 "title": "声部连接：只用 4 个品位弹完 I–IV–V",
@@ -739,7 +757,13 @@ WEEK_P1_P2 = {
                     "text": "琴放在手边走完 ① ② ③ ④，逐个点击五种七和弦的 ▶ 按钮对比明暗与张力。",
                     "anchors": [["map", "1 全局地图"], ["c1", "① 五种核心七和弦"], ["c2", "② 壳和弦 1-3-7"], ["c3", "③ 扩展音与 sus/add"], ["lab", "3 交互指板与伴奏实验室"]]
                 },
-                "reading": [],
+                "reading": [{
+                    "time": "15 分钟", "title": "OMT 七和弦原文：定义与五种核心性质",
+                    "links": [{"res": "omtSeventh", "note": "OMT Seventh Chords 原章直达"}],
+                    "keys": ["sev-intro", "sev-def", "sev-qual"],
+                    "look": ["五种核心七和弦（maj7、7、m7、m7♭5、dim7）各自的三和弦底座+七度音程组合", "全减七与半减七的记谱区分和声音紧张感差异"],
+                    "try": "跟着 OMT 五种七和弦分类表，在 6 弦 5 品 A 上依次改一个音弹完四种，再按 dim7。"
+                }],
                 "questionsTime": "",
                 "questions": [
                     "五种核心七和弦（maj7、7、m7、m7♭5、dim7）分别由哪几个级数组成？",
@@ -786,11 +810,11 @@ WEEK_P1_P2 = {
                 "warm": {"time": "5 分钟", "cmd": "/quiz 三层 七和弦指型微调", "text": "抽查从 maj7 连续变到 dim7 的步骤。"},
                 "lesson": {"time": "", "text": "读前先看讲义 ② 壳和弦示例与第 3 节 C 属七/大七预设：", "anchors": [["c2", "② 壳和弦 1-3-7"], ["lab", "3 交互指板与伴奏实验室"]]},
                 "reading": [{
-                    "time": "25 分钟", "title": "七和弦符号默认规则与三全音解决",
-                    "links": [{"res": "omtSeventh", "note": "OMT Seventh Chords"}, {"res": "omtSymbols", "note": "OMT Chord Symbols"}, {"res": "jensLarsen", "note": "Jens Larsen 壳和弦应用"}],
-                    "keys": ["g6-sev-types"],
-                    "look": ["为什么不写 maj 或 m 时，“7”、“9”、“11”、“13”默认都带小七度 ♭7", "属七和弦里的 3 音和 ♭7 音如何构成三全音", "Cdim7 里 𝄫7 为什么不能直接写成大六度 6"],
-                    "try": "在吉他上只弹 4 弦 5 品 G 和 3 弦 4 品 B（不对，G7 里的 B 和 F 是 4 弦 3 品 F 和 3 弦 4 品 B），紧接着同时把 F 降半音到 E(4弦2品)、B 升半音到 C(3弦5品)，亲耳听 C7/G7 三全音怎么瞬间归位。"
+                    "time": "25 分钟", "title": "OMT 和弦记号规范 & 爵士省略音与声部连接",
+                    "links": [{"res": "omtSeventh", "note": "OMT Seventh Chords"}, {"res": "omtSymbols", "note": "OMT Chord Symbols"}, {"res": "omtJazzVoicings", "note": "OMT Jazz Voicings"}, {"res": "jensLarsen", "note": "Jens Larsen 壳和弦应用"}],
+                    "keys": ["csym-intro", "jv-omit", "jv-vl"],
+                    "look": ["流行爵士和弦符号为什么能一眼说明基础三和弦、七度音与延伸音", "为什么吉他手在编配壳和弦/爵士按法时可以省略 5 音甚至根音（绝不能省 3 和 7 音）", "属七和弦里的 3 音和 ♭7 音如何构成三全音并做最省力的半音下行解决"],
+                    "try": "在吉他上弹 4 弦 3 品 F 和 3 弦 4 品 B（G7 三全音），紧接着把 F 降半音到 E(4弦2品)、B 升半音到 C(3弦5品)，亲耳听 G7 三全音怎么瞬间归位到 C。"
                 }],
                 "questionsTime": "",
                 "questions": [
@@ -820,8 +844,8 @@ WEEK_P1_P2 = {
                 "songs": [{"id": "s15", "how": "如果把《Message in a Bottle》的 C♯m 改用 5 弦壳和弦弹，对比原曲 1-5-9 开放跨度指型的区别。"}],
                 "drillTime": "10 分钟",
                 "drillNote": "在本站「练耳与节奏」开五种七和弦做 20 题听辨，对比扫弦与分解两种听法。",
-                "evening": {"time": "5 分钟", "cmd": "/quiz 壳和弦与引导声部", "items": ["勾掉 g6-sev-types 卡片", "勾掉练习 2"]},
-                "done": ["g6-sev-types 精读完成", "A7-D7-E7 与 Am7-D7-Gmaj7 壳和弦流畅弹出", "一条复盘日志"]
+                "evening": {"time": "5 分钟", "cmd": "/quiz 壳和弦与引导声部", "items": ["勾掉本节三节 OMT 原文", "勾掉练习 2"]},
+                "done": ["OMT 和弦记号与声部连接原文精读完成", "A7-D7-E7 与 Am7-D7-Gmaj7 壳和弦流畅弹出", "一条复盘日志"]
             },
             {
                 "title": "扩展音（9/11/13）、sus/add 与 Oolimo 解码",
@@ -838,10 +862,10 @@ WEEK_P1_P2 = {
                 "warm": {"time": "5 分钟", "cmd": "/quiz 三层 壳和弦与七和弦规则", "text": "速问 5 弦根音壳和弦变化与三全音方向。"},
                 "lesson": {"time": "", "text": "看讲义 ③ ④ 和第 5 节对比表：", "anchors": [["c3", "③ 扩展音与 sus/add"], ["c4", "④ Hendrix 和弦与斜线"], ["choices", "5 分歧点对照"]]},
                 "reading": [{
-                    "time": "25 分钟", "title": "壳和弦原理与复杂符号规则",
-                    "links": [{"res": "omtJazzVoicings", "note": "OMT Jazz Voicings"}, {"res": "oolimo", "note": "Oolimo 指板和弦反查神器"}, {"res": "tedGreene", "note": "Ted Greene 高阶和弦档案"}],
-                    "keys": ["g6-shell"],
-                    "look": ["为什么吉他只有 4 根手指却能弹响 C9 或 C13？（5 音甚至根音都可以省，唯独 3、7、扩展音必留）", "C6（C E G A）和 Am7（A C E G）怎么靠低音区分", "斜线和弦哪时表示转位，哪时表示复合低音（如 D/C、F/G）"],
+                    "time": "25 分钟", "title": "OMT 扩展音与 sus/add 规范 + 吉他壳和弦实战",
+                    "links": [{"res": "omtSymbols", "note": "OMT Chord Symbols（Extensions / add & sus）"}, {"res": "omtJazzVoicings", "note": "OMT Jazz Voicings"}, {"res": "oolimo", "note": "Oolimo 指板和弦反查神器"}, {"res": "tedGreene", "note": "Ted Greene 高阶和弦档案"}],
+                    "keys": ["csym-ext", "csym-addsus", "g6-shell"],
+                    "look": ["为什么 9/11/13 和弦默认包含小七度，而 add9 与 sus2/sus4 各自不含七音或取代三音", "为什么吉他只有 4 根手指却能弹响 C9 或 C13？（5 音甚至根音都可以省，唯独 3、7、扩展音必留）", "斜线和弦哪时表示转位，哪时表示复合低音（如 D/C、F/G）"],
                     "try": "在吉他按出流行的 D9sus4（例如 F/G：3-x-3-2-1-1 或 5 弦 G 根音的 x-10-10-10-10-x），再对照 Oolimo 看看除了 G9sus4 它还叫什么名字！"
                 }],
                 "questionsTime": "",
@@ -872,8 +896,8 @@ WEEK_P1_P2 = {
                 "songs": [{"id": "s18", "how": "听《Something》开头主歌前 2 小节，用吉他先按出 2-3-4 弦上的 C–Cmaj7–C7，准备明天精细练习半音下行。"}],
                 "drillTime": "10 分钟",
                 "drillNote": "随机挑一个复杂符号（如 Gm9、Fmaj7、B7sus4），10 秒内先口头报出组成音。",
-                "evening": {"time": "5 分钟", "cmd": "/quiz 扩展音与和弦符号解码", "items": ["勾掉 g6-shell 卡片与循环第 4 步", "勾掉练习 3"]},
-                "done": ["g6-shell 精读完毕", "10 个复杂符号解码表完成", "一条复盘日志"]
+                "evening": {"time": "5 分钟", "cmd": "/quiz 扩展音与和弦符号解码", "items": ["勾掉本节扩展音与壳和弦精读 + 循环第 4 步", "勾掉练习 3"]},
+                "done": ["OMT 扩展音与壳和弦精读完毕", "10 个复杂符号解码表完成", "一条复盘日志"]
             },
             {
                 "title": "G6 验收：内声部半音线与 10 秒解码",

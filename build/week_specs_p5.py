@@ -23,7 +23,13 @@ WEEK_P5 = {
                     "text": "走完讲义 ①～④，打开第 3 节交互指板在“A7 4-7 品”和“D7 4-7 品”之间来回点击，亲眼看红圈 3 音/7 音只差 1 品的神奇交错。",
                     "anchors": [["map", "1 全局地图"], ["c1", "① 强拍和弦音与外音"], ["c2", "② 引导线 3 音 & 7 音"], ["c3", "③ 趋近与上下包围"], ["lab", "3 交互指板与伴奏实验室"]]
                 },
-                "reading": [],
+                "reading": [{
+                    "time": "15 分钟", "title": "OMT 装饰音原文（上）：和弦外音总览与级进装饰音",
+                    "links": [{"res": "omtEmbellish", "note": "OMT Embellishing Tones 原章直达"}],
+                    "keys": ["emb-over", "emb-step"],
+                    "look": ["怎么通过“怎么进入、怎么离开”把外音分类成经过音（Passing）与邻音（Neighbor）", "强拍外音与弱拍外音在和声推动力上的差异"],
+                    "try": "把今天练的 A7–D7 半音趋近句对照 OMT 级进装饰音图例看一遍。"
+                }],
                 "questionsTime": "",
                 "questions": [
                     "为什么五声音阶弹得很熟的人，一碰到快速和弦进行却经常听起来和伴奏各弹各的？",
@@ -58,7 +64,7 @@ WEEK_P5 = {
             {
                 "title": "把琶音挂在 CAGED 上走 Am7–D7–Gmaj7（精读 OMT）",
                 "lead": "今天开始第 4 步精读 OMT「Embellishing Tones」，弄透经过音、邻音、倚音等非和弦音的规范用法；上琴把 Am7–D7–Gmaj7 的四音琶音挂进 5 弦根音把位，70 BPM 四分音符稳稳跟住和弦走！",
-                "loopNote": "今天精读 g13-embellish 卡片并完成练习 2，明天读动机卡片后勾选第 4 步。",
+                "loopNote": "今天精读 OMT 跳进装饰音与和弦音阶基础原文并完成练习 2，明天读旋律与乐句原文后勾选第 4 步。",
                 "schedule": [
                     ["5 分钟", "三层递进：引导线与包围", ""],
                     ["10 分钟", "日练：A7–D7 引导线升级到全 12 小节布鲁斯", ""],
@@ -70,10 +76,10 @@ WEEK_P5 = {
                 "warm": {"time": "5 分钟", "cmd": "/quiz 三层 引导线与趋近包围", "text": "速问 C7→F7 的两条半音引导线及上下包围指法。"},
                 "lesson": {"time": "", "text": "回顾讲义 ① ③ 并看第 5 节“Chord-Scale 常见陷阱”：", "anchors": [["c1", "① 强拍和弦音与外音"], ["choices", "5 分歧点对照"]]},
                 "reading": [{
-                    "time": "25 分钟", "title": "修饰音分类、CAGED 琶音网与引导线原则",
+                    "time": "25 分钟", "title": "OMT 修饰音（下）与和弦-音阶理论基础原文",
                     "links": [{"res": "omtEmbellish", "note": "OMT Embellishing Tones 整章"}, {"res": "omtiiVI", "note": "OMT ii–V–I 声部链接"}, {"res": "jensLarsen", "note": "Jens Larsen ii-V-I 吉他琶音课"}],
-                    "keys": ["g13-embellish"],
-                    "look": ["经过音（Passing）、邻音（Neighbor）、倚音（Appoggiatura）、先现音（Anticipation）各自怎么连接和弦音", "为什么强拍上也可以偶尔弹非和弦音（倚音）并听起来极动人", "如何不用死记孤立琶音，直接拆开你熟记的 CAGED 和弦指型得琶音"],
+                    "keys": ["emb-leap", "cs-basic"],
+                    "look": ["跳进切入/离开的非和弦音（倚音 Appoggiatura、先现音 Anticipation、逃音）如何创造表情", "和弦-音阶理论（Chord-Scale Theory）怎么把爵士和弦符号映射为对应音阶与避用音", "如何不用死记孤立琶音，直接拆开你熟记的 CAGED 和弦指型得琶音"],
                     "try": "按住一个 C 型 Gmaj7 或 A 型 Am7 横按，把里面 6 根弦或 5 根弦按住的音依次单音拨响，再加入隔壁的 7 音，亲眼看“和弦按法就是静态的琶音”。"
                 }],
                 "questionsTime": "",
@@ -104,13 +110,13 @@ WEEK_P5 = {
                 "songs": [{"id": "s45", "how": "在 E 小调《Little Wing》第一和弦 Em（12 品或开放把位）上，试着只按住 Em 高三弦，用无名指和小指做出 1～2 个双音击弦装饰（例如 3 弦 0→2、4 弦 2→4）。"}],
                 "drillTime": "10 分钟",
                 "drillNote": "每天把一个 CAGED 位置的三和弦+七和弦琶音按 70 BPM 从四分练到八分音符连续衔接。",
-                "evening": {"time": "5 分钟", "cmd": "/quiz 非和弦修饰音与把位内琶音连接", "items": ["勾掉 g13-embellish 卡片", "勾掉练习 2"]},
-                "done": ["g13-embellish 精读完成", "Am7–D7–Gmaj7 原位把位琶音连续走通", "一条复盘日志"]
+                "evening": {"time": "5 分钟", "cmd": "/quiz 非和弦修饰音与把位内琶音连接", "items": ["勾掉两节 OMT 修饰音与和弦音阶原文", "勾掉练习 2"]},
+                "done": ["OMT 修饰音与和弦音阶原文精读完成", "Am7–D7–Gmaj7 原位把位琶音连续走通", "一条复盘日志"]
             },
             {
                 "title": "动机发展：一个 2 小节动机撑起整段独奏",
-                "lead": "今天读完旋律与动机卡片（完成循环第 4 步），并通过练习 3 学习大师们最核心的秘密——怎么用一个极其简单的 2 小节小动机，靠重复、变节奏与随和弦改结尾音变成动人独奏！",
-                "loopNote": "今天读完 g13-motif 即可勾掉循环第 4 步，并完成练习 3。",
+                "lead": "今天读完 OMT 旋律与分句原文（完成循环第 4 步），并通过练习 3 学习大师们最核心的秘密——怎么用一个极其简单的 2 小节小动机，靠重复、变节奏与随和弦改结尾音变成动人独奏！",
+                "loopNote": "今天读完 OMT 旋律与分句原文即可勾掉循环第 4 步，并完成练习 3。",
                 "schedule": [
                     ["5 分钟", "三层递进：非和弦音与琶音连接", ""],
                     ["10 分钟", "日练：任选一段 ii–V–I 只用八分音符琶音走通", ""],
@@ -122,10 +128,10 @@ WEEK_P5 = {
                 "warm": {"time": "5 分钟", "cmd": "/quiz 三层 修饰音与把位内琶音", "text": "提问如何不从根音开始衔接琶音以及先现音作用。"},
                 "lesson": {"time": "", "text": "回顾讲义 ④ 并点击 ▶ 按钮听“同一个 4 音动机随和弦变形”：", "anchors": [["c4", "④ 动机发展"], ["drills", "4 上琴练习"]]},
                 "reading": [{
-                    "time": "25 分钟", "title": "旋律写作、乐句组织与动机发展",
+                    "time": "25 分钟", "title": "OMT 旋律写作与分句组织原文",
                     "links": [{"res": "omtMelody", "note": "OMT Melody and Phrasing"}, {"res": "fretscience", "note": "Fret Science Improv 101 动机思路"}],
-                    "keys": ["g13-motif"],
-                    "look": ["一个短短 3～5 个音的动机（Motif）靠哪四种手法就能发展成整段独奏", "为什么听众记住的是“轮廓（高低的形状与节奏）”而不是孤立复杂的音阶", "如何通过把动机的尾音改落在新和弦的 3 音上，既保留了统一性又完美贴合和声变化"],
+                    "keys": ["mel-intro"],
+                    "look": ["一个短短 3～5 个音的动机（Motif）在旋律组织中靠哪些手法演变成整段乐句", "为什么听众记住的是“轮廓（高低的形状与节奏）”而不是孤立复杂的音阶", "如何通过把动机的尾音改落在新和弦的 3 音上，既保留了统一性又完美贴合和声变化"],
                     "try": "用嘴哼一句超级简单的节奏（如“哒-哒-哒—，哒——”），拿吉他只在 A 小调 P1 框里对不同和弦弹出这同一个节奏轮廓！"
                 }],
                 "questionsTime": "",
@@ -156,8 +162,8 @@ WEEK_P5 = {
                 "songs": [{"id": "s52", "how": "听《Gravity》前奏与间奏独奏，挑出 John Mayer 反复出现的那一个两音/三音下滑动机，数一数他一共用不同节奏和把位变化了多少次。"}],
                 "drillTime": "10 分钟",
                 "drillNote": "每次即兴练习前 1 分钟强制自己先定一个小动机再开弹。",
-                "evening": {"time": "5 分钟", "cmd": "/quiz 旋律动机发展与和弦跟随", "items": ["勾掉 g13-motif 卡片与循环第 4 步", "勾掉练习 3"]},
-                "done": ["g13-motif 精读完毕", "完成 12 小节动机 6 次变奏录音", "一条复盘日志"]
+                "evening": {"time": "5 分钟", "cmd": "/quiz 旋律动机发展与和弦跟随", "items": ["勾掉 OMT 旋律与分句原文及循环第 4 步", "勾掉练习 3"]},
+                "done": ["OMT 旋律与分句原文精读完毕", "完成 12 小节动机 6 次变奏录音", "一条复盘日志"]
             },
             {
                 "title": "扒大师目标音乐句 & 录制和弦音布鲁斯（前导）",
@@ -292,7 +298,13 @@ WEEK_P5 = {
                     "text": "走完整份讲义 ① ② ③，把 ① ② 里的音频按钮全部听过一遍，记住副属“造新导音往下五度推”和借用“降级音染滤镜”的差别。",
                     "anchors": [["map", "1 全局地图"], ["c1", "① 副属和弦 V/x"], ["c2", "② 借用和弦 Mixture"], ["c3", "③ 半音中音与转调"], ["lab", "3 交互指板与伴奏实验室"]]
                 },
-                "reading": [],
+                "reading": [{
+                    "time": "15 分钟", "title": "OMT 离调与副属原文：什么是副属和弦（V/x）",
+                    "links": [{"res": "omtTonic", "note": "OMT Tonicization 原章直达"}],
+                    "keys": ["ton-intro", "ton-other"],
+                    "look": ["一个临时的 V/x 离调（Tonicization）怎样把大调的 ii、iii、iv、vi 等顺阶和弦变成临时目标", "副属和弦在乐谱记号和变音记号（如 C♯、F♯、G♯）上的规律"],
+                    "try": "把刚刚在 C 调弹的 C–A7–Dm、C–E7–Am、C–D7–G 对照 OMT 的离调标记规则在谱例上认出来。"
+                }],
                 "questionsTime": "",
                 "questions": [
                     "什么是副属和弦（V/x）？在 C 调里 D7、A7、E7、C7 各自是谁的副属？",
@@ -328,7 +340,7 @@ WEEK_P5 = {
             {
                 "title": "借用和弦（调式互换）：IV–iv–I 叹息线与精读",
                 "lead": "今天开始第 4 步精读 OMT「Tonicization」和「Modal Mixture」，攻克现代摇滚与流行乐最催泪、最史诗的和声手法——从同主音小调借和弦（♭III、iv、♭VI、♭VII），并做练习 2 亲耳感受叹息终止！",
-                "loopNote": "今天精读 g14-sec-dom 卡片并完成练习 2，明天读借用卡片后勾选第 4 步。",
+                "loopNote": "今天精读 OMT 调式互换（借用和弦）原文并完成练习 2，明天读离调与转调分界原文后勾选第 4 步。",
                 "schedule": [
                     ["5 分钟", "三层递进：副属和弦 V/x", ""],
                     ["10 分钟", "日练：在 D 调和 A 调弹全套副属进行", ""],
@@ -340,11 +352,11 @@ WEEK_P5 = {
                 "warm": {"time": "5 分钟", "cmd": "/quiz 三层 副属和弦与离调", "text": "速问 G 调、D 调下的 V/vi、V/V 与阻碍解决。"},
                 "lesson": {"time": "", "text": "看讲义 ② 与第 3 节的“C 同主音小调（借用来源）”指板预设：", "anchors": [["c2", "② 借用和弦 Mixture"], ["lab", "3 交互指板与伴奏实验室"]]},
                 "reading": [{
-                    "time": "25 分钟", "title": "副属离调与转调界线",
-                    "links": [{"res": "omtTonic", "note": "OMT Tonicization 整章"}, {"res": "omtModulation", "note": "OMT Extended Tonicization & Modulation"}],
-                    "keys": ["g14-sec-dom"],
-                    "look": ["一个孤立的 V/x 离调（Tonicization）和真转调（Modulation）怎么在听觉上界定", "为什么顺阶所有的大小调和弦里独独没有 V/vii°", "遇到“一串连续副属链（如 E7→A7→D7→G7→C）”时怎么顺畅读谱"],
-                    "try": "在吉他上弹一串五度链条副属和弦：<code>E7 → A7 → D7 → G7 → C</code>（都在 5–7 品壳和弦框内），听每一个属七都把你推向下一个新目标直到落进 C！"
+                    "time": "25 分钟", "title": "OMT 调式互换原文：同主音借用和弦与常见组合",
+                    "links": [{"res": "omtMixture", "note": "OMT Modal Mixture 整章"}, {"res": "omtTonic", "note": "OMT Tonicization"}],
+                    "keys": ["mix-intro", "mix-comm"],
+                    "look": ["大调如何从同主音小调借用降级音和弦（♭III、iv、♭VI、♭VII 等）", "常见调式互换进行的声部走向与 6–♭6–5 叹息感从何而来", "为什么副属链和借用和弦往往在同一首歌里联手制造戏剧转折"],
+                    "try": "在吉他上弹一串五度链条副属和弦：<code>E7 → A7 → D7 → G7 → C</code>（都在 5–7 品壳和弦框内），紧接着再来一组 <code>C → F → Fm → C</code> 对比这两种截然不同的离调感。"
                 }],
                 "questionsTime": "",
                 "questions": [
@@ -374,13 +386,13 @@ WEEK_P5 = {
                 "songs": [{"id": "s48", "how": "在 G 调横按弹一遍《Creep》的 G(3品) – B(7品) – C(8品) – Cm(8品)，同时盯住 3 弦走出的那条内声部线：D(4品)→D♯(8品)→E(9品)→E♭(8品)→D(7品? 回到 G 的 D)——整首歌的魂全在这条 3 弦半音线上！"}],
                 "drillTime": "10 分钟",
                 "drillNote": "把刚刚的 IV–iv–I 和 ♭VI–♭VII–I 移到 A 调和 G 调再各自弹一遍。",
-                "evening": {"time": "5 分钟", "cmd": "/quiz 借用和弦与叹息终止", "items": ["勾掉 g14-sec-dom 卡片", "勾掉练习 2"]},
-                "done": ["g14-sec-dom 精读完毕", "唱出并弹出 IV–iv–I 与 ♭VI–♭VII–I", "拆通《Creep》3 弦半音线", "一条复盘日志"]
+                "evening": {"time": "5 分钟", "cmd": "/quiz 借用和弦与叹息终止", "items": ["勾掉两节 OMT 调式互换原文", "勾掉练习 2"]},
+                "done": ["OMT 调式互换原文精读完毕", "唱出并弹出 IV–iv–I 与 ♭VI–♭VII–I", "拆通《Creep》3 弦半音线", "一条复盘日志"]
             },
             {
-                "title": "拆解经典调外曲目 & 调式互换全精读",
-                "lead": "今天读完 Modal Mixture 借用和弦与半音中音卡片（完成循环第 4 步），完成练习 3（深度拆解《Yesterday》《Creep》《Man in the Mirror》《While My Guitar》全部调外处理），同时总结 4 类调外识别卡。",
-                "loopNote": "今天读完 g14-mixture 即可勾掉循环第 4 步，同时完成练习 3。",
+                "title": "拆解经典调外曲目 & 离调与转调分界精读",
+                "lead": "今天读完 OMT 离调 vs 转调分界原文（完成循环第 4 步），完成练习 3（深度拆解《Yesterday》《Creep》《Man in the Mirror》《While My Guitar》全部调外处理），同时总结 4 类调外识别卡。",
+                "loopNote": "今天读完 OMT 离调与转调原文即可勾掉循环第 4 步，同时完成练习 3。",
                 "schedule": [
                     ["5 分钟", "三层递进：借用和弦与叹息线", ""],
                     ["10 分钟", "日练：听辨一段进行里突然出现的借用和弦", ""],
@@ -392,10 +404,10 @@ WEEK_P5 = {
                 "warm": {"time": "5 分钟", "cmd": "/quiz 三层 调式互换与借用", "text": "速问“C 调的 ♭III, iv, ♭VI, ♭VII 各自是什么和弦”，以及《Creep》双解。"},
                 "lesson": {"time": "", "text": "回顾讲义 ② ③ 和第 5 节“副属 vs 借用 vs 转调”对比：", "anchors": [["c2", "② 借用和弦"], ["c3", "③ 半音中音与转调"], ["choices", "5 分歧点对照"]]},
                 "reading": [{
-                    "time": "25 分钟", "title": "调式互换（借用）、半音化中音与即兴变音对策",
-                    "links": [{"res": "omtMixture", "note": "OMT Modal Mixture"}, {"res": "omtNeoR", "note": "OMT Neo-Riemannian（半音中音）"}, {"res": "davidBennett", "note": "David Bennett 借用和弦解析"}],
-                    "keys": ["g14-mixture"],
-                    "look": ["遇到任何同主音借用和弦或副属和弦时，独奏吉他手“精准换哪 1～2 个音”就能过关", "什么是半音化中音（Chromatic Mediant，例如 G→B 或 C→A♭，根音隔三度而改变大/小性质）", "在《While My Guitar Gently Weeps》中，主歌（A 小调）如何转进桥段（A 大调）"],
+                    "time": "25 分钟", "title": "OMT 延伸离调与转调原文：离调 vs 转调的听觉边界",
+                    "links": [{"res": "omtModulation", "note": "OMT Extended Tonicization & Modulation"}, {"res": "omtNeoR", "note": "OMT Neo-Riemannian（半音中音）"}, {"res": "davidBennett", "note": "David Bennett 借用和弦解析"}],
+                    "keys": ["modl-vs"],
+                    "look": ["一两小节短暂离调（Tonicization）与彻底建立新调中心（Modulation）如何从终止式和长度上界定", "遇到任何同主音借用和弦或副属和弦时，独奏吉他手“精准换哪 1～2 个音”就能过关", "在《While My Guitar Gently Weeps》中，主歌（A 小调）如何转进桥段（A 大调）"],
                     "try": "在吉他上弹两个根音隔大三度的大三和弦：<code>G – E♭</code> 或 <code>C – E</code>，听一下现代电影配乐（如 Hans Zimmer / 摇滚史诗）最爱用的“半音化中音”色彩冲击！"
                 }],
                 "questionsTime": "",
@@ -429,8 +441,8 @@ WEEK_P5 = {
                 ],
                 "drillTime": "10 分钟",
                 "drillNote": "随机翻一首你以前觉得“和弦乱七八糟看不懂”的歌谱，用副属+借用卡重新过一遍，你会大吃一惊。",
-                "evening": {"time": "5 分钟", "cmd": "/quiz 半音中音、转调与曲目剖析", "items": ["勾掉 g14-mixture 卡片与循环第 4 步", "勾掉练习 3"]},
-                "done": ["g14-mixture 精读完毕", "《调外和弦识别卡》整理完成", "勾完循环第 4 步", "一条复盘日志"]
+                "evening": {"time": "5 分钟", "cmd": "/quiz 半音中音、转调与曲目剖析", "items": ["勾掉 OMT 离调与转调原文及循环第 4 步", "勾掉练习 3"]},
+                "done": ["OMT 离调与转调原文精读完毕", "《调外和弦识别卡》整理完成", "勾完循环第 4 步", "一条复盘日志"]
             },
             {
                 "title": "G14 验收：含 ♭VII/副属进行的即兴变音实战",
@@ -513,7 +525,13 @@ WEEK_P5 = {
                     "text": "走完整份讲义 ① ② ③，把 6 步扒歌流程贴在桌面，同时读清毕业短曲的具体结构要求。",
                     "anchors": [["map", "1 全局地图"], ["c1", "① 6 步扒歌工作流"], ["c2", "② 流行三大曲式"], ["c3", "③ 毕业作品设计蓝图"]]
                 },
-                "reading": [],
+                "reading": [{
+                    "time": "15 分钟", "title": "OMT 流行曲式导言原文：常见歌曲段落角色",
+                    "links": [{"res": "omtFormPop", "note": "OMT Intro to Form in Popular Music"}],
+                    "keys": ["form-sec"],
+                    "look": ["流行歌里主歌、预副歌、副歌、桥段、尾奏各担什么结构职责", "听觉与和声能量曲线怎么区分哪个段落才是真正的“中心核心”"],
+                    "try": "拿起刚刚挑出来盲扒的歌曲片段，用 OMT 的段落标签标出它在整首歌的哪个功能位置。"
+                }],
                 "questionsTime": "",
                 "questions": [
                     "写出专业乐手标准扒歌流程的 6 个先后步骤。",
@@ -548,7 +566,7 @@ WEEK_P5 = {
             {
                 "title": "流行曲式精读（OMT）& 一页完整歌曲分析表",
                 "lead": "今天开始第 4 步精读 OMT「Popular Music Form」系列章节，完成昨天那段扒谱的收尾并写出一页专业的“整曲解剖分析表”（练习 2），看透一首歌从前奏到桥段的能量曲线。",
-                "loopNote": "今天精读 g15-form 卡片即可勾掉循环第 4 步，并完成练习 1 收尾与练习 2！",
+                "loopNote": "今天精读 OMT 流行曲式系列原文章节即可勾掉循环第 4 步，并完成练习 1 收尾与练习 2！",
                 "schedule": [
                     ["5 分钟", "三层递进：6 步扒歌工作流", ""],
                     ["10 分钟", "日练：为昨天扒下的独奏跟原曲合弹两遍校对", ""],
@@ -560,9 +578,9 @@ WEEK_P5 = {
                 "warm": {"time": "5 分钟", "cmd": "/quiz 三层 扒歌流程与强拍级数", "text": "速问如果扒一段极快的速弹怎么用和弦骨架锁定落点。"},
                 "lesson": {"time": "", "text": "看讲义 ② 并对照站点「曲目分析」页的“分析一首歌的 7 个步骤”：", "anchors": [["c2", "② 流行三大曲式"], ["reading", "6 读原资料指南"]]},
                 "reading": [{
-                    "time": "25 分钟", "title": "流行曲式：Verse–Chorus、AABA 与分节歌",
+                    "time": "25 分钟", "title": "OMT 流行曲式原文：小节术语、Verse–Chorus、AABA 与分节歌",
                     "links": [{"res": "omtFormPop", "note": "OMT Form in Popular Music"}, {"res": "omtVerseChorus", "note": "OMT Verse-Chorus Form"}, {"res": "omtAaba", "note": "OMT AABA & Strophic Form"}],
-                    "keys": ["g15-form"],
+                    "keys": ["form-term", "form-vc", "form-aaba"],
                     "look": ["主歌（Verse）、预副歌（Pre-Chorus）、副歌（Chorus）、桥段（Bridge）各自在和声与能量上担什么角色", "AABA 32 小节曲式里的 B 段为什么常转去下属调、关系调或停在属和弦上", "为什么同一组和弦循环（如《Smells Like Teen Spirit》）还能让听众清晰分出哪是主歌哪是副歌"],
                     "try": "把你昨天在练的那首完整歌放一遍，拿一张纸画一条水平时间轴，标出 0:00 到结尾每一段的名字与小节数（例如 Intro 4 + V1 8 + PC 4 + C 8...）。"
                 }],
@@ -594,8 +612,8 @@ WEEK_P5 = {
                 "songs": [{"id": "s50", "how": "完整梳理一遍《While My Guitar Gently Weeps》的曲式段落：前奏/主歌(A小调) → 桥段(A大调) → 独奏(回到A小调)，看 Beatles 如何靠同主音大小调交替撑起史诗感。"}],
                 "drillTime": "10 分钟",
                 "drillNote": "利用 10 分钟为你明天的毕业创作确定好“调性、BPM 速度、和想写进里面的 1 个调外秘密武器（例如来个 iv 叹息或者 V/vi 阻碍）”。",
-                "evening": {"time": "5 分钟", "cmd": "/quiz 流行曲式与整曲解剖逻辑", "items": ["勾掉 g15-form 卡片与循环第 4 步", "勾掉练习 1 和练习 2"]},
-                "done": ["g15-form 精读完成", "独立扒谱 + 一页歌曲分析表存档", "确定毕业原创短曲蓝图", "一条复盘日志"]
+                "evening": {"time": "5 分钟", "cmd": "/quiz 流行曲式与整曲解剖逻辑", "items": ["勾掉三节 OMT 流行曲式原文与循环第 4 步", "勾掉练习 1 和练习 2"]},
+                "done": ["OMT 流行曲式三节原文精读完成", "独立扒谱 + 一页歌曲分析表存档", "确定毕业原创短曲蓝图", "一条复盘日志"]
             },
             {
                 "title": "设计并录制你的毕业短曲（Riff + 主歌 + 副歌）",

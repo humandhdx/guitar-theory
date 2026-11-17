@@ -108,7 +108,7 @@
       <div class="page-head">
         <div class="today-date">${no > 0 ? `第 ${no} 周 · ` : ""}${cn(first)} – ${cn(days[6])}</div>
         <h1>${label}的学习内容</h1>
-        <p class="lead">点开任何一天，就是那天要做的全部事情：时间表、讲义入口、要精读的原文（Open Music Theory 的原文和中文译文已经嵌在页面里，图也在）、上琴练习、自测题和曲目。</p>
+        <p class="lead">点开任何一天，就是那天要做的全部事情：时间表、讲义入口、要精读的原文（Open Music Theory 原文与中文译文、谱例图已经嵌在页面里，G3～G15 还配了电吉他指板专题卡）、上琴练习、自测题和曲目。</p>
         <div class="btn-row"><a class="btn" href="#/week?w=${off - 1}">← 上一周</a>${off ? '<a class="btn" href="#/week">回到本周</a>' : ""}<a class="btn" href="#/week?w=${off + 1}">下一周 →</a></div>
       </div>
       <div class="wk-list">${days.map((d, i) => weekCard(d, infos[i], sched)).join("")}</div>
@@ -235,10 +235,12 @@
       <ul class="plain">${day.lesson.anchors.map(([id, label]) => `<li><a href="${esc(info.lesson)}#${id}" target="_blank" rel="noopener">${esc(label)}</a></li>`).join("")}</ul>
 
       ${hasReading ? (keys.length
-        ? `<h2 id="sec-read">精读材料 <span class="muted small" style="font-weight:400">${keys.filter((k) => S.read[k]).length} / ${keys.length} 已读</span></h2>
+        ? `<h2 id="sec-read">精读原文 <span class="muted small" style="font-weight:400">${keys.filter((k) => S.read[k]).length} / ${keys.length} 已读</span></h2>
           <p class="small muted">${keys.every((k) => window.READING && READING[k] && READING[k].verbatim === false)
-            ? "下面是对应原教材的双语核心精读卡片，可切换中文 / 中英对照 / English；虚线下划线的术语悬停可见英文释义，读完勾“读完了”会自动展开下一篇，也可点卡片右下角直达原网站整章。"
-            : "下面是 Open Music Theory（开放乐理教材，CC BY-SA 4.0）的原文，只做了排版清理，内容没改；中文是本站翻译，有出入以英文为准。虚线下划线的术语，鼠标停上去能看到原书术语表的英文释义。点标题展开，读完勾“读完了”，会自动展开下一篇。"}</p>
+            ? "下面是电吉他指板与名师实战双语精读卡片，可切换中文 / 中英对照 / English；虚线下划线的术语悬停可见英文释义，读完勾“读完了”会自动展开下一篇，也可点卡片右下角直达原站。"
+            : keys.some((k) => window.READING && READING[k] && READING[k].verbatim === false)
+              ? "下面包含 Open Music Theory（开放乐理教材，CC BY-SA 4.0）原文摘录，以及电吉他指板与名师实战双语卡片（可切换中文 / 中英对照 / English）。OMT 原文只做了排版清理，内容没改；虚线下划线术语悬停可见英文释义，读完勾“读完了”会自动展开下一篇。"
+              : "下面是 Open Music Theory（开放乐理教材，CC BY-SA 4.0）的原文，只做了排版清理，内容没改；中文是本站翻译，有出入以英文为准。虚线下划线的术语，鼠标停上去能看到原书术语表的英文释义。点标题展开，读完勾“读完了”，会自动展开下一篇。"}</p>
           ${langSwitch()}
           ${day.reading.map((g) => readingGroup(g, nextOf)).join("")}`
         : `<h2 id="sec-read">精读资料与重点指引</h2>
