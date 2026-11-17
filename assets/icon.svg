@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="112" fill="#181614"/>
+  <rect x="28" y="28" width="456" height="456" rx="92" fill="none" stroke="#c84b31" stroke-width="8" opacity="0.85"/>
+  <!-- Fretboard neck -->
+  <path d="M290 86 L396 86 L252 380 L196 352 Z" fill="#2c2623" stroke="#e8dfd1" stroke-width="5"/>
+  <!-- Frets -->
+  <line x1="274" y1="132" x2="366" y2="152" stroke="#b8afa0" stroke-width="5"/>
+  <line x1="256" y1="182" x2="342" y2="206" stroke="#b8afa0" stroke-width="5"/>
+  <line x1="236" y1="236" x2="316" y2="262" stroke="#b8afa0" stroke-width="5"/>
+  <line x1="216" y1="292" x2="288" y2="320" stroke="#b8afa0" stroke-width="5"/>
+  <!-- Guitar body -->
+  <path d="M126 306 C86 326 76 388 112 426 C148 462 214 456 254 416 C288 382 316 336 284 294 C264 268 236 286 216 276 C196 266 162 288 126 306 Z" fill="#c84b31" stroke="#f7f3eb" stroke-width="8"/>
+  <!-- Soundhole / pickup & root dots -->
+  <circle cx="188" cy="368" r="28" fill="#181614" stroke="#f7f3eb" stroke-width="5"/>
+  <circle cx="298" cy="168" r="13" fill="#c84b31" stroke="#f7f3eb" stroke-width="4"/>
+  <circle cx="262" cy="222" r="13" fill="#f7f3eb"/>
+  <circle cx="348" cy="116" r="11" fill="#f7f3eb"/>
+</svg>

@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>G12 讲义：调式</title>
+<style>
+:root {
+  color-scheme: light;
+  --paper: #eef1eb; --sheet: #fbfcf9; --ink: #1b2533; --ink-2: #3f4a58; --pencil: #5f6975;
+  --rule: #d6ddd2; --rule-soft: #e5e9e1; --blue: #2557a7; --blue-wash: #e9eff8;
+  --marker: #e2f25a; --red: #b3322a; --red-wash: #f6e3e0; --code-bg: #f2f5ef; --good: #2e7a33;
+  --font-text: "DengXian", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-note: "KaiTi", "STKaiti", "楷体", serif;
+  --font-code: "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --paper: #13161b; --sheet: #1a1e25; --ink: #e4e8ed; --ink-2: #c3cad3; --pencil: #98a2ae;
+    --rule: #2e343d; --rule-soft: #242930; --blue: #86abe8; --blue-wash: #1f2836;
+    --marker: #d2e255; --red: #f08378; --red-wash: #3a2422; --code-bg: #15191f; --good: #6fc275;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.75 var(--font-text); }
+a { color: var(--blue); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+code { font-family: var(--font-code); font-size: 0.88em; background: var(--code-bg); padding: 0.1em 0.3em; border-radius: 3px; }
+.top { max-width: 900px; margin: 0 auto; padding: 18px 20px 0; display: flex; justify-content: space-between; gap: 12px; font-size: 14px; color: var(--pencil); }
+main { max-width: 900px; margin: 10px auto 48px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; padding: 36px 52px 48px; }
+p, li, dd, .note { max-width: 44em; }
+h1 { font-size: 27px; line-height: 1.35; margin: 0 0 10px; }
+h2 { font-size: 21px; margin: 48px 0 14px; padding-top: 20px; border-top: 1px solid var(--rule); }
+h3 { font-size: 17.5px; margin: 0 0 6px; }
+.lead { font-size: 17px; color: var(--ink-2); }
+.note { font-family: var(--font-note); color: var(--red); font-size: 17px; }
+.meta { display: grid; grid-template-columns: 7em 1fr; gap: 4px 14px; margin: 18px 0; font-size: 15px; }
+.meta dt { color: var(--pencil); } .meta dd { margin: 0; }
+.toc { background: var(--blue-wash); border-radius: 6px; padding: 12px 18px; font-size: 15px; }
+.toc ol { margin: 4px 0 0; padding-left: 1.4em; columns: 2; column-gap: 28px; }
+figure { margin: 16px 0; }
+figure > svg { width: 100%; height: auto; display: block; }
+.concept { border-left: 3px solid var(--rule); padding: 2px 0 2px 18px; margin: 28px 0; }
+.concept dl { margin: 8px 0 0; }
+.concept dt { font-size: 14px; font-weight: 700; color: var(--pencil); margin-top: 10px; }
+.concept dd { margin: 2px 0 0; }
+.concept dd.myth { color: var(--red); font-family: var(--font-note); font-size: 16.5px; }
+.play { font: 13px var(--font-text); color: var(--blue); background: var(--sheet); border: 1px solid var(--blue); border-radius: 999px; padding: 2px 11px; cursor: pointer; margin: 4px 6px 4px 0; white-space: nowrap; }
+.play::before { content: "▶ "; font-size: 10px; }
+.play:hover { background: var(--blue-wash); }
+table { border-collapse: collapse; width: 100%; font-size: 15px; margin: 10px 0 18px; }
+th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--rule); }
+th { color: var(--pencil); font-weight: 400; font-size: 14px; border-bottom-color: var(--ink-2); }
+details { border: 1px solid var(--rule); border-radius: 5px; padding: 8px 14px; margin: 8px 0 18px; }
+summary { cursor: pointer; color: var(--blue); }
+.q { margin: 20px 0 6px; } .q b { color: var(--pencil); font-weight: 400; font-size: 14px; margin-right: 6px; }
+ol.drill li { margin: 10px 0; }
+ol.drill .std { display: block; font-size: 14px; color: var(--pencil); }
+.handoff { background: var(--red-wash); border-radius: 6px; padding: 14px 20px; }
+.handoff h2 { border: 0; margin-top: 0; padding-top: 0; }
+.lab { border: 1px solid var(--rule); border-radius: 6px; padding: 14px 16px; margin: 14px 0 20px; }
+.ctl { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; margin-bottom: 8px; font-size: 14px; }
+.btn { font: 13.5px var(--font-text); color: var(--ink); background: var(--sheet); border: 1px solid var(--rule); border-radius: 5px; padding: 3px 10px; cursor: pointer; }
+.btn:hover { border-color: var(--ink-2); }
+.btn.on { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); font-weight: 700; background: var(--blue-wash); }
+.btn.primary { background: var(--ink); color: var(--sheet); border-color: var(--ink); }
+.fb-scroll { overflow-x: auto; }
+.fb { display: block; width: 100%; min-width: 700px; height: auto; }
+.fb .fret { stroke: var(--rule); stroke-width: 2; }
+.fb .nut { stroke: var(--ink); stroke-width: 5; }
+.fb .string { stroke: var(--pencil); }
+.fb .inlay { fill: var(--rule); }
+.fb .sname, .fb .fnum { fill: var(--pencil); font-size: 12px; }
+.fb .sname { text-anchor: end; } .fb .fnum { text-anchor: middle; }
+.fb .cell rect { fill: transparent; cursor: pointer; }
+.fb .cell:hover rect { fill: var(--blue-wash); }
+.fb .win { fill: rgba(37, 87, 167, 0.09); stroke: var(--blue); stroke-width: 1.5; stroke-dasharray: 5 4; pointer-events: none; }
+.fb .dot { stroke-width: 1.5; pointer-events: none; }
+.fb .dot.tone { fill: var(--sheet); stroke: var(--ink); }
+.fb .dot.root { fill: var(--ink); stroke: var(--ink); }
+.fb .dot.color { fill: var(--red-wash); stroke: var(--red); stroke-width: 2; }
+.fb .dot.dim { opacity: 0.22; }
+.fb .dl { font-size: 11px; font-weight: 700; text-anchor: middle; fill: var(--ink); pointer-events: none; }
+.fb .dl.root { fill: var(--sheet); }
+.fb .dl.color { fill: var(--red); }
+.fb .dl.dim { opacity: 0.22; }
+@media (max-width: 720px) { main { padding: 22px 16px 32px; } .toc ol { columns: 1; } .meta { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="top"><a href="../index.html#/lessons">返回讲义列表</a><span>G12 调式 · 阶段四 · 电吉他的语言</span></div>
+<main>
+<h1>调式：同一组音，不同的中心</h1>
+<p class="lead">打破吉他手最大的误区：调式绝对不是“从第几品开始弹大调指型”。调式 = 音集 + 确立的家（主音）+ 唯一改掉的那个特征音。学会用平行思路掌握 6 个核心调式，并配合持续音与双和弦 Vamp 真正把调式色彩弹出来。</p>
+<dl class="meta">
+  <dt>学完能做到</dt><dd>听一段双和弦 Vamp 能分辨调式；以 A 为主音盲弹 6 个调式并强调特征音；用 OMT 三步流程分析歌曲调式并交付阶段四录音（里程碑 ④）。</dd>
+  <dt>主资料</dt><dd>OMT: Diatonic Modes + Modal Schemas + Signals Music Studio + Scotty West AUG</dd>
+</dl>
+
+<nav class="toc" aria-label="目录"><b>目录</b><ol>
+  <li><a href="#map">全局地图</a></li>
+  <li><a href="#concepts">逐个概念</a></li>
+  <li><a href="#lab">交互指板与伴奏实验室</a></li>
+  <li><a href="#drills">上琴练习</a></li>
+  <li><a href="#choices">分歧点对照</a></li>
+  <li><a href="#reading">读原资料指南</a></li>
+  <li><a href="#quiz">自测 5 题</a></li>
+  <li><a href="#songs">在歌里听一听</a></li>
+  <li><a href="#handoff">带去原资料的 3 个问题</a></li>
+</ol></nav>
+
+<h2 id="map">1. 全局地图</h2>
+<figure><svg viewBox="0 0 760 254" role="img" aria-label="本模块概念全局地图"><g font-size="13" fill="var(--pencil)"><text x="8" y="20">核心概念</text><text x="225" y="20">理论要点</text><text x="515" y="20">在指板与耳朵上</text></g><rect x="8" y="34" width="185" height="34" rx="4" fill="var(--blue-wash)" stroke="var(--blue)"/><text x="18" y="56" font-size="13.5" font-weight="700" fill="var(--ink)">① 平行思路核心</text><rect x="225" y="34" width="260" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="235" y="56" font-size="12.5" fill="var(--ink)">和同主音大/小调相比，只差 1 个特征音</text><rect x="515" y="34" width="235" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="525" y="56" font-size="12.5" fill="var(--ink)">混合利底亚(♭7) 利底亚(♯4) 多利亚(♮6) 弗里几亚(♭2)</text><rect x="8" y="76" width="185" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="18" y="98" font-size="13.5" font-weight="700" fill="var(--ink)">② 特征音 (Color Note)</text><rect x="225" y="76" width="260" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="235" y="98" font-size="12.5" fill="var(--ink)">决定调式味道的唯一音，必须着重强调</text><rect x="515" y="76" width="235" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="525" y="98" font-size="12.5" fill="var(--ink)">离开特征音去弹就像普通大小调，听不出调式</text><rect x="8" y="118" width="185" height="34" rx="4" fill="var(--blue-wash)" stroke="var(--blue)"/><text x="18" y="140" font-size="13.5" font-weight="700" fill="var(--ink)">③ Vamp 确立中心</text><rect x="225" y="118" width="260" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="235" y="140" font-size="12.5" fill="var(--ink)">单靠旋律弹不出调式，全靠伴奏定死主音</text><rect x="515" y="118" width="235" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="525" y="140" font-size="12.5" fill="var(--ink)">多利亚 i–IV · 混合利底亚 I–♭VII · 利底亚 I–II</text><rect x="8" y="160" width="185" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="18" y="182" font-size="13.5" font-weight="700" fill="var(--ink)">④ OMT 判断三步</text><rect x="225" y="160" width="260" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="235" y="182" font-size="12.5" fill="var(--ink)">1)主大还是小 → 2)7级是7还是♭7 → 3)找特征音</text><rect x="515" y="160" width="235" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="525" y="182" font-size="12.5" fill="var(--ink)">三问锁定 7 种自然调式之一</text><rect x="8" y="202" width="185" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="18" y="224" font-size="13.5" font-weight="700" fill="var(--ink)">⑤ 暗亮光谱与拓展</text><rect x="225" y="202" width="260" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="235" y="224" font-size="12.5" fill="var(--ink)">利底亚(最亮) → … → 弗里几亚 → 洛克里亚(最暗)</text><rect x="515" y="202" width="235" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="525" y="224" font-size="12.5" fill="var(--ink)">加练和声小调第 5 级：弗里几亚属音阶</text></svg></figure>
+
+<h2 id="concepts">2. 逐个概念</h2>
+<section class="concept" id="c1"><h3>① 为什么“D 多利亚 = C 大调从 D 弹”会害死人？</h3><dl><dt>是什么</dt><dd>音集确实完全一样，但如果你正在 <code>Dm7 – G7 – Cmaj7</code> 上“从 D 开始弹 C 大调”，由于和声已经解决回 C，全宇宙听众听到的依然只是 <b>C 大调</b>，完全没有一丁点 D 多利亚感！</dd><dt>为什么需要</dt><dd>调式由<b>主音（哪个和弦是家）</b>和<b>它周围的音程距离</b>决定。因此实战必须使用<b>平行思路</b>（以同一个主音 A 和 A 大调或 A 小调作比较）。</dd><dt>在指板上</dt><dd>把 A 持续音打开（在下方实验室直接点“开启 A 持续音”），站在 A 上感受每个音相对 A 的距离，这才是调式！</dd><dt>听起来</dt><dd><button class="play" data-mode="scale" data-notes="45,47,48,50,52,54,55,57">A 多利亚 (对比 A 小调改 F♯)</button><button class="play" data-mode="scale" data-notes="45,47,49,50,52,54,55,57">A 混合利底亚 (对比 A 大调改 G)</button></dd><dt>常见误解</dt><dd class="myth">“7 个教会调式就是 7 个新指型盒子。”指型盒子和 C 大调完全重叠！真正需要重塑的是你耳朵对“哪个音是 1、哪个音是特征音”的定位。</dd></dl></section>
+<section class="concept" id="c2"><h3>② 大调类调式（1-3-5 大三度底色）</h3><dl><dt>是什么</dt><dd>以同主音 A 大调（1 2 3 4 5 6 7）为参照：<br>• <b>伊奥尼亚（Ionian）</b>= 标准大调<br>• <b>混合利底亚（Mixolydian）</b>= 大调把 7 降成 <b>♭7</b>（A7/摇滚感，如《Norwegian Wood》）<br>• <b>利底亚（Lydian）</b>= 大调把 4 升成 <b>♯4</b>（梦幻漂浮科幻感，如《辛普森一家》或 Steve Vai）</dd><dt>为什么需要</dt><dd>混合利底亚是经典摇滚（AC/DC、Rolling Stones、Beatles）使用频率最高的调式；利底亚则是电影配乐和 Fusion 吉他最爱的明亮色调。</dd><dt>在指板上</dt><dd>记住：特征音在伴奏里往往由第二个和弦直接提供——混合利底亚 Vamp <code>A – G (I–♭VII)</code> 里 G 和弦带着 G 音(♭7)；利底亚 Vamp <code>A – B (I–II)</code> 里 B 和弦带着 D♯ 音(♯4)！</dd><dt>听起来</dt><dd><button class="play" data-mode="seq" data-notes="45,52,57,61,43,50,55,59">A 混合利底亚 Vamp: A → G</button><button class="play" data-mode="seq" data-notes="45,52,57,61,47,54,59,63">A 利底亚 Vamp: A → B</button></dd><dt>常见误解</dt><dd class="myth">“A–G–D 就是 D 大调。”如果 A 是重心反复出现、G 当作回 A 的垫脚石，这就是典型的 A 混合利底亚 I–♭VII–IV。</dd></dl></section>
+<section class="concept" id="c3"><h3>③ 小调类调式（1-♭3-5 小三度底色）与洛克里亚</h3><dl><dt>是什么</dt><dd>以同主音 A 自然小调（1 2 ♭3 4 5 ♭6 ♭7）为参照：<br>• <b>爱奥利亚（Aeolian）</b>= 自然小调<br>• <b>多利亚（Dorian）</b>= 小调把 ♭6 升成 <b>♮6</b>（略带暖亮、Funky 感，Santana《Oye Como Va》<code>Am7–D9</code>）<br>• <b>弗里几亚（Phrygian）</b>= 小调把 2 降成 <b>♭2</b>（暗黑、中东/金属张力，<code>Am–B♭</code>）<br>• <b>洛克里亚（Locrian）</b>= 含 ♭2 和 <b>♭5</b>，主和弦是减三和弦，极少当整首歌的家。</dd><dt>为什么需要</dt><dd>为什么《Oye Como Va》的 Am7 后面会接大九和弦 D9（D F♯ A C E）而不是 Dm？就是因为那个大 IV 和弦带来了 F♯（A 多利亚的 ♮6 特征音）！</dd><dt>在指板上</dt><dd>极简实战法：在熟悉的 <b>A 小调五声</b>上只加一个 F♯ 就是多利亚；只加一个 F 就是爱奥利亚；加上 B♭ 就是弗里几亚风味。</dd><dt>听起来</dt><dd><button class="play" data-mode="seq" data-notes="45,52,55,60,50,54,57,60,64">A 多利亚 Vamp: Am7 → D9</button><button class="play" data-mode="seq" data-notes="45,52,57,60,46,53,58,62">A 弗里几亚 Vamp: Am → B♭</button></dd><dt>常见误解</dt><dd class="myth">“小调歌里出现大 IV 和弦（如 Dm 后面接大 G）说明跑调了。”这是最常见的多利亚和声进行（i–IV）！</dd></dl></section>
+<section class="concept" id="c4"><h3>④ OMT 判断三步法 &amp; 弗里几亚属音阶</h3><dl><dt>是什么</dt><dd>听到一段调式进行，严格走 OMT 三步法：<br>1) 找定主音：主和弦是大三（亮）还是小三（暗）？<br>2) 听 7 级：大调类是 7 还是 ♭7？小调类有没有和声小调的导音？<br>3) 抓特征音：大调类有 ♯4 → 利底亚；小调类有 ♮6 → 多利亚、有 ♭2 → 弗里几亚、都没有 → 爱奥利亚。</dd><dt>为什么需要</dt><dd>进阶彩蛋：把 A 和声小调（A B C D E F G♯）从第 5 级 E 开始弹，得到 <b>E 弗里几亚属音阶（1 ♭2 3 4 5 ♭6 ♭7）</b>——既有弗里几亚 ♭2 又有大三度 3，金属和西班牙风必用！</dd><dt>在指板上</dt><dd>开启下方实验室的持续音切换 7 种调式，把红色特征音印在手指上。</dd><dt>听起来</dt><dd><button class="play" data-mode="scale" data-notes="40,41,44,45,47,48,50,52">E 弗里几亚属音阶 (金属/弗拉门戈)</button></dd><dt>常见误解</dt><dd class="myth">“洛克里亚和弗里几亚听不出来区别。”洛克里亚连 5 级都是降五（♭5），完全失去了五度支撑，像站在悬崖边上；弗里几亚有稳定的纯五度。</dd></dl></section>
+
+<h2 id="lab">3. 交互指板与伴奏实验室</h2>
+<p>点下方预设快速切换把位与音阶/和弦；点任意一格都能发声，开启持续音即可直接对着指板练习即兴与听辨。</p>
+<div class="lab">
+  <div class="ctl" id="lab-presets"></div>
+  <div class="ctl">
+    <button class="btn on" id="lab-mode" data-m="name">显示：音名 / 级数切换</button>
+    <button class="btn primary" id="lab-play">播放示例</button>
+    <button class="btn" id="lab-drone">持续音伴奏：关</button>
+  </div>
+  <p id="lab-desc" style="font-size:14.5px;margin:4px 0 8px"></p>
+  <div class="fb-scroll"><svg class="fb" id="lab-svg" viewBox="0 0 880 215"></svg></div>
+  <p style="font-size:13.5px;color:var(--pencil);margin:8px 0 0"><a href="../index.html#/fretboard">前往主站完整指板与五度圈实验室 ↗</a>　｜　<a href="../index.html#/ear">前往练耳与节奏实验室 ↗</a></p>
+</div>
+
+<h2 id="drills">4. 上琴练习</h2>
+<ol class="drill"><li><b>同主音 6 调式光谱对照</b>（开 A 持续音）：在本站「指板」或下方实验室开 A 持续音，依次弹伊奥尼亚、混合利底亚、利底亚、爱奥利亚、多利亚、弗里几亚，每次唱出红色特征音。<span class="std">重点验证：按节拍稳定、说得出级数与音名。</span></li><li><b>4 段 Vamp 即兴录音</b>（每段 1 分钟）：录下 Am7–D(多利亚)、A–G(混合)、A–B(利底亚)、Am–B♭(弗里几亚) 四段循环，长音停在特征音上。<span class="std">重点验证：按节拍稳定、说得出级数与音名。</span></li><li><b>五声 + 1 秒变调式</b>（80 BPM）：在 A 小调五声里只多加一个 F♯ 弹在 Am7–D 上；换成 F 弹在 Am–F 上，听一音定调式的奇效。<span class="std">重点验证：按节拍稳定、说得出级数与音名。</span></li><li><b>OMT 三步分析 S4 曲目 + 里程碑 ④</b>（录音存档）：分析《Oye Como Va》《Norwegian Wood》《Wherever I May Roam》；打磨 A 调布鲁斯 3 chorus 与一段多利亚即兴录音。<span class="std">重点验证：按节拍稳定、说得出级数与音名。</span></li></ol>
+
+<h2 id="choices">5. 分歧点对照</h2>
+<table>
+  <thead><tr><th>容易混淆的两面</th><th>核心区别</th><th>实战怎么选</th></tr></thead>
+  <tbody><tr><td><b>相对调式思维 vs 平行调式思维</b></td><td>换个起始音记盒子 vs 盯紧大/小调改的那 1 个音</td><td>平行思路能让你 1 秒听出特色音并马上落到指板上</td></tr><tr><td><b>多利亚 i–IV (Am–D) vs 爱奥利亚 i–iv (Am–Dm)</b></td><td>暖亮带希望的小调 (♮6) vs 纯正哀伤小调 (♭6)</td><td>听小调歌里第 4 级是大三还是小三和弦，一秒判断调式</td></tr></tbody>
+</table>
+
+<h2 id="reading">6. 读原资料指南</h2>
+<ul><li><a href="https://viva.pressbooks.pub/openmusictheory/chapter/diatonic-modes/" target="_blank" rel="noopener">OMT: Diatonic Modes ↗</a> — 精读平行定义与 OMT 三步识别流程</li><li><a href="https://viva.pressbooks.pub/openmusictheory/chapter/modal-schemas/" target="_blank" rel="noopener">OMT: Modal Schemas ↗</a> — 摇滚乐里的经典调式双和弦进行</li><li><a href="https://www.youtube.com/@SignalsMusicStudio" target="_blank" rel="noopener">Signals Music Studio ↗</a> — 用吉他最直观演示各调式特征音的写作方法</li></ul>
+
+<h2 id="quiz">7. 自测 5 题</h2>
+<div class="q"><b>1.</b> Am7–D7 的循环适合用什么调式即兴？D7 里的哪个音直接泄露了天机？</div><details><summary>答案</summary><p>A 多利亚；D7 的三音 F♯ 正是 A 多利亚区别于 A 自然小调的唯一特征音（♮6）。</p></details><div class="q"><b>2.</b> 为什么洛克里亚调式很少用来写一整首主流流行或摇滚歌曲？</div><details><summary>答案</summary><p>它的主和弦是减三和弦（1 ♭3 ♭5），缺乏纯五度的稳定性，听起来很难落地像家。</p></details><div class="q"><b>3.</b> 《Sweet Home Alabama》到底是 D 混合利底亚还是 G 大调？两派理由各是什么？</div><details><summary>答案</summary><p>D 混合利底亚派认为旋律与前奏强拍中心在 D（I–♭VII–IV）；G 大调派认为进行每次停在 G 上像解决（V–IV–I）。</p></details><div class="q"><b>4.</b> 如何把 A 小调五声快速改造成 A 混合利底亚色彩？</div><details><summary>答案</summary><p>把小三度 C 换成大三度 C♯，同时补入 2 级 B 与 6 级 F♯（或者直接保留 C 作蓝调过渡音！）。</p></details><div class="q"><b>5.</b> 上琴题：在 6 弦持续拨空弦 E，只在 1 弦或 2 弦上依次弹出 E 利底亚、E 混合利底亚和 E 弗里几亚的特征音。</div><details><summary>答案</summary><p>在 E 持续音上：1 弦 11 品 A♯(利底亚 ♯4) → 1 弦 3 品 D(混合利底亚 ♭7) → 1 弦 1 品 F(弗里几亚 ♭2)。</p></details>
+
+<h2 id="songs">8. 在歌里听一听</h2>
+<ul><li><b>Oye Como Va</b>（Santana）：Am7–D9 循环，A 多利亚（♮6 = F♯）教科书 <button class="play" data-mode="seq" data-notes="45,52,57,60,50,54,57,60,64">试听核心片段</button></li><li><b>Norwegian Wood</b>（The Beatles）：E 混合利底亚（旋律里显著出现 D♮ = ♭7） <button class="play" data-mode="seq" data-notes="52,54,56,57,59,61,62,64">试听核心片段</button></li><li><b>Wherever I May Roam</b>（Metallica）：E 弗里几亚（主 Riff 紧咬 E–F 小二度摩擦） <button class="play" data-mode="seq" data-notes="40,41,43,40">试听核心片段</button></li></ul>
+
+<section class="handoff" id="handoff">
+<h2>9. 带去原资料的 3 个问题</h2>
+<ol><li>按“明亮度（升号增加/降号减少）”把 7 个教会调式从最亮排到最暗是什么顺序？</li><li>为什么很多 Fusion 或现代吉他手在主音和弦上喜欢“混用”多利亚和爱奥利亚，甚至在一句里同时用上？</li><li>在和弦不断密集变化的爵士乐里，什么时候还讲“调式”，什么时候其实只是“一个大调里的顺阶和弦”？</li></ol>
+</section>
+</main>
+
+<script>
+(function(){
+  const PRESETS = [{"label": "A 多利亚 (红点: ♮6 = F♯)", "root": "A", "type": "dorian", "win": null, "desc": "Am7–D9 背景下红点 F♯ 是灵魂色彩音！"}, {"label": "A 混合利底亚 (红点: ♭7 = G)", "root": "A", "type": "mixolydian", "win": null, "desc": "A–G 背景下红点 G 制造经典摇滚粗糙大调感"}, {"label": "A 利底亚 (红点: ♯4 = D♯)", "root": "A", "type": "lydian", "win": null, "desc": "A–B 背景下红点 D♯ 带来明亮悬浮科幻感"}, {"label": "A 弗里几亚 (红点: ♭2 = B♭)", "root": "A", "type": "phrygian", "win": null, "desc": "Am–B♭ 背景下红点 B♭ 制造阴暗异域压迫感"}, {"label": "E 弗里几亚属 (金属/西班牙)", "root": "E", "type": "phrygianDominant", "win": [0, 4], "desc": "和声小调第 5 级：同时高亮 ♭2(F) 与 大三度(G♯)"}];
+  const LET = "CDEFGAB", LPC = [0,2,4,5,7,9,11];
+  const ACC = {"-2":"𝄫","-1":"♭","0":"","1":"♯","2":"𝄪"};
+  const SHARP = ["C","C♯","D","D♯","E","F","F♯","G","G♯","A","A♯","B"];
+  const OPEN = [64, 59, 55, 50, 45, 40];
+  const TYPES = {
+    major: {g:"音阶",ivs:["1","2","3","4","5","6","7"],c:[]},
+    minor: {g:"音阶",ivs:["1","2","♭3","4","5","♭6","♭7"],c:[]},
+    harmonic: {g:"音阶",ivs:["1","2","♭3","4","5","♭6","7"],c:["7"]},
+    melodic: {g:"音阶",ivs:["1","2","♭3","4","5","6","7"],c:["6","7"]},
+    minorPenta: {g:"音阶",ivs:["1","♭3","4","5","♭7"],c:[]},
+    majorPenta: {g:"音阶",ivs:["1","2","3","5","6"],c:[]},
+    blues: {g:"音阶",ivs:["1","♭3","4","♭5","5","♭7"],c:["♭5"]},
+    majorBlues: {g:"音阶",ivs:["1","2","♭3","3","5","6"],c:["♭3"]},
+    dorian: {g:"音阶",ivs:["1","2","♭3","4","5","6","♭7"],c:["6"]},
+    phrygian: {g:"音阶",ivs:["1","♭2","♭3","4","5","♭6","♭7"],c:["♭2"]},
+    phrygianDominant: {g:"音阶",ivs:["1","♭2","3","4","5","♭6","♭7"],c:["♭2","3"]},
+    lydian: {g:"音阶",ivs:["1","2","3","♯4","5","6","7"],c:["♯4"]},
+    mixolydian: {g:"音阶",ivs:["1","2","3","4","5","6","♭7"],c:["♭7"]},
+    maj: {g:"和弦",ivs:["1","3","5"],c:["3"]},
+    min: {g:"和弦",ivs:["1","♭3","5"],c:["♭3"]},
+    maj7: {g:"和弦",ivs:["1","3","5","7"],c:["3","7"]},
+    dom7: {g:"和弦",ivs:["1","3","5","♭7"],c:["3","♭7"]},
+    m7: {g:"和弦",ivs:["1","♭3","5","♭7"],c:["♭3","♭7"]},
+    m7b5: {g:"和弦",ivs:["1","♭3","♭5","♭7"],c:["♭3","♭7"]},
+    dom7s9: {g:"和弦",ivs:["1","3","5","♭7","♯9"],c:["3","♯9"]}
+  };
+  function parseN(n){
+    let acc=0; for(const ch of n.slice(1)) acc+=ch==="♯"?1:ch==="♭"?-1:0;
+    return {li:LET.indexOf(n[0]), pc:(LPC[LET.indexOf(n[0])]+acc+120)%12};
+  }
+  function parseD(lab){
+    let acc=0,i=0; const cs=[...lab];
+    while(i<cs.length&&/[♯♭𝄪𝄫]/u.test(cs[i])) acc+=cs[i++]==="♯"?1:cs[i-1]==="♭"?-1:cs[i-1]==="𝄪"?2:-2;
+    const d=Number(cs.slice(i).join("")), st=(d-1)%7;
+    return {st, semis:LPC[st]+12*Math.floor((d-1)/7)+acc};
+  }
+  function spell(root,lab){
+    const r=parseN(root), g=parseD(lab), li=(r.li+g.st)%7, pc=(r.pc+g.semis)%12;
+    return LET[li]+(ACC[String(((pc-LPC[li]+18)%12)-6)]||"");
+  }
+
+  let ctx=null, drone=null;
+  const freq=m=>440*Math.pow(2,(m-69)/12);
+  function ac(){ if(!ctx){ const A=window.AudioContext||window.webkitAudioContext; if(A) ctx=new A(); } if(ctx&&ctx.state==="suspended") ctx.resume(); return ctx; }
+  function play(midi,delay=0,vel=0.9){
+    const c=ac(); if(!c) return;
+    const sr=c.sampleRate, f=freq(midi), N=Math.max(2,Math.floor(sr/f-0.5)), len=Math.floor(sr*1.5);
+    const buf=c.createBuffer(1,len,sr), y=buf.getChannelData(0);
+    for(let i=0;i<N;i++) y[i]=Math.random()*2-1;
+    for(let i=N;i<len;i++) y[i]=0.996*0.5*(y[i-N]+y[i-N-1]);
+    const s=c.createBufferSource(); s.buffer=buf; const g=c.createGain(); g.gain.value=0.28*vel;
+    s.connect(g).connect(c.destination); s.start(c.currentTime+0.01+delay);
+  }
+  function stopDrone(){
+    if(!drone) return;
+    try{ drone.g.gain.setTargetAtTime(0.0001,drone.c.currentTime,0.08); setTimeout(()=>drone.os.forEach(o=>{try{o.stop();}catch(_){}}),300); }catch(_){}
+    drone=null;
+  }
+  function startDrone(pc){
+    stopDrone(); const c=ac(); if(!c) return;
+    const f1=freq(40+((pc-4+12)%12)), f2=f1*1.5;
+    const lp=c.createBiquadFilter(); lp.type="lowpass"; lp.frequency.value=420;
+    const g=c.createGain(); g.gain.value=0.0001; lp.connect(g).connect(c.destination);
+    g.gain.setTargetAtTime(0.13,c.currentTime,0.15);
+    const os=[[f1,"sawtooth",0.55],[f2,"triangle",0.25]].map(([f,t,v])=>{const o=c.createOscillator(),og=c.createGain();o.type=t;o.frequency.value=f;og.gain.value=v;o.connect(og).connect(lp);o.start();return o;});
+    drone={pc,os,g,c};
+  }
+
+  let curP=0, mode="name";
+  function draw(){
+    const P=PRESETS[curP], T=TYPES[P.type]||TYPES.major, rp=parseN(P.root).pc;
+    const map={};
+    T.ivs.forEach(lab=>{ map[(rp+parseD(lab).semis)%12]={lab,name:spell(P.root,lab),root:lab==="1",col:T.c.includes(lab)}; });
+    document.getElementById("lab-presets").innerHTML = PRESETS.map((x,i)=>`<button class="btn ${i===curP?"on":""}" data-p="${i}">${x.label}</button>`).join("");
+    document.getElementById("lab-desc").textContent = P.desc + "　（黑实心 = 根音 · 红框 = 特征音/3·7音）";
+    document.getElementById("lab-mode").textContent = "当前显示：" + (mode==="name"?"音名":"级数") + "（点击切换）";
+    const db = document.getElementById("lab-drone");
+    db.textContent = drone ? `持续音：${P.root}（点击关闭）` : `持续音伴奏：${P.root}`;
+    db.classList.toggle("on", !!drone);
+
+    const L=44,OPENW=38,FW=51,TOP=18,SS=28,FRETS=15;
+    const fx=f=>f===0?L+OPENW/2:L+OPENW+(f-0.5)*FW, sy=s=>TOP+s*SS;
+    let g="";
+    if(P.win){
+      const x1=P.win[0]===0?L:L+OPENW+(P.win[0]-1)*FW, x2=P.win[1]===0?L+OPENW:L+OPENW+P.win[1]*FW;
+      g+=`<rect class="win" x="${x1}" y="${sy(0)-13}" width="${x2-x1}" height="${5*SS+26}" rx="6"/>`;
+    }
+    for(let k=0;k<=FRETS;k++){ const x=L+OPENW+k*FW; g+=`<line class="${k===0?"nut":"fret"}" x1="${x}" y1="${sy(0)}" x2="${x}" y2="${sy(5)}"/>`; }
+    [3,5,7,9,15].forEach(f=>{ g+=`<circle class="inlay" cx="${fx(f)}" cy="${(sy(2)+sy(3))/2}" r="4.5"/>`; });
+    g+=`<circle class="inlay" cx="${fx(12)}" cy="${(sy(1)+sy(2))/2}" r="4.5"/><circle class="inlay" cx="${fx(12)}" cy="${(sy(3)+sy(4))/2}" r="4.5"/>`;
+    for(let s=0;s<6;s++){
+      g+=`<line class="string" x1="${L+OPENW}" y1="${sy(s)}" x2="${L+OPENW+FRETS*FW}" y2="${sy(s)}" style="stroke-width:${(0.8+s*0.3).toFixed(2)}"/>`;
+      g+=`<text class="sname" x="${L-8}" y="${sy(s)+4}">${s+1} ${SHARP[OPEN[s]%12]}</text>`;
+    }
+    for(let f=1;f<=FRETS;f++) g+=`<text class="fnum" x="${fx(f)}" y="${sy(5)+26}">${f}</text>`;
+    g+=`<text class="fnum" x="${fx(0)}" y="${sy(5)+26}">空</text>`;
+    for(let s=0;s<6;s++){
+      for(let f=0;f<=FRETS;f++){
+        const pc=(OPEN[s]+f)%12, x=fx(f), y=sy(s), cw=f===0?OPENW:FW;
+        let mk="";
+        if(map[pc]){
+          const n=map[pc], cls=n.root?"root":n.col?"color":"tone", dim=(P.win&&(f<P.win[0]||f>P.win[1]))?" dim":"";
+          mk=`<circle class="dot ${cls}${dim}" cx="${x}" cy="${y}" r="10.5"/><text class="dl ${cls}${dim}" x="${x}" y="${y+4}">${mode==="deg"?n.lab:n.name}</text>`;
+        }
+        g+=`<g class="cell" data-m="${OPEN[s]+f}"><rect x="${x-cw/2}" y="${y-SS/2}" width="${cw}" height="${SS}"/>${mk}</g>`;
+      }
+    }
+    document.getElementById("lab-svg").innerHTML = g;
+  }
+
+  document.addEventListener("click",e=>{
+    const p=e.target.closest(".play");
+    if(p){
+      const arr=p.dataset.notes.split(",").map(Number), mode=p.dataset.mode;
+      if(mode==="chord") arr.forEach((m,i)=>play(m,i*0.035));
+      else if(mode==="seq") arr.forEach((m,i)=>play(m,i*0.18));
+      else arr.forEach((m,i)=>play(m,i*0.26));
+      return;
+    }
+    const pb=e.target.closest("#lab-presets button");
+    if(pb){ curP=Number(pb.dataset.p); if(drone) startDrone(parseN(PRESETS[curP].root).pc); draw(); return; }
+    const cell=e.target.closest(".cell");
+    if(cell){ play(Number(cell.dataset.m)); return; }
+  });
+  document.getElementById("lab-mode").addEventListener("click",()=>{ mode=mode==="name"?"deg":"name"; draw(); });
+  document.getElementById("lab-play").addEventListener("click",()=>{
+    const P=PRESETS[curP], T=TYPES[P.type]||TYPES.major, base=40+((parseN(P.root).pc-4+12)%12);
+    const semis=T.ivs.map(x=>parseD(x).semis);
+    if(T.g==="和弦") semis.forEach((s,i)=>play(base+s,i*0.04));
+    else [...semis,12].forEach((s,i)=>play(base+s,i*0.25));
+  });
+  document.getElementById("lab-drone").addEventListener("click",()=>{
+    if(drone) stopDrone(); else startDrone(parseN(PRESETS[curP].root).pc);
+    draw();
+  });
+  draw();
+})();
+</script>
+</body>
+</html>

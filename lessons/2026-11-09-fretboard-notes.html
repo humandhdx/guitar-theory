@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>G1 讲义：音名与指板地图</title>
+<style>
+:root {
+  color-scheme: light;
+  --paper: #eef1eb; --sheet: #fbfcf9; --ink: #1b2533; --ink-2: #3f4a58; --pencil: #5f6975;
+  --rule: #d6ddd2; --rule-soft: #e5e9e1; --blue: #2557a7; --blue-wash: #e9eff8;
+  --marker: #e2f25a; --red: #b3322a; --red-wash: #f6e3e0; --code-bg: #f2f5ef; --good: #2e7a33;
+  --font-text: "DengXian", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-note: "KaiTi", "STKaiti", "楷体", serif;
+  --font-code: "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --paper: #13161b; --sheet: #1a1e25; --ink: #e4e8ed; --ink-2: #c3cad3; --pencil: #98a2ae;
+    --rule: #2e343d; --rule-soft: #242930; --blue: #86abe8; --blue-wash: #1f2836;
+    --marker: #d2e255; --red: #f08378; --red-wash: #3a2422; --code-bg: #15191f; --good: #6fc275;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.75 var(--font-text); }
+a { color: var(--blue); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+code { font-family: var(--font-code); font-size: 0.88em; background: var(--code-bg); padding: 0.1em 0.3em; border-radius: 3px; }
+.top { max-width: 900px; margin: 0 auto; padding: 18px 20px 0; display: flex; justify-content: space-between; gap: 12px; font-size: 14px; color: var(--pencil); }
+main { max-width: 900px; margin: 10px auto 48px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; padding: 36px 52px 48px; }
+p, li, dd, .note { max-width: 44em; }
+h1 { font-size: 27px; line-height: 1.35; margin: 0 0 10px; }
+h2 { font-size: 21px; margin: 52px 0 14px; padding-top: 22px; border-top: 1px solid var(--rule); }
+h3 { font-size: 17px; margin: 0 0 6px; }
+.lead { font-size: 17px; color: var(--ink-2); }
+.hl { background: var(--marker); color: #1b2533; padding: 0 0.15em; border-radius: 2px; }
+.note { font-family: var(--font-note); color: var(--red); font-size: 17px; }
+.sup { font-size: 12px; color: var(--red); background: var(--red-wash); border-radius: 3px; padding: 1px 5px; margin: 0 2px; white-space: nowrap; vertical-align: 1px; }
+.meta { display: grid; grid-template-columns: 7em 1fr; gap: 4px 14px; margin: 18px 0; font-size: 15px; }
+.meta dt { color: var(--pencil); }
+.meta dd { margin: 0; }
+.toc { background: var(--blue-wash); border-radius: 6px; padding: 12px 18px; font-size: 15px; }
+.toc ol { margin: 4px 0 0; padding-left: 1.4em; columns: 2; column-gap: 28px; }
+figure { margin: 18px 0; }
+figure > svg { width: 100%; height: auto; display: block; }
+figcaption { font-size: 14px; color: var(--pencil); margin-top: 6px; }
+svg text { font-family: var(--font-text); fill: var(--ink); }
+svg .box { fill: var(--sheet); stroke: var(--rule); stroke-width: 1.2; }
+svg .box-key { fill: var(--blue-wash); stroke: var(--blue); stroke-width: 1.2; }
+svg .head { font-size: 13px; fill: var(--pencil); }
+svg .t1 { font-size: 14px; font-weight: 700; }
+svg .t2 { font-size: 13px; fill: var(--ink-2); }
+svg .arrow { stroke: var(--pencil); stroke-width: 1.3; fill: none; }
+svg a:hover .box-key { stroke-width: 2.2; }
+.concept { border-left: 3px solid var(--rule); padding: 2px 0 2px 18px; margin: 30px 0; }
+.concept h3 { font-size: 18px; }
+.concept dl { margin: 8px 0 0; }
+.concept dt { font-size: 14px; font-weight: 700; color: var(--pencil); margin-top: 10px; }
+.concept dd { margin: 2px 0 0; }
+.concept dd.myth { color: var(--red); }
+.play { font: 13px var(--font-text); color: var(--blue); background: var(--sheet); border: 1px solid var(--blue); border-radius: 999px; padding: 1px 10px 1px 8px; margin: 2px 4px 2px 0; cursor: pointer; white-space: nowrap; }
+.play::before { content: "▶ "; font-size: 10px; }
+.play:hover { background: var(--blue-wash); }
+table { border-collapse: collapse; width: 100%; font-size: 15px; margin: 10px 0 18px; }
+th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--rule); }
+th { color: var(--pencil); font-weight: 400; font-size: 14px; border-bottom-color: var(--ink-2); }
+table.strings td, table.strings th { text-align: center; padding: 6px 4px; font-variant-numeric: tabular-nums; }
+table.strings td:first-child, table.strings th:first-child { text-align: left; white-space: nowrap; }
+details { border: 1px solid var(--rule); border-radius: 5px; padding: 8px 14px; margin: 8px 0 18px; }
+summary { cursor: pointer; color: var(--blue); }
+details[open] summary { margin-bottom: 6px; }
+.q { margin: 22px 0 6px; }
+.q b { color: var(--pencil); font-weight: 400; font-size: 14px; margin-right: 6px; }
+ul.read li, ol.ask li, ol.drill li { margin: 8px 0; }
+ol.drill .std { display: block; font-size: 14px; color: var(--pencil); }
+.handoff { background: var(--red-wash); border-radius: 6px; padding: 14px 20px; }
+.handoff h2 { border: 0; margin-top: 0; padding-top: 0; }
+/* 指板 */
+.lab { border: 1px solid var(--rule); border-radius: 6px; padding: 14px 16px; margin: 14px 0 20px; }
+.ctl { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; font-size: 14px; margin-bottom: 8px; }
+.ctl .grp { display: inline-flex; gap: 4px; align-items: center; flex-wrap: wrap; }
+.ctl .grp > span { color: var(--pencil); margin-right: 2px; }
+.btn { font: 14px var(--font-text); color: var(--ink); background: var(--sheet); border: 1px solid var(--rule); border-radius: 5px; padding: 3px 10px; cursor: pointer; }
+.btn:hover { border-color: var(--ink-2); }
+.btn.on { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); font-weight: 700; }
+.btn.primary { background: var(--ink); color: var(--sheet); border-color: var(--ink); }
+select { font: 14px var(--font-text); color: var(--ink); background: var(--sheet); border: 1px solid var(--rule); border-radius: 5px; padding: 2px 6px; }
+.fb-scroll { overflow-x: auto; }
+.fb { display: block; width: 100%; min-width: 700px; height: auto; }
+.fb .fret { stroke: var(--rule); stroke-width: 2; }
+.fb .nut { stroke: var(--ink); stroke-width: 5; }
+.fb .string { stroke: var(--pencil); }
+.fb .inlay { fill: var(--rule); }
+.fb .sname, .fb .fnum { fill: var(--pencil); font-size: 12px; }
+.fb .sname { text-anchor: end; }
+.fb .fnum { text-anchor: middle; }
+.fb .cell rect { fill: transparent; cursor: pointer; }
+.fb .cell:hover rect { fill: var(--blue-wash); }
+.fb .oct { stroke: var(--blue); stroke-width: 2; stroke-dasharray: 5 4; fill: none; }
+.fb .dot { stroke-width: 1.5; pointer-events: none; }
+.fb .dot.n { fill: var(--sheet); stroke: var(--ink); }
+.fb .dot.acc { fill: var(--rule-soft); stroke: var(--pencil); }
+.fb .dot.half { fill: var(--red-wash); stroke: var(--red); stroke-width: 2; }
+.fb .dot.target { fill: var(--ink); stroke: var(--ink); }
+.fb .dot.ok { fill: var(--good); stroke: var(--good); }
+.fb .dot.bad { fill: var(--red); stroke: var(--red); }
+.fb .dl { font-size: 11px; font-weight: 700; text-anchor: middle; pointer-events: none; }
+.fb .dl.half { fill: var(--red); }
+.fb .dl.acc { font-size: 10px; fill: var(--ink-2); }
+.fb .dl.target, .fb .dl.ok, .fb .dl.bad { fill: var(--sheet); }
+.status { font-size: 15px; min-height: 1.75em; margin: 6px 0 0; }
+.status b { background: var(--marker); color: #1b2533; padding: 0 6px; border-radius: 3px; }
+.legend { font-size: 13.5px; color: var(--pencil); margin: 4px 0 0; }
+@media (max-width: 720px) {
+  main { padding: 22px 16px 32px; border-left: 0; border-right: 0; border-radius: 0; }
+  .toc ol { columns: 1; }
+  .meta { grid-template-columns: 1fr; }
+  .meta dt { margin-top: 6px; }
+}
+</style>
+</head>
+<body>
+<div class="top"><a href="../index.html#/lessons">返回讲义列表</a><span>G1 音名与指板地图 · 阶段一 指板与听觉地基</span></div>
+<main>
+<h1>音名与指板地图：12 个音怎么铺满 6 根弦</h1>
+<p class="lead">乐理的第一块地基。先弄清 12 个音、半音和全音、升降号和等音，再把它们铺到指板上：背熟 6、5 弦的自然音，用八度形状扩展到其余四根弦，最后用 12 品对称把整个指板连起来。琴放在手边，每个例子都弹一下。</p>
+<dl class="meta">
+  <dt>学完能做到</dt><dd>不看图说出 6、5 弦任意自然音的位置；用八度形状在 6 根弦上找到任意一个音；讲清为什么 E–F、B–C 之间没有升降音，为什么 F♯ 和 G♭ 是同一品却有两个名字。</dd>
+  <dt>预计用时</dt><dd>读讲义 40 分钟，玩第 3 节的指板、做第 4 节的上琴练习再加 30 分钟。找音的熟练度靠之后每天 5～10 分钟的日练。</dd>
+  <dt>主资料</dt><dd><a href="https://viva.pressbooks.pub/openmusictheory/chapter/half-and-whole-steps/">Open Music Theory：Half Steps, Whole Steps, and Accidentals</a>（Version 2，CC BY-SA 4.0，2026-11-09 读取）；<a href="https://www.justinguitar.com/modules/notes-sharps-flats-octaves">JustinGuitar 实用乐理 Grade 1：Notes, Sharps &amp; Flats &amp; Octaves</a>。</dd>
+  <dt>辅助资料</dt><dd>OMT <a href="https://viva.pressbooks.pub/openmusictheory/chapter/pitch-and-pitch-class/">Pitch and Pitch Class</a>、<a href="https://viva.pressbooks.pub/openmusictheory/chapter/aspn/">American Standard Pitch Notation</a>；musictheory.net <a href="https://www.musictheory.net/lessons/20">Steps and Accidentals</a> 和 <a href="https://www.musictheory.net/exercises/fretboard">指板找音练习</a>。</dd>
+</dl>
+<p class="note">标了 <span class="sup">补充</span> 的内容是讲义作者加的，OMT 里没有。OMT 用钢琴键盘讲半音和全音，讲义里落到吉他指板上的部分大多属于这一类。JustinGuitar 的站点拦截了自动读取，讲义作者没能逐字核对它的课程，读原课程时顺手对照。</p>
+
+<nav class="toc" aria-label="目录"><b>目录</b>
+<ol>
+  <li><a href="#map">全局地图</a></li>
+  <li><a href="#concepts">逐个概念</a></li>
+  <li><a href="#lab">交互指板</a></li>
+  <li><a href="#drills">上琴练习</a></li>
+  <li><a href="#choices">分歧点</a></li>
+  <li><a href="#reading">读原资料指南</a></li>
+  <li><a href="#quiz">自测 5 题</a></li>
+  <li><a href="#songs">在歌里听一听</a></li>
+  <li><a href="#handoff">带去原资料的 3 个问题</a></li>
+</ol>
+</nav>
+
+<h2 id="map">1. 全局地图</h2>
+<p>左列是要掌握的概念（点击跳到对应小节），中列是一句话的核心事实，右列是它在指板上的样子。上面四个讲“声音”，下面四个讲“吉他”。</p>
+<figure>
+<svg viewBox="0 0 760 420" role="img" aria-label="八个概念与指板位置的对应图">
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1 L9 5 L0 9" fill="none" stroke="currentColor" stroke-width="1.6" style="color:var(--pencil)"/></marker></defs>
+  <text class="head" x="8" y="22">概念</text>
+  <text class="head" x="232" y="22">核心事实</text>
+  <text class="head" x="518" y="22">在指板上</text>
+  <g id="rows"></g>
+</svg>
+<figcaption>八个概念。前四个在任何乐器上都一样，后四个是吉他特有的。</figcaption>
+</figure>
+<p>三条横向联系，读完整份讲义再回来看会更清楚：</p>
+<ul>
+  <li><b>半音就是一品。</b>钢琴上“相邻的两个键”，在吉他上就是同一根弦上相邻的两品。所以“E–F、B–C 是半音”直接变成“同一根弦上 E 到 F、B 到 C 只差 1 品”。</li>
+  <li><b>等音解释了为什么一品有两个名字，音高与音级解释了为什么一个名字有好几品。</b>前者是“同一个音高，不同拼写”，后者是“同一个名字，不同八度”。</li>
+  <li><b>标准调弦决定了所有形状。</b>相邻弦差纯四度（5 个半音），只有 3–2 弦差大三度（4 个半音）。八度形状、后面的音程形状和和弦指型，跨过 3–2 弦时都要错一品，原因都在这里。</li>
+</ul>
+
+<h2 id="concepts">2. 逐个概念</h2>
+
+<section class="concept" id="c1">
+<h3>① 12 个音</h3>
+<dl>
+<dt>是什么</dt>
+<dd>西方音乐把一个八度分成 12 个音：C、C♯/D♭、D、D♯/E♭、E、F、F♯/G♭、G、G♯/A♭、A、A♯/B♭、B，然后回到高一个八度的 C。7 个用字母命名的叫自然音（钢琴白键），另外 5 个借相邻字母加升号或降号命名（钢琴黑键）。</dd>
+<dt>为什么需要</dt>
+<dd>音阶、音程、和弦都是从这 12 个音里挑出几个、按规则组合。12 个音认不全，后面的公式就没法落到琴上。</dd>
+<dt>在指板上</dt>
+<dd>任何一根弦，从空弦往上弹 12 品，正好把 12 个音走一遍，第 12 品回到空弦的音名，高一个八度。<button class="play" data-seq="40 41 42 43 44 45 46 47 48 49 50 51 52" data-gap="0.28">听 6 弦 0～12 品</button></dd>
+<dt>常见误解</dt>
+<dd class="myth">“音乐里有 7 个音。”7 个是字母，也就是自然音；能弹出来的不同音级有 12 个。</dd>
+</dl>
+</section>
+
+<section class="concept" id="c2">
+<h3>② 半音与全音</h3>
+<dl>
+<dt>是什么</dt>
+<dd>半音是西方记谱里最小的音程，在钢琴上就是紧挨着的两个键；全音等于两个半音。OMT 的关键一句：E/F 和 B/C 两对白键之间没有黑键，因为 E–F、B–C 本来就是半音。其余相邻的白键（C–D、D–E、F–G、G–A、A–B）都是全音。</dd>
+<dt>为什么需要</dt>
+<dd>“全 全 半 全 全 全 半”是大调音阶的公式（G4），所有音阶和音程都用半音来数。记住这两个“天然半音”，就能从任何一个自然音推出下一个自然音在哪里。</dd>
+<dt>在指板上</dt>
+<dd><span class="sup">补充</span> 1 品 = 半音，2 品 = 全音。同一根弦上，相邻两个自然音隔 2 品，只有 E→F、B→C 隔 1 品。所以 6 弦的自然音是 0、1、3、5、7、8、10、12 品（E F G A B C D E），中间的两个“1 品间隔”就是 E–F 和 B–C。</dd>
+<dt>听起来</dt>
+<dd>半音很紧，像《大白鲨》主题的两个音；全音是“走了一步”，像《生日快乐》开头“祝你生”里从“你”到“生”的那一步。<button class="play" data-seq="40 41 40 41 40 41" data-gap="0.32">半音 E–F</button><button class="play" data-seq="43 45 43 45" data-gap="0.42">全音 G–A</button></dd>
+<dt>常见误解</dt>
+<dd class="myth">“每两个字母之间都夹着一个升降音。”E–F 和 B–C 之间没有。</dd>
+</dl>
+</section>
+
+<section class="concept" id="c3">
+<h3>③ 升号、降号、还原号</h3>
+<dl>
+<dt>是什么</dt>
+<dd>变音记号改变一个音的音高：升号 ♯ 升高半音，降号 ♭ 降低半音，还原号 ♮ 取消前面的变音。重升 𝄪 升高全音，重降 𝄫 降低全音。在五线谱上，变音记号写在音符左边，和音符在同一线或同一间（OMT）。</dd>
+<dt>为什么需要</dt>
+<dd>只有 7 个字母，却要命名 12 个音，剩下 5 个只能借字母加记号。重升重降看起来奇怪，但有些调和和弦离不开它们，比如 E7♯9 的 ♯9 要写成 F𝄪（G9 会讲）。</dd>
+<dt>在指板上</dt>
+<dd><span class="sup">补充</span> 往高品走一品就是升半音，往低品走一品就是降半音。5 弦 3 品是 C，4 品就是 C♯，2 品是 C♭（也就是 B）。</dd>
+<dt>常见误解</dt>
+<dd class="myth">“升号就是黑键。”E♯ 是白键 F，C♭ 是白键 B。升号只是“升高半音”的写法，不管升完落在哪个键上。</dd>
+</dl>
+</section>
+
+<section class="concept" id="c4">
+<h3>④ 等音</h3>
+<dl>
+<dt>是什么</dt>
+<dd>拼写不同、听起来一样的音叫等音（OMT：enharmonic equivalence）。C♯ 和 D♭ 是等音；F 也叫 E♯，E 也叫 F♭，C 也叫 B♯，B 也叫 C♭；D 还可以写成 C𝄪 或 E𝄫。</dd>
+<dt>为什么需要</dt>
+<dd>名字反映这个音在调里的角色。OMT 在 Pitch and Pitch Class 一章举的例子：调性音乐里 A♭ 倾向于往下走到 G，G♯ 倾向于往上走到 A。所以虽然同一品，谱上写哪个名字会告诉你它“想去哪里”。</dd>
+<dt>在指板上</dt>
+<dd>同一品，两个（甚至三个）名字。用哪个由调决定：G 大调里那一品叫 F♯，D♭ 大调里叫 G♭。规则是一个调的七个音每个字母只用一次（G4 会讲）。</dd>
+<dt>听起来</dt>
+<dd>完全一样。<button class="play" data-seq="42 42" data-gap="0.6">F♯ 和 G♭：6 弦 2 品弹两次</button></dd>
+<dt>常见误解</dt>
+<dd class="myth">“上行用升号、下行用降号，这是规则。”这只是写半音阶时的一种习惯。在调和和弦里，名字由调和功能决定，跟旋律往哪个方向走无关。</dd>
+</dl>
+</section>
+
+<section class="concept" id="c5">
+<h3>⑤ 音高与音级</h3>
+<dl>
+<dt>是什么</dt>
+<dd>音高是一个具体频率的音，比如 C4；音级是所有八度上同名（以及等音）的音的集合，比如“C”（OMT：pitch 与 pitch class）。OMT 用美国标准音高记法（ASPN）给八度编号：每个八度从 C 开始到 B 结束，中央 C 是 C4。B♯3 和 C4 同音，但编号不同，因为 B♯ 仍然算在下一个八度里。</dd>
+<dt>为什么需要</dt>
+<dd>说“弹一个 C”时你指的是音级，说“弹中央 C”时你指的是音高。吉他上同一个音级有好几个位置，有的同音高，有的差八度，分清这两个概念才说得清楚。</dd>
+<dt>在指板上</dt>
+<dd><span class="sup">补充</span> 标准调弦的空弦音高从 6 弦到 1 弦是 E2、A2、D3、G3、B3、E4。2 弦 1 品就是中央 C（C4）；5 弦 3 品是 C3，低一个八度。</dd>
+<dd><span class="sup">补充</span> 吉他谱有个容易混淆的地方：吉他用高音谱号记谱，但实际声音比记谱低一个八度。谱上写中央 C 的位置，在吉他上弹 5 弦 3 品，实际发出的是 C3。<button class="play" data-seq="48 60" data-gap="0.7">C3（5 弦 3 品）→ C4（2 弦 1 品）</button></dd>
+<dt>常见误解</dt>
+<dd class="myth">“同一个音名的地方，弹出来都一样。”同音级不等于同音高：5 弦 3 品和 2 弦 1 品都是 C，差一个八度。</dd>
+</dl>
+</section>
+
+<section class="concept" id="c6">
+<h3>⑥ 标准调弦</h3>
+<dl>
+<dt>是什么</dt>
+<dd><span class="sup">补充</span> 6 弦到 1 弦：E A D G B E（E2 A2 D3 G3 B3 E4）。相邻两根弦都差纯四度（5 个半音），只有 3 弦 G 到 2 弦 B 差大三度（4 个半音）。</dd>
+<dt>为什么需要</dt>
+<dd>调弦决定了指板上所有形状。整套吉他指法里“到了 3、2 弦要错一品”的现象，都来自这一个大三度。</dd>
+<dt>在指板上</dt>
+<dd>“第 5 品等于下一根弦的空弦”：6 弦 5 品 = A，5 弦 5 品 = D，4 弦 5 品 = G，3 弦<b>第 4 品</b> = B，2 弦 5 品 = E。这也是相对调弦法的原理。</dd>
+<dt>听起来</dt>
+<dd>纯四度是《婚礼进行曲》开头的两个音，大三度是《圣者进行曲》（When the Saints）开头的两个音。<button class="play" data-seq="40 45 50 55 59 64" data-gap="0.45">6 根空弦</button><button class="play" data-seq="50 55" data-gap="0.6">4–3 弦：纯四度</button><button class="play" data-seq="55 59" data-gap="0.6">3–2 弦：大三度</button></dd>
+<dt>常见误解</dt>
+<dd class="myth">“所有相邻弦都按第 5 品对音。”3 弦对 2 弦用第 4 品。</dd>
+</dl>
+</section>
+
+<section class="concept" id="c7">
+<h3>⑦ 12 品对称</h3>
+<dl>
+<dt>是什么</dt>
+<dd><span class="sup">补充</span> 12 品正好是空弦高八度，弦长的一半。12 品以上的指板是 0～11 品的重复：13 品 = 1 品高八度，15 品 = 3 品高八度，以此类推。</dd>
+<dt>为什么需要</dt>
+<dd>只要背熟 0～11 品，整个指板就都会了。把 12 品当成“第二个琴枕”，高把位就不再陌生。</dd>
+<dt>在指板上</dt>
+<dd>品记是定位标志：3、5、7、9、15 品各一个点，12 品两个点。6 弦上 3、5、7 品分别是 G、A、B，5 弦上是 C、D、E，背品记附近的音最快。</dd>
+<dt>常见误解</dt>
+<dd class="myth">“高把位要重新背一遍。”减去 12，就是你已经认识的那一品。</dd>
+</dl>
+</section>
+
+<section class="concept" id="c8">
+<h3>⑧ 八度形状</h3>
+<dl>
+<dt>是什么</dt>
+<dd><span class="sup">补充</span> 同一个音级在不同弦上的固定相对位置。只要记住 6、5 弦，其他弦上的音都能用这些形状推出来：</dd>
+<dd>
+<table>
+<tr><th>从</th><th>到</th><th>品位变化</th><th>例子（音 G）</th></tr>
+<tr><td>6 弦</td><td>4 弦（高八度）</td><td>+2 品</td><td>6 弦 3 品 → 4 弦 5 品</td></tr>
+<tr><td>5 弦</td><td>3 弦（高八度）</td><td>+2 品</td><td>5 弦 10 品 → 3 弦 12 品</td></tr>
+<tr><td>4 弦</td><td>2 弦（高八度）</td><td>+3 品（跨过 3–2 弦多一品）</td><td>4 弦 5 品 → 2 弦 8 品</td></tr>
+<tr><td>3 弦</td><td>1 弦（高八度）</td><td>+3 品（跨过 3–2 弦多一品）</td><td>3 弦 0 品 → 1 弦 3 品</td></tr>
+<tr><td>6 弦</td><td>1 弦（高两个八度）</td><td>同品</td><td>6 弦 3 品 → 1 弦 3 品</td></tr>
+</table>
+</dd>
+<dt>为什么需要</dt>
+<dd>这是从“认得 6、5 弦”走到“认得整个指板”的桥。后面所有的指型（和弦、音阶把位）也都是以 6、5 弦的根音定位，再用这些形状扩展。</dd>
+<dt>听起来</dt>
+<dd>八度是《彩虹之上》（Somewhere Over the Rainbow）开头“Some-where”的大跳。<button class="play" data-seq="43 55 67" data-gap="0.6">G2 → G3 → G4（6 弦 3 品、4 弦 5 品、1 弦 3 品）</button></dd>
+<dt>常见误解</dt>
+<dd class="myth">“八度形状只有一种。”跨不跨过 3–2 弦是两种，加上 6→1 弦同品，常用的有三种。</dd>
+</dl>
+</section>
+
+<h3 style="margin-top:28px">速查：0～12 品的自然音</h3>
+<p>先只背 6、5 弦两行。其余四行用八度形状推出来，推完再对照这张表。</p>
+<table class="strings">
+<tr><th>弦</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th></tr>
+<tr><td>1 弦 E</td><td>E</td><td>F</td><td></td><td>G</td><td></td><td>A</td><td></td><td>B</td><td>C</td><td></td><td>D</td><td></td><td>E</td></tr>
+<tr><td>2 弦 B</td><td>B</td><td>C</td><td></td><td>D</td><td></td><td>E</td><td>F</td><td></td><td>G</td><td></td><td>A</td><td></td><td>B</td></tr>
+<tr><td>3 弦 G</td><td>G</td><td></td><td>A</td><td></td><td>B</td><td>C</td><td></td><td>D</td><td></td><td>E</td><td>F</td><td></td><td>G</td></tr>
+<tr><td>4 弦 D</td><td>D</td><td></td><td>E</td><td>F</td><td></td><td>G</td><td></td><td>A</td><td></td><td>B</td><td>C</td><td></td><td>D</td></tr>
+<tr><td><b>5 弦 A</b></td><td>A</td><td></td><td>B</td><td>C</td><td></td><td>D</td><td></td><td>E</td><td>F</td><td></td><td>G</td><td></td><td>A</td></tr>
+<tr><td><b>6 弦 E</b></td><td>E</td><td>F</td><td></td><td>G</td><td></td><td>A</td><td></td><td>B</td><td>C</td><td></td><td>D</td><td></td><td>E</td></tr>
+</table>
+
+<h2 id="lab">3. 交互指板</h2>
+<p>点任意一格都能听到这个音，下面会显示它的名字和音高。“一个音”模式会用虚线画出八度形状。“找音小测”会隐藏所有音名，随机出 10 题。</p>
+<div class="lab">
+  <div class="ctl">
+    <span class="grp"><span>模式</span>
+      <button class="btn" data-mode="nat">自然音</button>
+      <button class="btn" data-mode="sharp">12 个音（升号名）</button>
+      <button class="btn" data-mode="flat">12 个音（降号名）</button>
+      <button class="btn" data-mode="one">一个音</button>
+      <button class="btn" data-mode="quiz">找音小测</button>
+    </span>
+    <span class="grp" id="oneCtl"><span>音</span><select id="oneSel"></select></span>
+    <span class="grp" id="quizCtl"><label><input type="checkbox" id="quizAcc"> 包含升降音</label></span>
+  </div>
+  <div class="fb-scroll"><svg class="fb" id="fb" role="img" aria-label="吉他指板，0 到 15 品，1 弦在上"></svg></div>
+  <p class="status" id="status">点一格试试。</p>
+  <p class="legend" id="legend"></p>
+</div>
+
+<h2 id="drills">4. 上琴练习</h2>
+<p>开节拍器，每次 5～10 分钟，分几天做。每项都写了完成标准，达到了再往下走。</p>
+<ol class="drill">
+  <li><b>念着弹 6、5 弦自然音。</b>节拍器 60，每拍一个音，从空弦弹到 12 品再弹回来，嘴里念音名。
+    <span class="std">完成标准：两根弦各连续两遍不出错、不停顿。</span></li>
+  <li><b>按五度圈顺序找音。</b>在 6 弦上按 C、G、D、A、E、B、F♯、C♯、A♭、E♭、B♭、F 的顺序每拍弹一个，再在 5 弦上做一遍。这个顺序会在 G4 再见到。
+    <span class="std">完成标准：60 BPM 下 12 个音不停顿；之后提到 80。</span></li>
+  <li><b>一个音找遍 6 根弦。</b>选一个音（先 G，再 C，再 F♯），用八度形状在 6 根弦上各弹一次，同时说出用的是哪个形状。可以用第 3 节的“一个音”模式检查。
+    <span class="std">完成标准：每个音 15 秒内找全。网站「指板」页的找音练习会自动计时。</span></li>
+  <li><b>相对调弦与音准检查。</b><span class="sup">补充</span> 用“第 5 品对下一根空弦、3 弦用第 4 品”的方法调一次弦，再用调音器核对。然后比较每根弦 12 品泛音和 12 品按音，两者应该一样高。
+    <span class="std">完成标准：说得出为什么 3 弦用第 4 品；如果泛音和按音差得多，说明琴的音准需要调整。</span></li>
+  <li><b>两套名字都练。</b>任选一根弦，上行时念升号名（C、C♯、D……），下行时念降号名（C、B、B♭……）。这只是为了两套名字都熟，真正用哪个名字由调决定。
+    <span class="std">完成标准：任意一品，两个名字张口就来。</span></li>
+</ol>
+
+<h2 id="choices">5. 分歧点</h2>
+<h3>记指板的三种思路 <span class="sup">补充</span></h3>
+<table>
+<tr><th>思路</th><th>做法</th><th>好处</th><th>局限</th><th>什么时候用</th></tr>
+<tr><td>按弦记</td><td>一根弦一根弦地背自然音</td><td>直接，适合起步</td><td>容易只熟 6 弦，换到 3、4 弦又要数</td><td>只用于 6、5 两根根音弦</td></tr>
+<tr><td>按音记</td><td>一个音在 6 根弦上全部找出来，用八度形状连起来</td><td>建立“音”的网络，换弦不怕</td><td>一开始慢</td><td>本模块的主力练法</td></tr>
+<tr><td>按形状记</td><td>借和弦指型、音阶把位里的根音定位</td><td>和弹奏直接挂钩</td><td>离开熟悉的形状就找不到音</td><td>学完 G5 CAGED 之后作为补充</td></tr>
+</table>
+<h3>什么时候叫 F♯，什么时候叫 G♭</h3>
+<table>
+<tr><th>看什么</th><th>例子</th></tr>
+<tr><td>调号</td><td>G 大调有 F♯，没有 G♭；D♭ 大调有 G♭。一个调的七个音每个字母只用一次。</td></tr>
+<tr><td>和弦的拼写</td><td>D 大三和弦是 D–F♯–A，三个音隔着字母叠三度；写成 D–G♭–A 就看不出它是三度叠置的和弦了（G3、G5 会讲）。</td></tr>
+<tr><td>这个音想去哪里</td><td>OMT 的例子：A♭ 倾向于往下到 G，G♯ 倾向于往上到 A。</td></tr>
+<tr><td>还不知道调的时候</td><td>标指板、做找音练习时两个名字都写，或者先用一套，等学了调再按调拼写。</td></tr>
+</table>
+
+<h2 id="reading">6. 读原资料指南</h2>
+<p>下面三章 OMT 的原文已经嵌进网站「本周」G1 第 2、3 天的页面里，中英对照，图片也在。点“读完了”会自动展开下一篇。JustinGuitar 的视频在站外，要去原网站看。</p>
+<p><b>必须精读</b>（带着第 9 节的问题去读）：</p>
+<ul class="read">
+<li>OMT <a href="https://viva.pressbooks.pub/openmusictheory/chapter/half-and-whole-steps/">Half Steps, Whole Steps, and Accidentals</a>：全篇都短，重点是 Half Steps and Whole Steps、Sharps, Flats, and Naturals、Enharmonic equivalence 三节，以及 Example 7 的重升重降。页面里的拖放练习都做一遍。</li>
+<li>OMT <a href="https://viva.pressbooks.pub/openmusictheory/chapter/aspn/">ASPN</a>：中央 C = C4、每个八度从 C 开始、B♯3 和 C4 为什么编号不同。</li>
+<li>OMT <a href="https://viva.pressbooks.pub/openmusictheory/chapter/pitch-and-pitch-class/">Pitch and Pitch Class</a>：只读 Pitch 和 Pitch Class 两节，重点是八度等价、等音等价，以及 A♭ 和 G♯ 的那个例子。</li>
+<li>JustinGuitar <a href="https://www.justinguitar.com/modules/notes-sharps-flats-octaves">Grade 1：Notes, Sharps &amp; Flats &amp; Octaves</a>：看 Justin 怎么安排背指板的顺序和八度练习，和本讲义对照。</li>
+</ul>
+<p><b>可以跳过：</b>OMT Pitch and Pitch Class 里的 Integer Notation（给无调性音乐的集合论用的，现在用不上）；OMT 上一章 The Keyboard and the Grand Staff 里关于五线谱的部分，如果你目前只看 TAB，可以等 G2 再回来看。</p>
+
+<h2 id="quiz">7. 自测 5 题</h2>
+<p>先自己答（上琴题要真的弹），再展开看答案。答不上来的，回第 6 节对应的原资料。</p>
+
+<p class="q"><b>概念 1</b>E♯、C♭、F𝄪、B𝄫 分别和哪个自然音同音？在 6 弦上各是第几品（0～12 品）？</p>
+<details><summary>答案</summary>
+<p>E♯ = F（1 品），C♭ = B（7 品），F𝄪 = G（3 品），B𝄫 = A（5 品）。思路：E–F、B–C 是半音，所以 E 升半音就到 F，C 降半音就到 B；重升、重降是移动一个全音。</p>
+</details>
+
+<p class="q"><b>概念 2</b>相对调弦时，为什么 3 弦要按第 4 品去对 2 弦空弦，其他弦都按第 5 品？</p>
+<details><summary>答案</summary>
+<p>其他相邻弦都差纯四度，也就是 5 个半音，按第 5 品正好到下一根弦的空弦音；3 弦 G 到 2 弦 B 是大三度，只有 4 个半音，所以按第 4 品。追问：八度形状为什么跨过 3–2 弦要多一品？同一个原因，那里少了一个半音，要多按一品补回来。</p>
+</details>
+
+<p class="q"><b>辨析 1</b>5 弦 3 品和 2 弦 1 品都是 C，它们是同一个音吗？吉他谱上写在“中央 C”位置的音，应该弹哪一个？</p>
+<details><summary>答案</summary>
+<p>同一个音级，不同的音高：5 弦 3 品是 C3，2 弦 1 品是 C4（中央 C），差一个八度。吉他的声音比记谱低一个八度，所以谱上中央 C 的位置要弹 5 弦 3 品，实际发出 C3。<span class="sup">补充</span></p>
+</details>
+
+<p class="q"><b>辨析 2</b>朋友说：“升号用在上行，降号用在下行，所以 6 弦 2 品往上走叫 F♯，往下走叫 G♭。”这话对吗？</p>
+<details><summary>答案</summary>
+<p>不对，至少不是规则。写半音阶时确实常有这个习惯，但在调和和弦里，名字由调和功能决定：G 大调里那一品永远叫 F♯，不管旋律往哪走。OMT 的例子说明的是功能：A♭ 倾向于往下到 G，G♯ 倾向于往上到 A。拼写反映的是这个音想去哪里，而不是刚才从哪里来。</p>
+</details>
+
+<p class="q"><b>上琴</b>不看图，在 6 根弦上找出所有的 D（0～12 品），并说出每一步用了哪个八度形状。</p>
+<details><summary>答案</summary>
+<p>6 弦 10 品，5 弦 5 品，4 弦 0 品和 12 品，3 弦 7 品，2 弦 3 品，1 弦 10 品。形状：6 弦 10 品 → 4 弦 12 品（+2）；5 弦 5 品 → 3 弦 7 品（+2）；4 弦 0 品 → 2 弦 3 品（+3）；3 弦 7 品 → 1 弦 10 品（+3）；6 弦 10 品 ↔ 1 弦 10 品（同品）。用第 3 节的“一个音”模式选 D 核对。</p>
+</details>
+
+<h2 id="songs">8. 在歌里听一听</h2>
+<ol class="ask">
+<li><b>Seven Nation Army（The White Stripes）</b>：主 riff 可以全在 5 弦上弹，7-7-10-7-5-3-2。不看下面的答案，先说出每个音名。<button class="play" data-seq="52 52 55 52 50 48 47" data-gap="0.32" data-durs="1 0.5 0.5 0.5 0.5 1 1">听这 7 个音</button>
+<details><summary>音名</summary><p>E E G E D C B。注意最后的 C–B 只差 1 品，是半音。</p></details></li>
+<li><b>Smoke on the Water（Deep Purple）</b>：主 riff 在 6 弦上是 3-6-8、3-6-9-8、3-6-8-6-3 品。说出音名，再换到 4 弦弹一遍（4 弦的 G 在 5 品）。原版是用纯四度双音弹的，G3 学音程时会再回来。
+<details><summary>音名</summary><p>G B♭ C、G B♭ D♭ C、G B♭ C B♭ G。这首歌在 G 小调里，所以那一品叫 B♭ 而不是 A♯。换到 4 弦是 5-8-10、5-8-11-10、5-8-10-8-5 品。</p></details></li>
+<li><b>《大白鲨》主题（John Williams）</b>：只有两个音来回，6 弦 0 品和 1 品就能弹，E–F，天然的半音。</li>
+</ol>
+<p>和后面模块的连接：G3 音程会把“数品”变成“看形状”，跨过 3–2 弦错一品的规律会再出现一次；G4 大调音阶的“全 全 半 全 全 全 半”在单弦上就是 2 2 1 2 2 2 1 品；G5 CAGED 和 G10 五声把位都用 6、5 弦上的根音定位。</p>
+
+<section class="handoff" id="handoff">
+<h2>9. 带去原资料的 3 个问题</h2>
+<p>读讲义只是搭了骨架。下面三个问题讲义没讲透，答案要到原文里找。</p>
+<ol class="ask">
+<li>五线谱上同一小节里，先出现一个 B♭，后面又出现同一个位置的 B，要怎么写才能表示 B 还原？变音记号的书写位置有哪些对错？（OMT Half Steps → Sharps, Flats, and Naturals，Example 4、5）</li>
+<li>OMT 说调性音乐几乎总是区分等音。A♭ 和 G♯ 分别用在什么场合，各自想往哪里走？这和吉他上“同一品两个名字”是什么关系？（OMT Pitch and Pitch Class → Pitch Class）</li>
+<li>Justin 推荐先记哪几根弦、用什么方法练八度？和本讲义“先 6、5 弦，再用八度形状扩展”的顺序一样吗？哪里不一样？（JustinGuitar Grade 1：Notes, Sharps &amp; Flats &amp; Octaves）</li>
+</ol>
+<p>读完回到网站，在路线图里勾掉 G1 的第 3、4 步，然后用 <code>/quiz 音名与指板地图</code> 让 AI 反问你。</p>
+</section>
+</main>
+
+<script>
+(function () {
+  // ── 全局地图的八行：概念 → 核心事实 → 在指板上 ──
+  var rows = [
+    ["① 12 个音", "7 个字母 + 5 个升降音", "一根弦 0～11 品走完一圈"],
+    ["② 半音与全音", "只有 E–F、B–C 是半音", "1 品 = 半音，2 品 = 全音"],
+    ["③ 变音记号", "♯ ♭ 半音，𝄪 𝄫 全音", "往高一品 ♯，往低一品 ♭"],
+    ["④ 等音", "C♯ = D♭，E♯ = F，C♭ = B", "同一品，名字由调决定"],
+    ["⑤ 音高与音级", "C3 ≠ C4，但都是音级 C", "同一个音有好几个位置"],
+    ["⑥ 标准调弦", "E2 A2 D3 G3 B3 E4", "第 5 品 = 下一根空弦"],
+    ["⑦ 12 品对称", "12 品 = 空弦高八度", "12 品以上重复 0～11 品"],
+    ["⑧ 八度形状", "同一音级在不同弦上的连线", "+2 品、+3 品、同品"]
+  ];
+  var NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs, text) {
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (text) e.textContent = text;
+    return e;
+  }
+  var g = document.getElementById("rows");
+  rows.forEach(function (r, i) {
+    var y = 34 + i * 47, h = 36, mid = y + h / 2 + 5;
+    var a = el("a", { href: "#c" + (i + 1) });
+    a.appendChild(el("rect", { "class": "box-key", x: 8, y: y, width: 176, height: h, rx: 5 }));
+    a.appendChild(el("text", { "class": "t1", x: 18, y: mid }, r[0]));
+    g.appendChild(a);
+    g.appendChild(el("path", { "class": "arrow", d: "M186 " + (y + h / 2) + " H228", "marker-end": "url(#ar)" }));
+    g.appendChild(el("rect", { "class": "box", x: 232, y: y, width: 238, height: h, rx: 5 }));
+    g.appendChild(el("text", { "class": "t2", x: 244, y: mid }, r[1]));
+    g.appendChild(el("path", { "class": "arrow", d: "M472 " + (y + h / 2) + " H514", "marker-end": "url(#ar)" }));
+    g.appendChild(el("rect", { "class": "box", x: 518, y: y, width: 234, height: h, rx: 5 }));
+    g.appendChild(el("text", { "class": "t2", x: 530, y: mid }, r[2]));
+  });
+
+  // ── 发声：Karplus–Strong 拨弦合成 ──
+  var ctx = null, bus = null, cache = {};
+  function ac() {
+    if (!ctx) {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return null;
+      ctx = new AC();
+      var lp = ctx.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 3800;
+      bus = ctx.createGain(); bus.gain.value = 1;
+      bus.connect(lp); lp.connect(ctx.destination);
+    }
+    if (ctx.state === "suspended") ctx.resume();
+    return ctx;
+  }
+  function buffer(midi) {
+    if (cache[midi]) return cache[midi];
+    var c = ac(), sr = c.sampleRate, f = 440 * Math.pow(2, (midi - 69) / 12);
+    var N = Math.max(2, Math.floor(sr / f - 0.5));
+    var T60 = 2.6 - Math.min(1.4, (midi - 40) / 30);
+    var d = Math.min(0.99995, Math.pow(0.001, 1 / (f * T60)) / Math.cos(Math.PI * f / sr));
+    var len = Math.floor(sr * (T60 + 0.2));
+    var b = c.createBuffer(1, len, sr), y = b.getChannelData(0), prev = 0, i;
+    for (i = 0; i < N; i++) { prev = 0.55 * prev + 0.45 * (Math.random() * 2 - 1); y[i] = prev; }
+    for (i = N; i < len; i++) y[i] = d * 0.5 * (y[i - N] + (i - N - 1 >= 0 ? y[i - N - 1] : 0));
+    var fade = Math.floor(sr * 0.15);
+    for (i = 0; i < fade; i++) y[len - 1 - i] *= i / fade;
+    // 延迟线实际长度是 N + 0.5 个采样，用播放速率把音高校正到准确频率
+    cache[midi] = { buf: b, rate: f / (sr / (N + 0.5)) };
+    return cache[midi];
+  }
+  function play(midi, delay, vel) {
+    var c = ac();
+    if (!c) return;
+    var o = buffer(midi), src = c.createBufferSource(), gn = c.createGain();
+    src.buffer = o.buf; src.playbackRate.value = o.rate;
+    gn.gain.value = 0.32 * (vel || 1);
+    src.connect(gn); gn.connect(bus);
+    src.start(c.currentTime + 0.01 + (delay || 0));
+  }
+  document.querySelectorAll("[data-seq]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var notes = b.dataset.seq.split(" ").map(Number);
+      var gap = Number(b.dataset.gap || 0.4);
+      var durs = b.dataset.durs ? b.dataset.durs.split(" ").map(Number) : null;
+      var t = 0;
+      notes.forEach(function (m, i) { play(m, t, 0.9); t += gap * (durs ? durs[i] : 1); });
+    });
+  });
+
+  // ── 指板 ──
+  var OPEN = [64, 59, 55, 50, 45, 40];
+  var SHARP = ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B"];
+  var FLAT = ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"];
+  var NAT = [0, 2, 4, 5, 7, 9, 11];
+  var FRETS = 15, L = 46, OW = 40, FW = 54, TOP = 20, SS = 30;
+  var W = L + OW + FRETS * FW + 12, H = TOP + 5 * SS + 40;
+  function fx(f) { return f === 0 ? L + OW / 2 : L + OW + (f - 0.5) * FW; }
+  function sy(s) { return TOP + s * SS; }
+  function both(pc) { return SHARP[pc] === FLAT[pc] ? SHARP[pc] : SHARP[pc] + " / " + FLAT[pc]; }
+  function aspn(midi) { return SHARP[midi % 12] + (Math.floor(midi / 12) - 1); }
+
+  var S = { mode: "nat", one: 7, quiz: null, flash: null };
+  var svg = document.getElementById("fb");
+  svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+  var oneSel = document.getElementById("oneSel");
+  for (var p = 0; p < 12; p++) {
+    var o = document.createElement("option");
+    o.value = p; o.textContent = both(p);
+    if (p === S.one) o.selected = true;
+    oneSel.appendChild(o);
+  }
+
+  function draw() {
+    var h = "", k, s, f, x, y;
+    for (k = 0; k <= FRETS; k++) {
+      x = L + OW + k * FW;
+      h += '<line class="' + (k === 0 ? "nut" : "fret") + '" x1="' + x + '" y1="' + sy(0) + '" x2="' + x + '" y2="' + sy(5) + '"/>';
+    }
+    var mid = (sy(2) + sy(3)) / 2;
+    [3, 5, 7, 9, 15].forEach(function (f) { h += '<circle class="inlay" cx="' + fx(f) + '" cy="' + mid + '" r="5"/>'; });
+    h += '<circle class="inlay" cx="' + fx(12) + '" cy="' + (sy(1) + sy(2)) / 2 + '" r="5"/><circle class="inlay" cx="' + fx(12) + '" cy="' + (sy(3) + sy(4)) / 2 + '" r="5"/>';
+    for (s = 0; s < 6; s++) {
+      h += '<line class="string" x1="' + (L + OW) + '" y1="' + sy(s) + '" x2="' + (W - 12) + '" y2="' + sy(s) + '" style="stroke-width:' + (0.8 + s * 0.35).toFixed(2) + '"/>';
+      h += '<text class="sname" x="' + (L - 10) + '" y="' + (sy(s) + 4) + '">' + (s + 1) + " " + SHARP[OPEN[s] % 12] + "</text>";
+    }
+    for (f = 1; f <= FRETS; f++) h += '<text class="fnum" x="' + fx(f) + '" y="' + (sy(5) + 30) + '">' + f + "</text>";
+    h += '<text class="fnum" x="' + fx(0) + '" y="' + (sy(5) + 30) + '">空弦</text>';
+    // 一个音：用虚线连出八度形状
+    if (S.mode === "one") {
+      var pairs = [[5, 3, 2], [4, 2, 2], [3, 1, 3], [2, 0, 3]];
+      pairs.forEach(function (pr) {
+        for (f = 0; f <= FRETS; f++) {
+          if ((OPEN[pr[0]] + f) % 12 !== S.one) continue;
+          var f2 = f + pr[2];
+          if (f2 > FRETS) continue;
+          h += '<line class="oct" x1="' + fx(f) + '" y1="' + sy(pr[0]) + '" x2="' + fx(f2) + '" y2="' + sy(pr[1]) + '"/>';
+        }
+      });
+    }
+    for (s = 0; s < 6; s++) {
+      for (f = 0; f <= FRETS; f++) {
+        var midi = OPEN[s] + f, pc = midi % 12, mark = "", cls = "", text = "";
+        x = fx(f); y = sy(s);
+        if (S.mode === "nat" && NAT.indexOf(pc) >= 0) { cls = pc === 5 || pc === 0 ? "half" : "n"; text = SHARP[pc]; }
+        else if (S.mode === "sharp" || S.mode === "flat") { cls = NAT.indexOf(pc) >= 0 ? "n" : "acc"; text = (S.mode === "sharp" ? SHARP : FLAT)[pc]; }
+        else if (S.mode === "one" && pc === S.one) { cls = "target"; text = SHARP[pc] === FLAT[pc] ? SHARP[pc] : (S.one === 6 || S.one === 1 || S.one === 8 ? SHARP[pc] : FLAT[pc]); }
+        else if (S.mode === "quiz" && S.quiz) {
+          var q = S.quiz;
+          if (q.done.some(function (d) { return d[0] === s && d[1] === f; })) { cls = "ok"; text = SHARP[pc]; }
+          else if (S.flash && S.flash[0] === s && S.flash[1] === f) { cls = "bad"; text = SHARP[pc]; }
+        }
+        if (cls) mark = '<circle class="dot ' + cls + '" cx="' + x + '" cy="' + y + '" r="11"/><text class="dl ' + cls + '" x="' + x + '" y="' + (y + 4) + '">' + text + "</text>";
+        var cw = f === 0 ? OW : FW;
+        h += '<g class="cell" data-s="' + s + '" data-f="' + f + '"><rect x="' + (x - cw / 2) + '" y="' + (y - SS / 2) + '" width="' + cw + '" height="' + SS + '"/>' + mark + "</g>";
+      }
+    }
+    svg.innerHTML = h;
+    document.querySelectorAll("[data-mode]").forEach(function (b) { b.classList.toggle("on", b.dataset.mode === S.mode); });
+    document.getElementById("oneCtl").style.display = S.mode === "one" ? "" : "none";
+    document.getElementById("quizCtl").style.display = S.mode === "quiz" ? "" : "none";
+    var lg = {
+      nat: "红色的 F 和 C：和前一个自然音（E、B）只差 1 品，其余相邻自然音都差 2 品。",
+      sharp: "灰色是 5 个升降音，这里用升号名。和“降号名”来回切换，同一品两个名字。",
+      flat: "灰色是 5 个升降音，这里用降号名。",
+      one: "虚线是八度形状：6→4、5→3 弦 +2 品，4→2、3→1 弦 +3 品。6 弦和 1 弦同品，差两个八度。",
+      quiz: "音名全部隐藏。在指定的弦上点出目标音，10 题一组。G1 的验收标准是任意弦任意音 5 秒内。"
+    };
+    document.getElementById("legend").textContent = lg[S.mode];
+  }
+
+  var statusEl = document.getElementById("status");
+  function newQuestion() {
+    var q = S.quiz;
+    var pool = document.getElementById("quizAcc").checked ? [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] : NAT;
+    var pc, s;
+    do { pc = pool[Math.floor(Math.random() * pool.length)]; s = Math.floor(Math.random() * 6); }
+    while (q.prev && q.prev.pc === pc && q.prev.s === s);
+    var name = NAT.indexOf(pc) >= 0 ? SHARP[pc] : (Math.random() < 0.5 ? SHARP[pc] : FLAT[pc]);
+    q.cur = { pc: pc, s: s, name: name };
+    q.done = [];
+    statusEl.innerHTML = "第 " + (q.n + 1) + " / 10 题：在 <b>" + (s + 1) + " 弦</b>上找到 <b>" + name + "</b>";
+  }
+  function startQuiz() {
+    S.quiz = { n: 0, miss: 0, t0: performance.now(), cur: null, prev: null, done: [] };
+    S.flash = null;
+    newQuestion();
+  }
+
+  svg.addEventListener("click", function (e) {
+    var c = e.target.closest(".cell");
+    if (!c) return;
+    var s = Number(c.dataset.s), f = Number(c.dataset.f), midi = OPEN[s] + f, pc = midi % 12;
+    play(midi);
+    if (S.mode !== "quiz") {
+      statusEl.innerHTML = (s + 1) + " 弦 " + (f === 0 ? "空弦" : f + " 品") + "：<b>" + both(pc) + "</b>　音高 " + aspn(midi);
+      return;
+    }
+    var q = S.quiz;
+    if (!q || !q.cur) return;
+    if (s === q.cur.s && pc === q.cur.pc) {
+      // 答对后到下一题之前不再接受点击，免得同一题算两次
+      q.done = [[s, f]]; S.flash = null; q.n++; q.prev = q.cur; q.cur = null;
+      draw();
+      if (q.n >= 10) {
+        var sec = (performance.now() - q.t0) / 1000;
+        statusEl.innerHTML = "10 题用时 <b>" + sec.toFixed(1) + " 秒</b>，平均每题 " + (sec / 10).toFixed(1) + " 秒，点错 " + q.miss + " 次。" + (sec / 10 <= 5 ? "达到 G1 的验收标准。" : "目标是平均 5 秒以内，明天再来。");
+        S.quiz = null;
+        return;
+      }
+      setTimeout(function () { if (S.quiz === q) { newQuestion(); draw(); } }, 450);
+    } else {
+      q.miss++; S.flash = [s, f];
+      draw();
+    }
+  });
+
+  document.querySelectorAll("[data-mode]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      S.mode = b.dataset.mode;
+      S.flash = null;
+      if (S.mode === "quiz") startQuiz();
+      else { S.quiz = null; statusEl.textContent = "点一格试试。"; }
+      draw();
+    });
+  });
+  oneSel.addEventListener("change", function () { S.one = Number(oneSel.value); draw(); });
+  document.getElementById("quizAcc").addEventListener("change", function () { if (S.mode === "quiz") { startQuiz(); draw(); } });
+  draw();
+})();
+</script>
+</body>
+</html>

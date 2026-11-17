@@ -1,0 +1,20 @@
+{
+  "name": "电吉他乐理 · 弹得出 听得出 说得出",
+  "short_name": "电吉他乐理",
+  "description": "65天电吉他现代实用乐理训练系统：含交互指板、五度圈、练耳、伴奏循环与15份离线讲义",
+  "lang": "zh-CN",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f6f3ec",
+  "theme_color": "#181614",
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

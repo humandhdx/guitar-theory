@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>电吉他乐理</title>
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#181614">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="电吉他乐理">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icon.svg">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="assets/style.css">
+  <script>
+    // 首帧前确定主题，避免闪烁
+    try {
+      var s = JSON.parse(localStorage.getItem("guitarTheory.v1") || "{}").settings || {};
+      var t = s.theme || "auto";
+      var dark = t === "dark" || (t === "auto" && matchMedia("(prefers-color-scheme: dark)").matches);
+      document.documentElement.dataset.theme = dark ? "dark" : "light";
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <div class="app">
+    <aside class="side">
+      <p class="brand">电吉他乐理<small>弹得出 · 听得出 · 说得出</small></p>
+      <nav aria-label="页面"><ul class="nav" id="nav"></ul></nav>
+      <div class="side-foot">
+        <button class="theme-btn" id="themeBtn" data-act="theme">外观：跟随系统</button>
+        <p style="margin-top:12px">进度只存在本机浏览器。<br>定期在设置里导出备份。</p>
+      </div>
+    </aside>
+    <main class="main" id="page" tabindex="-1"></main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="g-tip" id="tip" aria-hidden="true"></div>
+
+  <script src="assets/data-resources.js"></script>
+  <script src="assets/data-modules.js"></script>
+  <script src="assets/data-questions.js"></script>
+  <script src="assets/data-songs.js"></script>
+  <script src="assets/data-method.js"></script>
+  <script src="assets/data-reading.js"></script>
+  <script src="assets/data-reading-ext.js"></script>
+  <script src="assets/data-week.js"></script>
+  <script src="lessons/manifest.js"></script>
+  <script src="assets/music.js"></script>
+  <script src="assets/core.js"></script>
+  <script src="assets/data-local-hub.js"></script>
+  <script src="assets/page-today.js"></script>
+  <script src="assets/page-week.js"></script>
+  <script src="assets/page-roadmap.js"></script>
+  <script src="assets/page-practice.js"></script>
+  <script src="assets/page-notes.js"></script>
+  <script src="assets/page-fretboard.js"></script>
+  <script src="assets/page-ear.js"></script>
+  <script src="assets/app.js"></script>
+  <script>
+    if ("serviceWorker" in navigator && /^https?:/.test(location.protocol)) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("sw.js").catch(function () {});
+      });
+    }
+  </script>
+</body>
+</html>

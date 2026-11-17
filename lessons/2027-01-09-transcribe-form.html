@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>G15 讲义：扒歌、曲式与综合创作</title>
+<style>
+:root {
+  color-scheme: light;
+  --paper: #eef1eb; --sheet: #fbfcf9; --ink: #1b2533; --ink-2: #3f4a58; --pencil: #5f6975;
+  --rule: #d6ddd2; --rule-soft: #e5e9e1; --blue: #2557a7; --blue-wash: #e9eff8;
+  --marker: #e2f25a; --red: #b3322a; --red-wash: #f6e3e0; --code-bg: #f2f5ef; --good: #2e7a33;
+  --font-text: "DengXian", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-note: "KaiTi", "STKaiti", "楷体", serif;
+  --font-code: "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --paper: #13161b; --sheet: #1a1e25; --ink: #e4e8ed; --ink-2: #c3cad3; --pencil: #98a2ae;
+    --rule: #2e343d; --rule-soft: #242930; --blue: #86abe8; --blue-wash: #1f2836;
+    --marker: #d2e255; --red: #f08378; --red-wash: #3a2422; --code-bg: #15191f; --good: #6fc275;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.75 var(--font-text); }
+a { color: var(--blue); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+code { font-family: var(--font-code); font-size: 0.88em; background: var(--code-bg); padding: 0.1em 0.3em; border-radius: 3px; }
+.top { max-width: 900px; margin: 0 auto; padding: 18px 20px 0; display: flex; justify-content: space-between; gap: 12px; font-size: 14px; color: var(--pencil); }
+main { max-width: 900px; margin: 10px auto 48px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; padding: 36px 52px 48px; }
+p, li, dd, .note { max-width: 44em; }
+h1 { font-size: 27px; line-height: 1.35; margin: 0 0 10px; }
+h2 { font-size: 21px; margin: 48px 0 14px; padding-top: 20px; border-top: 1px solid var(--rule); }
+h3 { font-size: 17.5px; margin: 0 0 6px; }
+.lead { font-size: 17px; color: var(--ink-2); }
+.note { font-family: var(--font-note); color: var(--red); font-size: 17px; }
+.meta { display: grid; grid-template-columns: 7em 1fr; gap: 4px 14px; margin: 18px 0; font-size: 15px; }
+.meta dt { color: var(--pencil); } .meta dd { margin: 0; }
+.toc { background: var(--blue-wash); border-radius: 6px; padding: 12px 18px; font-size: 15px; }
+.toc ol { margin: 4px 0 0; padding-left: 1.4em; columns: 2; column-gap: 28px; }
+figure { margin: 16px 0; }
+figure > svg { width: 100%; height: auto; display: block; }
+.concept { border-left: 3px solid var(--rule); padding: 2px 0 2px 18px; margin: 28px 0; }
+.concept dl { margin: 8px 0 0; }
+.concept dt { font-size: 14px; font-weight: 700; color: var(--pencil); margin-top: 10px; }
+.concept dd { margin: 2px 0 0; }
+.concept dd.myth { color: var(--red); font-family: var(--font-note); font-size: 16.5px; }
+.play { font: 13px var(--font-text); color: var(--blue); background: var(--sheet); border: 1px solid var(--blue); border-radius: 999px; padding: 2px 11px; cursor: pointer; margin: 4px 6px 4px 0; white-space: nowrap; }
+.play::before { content: "▶ "; font-size: 10px; }
+.play:hover { background: var(--blue-wash); }
+table { border-collapse: collapse; width: 100%; font-size: 15px; margin: 10px 0 18px; }
+th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--rule); }
+th { color: var(--pencil); font-weight: 400; font-size: 14px; border-bottom-color: var(--ink-2); }
+details { border: 1px solid var(--rule); border-radius: 5px; padding: 8px 14px; margin: 8px 0 18px; }
+summary { cursor: pointer; color: var(--blue); }
+.q { margin: 20px 0 6px; } .q b { color: var(--pencil); font-weight: 400; font-size: 14px; margin-right: 6px; }
+ol.drill li { margin: 10px 0; }
+ol.drill .std { display: block; font-size: 14px; color: var(--pencil); }
+.handoff { background: var(--red-wash); border-radius: 6px; padding: 14px 20px; }
+.handoff h2 { border: 0; margin-top: 0; padding-top: 0; }
+.lab { border: 1px solid var(--rule); border-radius: 6px; padding: 14px 16px; margin: 14px 0 20px; }
+.ctl { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; margin-bottom: 8px; font-size: 14px; }
+.btn { font: 13.5px var(--font-text); color: var(--ink); background: var(--sheet); border: 1px solid var(--rule); border-radius: 5px; padding: 3px 10px; cursor: pointer; }
+.btn:hover { border-color: var(--ink-2); }
+.btn.on { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); font-weight: 700; background: var(--blue-wash); }
+.btn.primary { background: var(--ink); color: var(--sheet); border-color: var(--ink); }
+.fb-scroll { overflow-x: auto; }
+.fb { display: block; width: 100%; min-width: 700px; height: auto; }
+.fb .fret { stroke: var(--rule); stroke-width: 2; }
+.fb .nut { stroke: var(--ink); stroke-width: 5; }
+.fb .string { stroke: var(--pencil); }
+.fb .inlay { fill: var(--rule); }
+.fb .sname, .fb .fnum { fill: var(--pencil); font-size: 12px; }
+.fb .sname { text-anchor: end; } .fb .fnum { text-anchor: middle; }
+.fb .cell rect { fill: transparent; cursor: pointer; }
+.fb .cell:hover rect { fill: var(--blue-wash); }
+.fb .win { fill: rgba(37, 87, 167, 0.09); stroke: var(--blue); stroke-width: 1.5; stroke-dasharray: 5 4; pointer-events: none; }
+.fb .dot { stroke-width: 1.5; pointer-events: none; }
+.fb .dot.tone { fill: var(--sheet); stroke: var(--ink); }
+.fb .dot.root { fill: var(--ink); stroke: var(--ink); }
+.fb .dot.color { fill: var(--red-wash); stroke: var(--red); stroke-width: 2; }
+.fb .dot.dim { opacity: 0.22; }
+.fb .dl { font-size: 11px; font-weight: 700; text-anchor: middle; fill: var(--ink); pointer-events: none; }
+.fb .dl.root { fill: var(--sheet); }
+.fb .dl.color { fill: var(--red); }
+.fb .dl.dim { opacity: 0.22; }
+@media (max-width: 720px) { main { padding: 22px 16px 32px; } .toc ol { columns: 1; } .meta { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="top"><a href="../index.html#/lessons">返回讲义列表</a><span>G15 扒歌、曲式与综合创作 · 阶段五 · 进阶与综合</span></div>
+<main>
+<h1>扒歌、曲式与综合创作：把全部乐理变成作品</h1>
+<p class="lead">全部 14 个模块汇流到真实的音乐创造。学会专业乐手标准的 6 步扒歌工作流、识别流行摇滚曲式结构（主副歌、AABA、分节歌），完整解剖一首经典作品，最后写下并录出属于你的 65 天毕业原创短曲。</p>
+<dl class="meta">
+  <dt>学完能做到</dt><dd>不看任何谱 2 小时内扒下 8～16 小节吉他独奏；交出一页完整歌曲分析；录制原创短曲（含主/副歌/独奏与至少 1 个调外和弦）并通过 /quiz 创作追问。</dd>
+  <dt>主资料</dt><dd>OMT: Intro to Form + Verse-Chorus + AABA + Soundslice + Transcribe! + Guthrie Govan</dd>
+</dl>
+
+<nav class="toc" aria-label="目录"><b>目录</b><ol>
+  <li><a href="#map">全局地图</a></li>
+  <li><a href="#concepts">逐个概念</a></li>
+  <li><a href="#lab">交互指板与伴奏实验室</a></li>
+  <li><a href="#drills">上琴练习</a></li>
+  <li><a href="#choices">分歧点对照</a></li>
+  <li><a href="#reading">读原资料指南</a></li>
+  <li><a href="#quiz">自测 5 题</a></li>
+  <li><a href="#songs">在歌里听一听</a></li>
+  <li><a href="#handoff">带去原资料的 3 个问题</a></li>
+</ol></nav>
+
+<h2 id="map">1. 全局地图</h2>
+<figure><svg viewBox="0 0 760 254" role="img" aria-label="本模块概念全局地图"><g font-size="13" fill="var(--pencil)"><text x="8" y="20">核心概念</text><text x="225" y="20">理论要点</text><text x="515" y="20">在指板与耳朵上</text></g><rect x="8" y="34" width="185" height="34" rx="4" fill="var(--blue-wash)" stroke="var(--blue)"/><text x="18" y="56" font-size="13.5" font-weight="700" fill="var(--ink)">① 6 步扒歌工作流</text><rect x="225" y="34" width="260" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="235" y="56" font-size="12.5" fill="var(--ink)">反复听到能唱 → 定调 → 低音/和弦 → 减速抓音 → 标级数</text><rect x="515" y="34" width="235" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="525" y="56" font-size="12.5" fill="var(--ink)">网上的 TAB 只能拿来最后核对，耳朵才是起点</text><rect x="8" y="76" width="185" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="18" y="98" font-size="13.5" font-weight="700" fill="var(--ink)">② 当代主流曲式</text><rect x="225" y="76" width="260" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="235" y="98" font-size="12.5" fill="var(--ink)">前奏 · 主歌 · 预副歌 · 副歌 · 桥段 · 尾奏</text><rect x="515" y="76" width="235" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="525" y="98" font-size="12.5" fill="var(--ink)">预副歌蓄力(常停V/ii)，副歌落I释放，桥段换区</text><rect x="8" y="118" width="185" height="34" rx="4" fill="var(--blue-wash)" stroke="var(--blue)"/><text x="18" y="140" font-size="13.5" font-weight="700" fill="var(--ink)">③ 经典与布鲁斯曲式</text><rect x="225" y="118" width="260" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="235" y="140" font-size="12.5" fill="var(--ink)">AABA（32小节标准曲） · 12小节分节歌 (Strophic)</text><rect x="515" y="118" width="235" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="525" y="140" font-size="12.5" fill="var(--ink)">用曲式段落理解为什么主副歌和声节奏不同</text><rect x="8" y="160" width="185" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="18" y="182" font-size="13.5" font-weight="700" fill="var(--ink)">④ 整曲分析清单</text><rect x="225" y="160" width="260" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="235" y="182" font-size="12.5" fill="var(--ink)">曲式段落 + 调/调式 + 罗马数字 + 调外 + 独奏目标音</text><rect x="515" y="160" width="235" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="525" y="182" font-size="12.5" fill="var(--ink)">每一首歌都能“偷”走至少一个核心和声或句法点</text><rect x="8" y="202" width="185" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="18" y="224" font-size="13.5" font-weight="700" fill="var(--ink)">⑤ 毕业创作作品</text><rect x="225" y="202" width="260" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="235" y="224" font-size="12.5" fill="var(--ink)">4小节Riff + 8小节主歌 + 8小节副歌 + 8小节独奏</text><rect x="515" y="202" width="235" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="525" y="224" font-size="12.5" fill="var(--ink)">必含至少 1 个副属或借用和弦，且经得住追问</text></svg></figure>
+
+<h2 id="concepts">2. 逐个概念</h2>
+<section class="concept" id="c1"><h3>① 专业级 6 步扒歌（Transcription）工作流</h3><dl><dt>是什么</dt><dd>别一上来就对着视频慢放一个音一个音瞎撞！严格走这 6 步效率翻倍：<br>1) <b>反复听到能用嘴唱出整段旋律</b>（唱不出来就一定扒不准节奏）；<br>2) <b>定调与主音</b>（找听起来像家的音，比对五度圈）；<br>3) <b>先听低音贝斯定和弦根音与罗马数字</b>；<br>4) <b>用 Transcribe! 或 Soundslice 减速（0.75x）循环 1～2 小节</b>抓主音符，并用已掌握的五声/CAGED 把位缩小候选品格；<br>5) <b>定出推弦、滑音、击勾等演奏技巧把位</b>；<br>6) <b>写出 TAB + 每个强拍音相对当时和弦的级数</b>，并跟原录音合弹到天衣无缝。</dd><dt>为什么需要</dt><dd>扒歌不是机械抄写音符，而是偷取大师的大脑思考逻辑：为什么他在 IV7 那一拍推了那个音。</dd><dt>在指板上</dt><dd>试着先盲听 30 秒再上琴验证，你会惊讶于经过 G1–G14 训练后自己的耳朵准了多少。</dd><dt>听起来</dt><dd><button class="play" data-mode="scale" data-notes="45,49,52,57,61,64,62,60,57">A 调主歌与独奏扒谱目标音示范</button></dd><dt>常见误解</dt><dd class="myth">“Songsterr 或吉他谱网站上写着的就是标准答案。”民间用户上传的谱在节奏、把位、调弦（大量摇滚降半音）甚至和弦级数上错误率极高，永远以原录音为准。</dd></dl></section>
+<section class="concept" id="c2"><h3>② 流行与摇滚三大曲式及段落和声差异</h3><dl><dt>是什么</dt><dd>OMT 归纳当代音乐三大曲式：<br>• <b>主歌–副歌（Verse–Chorus）</b>：最常见结构为 Intro – Verse – Pre-Chorus – Chorus – Bridge – Outro；<br>• <b>AABA（32 小节曲式）</b>：A 段确立主调，A' 重复，B 段（Bridge）转入对比和声区停在属和弦，最后回到 A（大量披头士早期歌如《Yesterday》和爵士标准曲）；<br>• <b>分节歌（Strophic / 12-bar）</b>：同一套和弦反复循环。</dd><dt>为什么需要</dt><dd>好歌曲段落之间一定有<b>和声能量对比</b>：主歌常从 vi 或 IV 出发留悬念；预副歌加速和声节奏并停在 V；副歌直接痛快落回 I；桥段（Bridge）则专程去从未去过的 IV、♭VI 或转调区。</dd><dt>在指板上</dt><dd>写自己的短曲时，刻意让主歌和副歌的起始和弦与和声节奏拉开差距，作品瞬间就有立体架构。</dd><dt>听起来</dt><dd><button class="play" data-mode="seq" data-notes="45,52,57,41,48,53,50,57,60,43,47,53,55,48,52,55">主歌(vi–IV) → 预副歌(ii–V停) → 副歌(I–V)</button></dd><dt>常见误解</dt><dd class="myth">“一首歌只需要选一个好听的四和弦循环从头弹到尾。”如果主歌副歌和弦不变（像很多流行极简曲），你必须靠配器密度、音区八度、吉他失真/清音和旋律音高差来强行拉开段落感。</dd></dl></section>
+<section class="concept" id="c3"><h3>③ 65 天毕业作品设计蓝图</h3><dl><dt>是什么</dt><dd>到了展现“弹得出 · 听得出 · 说得出”三通的最后关卡！创作并录制一首 30～45 秒的短曲：<br>• <b>4 小节标志性 Riff</b>（有节奏记忆点与切分或双音）<br>• <b>8 小节主歌</b>（用三弦组声部连接或分解琶音铺底）<br>• <b>8 小节副歌</b>（至少设计 <b>1 个副属和弦 V/x 或借用和弦 iv/♭VII</b>）<br>• <b>8 小节电吉他独奏</b>（强拍落和弦 3/7 音，并在调外和弦那一小节切出变音）</dd><dt>为什么需要</dt><dd>完成后把自己的和弦进行、独奏级数笔记交给 AI 做一次终极 <code>/quiz</code> 创作追问——你能讲出自己写的每一个音为什么选它，你就彻底出师了！</dd><dt>在指板上</dt><dd>使用手机、声卡 DAW 或循环录音（Looper）叠加吉他轨道，录完隔一天再回听做最后微调。</dd><dt>听起来</dt><dd><button class="play" data-mode="seq" data-notes="43,50,55,40,47,52,47,54,57,63,48,52,55,48,51,55,43,50,55">毕业曲例：G–Em–B7(V/vi!)–C–Cm(iv!)–G</button></dd><dt>常见误解</dt><dd class="myth">“我不会作曲，等全部学完再开始写。”把你最喜欢的 2 首歌和弦拆下来换个节奏，中间插一个借用和弦，这就是最真实的作曲起点。</dd></dl></section>
+
+<h2 id="lab">3. 交互指板与伴奏实验室</h2>
+<p>点下方预设快速切换把位与音阶/和弦；点任意一格都能发声，开启持续音即可直接对着指板练习即兴与听辨。</p>
+<div class="lab">
+  <div class="ctl" id="lab-presets"></div>
+  <div class="ctl">
+    <button class="btn on" id="lab-mode" data-m="name">显示：音名 / 级数切换</button>
+    <button class="btn primary" id="lab-play">播放示例</button>
+    <button class="btn" id="lab-drone">持续音伴奏：关</button>
+  </div>
+  <p id="lab-desc" style="font-size:14.5px;margin:4px 0 8px"></p>
+  <div class="fb-scroll"><svg class="fb" id="lab-svg" viewBox="0 0 880 215"></svg></div>
+  <p style="font-size:13.5px;color:var(--pencil);margin:8px 0 0"><a href="../index.html#/fretboard">前往主站完整指板与五度圈实验室 ↗</a>　｜　<a href="../index.html#/ear">前往练耳与节奏实验室 ↗</a></p>
+</div>
+
+<h2 id="drills">4. 上琴练习</h2>
+<ol class="drill"><li><b>实战扒谱 8～16 小节独奏</b>（限时 2 小时内）：不看任何现成 TAB，按 6 步法扒下 S5 选定曲目的一段独奏，标明强拍和弦级数。<span class="std">重点验证：按节拍稳定、说得出级数与音名。</span></li><li><b>完整一页整曲分析表</b>（按 7 步分析法）：选一首含调外和弦或转调的歌，写满段落曲式、调性、罗马数字、调外解释、独奏音阶与可“偷学”的一句话结论。<span class="std">重点验证：按节拍稳定、说得出级数与音名。</span></li><li><b>毕业短曲创作与录音</b>（含主/副歌/独奏）：设计 4 小节 Riff + 8 主 + 8 副 + 8 独奏，必含 1 个副属或借用和弦，完整录制下来。<span class="std">重点验证：按节拍稳定、说得出级数与音名。</span></li><li><b>终极创作 /quiz + 能力自评重测</b>（对比起点）：让 AI 追问你作品里每个和弦和音阶的设计；再去「能力自评」重打一遍 19 项得分，看与第 1 天的巨大跨越！<span class="std">重点验证：按节拍稳定、说得出级数与音名。</span></li></ol>
+
+<h2 id="choices">5. 分歧点对照</h2>
+<table>
+  <thead><tr><th>容易混淆的两面</th><th>核心区别</th><th>实战怎么选</th></tr></thead>
+  <tbody><tr><td><b>盲听自扒 + 核对 vs 一上来查现成谱</b></td><td>耳朵和指板神经彻底接通 vs 只锻炼了看数字打地鼠</td><td>只有自己听出来过，以后在现场乐队排练或即兴里才反应得过来</td></tr><tr><td><b>和弦越复杂越好 vs 结构对比与情感动机</b></td><td>堆砌 9/13 和弦却没有呼吸感</td><td>用最恰当的一个借用和弦或暂停留白击中听众，永远高于炫技</td></tr></tbody>
+</table>
+
+<h2 id="reading">6. 读原资料指南</h2>
+<ul><li><a href="https://viva.pressbooks.pub/openmusictheory/chapter/intro-to-form-in-popular-music/" target="_blank" rel="noopener">OMT: Introduction to Form in Popular Music ↗</a> — 精读流行曲式模块功能与术语定义</li><li><a href="https://viva.pressbooks.pub/openmusictheory/chapter/verse-chorus-form/" target="_blank" rel="noopener">OMT: Verse-Chorus &amp; AABA Form ↗</a> — 对比当代主副歌与经典 32 小节 AABA 结构</li><li><a href="https://www.soundslice.com/" target="_blank" rel="noopener">Soundslice / Transcribe! ↗</a> — 利用现代减速与循环工具科学扒歌</li></ul>
+
+<h2 id="quiz">7. 自测 5 题</h2>
+<div class="q"><b>1.</b> 扒一段吉他独奏时，为什么专业老师强迫学生“必须先能用嘴哼唱出来”再摸琴？</div><details><summary>答案</summary><p>能唱出来意味着大脑已锁定旋律轮廓和节奏重音；不唱直接摸琴极易在指板上逐格试错且抓错拍子。</p></details><div class="q"><b>2.</b> 副歌（Chorus）和主歌（Verse）在和声安排上通常有什么典型差别？</div><details><summary>答案</summary><p>副歌和声节奏更稳整、更直接落地主和弦（I），能量集中；主歌与预副歌常停在非主和弦或属和弦上积累推进期待。</p></details><div class="q"><b>3.</b> 遇到吉他手用推弦奏出的长音，扒谱时怎么精准确认他究竟推了半音、全音还是小三度？</div><details><summary>答案</summary><p>按住推弦起始品先弹正常音高作为参考，再把推弦目标终点和同一根弦高 1/2/3 品的实音对照听音准。</p></details><div class="q"><b>4.</b> 你自己的毕业原创短曲里，如果不使用那个借用或副属和弦而全部改成顺阶和弦，听起来会失去什么？</div><details><summary>答案</summary><p>需结合自己创作的和声设计当场回答（例如失去某个半音导音推力或色彩对比）。</p></details><div class="q"><b>5.</b> 上琴题：立刻弹响你自己设计的 4 小节 Riff 或独奏开头句，并逐个说出前四个音相对当下和弦是几度。</div><details><summary>答案</summary><p>当场弹出并口头报出如“1–♭3–4–3（目标音）”或“1–5–7–9”。</p></details>
+
+<h2 id="songs">8. 在歌里听一听</h2>
+<ul><li><b>Hotel California</b>（Eagles）：B 小调大曲式、安达卢西亚变化进行与结尾经典双吉他和声分解 <button class="play" data-mode="seq" data-notes="47,42,45,40,43,38,40,42">试听核心片段</button></li><li><b>海阔天空</b>（Beyond）：F 大调主歌-预副歌-副歌递进，以及极其符合和弦目标音的歌唱性推弦独奏 <button class="play" data-mode="seq" data-notes="41,40,38,36,34,33,31,36">试听核心片段</button></li><li><b>While My Guitar Gently Weeps</b>（The Beatles）：A 小调与同主音 A 大调的段落曲式对比 <button class="play" data-mode="seq" data-notes="45,43,42,41,45">试听核心片段</button></li></ul>
+
+<section class="handoff" id="handoff">
+<h2>9. 带去原资料的 3 个问题</h2>
+<ol><li>流行曲式里的“Post-chorus（副歌后段）”和纯粹器乐 Hook 段落是怎么延续副歌高潮的？</li><li>如何在只有一把吉他演奏的情况下，用“低音交替 + 旋律钩子”同时演活主歌和副歌的区别？</li><li>完成这 15 个模块后，你准备把接下来三个月精力主攻哪个方向（Blues/Rock 深化、Jazz 标准曲、Fusion、或是全原创编曲制作）？</li></ol>
+</section>
+</main>
+
+<script>
+(function(){
+  const PRESETS = [{"label": "E 小调 (综合摇滚/流行扒谱演示)", "root": "E", "type": "minor", "win": null, "desc": "对应《Hotel California》等大量吉他手最爱的 E/B 小调领域"}, {"label": "G 大调 (海阔天空/晴天/创作通用)", "root": "G", "type": "major", "win": null, "desc": "试着用 G–Em–B7(V/vi)–C–Cm(iv)–D7–G 构思你的毕业进行"}, {"label": "A 小调五声+和弦音综合把位 (5–8品)", "root": "A", "type": "minorPenta", "win": [5, 8], "desc": "实战扒独奏时优先对照的经典把位落脚点"}];
+  const LET = "CDEFGAB", LPC = [0,2,4,5,7,9,11];
+  const ACC = {"-2":"𝄫","-1":"♭","0":"","1":"♯","2":"𝄪"};
+  const SHARP = ["C","C♯","D","D♯","E","F","F♯","G","G♯","A","A♯","B"];
+  const OPEN = [64, 59, 55, 50, 45, 40];
+  const TYPES = {
+    major: {g:"音阶",ivs:["1","2","3","4","5","6","7"],c:[]},
+    minor: {g:"音阶",ivs:["1","2","♭3","4","5","♭6","♭7"],c:[]},
+    harmonic: {g:"音阶",ivs:["1","2","♭3","4","5","♭6","7"],c:["7"]},
+    melodic: {g:"音阶",ivs:["1","2","♭3","4","5","6","7"],c:["6","7"]},
+    minorPenta: {g:"音阶",ivs:["1","♭3","4","5","♭7"],c:[]},
+    majorPenta: {g:"音阶",ivs:["1","2","3","5","6"],c:[]},
+    blues: {g:"音阶",ivs:["1","♭3","4","♭5","5","♭7"],c:["♭5"]},
+    majorBlues: {g:"音阶",ivs:["1","2","♭3","3","5","6"],c:["♭3"]},
+    dorian: {g:"音阶",ivs:["1","2","♭3","4","5","6","♭7"],c:["6"]},
+    phrygian: {g:"音阶",ivs:["1","♭2","♭3","4","5","♭6","♭7"],c:["♭2"]},
+    phrygianDominant: {g:"音阶",ivs:["1","♭2","3","4","5","♭6","♭7"],c:["♭2","3"]},
+    lydian: {g:"音阶",ivs:["1","2","3","♯4","5","6","7"],c:["♯4"]},
+    mixolydian: {g:"音阶",ivs:["1","2","3","4","5","6","♭7"],c:["♭7"]},
+    maj: {g:"和弦",ivs:["1","3","5"],c:["3"]},
+    min: {g:"和弦",ivs:["1","♭3","5"],c:["♭3"]},
+    maj7: {g:"和弦",ivs:["1","3","5","7"],c:["3","7"]},
+    dom7: {g:"和弦",ivs:["1","3","5","♭7"],c:["3","♭7"]},
+    m7: {g:"和弦",ivs:["1","♭3","5","♭7"],c:["♭3","♭7"]},
+    m7b5: {g:"和弦",ivs:["1","♭3","♭5","♭7"],c:["♭3","♭7"]},
+    dom7s9: {g:"和弦",ivs:["1","3","5","♭7","♯9"],c:["3","♯9"]}
+  };
+  function parseN(n){
+    let acc=0; for(const ch of n.slice(1)) acc+=ch==="♯"?1:ch==="♭"?-1:0;
+    return {li:LET.indexOf(n[0]), pc:(LPC[LET.indexOf(n[0])]+acc+120)%12};
+  }
+  function parseD(lab){
+    let acc=0,i=0; const cs=[...lab];
+    while(i<cs.length&&/[♯♭𝄪𝄫]/u.test(cs[i])) acc+=cs[i++]==="♯"?1:cs[i-1]==="♭"?-1:cs[i-1]==="𝄪"?2:-2;
+    const d=Number(cs.slice(i).join("")), st=(d-1)%7;
+    return {st, semis:LPC[st]+12*Math.floor((d-1)/7)+acc};
+  }
+  function spell(root,lab){
+    const r=parseN(root), g=parseD(lab), li=(r.li+g.st)%7, pc=(r.pc+g.semis)%12;
+    return LET[li]+(ACC[String(((pc-LPC[li]+18)%12)-6)]||"");
+  }
+
+  let ctx=null, drone=null;
+  const freq=m=>440*Math.pow(2,(m-69)/12);
+  function ac(){ if(!ctx){ const A=window.AudioContext||window.webkitAudioContext; if(A) ctx=new A(); } if(ctx&&ctx.state==="suspended") ctx.resume(); return ctx; }
+  function play(midi,delay=0,vel=0.9){
+    const c=ac(); if(!c) return;
+    const sr=c.sampleRate, f=freq(midi), N=Math.max(2,Math.floor(sr/f-0.5)), len=Math.floor(sr*1.5);
+    const buf=c.createBuffer(1,len,sr), y=buf.getChannelData(0);
+    for(let i=0;i<N;i++) y[i]=Math.random()*2-1;
+    for(let i=N;i<len;i++) y[i]=0.996*0.5*(y[i-N]+y[i-N-1]);
+    const s=c.createBufferSource(); s.buffer=buf; const g=c.createGain(); g.gain.value=0.28*vel;
+    s.connect(g).connect(c.destination); s.start(c.currentTime+0.01+delay);
+  }
+  function stopDrone(){
+    if(!drone) return;
+    try{ drone.g.gain.setTargetAtTime(0.0001,drone.c.currentTime,0.08); setTimeout(()=>drone.os.forEach(o=>{try{o.stop();}catch(_){}}),300); }catch(_){}
+    drone=null;
+  }
+  function startDrone(pc){
+    stopDrone(); const c=ac(); if(!c) return;
+    const f1=freq(40+((pc-4+12)%12)), f2=f1*1.5;
+    const lp=c.createBiquadFilter(); lp.type="lowpass"; lp.frequency.value=420;
+    const g=c.createGain(); g.gain.value=0.0001; lp.connect(g).connect(c.destination);
+    g.gain.setTargetAtTime(0.13,c.currentTime,0.15);
+    const os=[[f1,"sawtooth",0.55],[f2,"triangle",0.25]].map(([f,t,v])=>{const o=c.createOscillator(),og=c.createGain();o.type=t;o.frequency.value=f;og.gain.value=v;o.connect(og).connect(lp);o.start();return o;});
+    drone={pc,os,g,c};
+  }
+
+  let curP=0, mode="name";
+  function draw(){
+    const P=PRESETS[curP], T=TYPES[P.type]||TYPES.major, rp=parseN(P.root).pc;
+    const map={};
+    T.ivs.forEach(lab=>{ map[(rp+parseD(lab).semis)%12]={lab,name:spell(P.root,lab),root:lab==="1",col:T.c.includes(lab)}; });
+    document.getElementById("lab-presets").innerHTML = PRESETS.map((x,i)=>`<button class="btn ${i===curP?"on":""}" data-p="${i}">${x.label}</button>`).join("");
+    document.getElementById("lab-desc").textContent = P.desc + "　（黑实心 = 根音 · 红框 = 特征音/3·7音）";
+    document.getElementById("lab-mode").textContent = "当前显示：" + (mode==="name"?"音名":"级数") + "（点击切换）";
+    const db = document.getElementById("lab-drone");
+    db.textContent = drone ? `持续音：${P.root}（点击关闭）` : `持续音伴奏：${P.root}`;
+    db.classList.toggle("on", !!drone);
+
+    const L=44,OPENW=38,FW=51,TOP=18,SS=28,FRETS=15;
+    const fx=f=>f===0?L+OPENW/2:L+OPENW+(f-0.5)*FW, sy=s=>TOP+s*SS;
+    let g="";
+    if(P.win){
+      const x1=P.win[0]===0?L:L+OPENW+(P.win[0]-1)*FW, x2=P.win[1]===0?L+OPENW:L+OPENW+P.win[1]*FW;
+      g+=`<rect class="win" x="${x1}" y="${sy(0)-13}" width="${x2-x1}" height="${5*SS+26}" rx="6"/>`;
+    }
+    for(let k=0;k<=FRETS;k++){ const x=L+OPENW+k*FW; g+=`<line class="${k===0?"nut":"fret"}" x1="${x}" y1="${sy(0)}" x2="${x}" y2="${sy(5)}"/>`; }
+    [3,5,7,9,15].forEach(f=>{ g+=`<circle class="inlay" cx="${fx(f)}" cy="${(sy(2)+sy(3))/2}" r="4.5"/>`; });
+    g+=`<circle class="inlay" cx="${fx(12)}" cy="${(sy(1)+sy(2))/2}" r="4.5"/><circle class="inlay" cx="${fx(12)}" cy="${(sy(3)+sy(4))/2}" r="4.5"/>`;
+    for(let s=0;s<6;s++){
+      g+=`<line class="string" x1="${L+OPENW}" y1="${sy(s)}" x2="${L+OPENW+FRETS*FW}" y2="${sy(s)}" style="stroke-width:${(0.8+s*0.3).toFixed(2)}"/>`;
+      g+=`<text class="sname" x="${L-8}" y="${sy(s)+4}">${s+1} ${SHARP[OPEN[s]%12]}</text>`;
+    }
+    for(let f=1;f<=FRETS;f++) g+=`<text class="fnum" x="${fx(f)}" y="${sy(5)+26}">${f}</text>`;
+    g+=`<text class="fnum" x="${fx(0)}" y="${sy(5)+26}">空</text>`;
+    for(let s=0;s<6;s++){
+      for(let f=0;f<=FRETS;f++){
+        const pc=(OPEN[s]+f)%12, x=fx(f), y=sy(s), cw=f===0?OPENW:FW;
+        let mk="";
+        if(map[pc]){
+          const n=map[pc], cls=n.root?"root":n.col?"color":"tone", dim=(P.win&&(f<P.win[0]||f>P.win[1]))?" dim":"";
+          mk=`<circle class="dot ${cls}${dim}" cx="${x}" cy="${y}" r="10.5"/><text class="dl ${cls}${dim}" x="${x}" y="${y+4}">${mode==="deg"?n.lab:n.name}</text>`;
+        }
+        g+=`<g class="cell" data-m="${OPEN[s]+f}"><rect x="${x-cw/2}" y="${y-SS/2}" width="${cw}" height="${SS}"/>${mk}</g>`;
+      }
+    }
+    document.getElementById("lab-svg").innerHTML = g;
+  }
+
+  document.addEventListener("click",e=>{
+    const p=e.target.closest(".play");
+    if(p){
+      const arr=p.dataset.notes.split(",").map(Number), mode=p.dataset.mode;
+      if(mode==="chord") arr.forEach((m,i)=>play(m,i*0.035));
+      else if(mode==="seq") arr.forEach((m,i)=>play(m,i*0.18));
+      else arr.forEach((m,i)=>play(m,i*0.26));
+      return;
+    }
+    const pb=e.target.closest("#lab-presets button");
+    if(pb){ curP=Number(pb.dataset.p); if(drone) startDrone(parseN(PRESETS[curP].root).pc); draw(); return; }
+    const cell=e.target.closest(".cell");
+    if(cell){ play(Number(cell.dataset.m)); return; }
+  });
+  document.getElementById("lab-mode").addEventListener("click",()=>{ mode=mode==="name"?"deg":"name"; draw(); });
+  document.getElementById("lab-play").addEventListener("click",()=>{
+    const P=PRESETS[curP], T=TYPES[P.type]||TYPES.major, base=40+((parseN(P.root).pc-4+12)%12);
+    const semis=T.ivs.map(x=>parseD(x).semis);
+    if(T.g==="和弦") semis.forEach((s,i)=>play(base+s,i*0.04));
+    else [...semis,12].forEach((s,i)=>play(base+s,i*0.25));
+  });
+  document.getElementById("lab-drone").addEventListener("click",()=>{
+    if(drone) stopDrone(); else startDrone(parseN(PRESETS[curP].root).pc);
+    draw();
+  });
+  draw();
+})();
+</script>
+</body>
+</html>

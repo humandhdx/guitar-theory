@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>G3 讲义：音程——乐理的原子</title>
+<style>
+:root {
+  color-scheme: light;
+  --paper: #eef1eb; --sheet: #fbfcf9; --ink: #1b2533; --ink-2: #3f4a58; --pencil: #5f6975;
+  --rule: #d6ddd2; --rule-soft: #e5e9e1; --blue: #2557a7; --blue-wash: #e9eff8;
+  --marker: #e2f25a; --red: #b3322a; --red-wash: #f6e3e0; --code-bg: #f2f5ef; --good: #2e7a33;
+  --font-text: "DengXian", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-note: "KaiTi", "STKaiti", "楷体", serif;
+  --font-code: "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --paper: #13161b; --sheet: #1a1e25; --ink: #e4e8ed; --ink-2: #c3cad3; --pencil: #98a2ae;
+    --rule: #2e343d; --rule-soft: #242930; --blue: #86abe8; --blue-wash: #1f2836;
+    --marker: #d2e255; --red: #f08378; --red-wash: #3a2422; --code-bg: #15191f; --good: #6fc275;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.75 var(--font-text); }
+a { color: var(--blue); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+code { font-family: var(--font-code); font-size: 0.88em; background: var(--code-bg); padding: 0.1em 0.3em; border-radius: 3px; }
+.top { max-width: 900px; margin: 0 auto; padding: 18px 20px 0; display: flex; justify-content: space-between; gap: 12px; font-size: 14px; color: var(--pencil); }
+main { max-width: 900px; margin: 10px auto 48px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; padding: 36px 52px 48px; }
+p, li, dd, .note { max-width: 44em; }
+h1 { font-size: 27px; line-height: 1.35; margin: 0 0 10px; }
+h2 { font-size: 21px; margin: 52px 0 14px; padding-top: 22px; border-top: 1px solid var(--rule); }
+h3 { font-size: 17px; margin: 0 0 6px; }
+.lead { font-size: 17px; color: var(--ink-2); }
+.note { font-family: var(--font-note); color: var(--red); font-size: 17px; }
+.meta { display: grid; grid-template-columns: 7em 1fr; gap: 4px 14px; margin: 18px 0; font-size: 15px; }
+.meta dt { color: var(--pencil); } .meta dd { margin: 0; }
+.toc { background: var(--blue-wash); border-radius: 6px; padding: 12px 18px; font-size: 15px; }
+.toc ol { margin: 4px 0 0; padding-left: 1.4em; columns: 2; column-gap: 28px; }
+.concept { border-left: 3px solid var(--rule); padding: 2px 0 2px 18px; margin: 28px 0; }
+.concept dl { margin: 8px 0 0; }
+.concept dt { font-size: 14px; font-weight: 700; color: var(--pencil); margin-top: 10px; }
+.concept dd { margin: 2px 0 0; }
+.concept dd.myth { color: var(--red); }
+.play { font: 13px var(--font-text); color: var(--blue); background: var(--sheet); border: 1px solid var(--blue); border-radius: 999px; padding: 1px 10px 1px 8px; margin: 2px 4px 2px 0; cursor: pointer; white-space: nowrap; }
+.play::before { content: "▶ "; font-size: 10px; }
+.play:hover { background: var(--blue-wash); }
+table { border-collapse: collapse; width: 100%; font-size: 15px; margin: 10px 0 18px; }
+th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--rule); }
+th { color: var(--pencil); font-weight: 400; font-size: 14px; border-bottom-color: var(--ink-2); }
+details { border: 1px solid var(--rule); border-radius: 5px; padding: 8px 14px; margin: 8px 0 18px; }
+summary { cursor: pointer; color: var(--blue); }
+.q { margin: 20px 0 6px; } .q b { color: var(--pencil); font-weight: 400; font-size: 14px; margin-right: 6px; }
+.handoff { background: var(--red-wash); border-radius: 6px; padding: 14px 20px; }
+.handoff h2 { border: 0; margin-top: 0; padding-top: 0; }
+.lab { border: 1px solid var(--rule); border-radius: 6px; padding: 14px 16px; margin: 14px 0 20px; }
+.ctl { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; font-size: 14px; margin-bottom: 10px; }
+.btn { font: 14px var(--font-text); color: var(--ink); background: var(--sheet); border: 1px solid var(--rule); border-radius: 5px; padding: 3px 10px; cursor: pointer; }
+.btn.on { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); font-weight: 700; }
+.btn.primary { background: var(--ink); color: var(--sheet); border-color: var(--ink); }
+.fb-scroll { overflow-x: auto; }
+.fb { display: block; width: 100%; min-width: 680px; height: auto; }
+.fb .fret { stroke: var(--rule); stroke-width: 2; }
+.fb .nut { stroke: var(--ink); stroke-width: 5; }
+.fb .string { stroke: var(--pencil); }
+.fb .inlay { fill: var(--rule); }
+.fb .sname, .fb .fnum { fill: var(--pencil); font-size: 12px; }
+.fb .sname { text-anchor: end; } .fb .fnum { text-anchor: middle; }
+.fb .dot.root { fill: var(--ink); stroke: var(--ink); }
+.fb .dot.target { fill: var(--red-wash); stroke: var(--red); stroke-width: 2; }
+.fb .dot.warp { fill: var(--blue-wash); stroke: var(--blue); stroke-width: 2; }
+.fb .dl { font-size: 11px; font-weight: 700; text-anchor: middle; }
+.fb .dl.root { fill: var(--sheet); }
+.fb .dl.target { fill: var(--red); }
+.fb .dl.warp { fill: var(--blue); }
+@media (max-width: 720px) { main { padding: 22px 16px 32px; } .toc ol { columns: 1; } .meta { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="top"><a href="../index.html#/lessons">返回讲义列表</a><span>G3 音程：乐理的原子 · 阶段一</span></div>
+<main>
+<h1>音程：乐理的原子</h1>
+<p class="lead">音程是两个音之间的距离，也是后面所有音阶、和弦、琶音和扒歌的最小构件。吉他手最大的优势是：同一个音程在指板上就是固定的几何形状（只需要记住跨过 3–2 弦时向高品挪一品）。</p>
+<dl class="meta">
+  <dt>学完能做到</dt><dd>任给根音 5 秒内弹出 m3/M3/P4/P5/m7；听辨常用音程；讲清“增四度”和“减五度”为什么是两个名字、怎么转位。</dd>
+  <dt>主资料</dt><dd><a href="https://viva.pressbooks.pub/openmusictheory/chapter/intervals/" target="_blank" rel="noopener">OMT：Intervals</a>、<a href="https://www.musictheory.net/lessons/31" target="_blank" rel="noopener">musictheory.net：Specific Intervals</a>、<a href="https://www.youtube.com/playlist?list=PLJwa8GA7pXCWAnIeTQyw_mvy1L7ryxxPH" target="_blank" rel="noopener">Scotty West AUG</a></dd>
+</dl>
+
+<nav class="toc" aria-label="目录"><b>目录</b>
+<ol>
+  <li><a href="#map">全局地图</a></li>
+  <li><a href="#concepts">逐个概念</a></li>
+  <li><a href="#lab">交互实验室：指板音程形状</a></li>
+  <li><a href="#drills">上琴练习</a></li>
+  <li><a href="#choices">分歧点对照</a></li>
+  <li><a href="#reading">读原资料指南</a></li>
+  <li><a href="#quiz">自测 5 题</a></li>
+  <li><a href="#songs">在歌里听一听</a></li>
+  <li><a href="#handoff">带去原资料的 3 个问题</a></li>
+</ol>
+</nav>
+
+<h2 id="map">1. 全局地图</h2>
+<figure>
+<svg viewBox="0 0 760 280" role="img" aria-label="G3 音程概念全局地图" style="width:100%;height:auto;display:block">
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1 L9 5 L0 9" fill="none" stroke="currentColor" stroke-width="1.6" style="color:var(--pencil)"/></marker></defs>
+  <g font-size="13" fill="var(--pencil)"><text x="8" y="20">概念</text><text x="230" y="20">核心规则</text><text x="515" y="20">在指板与耳朵上</text></g>
+  <g stroke="var(--rule)" fill="var(--sheet)">
+    <rect x="8" y="34" width="180" height="34" rx="4" fill="var(--blue-wash)" stroke="var(--blue)"/><text x="18" y="56" font-size="14" font-weight="700" fill="var(--ink)">① 度数 + 性质</text>
+    <rect x="230" y="34" width="245" height="34" rx="4"/><text x="240" y="56" font-size="13" fill="var(--ink)">字母数=度数；半音数=性质</text>
+    <rect x="515" y="34" width="235" height="34" rx="4"/><text x="525" y="56" font-size="13" fill="var(--ink)">1品=1半音，区分拼写与功能</text>
+    <rect x="8" y="76" width="180" height="34" rx="4"/><text x="18" y="98" font-size="14" font-weight="700" fill="var(--ink)">② 12 个半音程</text>
+    <rect x="230" y="76" width="245" height="34" rx="4"/><text x="240" y="98" font-size="13" fill="var(--ink)">纯1/4/5/8，大小2/3/6/7 + 三全音</text>
+    <rect x="515" y="76" width="235" height="34" rx="4"/><text x="525" y="98" font-size="13" fill="var(--ink)">每个音程配一首参考曲记忆</text>
+    <rect x="8" y="118" width="180" height="34" rx="4"/><text x="18" y="140" font-size="14" font-weight="700" fill="var(--ink)">③ 等音程</text>
+    <rect x="230" y="118" width="245" height="34" rx="4"/><text x="240" y="140" font-size="13" fill="var(--ink)">A4 vs d5（6半音），A2 vs m3（3半音）</text>
+    <rect x="515" y="118" width="235" height="34" rx="4"/><text x="525" y="140" font-size="13" fill="var(--ink)">同一指板位置，解决方向相反</text>
+    <rect x="8" y="160" width="180" height="34" rx="4"/><text x="18" y="182" font-size="14" font-weight="700" fill="var(--ink)">④ 转位相加为 9</text>
+    <rect x="230" y="160" width="245" height="34" rx="4"/><text x="240" y="182" font-size="13" fill="var(--ink)">大↔小、增↔减、纯不变</text>
+    <rect x="515" y="160" width="235" height="34" rx="4"/><text x="525" y="182" font-size="13" fill="var(--ink)">低音翻高八度，立刻换和弦转位</text>
+    <rect x="8" y="202" width="180" height="34" rx="4" fill="var(--blue-wash)" stroke="var(--blue)"/><text x="18" y="224" font-size="14" font-weight="700" fill="var(--ink)">⑤ 指板形状与补偿</text>
+    <rect x="230" y="202" width="245" height="34" rx="4"/><text x="240" y="224" font-size="13" fill="var(--ink)">P4同品 P5+2 M3-1 m3-2</text>
+    <rect x="515" y="202" width="235" height="34" rx="4"/><text x="525" y="224" font-size="13" fill="var(--ink)">跨 3–2 弦全部向高品多挪 1 品</text>
+    <rect x="8" y="244" width="180" height="34" rx="4"/><text x="18" y="266" font-size="14" font-weight="700" fill="var(--ink)">⑥ 协和与三全音</text>
+    <rect x="230" y="244" width="245" height="34" rx="4"/><text x="240" y="266" font-size="13" fill="var(--ink)">稳定(1/3/5/6/8) vs 紧张(2/7/TT)</text>
+    <rect x="515" y="244" width="235" height="34" rx="4"/><text x="525" y="266" font-size="13" fill="var(--ink)">V7 里的三全音推动和声回家</text>
+  </g>
+</svg>
+</figure>
+
+<h2 id="concepts">2. 逐个概念</h2>
+
+<section class="concept" id="c1">
+<h3>① 音程的两半：度数 + 性质</h3>
+<dl>
+<dt>是什么</dt><dd>音程名字永远由两部分构成。先数字母（包含首尾）：C 到 E 经过 C D E，是三度；C 到 F♭ 经过 C D E F，是四度。再数半音数决定性质：<b>纯（Perfect）</b>只用于 1、4、5、8 度；<b>大/小（Major/Minor）</b>只用于 2、3、6、7 度。</dd>
+<dt>为什么需要</dt><dd>大三度和减四度都是 4 个半音，如果不看字母只数格子，会把和弦拼得乱七八糟（比如把 C 大三和弦写成 C–F♭–G）。</dd>
+<dt>常见误解</dt><dd class="myth">“纯三度”“大五度”——错！纯家族（1、4、5、8）没有大小，大小家族（2、3、6、7）没有纯。</dd>
+</dl>
+</section>
+
+<section class="concept" id="c2">
+<h3>② 12 个半音程与参考曲耳感</h3>
+<dl>
+<dt>对照表（点击即可试听）</dt>
+<dd>
+<table>
+  <thead><tr><th>半音</th><th>常见名</th><th>参考曲 / 听感</th><th>试听</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>小二度 m2</td><td>《大白鲨》主题，极度紧张摩擦</td><td><button class="play" data-i="1">听 m2</button></td></tr>
+    <tr><td>2</td><td>大二度 M2</td><td>《生日快乐》“Happy Birth-”，一步跨出</td><td><button class="play" data-i="2">听 M2</button></td></tr>
+    <tr><td>3</td><td>小三度 m3</td><td>《Seven Nation Army》E→G，暗、忧郁</td><td><button class="play" data-i="3">听 m3</button></td></tr>
+    <tr><td>4</td><td>大三度 M3</td><td>《圣者进行曲》开头，明亮肯定</td><td><button class="play" data-i="4">听 M3</button></td></tr>
+    <tr><td>5</td><td>纯四度 P4</td><td>《婚礼进行曲》开头，号角感</td><td><button class="play" data-i="5">听 P4</button></td></tr>
+    <tr><td>6</td><td>三全音 A4/d5</td><td>《Maria》“Ma-ri-”，最不稳定、想解决</td><td><button class="play" data-i="6">听三全音</button></td></tr>
+    <tr><td>7</td><td>纯五度 P5</td><td>《小星星》1→5，摇滚强力和弦骨架</td><td><button class="play" data-i="7">听 P5</button></td></tr>
+    <tr><td>8</td><td>小六度 m6</td><td>《Love Story》主题，深情悲怆</td><td><button class="play" data-i="8">听 m6</button></td></tr>
+    <tr><td>9</td><td>大六度 M6</td><td>《My Bonnie》，开阔温暖</td><td><button class="play" data-i="9">听 M6</button></td></tr>
+    <tr><td>10</td><td>小七度 m7</td><td>《Star Trek》开头，属七和弦灵魂</td><td><button class="play" data-i="10">听 m7</button></td></tr>
+    <tr><td>11</td><td>大七度 M7</td><td>《Take On Me》副歌，梦幻微酸</td><td><button class="play" data-i="11">听 M7</button></td></tr>
+    <tr><td>12</td><td>纯八度 P8</td><td>《Somewhere Over the Rainbow》开头</td><td><button class="play" data-i="12">听 P8</button></td></tr>
+  </tbody>
+</table>
+</dd>
+</dl>
+</section>
+
+<section class="concept" id="c3">
+<h3>③ 等音程（Enharmonic Intervals）</h3>
+<dl>
+<dt>是什么</dt><dd>两个音在指板上位置相同、但字母距离不同，就得到等音程。最典型的是 6 个半音的<b>三全音</b>：C→F♯ 是增四度（4 个字母），C→G♭ 是减五度（5 个字母）。还有 C7♯9 里的 C→D♯（增二度 = 3 个半音），和 C→E♭（小三度）位置相同但拼写不同。</dd>
+<dt>为什么需要</dt><dd>拼写决定和声去向：增四度倾向向外扩张解决（F♯ 往上到 G），减五度倾向向内收缩解决（G♭ 往下到 F）。</dd>
+<dt>试听对比</dt><dd><button class="play" data-seq="48 54" data-gap="0.5">C→F♯ (A4)</button><button class="play" data-seq="48 54 55" data-gap="0.45">A4 往外解决到 G</button><button class="play" data-seq="48 54 52" data-gap="0.45">d5 (G♭) 往内解决到 E</button></dd>
+<dt>常见误解</dt><dd class="myth">“听起来一样，叫什么无所谓。”在 C7♯9（Hendrix 和弦）里写 D♯ 表示它是 9 音的升高变化，写 E♭ 会变成大三小三并存的错误拼写。</dd>
+</dl>
+</section>
+
+<section class="concept" id="c4">
+<h3>④ 音程转位（Inversion）</h3>
+<dl>
+<dt>是什么</dt><dd>把低音翻高八度（或高音翻低八度），叫音程转位。口诀：<b>度数相加等于 9</b>；<b>性质大变小、小变大、增变减、减变增、纯还是纯</b>。半音数相加永远等于 12。</dd>
+<dt>在指板上</dt><dd>大三度（5 弦 3 品 C → 4 弦 2 品 E，4 半音）把 C 翻高八度到 3 弦 5 品，变成 4 弦 2 品 E → 3 弦 5 品 C，正好是小六度（8 半音）。<button class="play" data-seq="48 52 52 60" data-gap="0.42">听 C–E 转位成 E–C</button></dd>
+<dt>常见误解</dt><dd class="myth">“转位后纯四度变小五度。”纯家族转位后依然是纯：纯四度（5 半音）转位是纯五度（7 半音）。</dd>
+</dl>
+</section>
+
+<section class="concept" id="c5">
+<h3>⑤ 指板上的相邻弦形状与 3–2 弦补偿</h3>
+<dl>
+<dt>是什么</dt><dd>因为 6→5、5→4、4→3、2→1 弦都是纯四度（5 个半音），把高音放到下一根弦上就自动“借走 5 个半音”：<br>
+• 纯四度（5 半音）= 下一根弦<b>同品</b><br>
+• 纯五度（7 半音）= 下一根弦<b>+2 品</b>（强力和弦！）<br>
+• 大三度（4 半音）= 下一根弦<b>−1 品</b><br>
+• 小三度（3 半音）= 下一根弦<b>−2 品</b><br>
+<b>一旦跨过 3 弦和 2 弦（大三度，只有 4 半音）</b>，上面所有偏移量全部再 <b>+1 品</b>：纯四变 +1 品，大三变同品！</dd>
+<dt>为什么需要</dt><dd>记熟这 4 个“相对指型”，全指板任意根音都能在 1 秒内找准三音、五音、七音，不用从头数品格。</dd>
+<dt>常见误解</dt><dd class="myth">“把 6–5 弦的形状原封不动搬到 3–2 弦上。”结果弹出来的全少半音——3–2 弦的强力和弦指法必须跨 3 品而不是 2 品！</dd>
+</dl>
+</section>
+
+<section class="concept" id="c6">
+<h3>⑥ 协和与不协和</h3>
+<dl>
+<dt>是什么</dt><dd><b>完全协和</b>：P1, P8, P5（空旷稳定）；<b>不完全协和</b>：M3, m3, M6, m6（丰满悦耳）；<b>不协和</b>：m2, M2, m7, M7, 三全音（制造张力与推动力）。</dd>
+<dt>为什么需要</dt><dd>音乐的呼吸靠“紧张→解决”。属七和弦（如 G7）之所以拼命想回 C，就是因为里面的 3 音（B）和 ♭7 音（F）构成不协和的三全音。<button class="play" data-seq="47 53 48 52" data-gap="0.55">听 B–F 解决到 C–E</button></dd>
+<dt>常见误解</dt><dd class="myth">“不协和就是难听，应该避开。”恰恰相反，没有不协和音程的推动，和弦进行就会像一潭死水没有方向。</dd>
+</dl>
+</section>
+
+<h2 id="lab">3. 交互实验室：指板音程形状（6–5 弦 vs 3–2 弦对比）</h2>
+<div class="lab">
+  <div class="ctl" id="int-ctl"></div>
+  <p class="small" id="int-desc"></p>
+  <div class="fb-scroll"><svg class="fb" id="int-svg" viewBox="0 0 740 210"></svg></div>
+  <div class="ctl" style="margin-top:10px">
+    <button class="btn primary" id="play-65">播放 6 弦起步示例</button>
+    <button class="btn" id="play-32">播放跨 3–2 弦示例（看位置偏移）</button>
+  </div>
+</div>
+
+<h2 id="drills">4. 上琴练习</h2>
+<ol class="drill">
+  <li><b>12 个音程单/双弦走遍</b>：从 6 弦第 5 品 A 出发，在 6–5 弦上依次弹出 m2 到 P8；再到 3 弦第 2 品 A 出发，在 3–2 弦上再弹一遍，对比偏移。<span class="std">完成标准：不看图，任给根音 5 秒内弹出 m3、M3、P4、P5、m7。</span></li>
+  <li><b>自建参考曲表</b>：12 个音程每个配一首你自己哼得出的歌，在吉他上弹出开头两个音确认。</li>
+  <li><b>每日 5 分钟音程听辨</b>：打开本站<a href="../index.html#/ear?tab=int">「练耳与节奏」→ 音程听辨</a>，先用 m3/M3/P4/P5/P8，正确率过 80% 再开全部 12 个。<span class="std">完成标准：十题对八题以上。</span></li>
+  <li><b>先唱后弹</b>：弹一个根音，先用嘴唱出大三度和纯五度，再按出来核对音准。</li>
+</ol>
+
+<h2 id="choices">5. 分歧点对照</h2>
+<table>
+  <thead><tr><th>容易混淆</th><th>本质区别</th><th>吉他实战怎么用</th></tr></thead>
+  <tbody>
+    <tr><td>A4 增四度 vs d5 减五度</td><td>都是 6 半音（三全音），A4 跨 4 个字母，d5 跨 5 个字母</td><td>C7 里的 E–B♭ 是 d5，倾向向内解决到 F–A；F 利底亚里的 F–B 是 A4</td></tr>
+    <tr><td>6–5 弦形状 vs 3–2 弦形状</td><td>G 到 B 只有 4 半音（少 1 半音）</td><td>任何跨过 3–2 弦的双音/三和弦指型，2 弦及 1 弦都要往高品挪 1 品</td></tr>
+    <tr><td>旋律音程 vs 和声音程</td><td>先后弹 vs 同时弹</td><td>同时弹才能听清三音/七音的拍频摩擦（如布鲁斯里的三全音）</td></tr>
+  </tbody>
+</table>
+
+<h2 id="reading">6. 读原资料指南</h2>
+<ul class="read">
+  <li><a href="https://viva.pressbooks.pub/openmusictheory/chapter/intervals/" target="_blank" rel="noopener">OMT: Intervals</a>：重点读 Generic vs Specific Intervals、Consonance &amp; Dissonance 和 Inversion；用吉他替代钢琴图做一遍它的半音数法。</li>
+  <li><a href="https://www.musictheory.net/lessons/31" target="_blank" rel="noopener">musictheory.net: Specific Intervals</a> &amp; <a href="https://www.musictheory.net/lessons/33" target="_blank" rel="noopener">Interval Inversion</a>：5 分钟快速过一遍符号表。</li>
+  <li><a href="https://www.youtube.com/playlist?list=PLJwa8GA7pXCWAnIeTQyw_mvy1L7ryxxPH" target="_blank" rel="noopener">Scotty West《Absolutely Understand Guitar》</a>：第 3～5 课专门讲半音尺与音程体系，极其清晰。</li>
+</ul>
+
+<h2 id="quiz">7. 自测 5 题</h2>
+<div class="q"><b>1.</b> C 到 D♯ 和 C 到 E♭ 都是 3 个半音，它们分别叫什么音程？</div>
+<details><summary>答案</summary><p>C→D♯ 是增二度（2 个字母）；C→E♭ 是小三度（3 个字母）。</p></details>
+<div class="q"><b>2.</b> 大六度转位后是什么音程？一共几个半音？</div>
+<details><summary>答案</summary><p>小三度（9 − 6 = 3，大变小），共 3 个半音（原大六度 9 半音，9 + 3 = 12）。</p></details>
+<div class="q"><b>3.</b> 为什么 6 弦 5 品 + 5 弦 7 品是纯五度，而 3 弦 5 品的纯五度在 2 弦第几品？</div>
+<details><summary>答案</summary><p>2 弦第 8 品（+3 品）。因为 3–2 弦差大三度（4 半音），需要比普通的 +2 品多补 1 品。</p></details>
+<div class="q"><b>4.</b> E 到哪个音构成三全音（增四度 / 减五度）？</div>
+<details><summary>答案</summary><p>A♯（增四度）或 B♭（减五度），距 E 都是 6 个半音。</p></details>
+<div class="q"><b>5.</b> 上琴题：在 4 弦 5 品（G）出发，分别弹出大三度、纯五度和小七度，说出音名。</div>
+<details><summary>答案</summary><p>大三度 B（3 弦 4 品）、纯五度 D（3 弦 7 品 或 2 弦 3 品！跨过 3–2 弦注意）、小七度 F（2 弦 6 品 或 3 弦 10 品）。</p></details>
+
+<h2 id="songs">8. 在歌里听一听</h2>
+<ul>
+  <li><b>Smoke on the Water</b>（Deep Purple）：纯四度双音 Riff <button class="play" data-seq="50 55 53 58 55 60" data-gap="0.45">听 G–B♭–C 纯四双音分解</button></li>
+  <li><b>Seven Nation Army</b>（The White Stripes）：5 弦 7-7-10-7-5-3-2（P1–m3–M2–M2–m2）<button class="play" data-seq="52 52 55 52 50 48 47" data-gap="0.32">听主 Riff</button></li>
+  <li><b>Maria</b>（《西区故事》）：C→F♯→G，经典三全音上行解决 <button class="play" data-seq="48 54 55" data-gap="0.55">听 C–F♯–G</button></li>
+</ul>
+
+<section class="handoff" id="handoff">
+<h2>9. 带去原资料的 3 个问题</h2>
+<ol>
+  <li>除了 E 到 B♭ 之外，大调顺阶音里还有哪两个音能构成三全音？为什么只有一个？</li>
+  <li>增音程和减音程在什么情况下会实际出现在和弦与旋律里？</li>
+  <li>哪些音程在复音程（超过八度，如 9、11、13 度）里和单音程有等价关系？</li>
+</ol>
+</section>
+</main>
+
+<script>
+(function(){
+  let ctx = null;
+  const freq = (m) => 440 * Math.pow(2, (m - 69) / 12);
+  function ac(){ if(!ctx){ const A=window.AudioContext||window.webkitAudioContext; if(A) ctx=new A(); } if(ctx&&ctx.state==="suspended") ctx.resume(); return ctx; }
+  function play(midi, delay=0){
+    const c=ac(); if(!c) return;
+    const sr=c.sampleRate, f=freq(midi), N=Math.max(2,Math.floor(sr/f-0.5)), len=Math.floor(sr*1.6);
+    const buf=c.createBuffer(1,len,sr), y=buf.getChannelData(0);
+    for(let i=0;i<N;i++) y[i]=Math.random()*2-1;
+    for(let i=N;i<len;i++) y[i]=0.996*0.5*(y[i-N]+y[i-N-1]);
+    const s=c.createBufferSource(); s.buffer=buf;
+    const g=c.createGain(); g.gain.value=0.3;
+    s.connect(g).connect(c.destination); s.start(c.currentTime+0.01+delay);
+  }
+  document.addEventListener("click", (e)=>{
+    const p=e.target.closest(".play");
+    if(!p) return;
+    if(p.dataset.i){ const s=Number(p.dataset.i); play(45,0); play(45+s,0.5); }
+    else if(p.dataset.seq){ const seq=p.dataset.seq.split(" ").map(Number), gap=Number(p.dataset.gap||0.35); seq.forEach((m,i)=>play(m,i*gap)); }
+  });
+
+  const IVS = [
+    {s:1,n:"m2 小二度",o65:"+1(同弦) / -4(下弦)",off65:1,same:true},
+    {s:2,n:"M2 大二度",o65:"-3(下弦) / +2(同弦)",off65:-3},
+    {s:3,n:"m3 小三度",o65:"下弦 -2 品",off65:-2},
+    {s:4,n:"M3 大三度",o65:"下弦 -1 品",off65:-1},
+    {s:5,n:"P4 纯四度",o65:"下弦 同品",off65:0},
+    {s:6,n:"TT 三全音",o65:"下弦 +1 品",off65:1},
+    {s:7,n:"P5 纯五度",o65:"下弦 +2 品",off65:2},
+    {s:8,n:"m6 小六度",o65:"下弦 +3 品",off65:3},
+    {s:9,n:"M6 大六度",o65:"隔一弦 -1 品",off65:4},
+    {s:10,n:"m7 小七度",o65:"隔一弦 同品",off65:5},
+    {s:11,n:"M7 大七度",o65:"隔一弦 +1 品",off65:6},
+    {s:12,n:"P8 纯八度",o65:"隔一弦 +2 品",off65:7}
+  ];
+  let curS = 4; // 默认大三度
+  const OPEN = [64,59,55,50,45,40];
+  function drawLab(){
+    const ctl = document.getElementById("int-ctl");
+    ctl.innerHTML = IVS.map(x=>`<button class="btn ${x.s===curS?"on":""}" data-s="${x.s}">${x.n}</button>`).join("");
+    const iv = IVS.find(x=>x.s===curS);
+    document.getElementById("int-desc").innerHTML = `<b>${iv.n}（${iv.s} 个半音）</b>：在 6→5 弦上是 <b>${iv.o65}</b>；一旦跨过 3→2 弦（蓝圈），目标音必须<b>再往高品多挪 1 品</b>！`;
+    const svg = document.getElementById("int-svg");
+    const L=46,FW=50,TOP=20,SS=26,FRETS=12;
+    const fx=(f)=>L+20+(f-0.5)*FW, sy=(s)=>TOP+s*SS;
+    let g="";
+    for(let k=0;k<=FRETS;k++){ const x=L+20+k*FW; g+=`<line class="${k===0?"nut":"fret"}" x1="${x}" y1="${sy(0)}" x2="${x}" y2="${sy(5)}"/>`; }
+    [3,5,7,9].forEach(f=>{ g+=`<circle class="inlay" cx="${fx(f)}" cy="${(sy(2)+sy(3))/2}" r="4"/>`; });
+    for(let s=0;s<6;s++){ g+=`<line class="string" x1="${L+20}" y1="${sy(s)}" x2="${L+20+FRETS*FW}" y2="${sy(s)}"/>`; g+=`<text class="sname" x="${L+10}" y="${sy(s)+4}">${s+1}弦</text>`; }
+    for(let f=1;f<=FRETS;f++) g+=`<text class="fnum" x="${fx(f)}" y="${sy(5)+26}">${f}</text>`;
+    // 6->5 示例：根音 6弦5品 A
+    const f6=5, t5=f6+iv.off65;
+    g+=`<circle class="dot root" cx="${fx(f6)}" cy="${sy(5)}" r="10"/><text class="dl root" x="${fx(f6)}" y="${sy(5)+4}">根</text>`;
+    if(t5>=1&&t5<=12) g+=`<circle class="dot target" cx="${fx(t5)}" cy="${sy(4)}" r="10"/><text class="dl target" x="${fx(t5)}" y="${sy(4)+4}">${iv.s}半</text>`;
+    // 3->2 示例：根音 3弦5品 C -> 2弦 (比6->5高1品)
+    const f3=5, t2=f3+iv.off65+1;
+    g+=`<circle class="dot root" cx="${fx(f3)}" cy="${sy(2)}" r="10"/><text class="dl root" x="${fx(f3)}" y="${sy(2)+4}">根</text>`;
+    if(t2>=1&&t2<=12) g+=`<circle class="dot warp" cx="${fx(t2)}" cy="${sy(1)}" r="10"/><text class="dl warp" x="${fx(t2)}" y="${sy(1)+4}">+1品</text>`;
+    svg.innerHTML = g;
+  }
+  document.getElementById("int-ctl").addEventListener("click",(e)=>{ const b=e.target.closest("button"); if(!b) return; curS=Number(b.dataset.s); drawLab(); play(45,0); play(45+curS,0.45); });
+  document.getElementById("play-65").addEventListener("click",()=>{ play(45,0); play(45+curS,0.45); });
+  document.getElementById("play-32").addEventListener("click",()=>{ play(60,0); play(60+curS,0.45); });
+  drawLab();
+})();
+</script>
+</body>
+</html>

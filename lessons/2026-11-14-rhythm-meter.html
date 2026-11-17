@@ -1,0 +1,890 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>G2 讲义：节奏、拍号与读谱</title>
+<style>
+:root {
+  color-scheme: light;
+  --paper: #eef1eb; --sheet: #fbfcf9; --ink: #1b2533; --ink-2: #3f4a58; --pencil: #5f6975;
+  --rule: #d6ddd2; --rule-soft: #e5e9e1; --blue: #2557a7; --blue-wash: #e9eff8;
+  --marker: #e2f25a; --red: #b3322a; --red-wash: #f6e3e0; --code-bg: #f2f5ef; --good: #2e7a33;
+  --font-text: "DengXian", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-note: "KaiTi", "STKaiti", "楷体", serif;
+  --font-code: "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --paper: #13161b; --sheet: #1a1e25; --ink: #e4e8ed; --ink-2: #c3cad3; --pencil: #98a2ae;
+    --rule: #2e343d; --rule-soft: #242930; --blue: #86abe8; --blue-wash: #1f2836;
+    --marker: #d2e255; --red: #f08378; --red-wash: #3a2422; --code-bg: #15191f; --good: #6fc275;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.75 var(--font-text); }
+a { color: var(--blue); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+code { font-family: var(--font-code); font-size: 0.88em; background: var(--code-bg); padding: 0.1em 0.3em; border-radius: 3px; }
+.top { max-width: 900px; margin: 0 auto; padding: 18px 20px 0; display: flex; justify-content: space-between; gap: 12px; font-size: 14px; color: var(--pencil); }
+main { max-width: 900px; margin: 10px auto 48px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; padding: 36px 52px 48px; }
+p, li, dd, .note { max-width: 44em; }
+h1 { font-size: 27px; line-height: 1.35; margin: 0 0 10px; }
+h2 { font-size: 21px; margin: 52px 0 14px; padding-top: 22px; border-top: 1px solid var(--rule); }
+h3 { font-size: 17px; margin: 0 0 6px; }
+.lead { font-size: 17px; color: var(--ink-2); }
+.note { font-family: var(--font-note); color: var(--red); font-size: 17px; }
+.sup { font-size: 12px; color: var(--red); background: var(--red-wash); border-radius: 3px; padding: 1px 5px; margin: 0 2px; white-space: nowrap; vertical-align: 1px; }
+.meta { display: grid; grid-template-columns: 7em 1fr; gap: 4px 14px; margin: 18px 0; font-size: 15px; }
+.meta dt { color: var(--pencil); }
+.meta dd { margin: 0; }
+.toc { background: var(--blue-wash); border-radius: 6px; padding: 12px 18px; font-size: 15px; }
+.toc ol { margin: 4px 0 0; padding-left: 1.4em; columns: 2; column-gap: 28px; }
+figure { margin: 18px 0; }
+figure > svg { width: 100%; height: auto; display: block; }
+figcaption { font-size: 14px; color: var(--pencil); margin-top: 6px; }
+svg text { font-family: var(--font-text); fill: var(--ink); }
+svg .box { fill: var(--sheet); stroke: var(--rule); stroke-width: 1.2; }
+svg .box-key { fill: var(--blue-wash); stroke: var(--blue); stroke-width: 1.2; }
+svg .head { font-size: 13px; fill: var(--pencil); }
+svg .t1 { font-size: 14px; font-weight: 700; }
+svg .t2 { font-size: 13px; fill: var(--ink-2); }
+svg .arrow { stroke: var(--pencil); stroke-width: 1.3; fill: none; }
+svg a:hover .box-key { stroke-width: 2.2; }
+svg .val { cursor: pointer; }
+svg .val rect { fill: var(--sheet); stroke: var(--ink-2); stroke-width: 1.2; }
+svg .val:hover rect { fill: var(--blue-wash); }
+svg .val .t2 { pointer-events: none; }
+.concept { border-left: 3px solid var(--rule); padding: 2px 0 2px 18px; margin: 30px 0; }
+.concept h3 { font-size: 18px; }
+.concept dl { margin: 8px 0 0; }
+.concept dt { font-size: 14px; font-weight: 700; color: var(--pencil); margin-top: 10px; }
+.concept dd { margin: 2px 0 0; }
+.concept dd.myth { color: var(--red); }
+.play { font: 13px var(--font-text); color: var(--blue); background: var(--sheet); border: 1px solid var(--blue); border-radius: 999px; padding: 1px 10px 1px 8px; margin: 2px 4px 2px 0; cursor: pointer; white-space: nowrap; }
+.play::before { content: "▶ "; font-size: 10px; }
+.play:hover { background: var(--blue-wash); }
+table { border-collapse: collapse; width: 100%; font-size: 15px; margin: 10px 0 18px; }
+th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--rule); }
+th { color: var(--pencil); font-weight: 400; font-size: 14px; border-bottom-color: var(--ink-2); }
+details { border: 1px solid var(--rule); border-radius: 5px; padding: 8px 14px; margin: 8px 0 18px; }
+summary { cursor: pointer; color: var(--blue); }
+details[open] summary { margin-bottom: 6px; }
+.q { margin: 22px 0 6px; }
+.q b { color: var(--pencil); font-weight: 400; font-size: 14px; margin-right: 6px; }
+ul.read li, ol.ask li, ol.drill li { margin: 8px 0; }
+ol.drill .std { display: block; font-size: 14px; color: var(--pencil); }
+.handoff { background: var(--red-wash); border-radius: 6px; padding: 14px 20px; }
+.handoff h2 { border: 0; margin-top: 0; padding-top: 0; }
+pre.tab { font: 14px/1.45 var(--font-code); background: var(--code-bg); border-radius: 5px; padding: 12px 14px; overflow-x: auto; margin: 10px 0 6px; }
+pre.tab .cnt { color: var(--red); }
+/* 节拍器 */
+.lab { border: 1px solid var(--rule); border-radius: 6px; padding: 14px 16px; margin: 14px 0 20px; }
+.ctl { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; font-size: 14px; margin-bottom: 10px; }
+.ctl .grp { display: inline-flex; gap: 4px; align-items: center; flex-wrap: wrap; }
+.ctl .grp > span { color: var(--pencil); margin-right: 2px; }
+.ctl input[type=range] { width: 130px; }
+.num { font-variant-numeric: tabular-nums; min-width: 2.6em; display: inline-block; text-align: right; }
+.btn { font: 14px var(--font-text); color: var(--ink); background: var(--sheet); border: 1px solid var(--rule); border-radius: 5px; padding: 3px 10px; cursor: pointer; }
+.btn:hover { border-color: var(--ink-2); }
+.btn.on { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); font-weight: 700; }
+.btn.primary { background: var(--ink); color: var(--sheet); border-color: var(--ink); min-width: 5em; }
+.btn:disabled { opacity: 0.45; cursor: default; }
+select { font: 14px var(--font-text); color: var(--ink); background: var(--sheet); border: 1px solid var(--rule); border-radius: 5px; padding: 2px 6px; }
+.presets { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 12px; }
+.grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 4px; }
+.gbeat { display: flex; gap: 3px; padding: 4px; border: 1px solid var(--rule); border-radius: 6px; }
+.gc { min-width: 2.6em; height: 2.6em; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: var(--rule-soft); color: var(--pencil); font: 14px var(--font-code); }
+.gc.b { color: var(--ink); font-weight: 700; }
+.gc.acc { box-shadow: inset 0 -3px 0 var(--red); }
+.gc.now { background: var(--ink); color: var(--sheet); }
+.status { font-size: 15px; min-height: 1.75em; margin: 6px 0 0; }
+.legend { font-size: 13.5px; color: var(--pencil); margin: 4px 0 0; }
+.small { font-size: 14px; }
+.tapbox { margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--rule); }
+.pad { display: flex; align-items: center; justify-content: center; height: 72px; margin: 8px 0; border: 2px dashed var(--ink-2); border-radius: 8px; font-size: 16px; color: var(--ink-2); cursor: pointer; user-select: none; touch-action: manipulation; }
+.pad:active, .pad.hit { background: var(--blue-wash); }
+.strip { width: 100%; max-width: 560px; height: 46px; display: block; }
+.strip .axis { stroke: var(--rule); }
+.strip .zero { stroke: var(--ink-2); }
+.strip .tp { fill: var(--blue); opacity: 0.75; }
+.strip text { font-size: 11px; fill: var(--pencil); }
+@media (max-width: 720px) {
+  main { padding: 22px 16px 32px; border-left: 0; border-right: 0; border-radius: 0; }
+  .toc ol { columns: 1; }
+  .meta { grid-template-columns: 1fr; }
+  .meta dt { margin-top: 6px; }
+  .gc { min-width: 2.1em; height: 2.3em; font-size: 12.5px; }
+}
+</style>
+</head>
+<body>
+<div class="top"><a href="../index.html#/lessons">返回讲义列表</a><span>G2 节奏、拍号与读谱 · 阶段一 指板与听觉地基</span></div>
+<main>
+<h1>节奏、拍号与读谱：把时间切成格子</h1>
+<p class="lead">G1 解决了“弹哪里”，这一份解决“什么时候弹”。拍、小节、拍号、时值、细分，再到单拍子和复拍子、swing 和 shuffle、反拍和切分，最后学会读 TAB。这一份要开着节拍器读：第 3 节的节拍器和每个 ▶ 按钮都能出声。</p>
+<dl class="meta">
+  <dt>学完能做到</dt><dd>看到拍号说出每小节几拍、以什么音符为一拍；嘴里数出八分、三连音、十六分并在它们之间切换；拍出 3/4 和 6/8 的区别；弹出 shuffle 的长–短律动；读懂 TAB，知道它缺了哪些信息。</dd>
+  <dt>预计用时</dt><dd>读讲义 45 分钟，用第 3 节的节拍器做跟拍测试和上琴练习再加 30 分钟。节奏稳不稳靠之后每天 10 分钟开节拍器练。</dd>
+  <dt>主资料</dt><dd><a href="https://viva.pressbooks.pub/openmusictheory/chapter/simple-meter-and-time-signatures/">Open Music Theory：Simple Meter and Time Signatures</a>、<a href="https://viva.pressbooks.pub/openmusictheory/chapter/swing-rhythms/">Swing Rhythms</a>（Version 2，CC BY-SA 4.0，2026-11-10 读取）。</dd>
+  <dt>辅助资料</dt><dd>OMT <a href="https://viva.pressbooks.pub/openmusictheory/chapter/notating-rhythm/">Notating Rhythm</a>、<a href="https://viva.pressbooks.pub/openmusictheory/chapter/compound-meters-and-time-signatures/">Compound Meter and Time Signatures</a>、<a href="https://viva.pressbooks.pub/openmusictheory/chapter/rhythm-and-meter-in-pop-music/">Rhythm and Meter in Pop Music</a>；musictheory.net <a href="https://www.musictheory.net/lessons/11">Note Duration</a>、<a href="https://www.musictheory.net/lessons/15">Simple and Compound Meter</a>；<a href="https://www.justinguitar.com/guitar-lessons/pmt-workbook-grade-2-mt-001">JustinGuitar 实用乐理 Grade 2</a>；<a href="https://www.songsterr.com/">Songsterr</a>。</dd>
+</dl>
+<p class="note">标了 <span class="sup">补充</span> 的内容是讲义作者加的，OMT 里没有，主要是落到吉他上的部分：右手怎么扫、shuffle 怎么弹、TAB 怎么读。三连音的“trip-let”数法也是补充，OMT 的单拍子数法只到“1 e + a”。上面几章 OMT 的原文已经嵌进网站「本周」的每日页面里，中英对照。</p>
+
+<nav class="toc" aria-label="目录"><b>目录</b>
+<ol>
+  <li><a href="#map">全局地图</a></li>
+  <li><a href="#concepts">逐个概念</a></li>
+  <li><a href="#lab">节拍器与跟拍测试</a></li>
+  <li><a href="#drills">上琴练习</a></li>
+  <li><a href="#choices">分歧点</a></li>
+  <li><a href="#reading">读原资料指南</a></li>
+  <li><a href="#quiz">自测 5 题</a></li>
+  <li><a href="#songs">在歌里听一听</a></li>
+  <li><a href="#handoff">带去原资料的 3 个问题</a></li>
+</ol>
+</nav>
+
+<h2 id="map">1. 全局地图</h2>
+<p>左列是要掌握的概念（点击跳到对应小节），中列是一句话的核心事实，右列是它落到琴上的样子。①～⑤ 是“怎么把时间切开”，⑥～⑧ 是“切开以后怎么让它有律动”，⑨ 是吉他手最常读的谱。</p>
+<figure>
+<svg viewBox="0 0 760 470" role="img" aria-label="九个节奏概念与吉他上的对应">
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1 L9 5 L0 9" fill="none" stroke="currentColor" stroke-width="1.6" style="color:var(--pencil)"/></marker></defs>
+  <text class="head" x="8" y="22">概念</text>
+  <text class="head" x="232" y="22">核心事实</text>
+  <text class="head" x="518" y="22">在琴上</text>
+  <g id="rows"></g>
+</svg>
+<figcaption>九个概念。前五个在任何乐器上都一样，后四个是吉他手每天都会碰到的。</figcaption>
+</figure>
+<p>三条横向联系：</p>
+<ul>
+  <li><b>一切都是“一分为二”或“一分为三”。</b>时值一级一级减半（③），单拍子每拍分两份（⑤），复拍子每拍分三份（⑥），swing 是把两份弹成接近三份里的“2+1”（⑦）。</li>
+  <li><b>拍号决定重音落在哪。</b>3/4 和 6/8 每小节都是 6 个八分音符，区别只在怎么分组、重音在哪（②⑥）。反拍和切分（⑧）都是在这个重音格子上故意“错位”。</li>
+  <li><b>TAB 只告诉你位置，节奏要靠前八个概念自己补。</b>很多 TAB 不写节奏，所以⑨放在最后。</li>
+</ul>
+<h2 id="concepts">2. 逐个概念</h2>
+
+<section class="concept" id="c1">
+<h3>① 拍与速度</h3>
+<dl>
+<dt>是什么</dt>
+<dd>拍是音乐里有规律地反复出现的脉动，听歌时你跟着点脚、拍手的就是拍（OMT 用 Postmodern Jukebox 翻唱的“Wannabe”举例，从 0:11 开始很容易跟着拍）。<span class="sup">补充</span> 拍的快慢叫速度，用 BPM（每分钟几拍）表示：60 BPM 就是一秒一拍。</dd>
+<dt>为什么需要</dt>
+<dd>后面所有的东西——小节、时值、细分、切分——都是在拍这把“尺子”上量出来的。尺子不稳，量什么都不准。</dd>
+<dt>在琴上</dt>
+<dd><span class="sup">补充</span> 练琴时拍由节拍器给，脚跟着点，嘴里数，手跟着弹。先在慢速下稳住，再加速，每次加 5～10 BPM。<button class="play" data-rh="1 1 1 1 1 1 1 1" data-bpm="60" data-notes="hi beat beat beat">60 BPM</button><button class="play" data-rh="1 1 1 1 1 1 1 1" data-bpm="120" data-notes="hi beat beat beat">120 BPM</button></dd>
+<dt>常见误解</dt>
+<dd class="myth">“节拍器会让人弹得死板，熟练了就不用了。”节拍器练的是内心的拍子。录音、合奏、跟鼓手配合，都要求你心里有一个稳定的拍。</dd>
+</dl>
+</section>
+
+<section class="concept" id="c2">
+<h3>② 小节与拍号</h3>
+<dl>
+<dt>是什么</dt>
+<dd>拍会自然地两个、三个或四个一组，分别叫二拍子、三拍子、四拍子。一组拍记成一个小节，小节之间用小节线隔开。单拍子的拍号上下两个数字：上面是每小节几拍，下面是以什么音符为一拍（2 = 二分音符，4 = 四分音符，8 = 八分音符）。4/4 也写成 𝄴（common time），2/2 也写成 𝄵（cut time）。（OMT Simple Meter → Time Signatures）</dd>
+<dt>为什么需要</dt>
+<dd>拍号告诉你重音的格局：4/4 数“1 2 3 4”，1 拍最重；3/4 数“1 2 3”，像华尔兹。不先看拍号，就不知道该从哪儿数“1”。</dd>
+<dt>听起来</dt>
+<dd>重音（高音的滴）落在每小节第 1 拍。<button class="play" data-rh="1 1 1 1 1 1 1 1" data-bpm="96" data-notes="hi beat beat beat">4/4</button><button class="play" data-rh="1 1 1 1 1 1 1 1 1" data-bpm="96" data-notes="hi beat beat">3/4</button></dd>
+<dt>常见误解</dt>
+<dd class="myth">“4/4 是一个分数，等于 1。”OMT 专门强调：拍号不是分数，两个数字之间没有横线，上下两个数字说的是两件不同的事。</dd>
+</dl>
+</section>
+
+<section class="concept" id="c3">
+<h3>③ 时值：音符和休止符</h3>
+<dl>
+<dt>是什么</dt>
+<dd>时值是分层级的，每一级都是上一级的一半：全音符 = 2 个二分音符 = 4 个四分音符 = 8 个八分音符 = 16 个十六分音符，就像一整张披萨切成两半、四份、八份（OMT 的比喻）。每种音符都有对应的休止符，表示同样长的不出声。三种让时值减半的办法：加符干（全 → 二分）、涂实符头（二分 → 四分）、加符尾（四分 → 八分 → 十六分）。（OMT Notating Rhythm）</dd>
+<dt>为什么需要</dt>
+<dd>拍号说“以四分音符为一拍”，你得知道四分音符多长、八分音符是它的一半，才能把谱上的符号换算成拍。</dd>
+<dt>在琴上</dt>
+<dd>在 4/4 里：全音符弹一下、按住 4 拍；四分音符每拍一下；八分音符每拍两下；十六分音符每拍四下。点下面的图听每一行。</dd>
+<dd>
+<figure id="values">
+<svg viewBox="0 0 760 236" role="img" aria-label="时值层级：全音符到十六分音符，点击每一行播放">
+  <g id="valRows"></g>
+</svg>
+<figcaption>每一行都是一个 4/4 小节。点一行，节拍器 60 BPM 下弹一遍这一行的时值。</figcaption>
+</figure>
+</dd>
+<dd>
+<table>
+<tr><th>音符</th><th>4/4 里占几拍</th><th>对应的休止符</th><th>英式叫法（OMT 列出）</th></tr>
+<tr><td>全音符</td><td>4</td><td>全休止符：挂在第四线下面</td><td>semibreve</td></tr>
+<tr><td>二分音符</td><td>2</td><td>二分休止符：坐在第三线上面，像一顶礼帽</td><td>minim</td></tr>
+<tr><td>四分音符</td><td>1</td><td>四分休止符：弯折的竖线，OMT 提醒要多练着画</td><td>crotchet</td></tr>
+<tr><td>八分音符</td><td>½</td><td>八分休止符：一个小钩</td><td>quaver</td></tr>
+<tr><td>十六分音符</td><td>¼</td><td>十六分休止符：两个小钩</td><td>semiquaver</td></tr>
+</table>
+</dd>
+<dt>常见误解</dt>
+<dd class="myth">“四分音符就是一拍。”只有下面的数字是 4 时才对。在 2/2 里一拍是二分音符，在 6/8 里一拍是附点四分音符（⑥）。</dd>
+</dl>
+</section>
+
+<section class="concept" id="c4">
+<h3>④ 附点与连音线</h3>
+<dl>
+<dt>是什么</dt>
+<dd>附点写在音符右边，把时值加上自己的一半：附点四分音符 = 3 个八分音符，附点二分音符 = 3 个四分音符。第二个附点再加上第一个附点的一半，复附点音符是原时值的 1¾ 倍。连音线是连接两个同音高音符的弧线，后一个音不重新发音，两个时值相加；休止符不用连音线。连接不同音高的弧线是圆滑线，意思完全不同。（OMT Notating Rhythm → Dots and ties）</dd>
+<dt>为什么需要</dt>
+<dd>只靠“每级减半”的时值，做不出三拍长的音，也做不出跨过小节线的音。附点解决前者，连音线两个都能解决。</dd>
+<dt>在琴上</dt>
+<dd><span class="sup">补充</span> 连音线：弹一下，按住不再拨弦。吉他谱上连接不同音高的弧线，通常表示击弦（hammer-on）或勾弦（pull-off），也就是左手做出第二个音、右手不再拨。</dd>
+<dt>听起来</dt>
+<dd>“附点四分 + 八分”是最常见的附点节奏，长–短，《生日快乐》开头的“祝你”就是附点八分 + 十六分。<button class="play" data-rh="1.5 0.5 1.5 0.5 1.5 0.5 2" data-bpm="80" data-notes="57 57 59 57" data-click="1">附点四分 + 八分</button></dd>
+<dt>常见误解</dt>
+<dd class="myth">“附点就是多加半拍。”附点加的是这个音符自己的一半：附点四分音符加半拍，附点二分音符加一拍，附点八分音符只加四分之一拍。</dd>
+</dl>
+</section>
+
+<section class="concept" id="c5">
+<h3>⑤ 细分与数法</h3>
+<dl>
+<dt>是什么</dt>
+<dd>OMT 用美国传统数法：拍用数字“1 2 3 4”；一拍分成两份时，后半拍数“and”，写作 +（吉他教学里常写成 &amp;）；再分成四份数“1 e + a”。持续好几拍的音、或者因为休止、连音线、附点而没发音的拍，数字写在括号里，不出声地数。以弱起音开始的曲子不从“1”数起，弱起被当作一个想象中的小节的最后几拍，最后一小节通常相应缩短。（OMT Simple Meter → Counting in Simple Meter）</dd>
+<dd><span class="sup">补充</span> 一拍分成三份（三连音）常数“1 trip let”。OMT 的单拍子数法里没有这一项。</dd>
+<dt>为什么需要</dt>
+<dd>细分是“拍与拍之间的尺子”。不数细分，八分和十六分的位置全靠蒙；数出来，每一个音都有确定的落点。</dd>
+<dt>在琴上</dt>
+<dd><span class="sup">补充</span> 右手和细分对应：八分音符“下 上 下 上”，拍上向下扫、&amp; 上向上扫；十六分音符每拍“下上下上”。右手一直按最小的细分摆动，没有音的地方空挥不碰弦，节奏就不会乱。</dd>
+<dt>听起来</dt>
+<dd>节拍器 60，同一个音按四种细分弹。<button class="play" data-rh="1 1 1 1" data-bpm="60" data-click="1">四分 1 2 3 4</button><button class="play" data-rh="0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5" data-bpm="60" data-click="1">八分 1 &amp; 2 &amp;</button><button class="play" data-rh="1/3 1/3 1/3 1/3 1/3 1/3 1/3 1/3 1/3 1/3 1/3 1/3" data-bpm="60" data-click="1">三连音 1 trip let</button><button class="play" data-rh="0.25 0.25 0.25 0.25 0.25 0.25 0.25 0.25 0.25 0.25 0.25 0.25 0.25 0.25 0.25 0.25" data-bpm="60" data-click="1">十六分 1 e &amp; a</button></dd>
+<dt>常见误解</dt>
+<dd class="myth">“慢的地方不用数。”长音最容易拖短或拉长。OMT 让你把没发音的拍也写进括号里数，就是为了这个。</dd>
+</dl>
+</section>
+<section class="concept" id="c6">
+<h3>⑥ 单拍子与复拍子</h3>
+<dl>
+<dt>是什么</dt>
+<dd>单拍子每拍分成两份、再细分成四份；复拍子每拍分成三份、再细分成六份。复拍子的拍号说的是分拍：上面的数字是每小节几个分拍，总是 3 的倍数，除以 3 就是拍数（6、9、12 对应二、三、四拍子）；下面的数字是分拍单位。所以 6/8 是每小节两拍，每拍是一个附点四分音符，等于三个八分音符。复拍子数“1 la li 2 la li”，再细分到十六分音符时加“ta”。（OMT Compound Meter）</dd>
+<dt>为什么需要</dt>
+<dd>3/4 和 6/8 每小节都是 6 个八分音符，写出来的音符可以一模一样，听起来却完全不同：3/4 是三拍、每拍两个八分（2+2+2），6/8 是两拍、每拍三个八分（3+3）。拍号错了，重音就全错了。</dd>
+<dt>在琴上</dt>
+<dd><span class="sup">补充</span> 慢布鲁斯和很多慢摇滚抒情歌是 12/8：四大拍，每拍三个八分，“1 la li 2 la li 3 la li 4 la li”。</dd>
+<dt>听起来</dt>
+<dd>两个例子八分音符的速度完全一样，只有重音不同。<button class="play" data-rh="0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5" data-bpm="90" data-notes="hi sub beat sub beat sub">3/4：1 &amp; 2 &amp; 3 &amp;</button><button class="play" data-rh="0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5" data-bpm="90" data-notes="hi sub sub beat sub sub">6/8：1 la li 2 la li</button></dd>
+<dt>常见误解</dt>
+<dd class="myth">“6/8 就是每小节 6 拍。”6/8 是 6 个八分音符、两拍。跟着 6/8 的歌点脚，每小节只点两下。</dd>
+</dl>
+</section>
+
+<section class="concept" id="c7">
+<h3>⑦ 摇摆与 shuffle</h3>
+<dl>
+<dt>是什么</dt>
+<dd>摇摆八分音符（swing eighths）谱面写成普通的直八分，演奏时却弹成长–短，接近三连音，第一个大约是第二个的两倍长，比例从 1:1 变成约 2:1。之所以不直接写成三连音，是因为那样谱面太乱；演奏者看到风格标记就知道要摇摆。OMT 还提醒：2:1 只是常用的解释，实际比例因曲、因人而异，速度越快越接近直八分，越慢摇摆越明显。（OMT Swing Rhythms → The Basic Swing Groove）</dd>
+<dt>为什么需要</dt>
+<dd>布鲁斯、爵士、很多摇滚都靠这个“长–短”的律动。按谱面弹成直八分，音全对，味道全没了。</dd>
+<dt>在琴上</dt>
+<dd><span class="sup">补充</span> 吉他手说的 shuffle，就是用摇摆八分弹的律动，最典型的是布鲁斯根音律动：6 弦空弦配 5 弦 2 品、4 品交替（E5–E6），每拍两个音，长–短。慢的 shuffle 常常直接写成 12/8，把三连音写出来。</dd>
+<dt>听起来</dt>
+<dd>同一条根音律动，先直后摇。<button class="play" data-rh="0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5" data-bpm="100" data-notes="40,47 40,47 40,49 40,49" data-click="1">直八分</button><button class="play" data-rh="2/3 1/3 2/3 1/3 2/3 1/3 2/3 1/3" data-bpm="100" data-notes="40,47 40,47 40,49 40,49" data-click="1">摇摆（2:1）</button></dd>
+<dt>常见误解</dt>
+<dd class="myth">“swing 就是严格的三连音。”2:1 只是起点。快歌的摇摆更直，慢歌更“甩”。用第 3 节的摇摆滑块从 50% 拖到 75%，听比例怎么改变律动。</dd>
+</dl>
+</section>
+
+<section class="concept" id="c8">
+<h3>⑧ 重音、反拍与切分</h3>
+<dl>
+<dt>是什么</dt>
+<dd>4/4 里拍有轻重：第 1 拍最重，第 3 拍次之，第 2、4 拍最轻；换和弦这类“重要的事”通常发生在第 1 拍。切分就是用某种办法打破这种层级：把重音放到轻拍上，或者用休止符、连音线避开强拍。反拍重音（backbeat）是在第 2、4 拍上加重音，本身就是一种切分，和古典音乐通常重读 1、3 拍正好相反（OMT Swing Rhythms → Syncopation）。流行和摇滚里最常见的是直切分：一串等长的音，把第一个砍掉一半，后面每个都提前这一半，于是全落在反拍上。另一种常见的切分是 tresillo，把两拍分成 3+3+2 个十六分音符，像一个“假三连音”。（OMT Rhythm and Meter in Pop Music）</dd>
+<dt>为什么需要</dt>
+<dd>律动的推动力大多来自“不在拍上”的音。军鼓打 2、4 拍是几乎所有摇滚和流行的地基；riff 里提前半拍进来的音，是它听起来“往前冲”的原因。</dd>
+<dt>在琴上</dt>
+<dd><span class="sup">补充</span> 扫弦时右手照样“下 上 下 上”地摆，切分的音只是落在向上扫的 &amp; 上；在本来要扫的强拍上空挥不碰弦，切分就出来了。</dd>
+<dt>听起来</dt>
+<dd><button class="play" data-rh="1 1 1 1 1 1 1 1" data-bpm="96" data-notes="kick snare kick snare">反拍重音：底鼓 1、3，军鼓 2、4</button><button class="play" data-rh="1 1 1 1 1 1 1 1" data-bpm="90" data-notes="52" data-click="1">直的四分音符</button><button class="play" data-rh="0.5 1 1 1 r0.5 0.5 1 1 1 r0.5" data-bpm="90" data-notes="52" data-click="1">直切分：后三个提前半拍</button><button class="play" data-rh="0.75 0.75 0.5 0.75 0.75 0.5 0.75 0.75 0.5 0.75 0.75 0.5" data-bpm="90" data-notes="40" data-click="1">tresillo 3+3+2</button></dd>
+<dt>常见误解</dt>
+<dd class="myth">“切分就是弹得不在拍上。”切分是有意地落在拍外，前提是心里的拍一点没乱。拍不稳的人弹出来的叫抢拍、拖拍，不叫切分。</dd>
+</dl>
+</section>
+
+<section class="concept" id="c9">
+<h3>⑨ 读 TAB</h3>
+<dl>
+<dt>是什么</dt>
+<dd><span class="sup">补充</span> TAB（六线谱）的 6 条横线就是 6 根弦，<b>最上面一线是 1 弦（细的高音 E）</b>，最下面一线是 6 弦，正好和你低头看琴时上下相反。线上的数字是品，0 是空弦；上下对齐的几个数字同时弹。</dd>
+<dt>为什么需要</dt>
+<dd>大多数吉他谱都是 TAB，它直接告诉你在哪根弦哪一品，不用先把五线谱换算成指板位置。代价是：很多 TAB 只写位置，不写节奏。数字之间的距离不一定代表时值，有的连小节线都没有。</dd>
+<dt>在琴上</dt>
+<dd>下面是《生日快乐》的前两句，C 大调，3/4。红色一行是数拍，是讲义作者加上去的，普通 TAB 里没有。它从第 3 拍的弱起开始：“祝你”是附点八分 + 十六分，数“3 a”。<button class="play" id="tabPlay">听这两句（带两拍预备）</button></dd>
+<dd><pre class="tab" id="tab" aria-label="生日快乐前两句的 TAB"></pre></dd>
+<dt>常见误解</dt>
+<dd class="myth">“有 TAB 就不用学节奏了。”TAB 给不了时值，大多也没有拍号、重音、swing 标记。看 TAB 学歌时一定对照录音，或者用 Songsterr 这类带符干和回放的谱，再用这一份讲义的数法把节奏数出来。</dd>
+</dl>
+</section>
+<h2 id="lab">3. 节拍器与跟拍测试</h2>
+<p>先点一个例子，或者自己调拍号、细分、摇摆和重音。格子里是嘴里该数的音节，黑格是正在响的那一下，红色下划线是重音。下面的跟拍测试会告诉你点得早了还是晚了。</p>
+<div class="lab">
+  <div class="presets" id="presets">
+    <button class="btn" data-preset="ladder">细分阶梯（60，每 4 小节换一次）</button>
+    <button class="btn" data-preset="cmp">3/4 和 6/8 交替</button>
+    <button class="btn" data-preset="straight">直八分</button>
+    <button class="btn" data-preset="swing">摇摆八分</button>
+    <button class="btn" data-preset="back">反拍重音（81，We Will Rock You 的速度）</button>
+    <button class="btn" data-preset="shuffle">shuffle 根音律动 E5–E6</button>
+    <button class="btn" data-preset="tres">tresillo 3+3+2</button>
+    <button class="btn" data-preset="slow">12/8 慢布鲁斯</button>
+  </div>
+  <div class="ctl">
+    <button class="btn primary" id="go">开始</button>
+    <span class="grp"><span>速度</span><button class="btn" data-bump="-5">−</button><input type="range" id="bpm" min="40" max="200" step="1" aria-label="速度"><button class="btn" data-bump="5">+</button><span class="num" id="bpmVal"></span></span>
+    <span class="grp"><span>拍号</span><select id="meter"><option>2/4</option><option>3/4</option><option>4/4</option><option>6/8</option><option>9/8</option><option>12/8</option></select></span>
+  </div>
+  <div class="ctl">
+    <span class="grp" id="divs"><span>细分</span></span>
+    <span class="grp"><span>摇摆</span><input type="range" id="swing" min="50" max="75" step="1" aria-label="摇摆比例"><span class="num" id="swingVal"></span></span>
+  </div>
+  <div class="ctl">
+    <span class="grp"><span>重音</span><select id="accent"><option value="one">每小节第 1 拍</option><option value="back">反拍重音（鼓：底鼓 1、3，军鼓 2、4）</option><option value="tres">tresillo 3+3+2（十六分）</option></select></span>
+    <span class="grp"><span>吉他</span><select id="gtr"><option value="none">不弹</option><option value="note">每一格弹一下 A 音</option><option value="shuffle">根音律动 E5–E6</option></select></span>
+    <label class="grp"><input type="checkbox" id="ladder"> 每 4 小节自动换细分</label>
+  </div>
+  <div class="grid" id="grid" aria-live="off"></div>
+  <p class="status" id="status"></p>
+  <p class="legend" id="legend"></p>
+  <div class="tapbox">
+    <b>跟拍测试</b>
+    <p class="small" style="margin:4px 0">节拍器开着时，跟着<b>大拍</b>（数字那一格）在下面的框里点，或者按空格键。点满 16 下给出结果：平均早了还是晚了、稳不稳。</p>
+    <div class="pad" id="pad" role="button" tabindex="0">在这里点，或按空格</div>
+    <svg class="strip" id="strip" viewBox="0 0 560 46" aria-label="每一下的偏差"></svg>
+    <p class="status" id="tapMsg">还没开始。</p>
+  </div>
+</div>
+<p class="legend">关于跟拍测试：网页会扣掉声卡报告的输出延迟，但键盘、触屏本身还有 10～30 毫秒的延迟，所以结果整体略偏“晚”是正常的。看的是同一台设备上，每天的数字有没有变小、变稳。</p>
+<h2 id="drills">4. 上琴练习</h2>
+<p>每天开节拍器练 10 分钟，分几天做。前三项各录一段 1 分钟的音，就是 G2 的产出。</p>
+<ol class="drill">
+  <li><b>细分阶梯。</b>节拍器 60，同一个音（5 弦空弦 A）按四分 → 八分 → 三连音 → 十六分各弹 4 小节，不停顿地切换，嘴里数出来。第 3 节的“细分阶梯”例子就是这个练习的伴奏。
+    <span class="std">完成标准：60 下连续两轮不断、不数错；再提到 80，这是 G2 的验收速度。</span></li>
+  <li><b>闷音扫反拍。</b>左手轻轻搭在弦上闷音。节拍器响在拍上，你只在 &amp; 上向上扫，扫 2 分钟；再改成只在第 2、4 拍向下扫（反拍重音）。右手全程保持“下 上 下 上”地摆，不该响的地方空挥。<span class="sup">补充</span>
+    <span class="std">完成标准：录下来回听，反拍的扫弦正好落在两次滴答的正中间，2、4 拍不抢不拖。</span></li>
+  <li><b>shuffle 根音律动。</b>6 弦空弦 + 5 弦 2 品与 4 品交替（E5–E6），每拍两下，长–短。先用直八分弹顺，再摇起来。速度 70，稳了再到 100。可以用第 3 节的“shuffle 根音律动”例子对照着弹。
+    <span class="std">完成标准：100 下弹满 1 分钟不散，录一段。另录一段直八分的版本，两段对比着听。</span></li>
+  <li><b>拍出 3/4 和 6/8。</b>同样 6 个八分音符，3/4 数“1 &amp; 2 &amp; 3 &amp;”，重音在 1、3、5 个八分；6/8 数“1 la li 2 la li”，重音在 1、4 个八分。先拍手，再用闷音扫弦。
+    <span class="std">完成标准：让别人听，能分辨出你拍的是哪一个；跟着 6/8 的歌点脚，每小节点两下。</span></li>
+  <li><b>照 TAB 拍节奏，写一页数法表。</b>在 Songsterr 找一首带节奏的谱（比如第 8 节的歌），先不听录音，照谱数出来拍出来，再和录音对照。然后把这份讲义的数法整理成一页：四分、八分、三连音、十六分、复拍子各怎么数，附点和连音线怎么数，各举一个例子。
+    <span class="std">完成标准：照谱拍的节奏和录音对得上；数法表是 G2 产出的另一半。</span></li>
+</ol>
+
+<h2 id="choices">5. 分歧点</h2>
+<h3>几套数拍法</h3>
+<table>
+<tr><th>数法</th><th>怎么数</th><th>好处</th><th>局限</th></tr>
+<tr><td>美国传统数法（OMT 采用）</td><td>1 + 2 +；1 e + a；复拍子 1 la li</td><td>每个位置有唯一的名字，便于讨论“这个音在第几拍的哪儿”</td><td>三连音没有统一的叫法</td></tr>
+<tr><td>吉他教学常见 <span class="sup">补充</span></td><td>1 &amp; 2 &amp;；1 e &amp; a；三连音 1 trip let；6/8 直接数 1 2 3 4 5 6</td><td>和右手上下扫弦一一对应</td><td>直接数“1～6”时，容易忘了 6/8 只有两大拍</td></tr>
+<tr><td>节奏音节（如柯达伊 ta、ti-ti）<span class="sup">补充</span></td><td>按时值念，不按位置念</td><td>唱节奏顺口，适合视唱</td><td>不说明音在第几拍，扒带时不好用</td></tr>
+</table>
+<p>OMT 自己也说“你的老师可能用别的数法”。选一套，一直用下去，别混用。</p>
+<h3>是 3/4 还是 6/8</h3>
+<table>
+<tr><th>看什么</th><th>3/4</th><th>6/8</th></tr>
+<tr><td>跟着点脚，每小节几下</td><td>3 下</td><td>2 下</td></tr>
+<tr><td>六个八分音符怎么分组</td><td>2+2+2</td><td>3+3</td></tr>
+<tr><td>谱面上的符杠</td><td>两个一组连</td><td>三个一组连</td></tr>
+<tr><td>听感 <span class="sup">补充</span></td><td>华尔兹，“嘭 嚓 嚓”</td><td>摇篮曲、船歌，“摇过来 摇过去”</td></tr>
+</table>
+<h3>节奏怎么写下来</h3>
+<table>
+<tr><th>写法</th><th>给了什么</th><th>缺了什么</th></tr>
+<tr><td>五线谱</td><td>音高、时值、拍号、重音，全都有</td><td>不告诉你在吉他的哪根弦哪一品</td></tr>
+<tr><td>普通 TAB <span class="sup">补充</span></td><td>弦和品，一眼就能弹</td><td>大多没有时值和拍号，有的没有小节线</td></tr>
+<tr><td>带节奏的 TAB（Songsterr、Guitar Pro）<span class="sup">补充</span></td><td>弦、品，加上符干、符尾和回放</td><td>多是网友扒的，要和录音对照</td></tr>
+<tr><td>swing 的写法</td><td>爵士：直八分加风格标记（OMT）；慢 shuffle 常写成 12/8 <span class="sup">补充</span></td><td>直八分的写法要你自己知道“要摇”</td></tr>
+</table>
+
+<h2 id="reading">6. 读原资料指南</h2>
+<p>下面这些小节的原文已经嵌进网站「本周」的 G2 每日页面里，中英对照，图片也在。点“读完了”会自动展开下一篇。</p>
+<p><b>必须精读</b>（带着第 9 节的问题去读）：</p>
+<ul class="read">
+<li>OMT <a href="https://viva.pressbooks.pub/openmusictheory/chapter/notating-rhythm/">Notating Rhythm</a>：Note Values、Rest Values、Dots and ties 三节。重点是 Example 2 的时值层级、Example 6 的附点拆分、连音线和圆滑线的区别。</li>
+<li>OMT <a href="https://viva.pressbooks.pub/openmusictheory/chapter/simple-meter-and-time-signatures/">Simple Meter and Time Signatures</a>：Terminology、Time Signatures、Counting in Simple Meter。重点是拍号的两个数字、括号里的拍、弱起。</li>
+<li>OMT <a href="https://viva.pressbooks.pub/openmusictheory/chapter/compound-meters-and-time-signatures/">Compound Meter and Time Signatures</a>：Time Signatures、Counting in Compound Meter。重点是 Example 2 的六类拍子表，以及为什么复拍子的拍都带附点。</li>
+<li>OMT <a href="https://viva.pressbooks.pub/openmusictheory/chapter/swing-rhythms/">Swing Rhythms</a>：全章。摇摆比例、反拍重音、切分的定义都在这里。</li>
+<li>OMT <a href="https://viva.pressbooks.pub/openmusictheory/chapter/rhythm-and-meter-in-pop-music/">Rhythm and Meter in Pop Music</a>：Straight Syncopation 和 Tresillo。重点是“扒直切分节奏”的四个步骤。</li>
+</ul>
+<p><b>可以跳过：</b>单拍子一章的 Listening、Conducting Patterns、Counting with Beat Units of 2, 8, and 16、Beaming 几节，复拍子一章的 Listening and Conducting、Counting with Division Units of 4 and 16、Beaming 几节。指挥图式和符杠规则写谱时才用得上，读谱时看得懂就够了。OMT 的 <a href="https://viva.pressbooks.pub/openmusictheory/chapter/drumbeats/">Drumbeats</a> 一章留到需要和鼓手配合时再读。</p>
+<h2 id="quiz">7. 自测 5 题</h2>
+<p>先自己答（上琴题要真的弹），再展开看答案。答不上来的，回第 6 节对应的原资料。</p>
+
+<p class="q"><b>概念 1</b>3/4 和 6/8 每小节都是 6 个八分音符，区别在哪？各怎么数，跟着点脚每小节点几下？</p>
+<details><summary>答案</summary>
+<p>3/4 是单三拍子：三拍，每拍一个四分音符，分成两个八分（2+2+2），数“1 &amp; 2 &amp; 3 &amp;”，点 3 下，重音在第 1、3、5 个八分音符上。6/8 是复二拍子：两拍，每拍一个附点四分音符，分成三个八分（3+3），数“1 la li 2 la li”，点 2 下，重音在第 1、4 个八分音符上。OMT 的规则：复拍子拍号上面的数字除以 3 才是拍数。</p>
+</details>
+
+<p class="q"><b>概念 2</b>附点四分音符等于几个八分音符？复附点四分音符呢？在 4/4 里要一个持续 5 拍的音，怎么写？</p>
+<details><summary>答案</summary>
+<p>附点四分 = 3 个八分。复附点四分 = 四分 + 八分 + 十六分，是原时值的 1¾ 倍，也就是 3½ 个八分（OMT Example 6）。5 拍比一小节还长，一个音符写不下，要用连音线跨过小节线：一个全音符连一个四分音符，连过去的那个音不重新弹。</p>
+</details>
+
+<p class="q"><b>辨析 1</b>swing 的谱面写的是直八分，演奏时为什么不按谱面弹？朋友说“swing 就是三连音前两个连起来，永远是 2:1”，对吗？</p>
+<details><summary>答案</summary>
+<p>谱面写直八分是惯例：如果每个八分都写成三连音，谱面会非常乱，所以写直八分，演奏者看风格就知道要摇摆（OMT）。“三连音前两个连起来”是常用的解释，但不是“永远 2:1”：OMT 说实际比例因曲、因人而异，快的更直，慢的更不均匀，并拿 Dizzy Gillespie 的“Eternal Triangle”和 Count Basie 的“Duet”对比。</p>
+</details>
+
+<p class="q"><b>辨析 2</b>TAB 为什么常常不够用？它给不了你哪些信息？</p>
+<details><summary>答案</summary>
+<p>普通 TAB 只写弦和品。它通常没有时值（数字之间的距离不代表多长）、没有拍号和重音、没有休止，也没有 swing 之类的风格标记，有的连小节线都没有。<span class="sup">补充</span> 所以看 TAB 学歌要对照录音，或者用带符干和回放的谱（Songsterr、Guitar Pro），再自己把节奏数出来。</p>
+</details>
+
+<p class="q"><b>上琴</b>开第 3 节的节拍器，4/4、80 BPM，勾上“每 4 小节自动换细分”，从四分弹到十六分，嘴里数出来。弹完做一次跟拍测试。</p>
+<details><summary>参考标准</summary>
+<p>换细分时，新细分的第一个音正好落在拍上，不抢也不等。跟拍测试的参考线 <span class="sup">补充</span>：平均偏差在 ±20 毫秒以内、波动在 30 毫秒以内就算稳。这只是讲义作者的经验值，更重要的是录音回听：拍子有没有越弹越快。</p>
+</details>
+
+<h2 id="songs">8. 在歌里听一听</h2>
+<ol class="ask">
+<li><b>We Will Rock You（Queen）</b>：跺、跺、拍。跺脚在第 1 拍和它的 &amp;，拍手在第 2 拍；第 3、4 拍再来一遍。拍手正好落在 2、4 拍，就是反拍重音。数“1 &amp; 2，3 &amp; 4”，用闷音扫弦打出来。<button class="play" data-rh="0.5 0.5 1 0.5 0.5 1 0.5 0.5 1 0.5 0.5 1" data-bpm="81" data-notes="kick kick snare">跺 跺 拍</button></li>
+<li><b>Pride and Joy（Stevie Ray Vaughan）</b>：德州 shuffle，整首都是长–短的律动；原版降半音调弦。先跟录音拍四分，再在 6 弦闷音弹 shuffle 八分，最后加上 E5–E6 根音律动。<button class="play" data-rh="2/3 1/3 2/3 1/3 2/3 1/3 2/3 1/3 2/3 1/3 2/3 1/3 2/3 1/3 2/3 1/3" data-bpm="116" data-notes="40,47 40,47 40,49 40,49" data-click="1">shuffle 律动示范（不是原曲 riff）</button></li>
+<li><b>Nothing Else Matters（Metallica）</b>：通常记作 6/8。前奏是空弦琶音 E–G–B–E–B–G（6、3、2、1、2、3 弦），一小节六个八分音符，三个一组。跟着原曲点脚，确认每小节只点两下。<button class="play" data-rh="1 1 1 1 1 1 1 1 1 1 1 1" data-bpm="138" data-notes="40 55 59 64 59 55">空弦琶音两小节</button>
+<details><summary>想一想</summary><p>如果数成 3/4，“1 &amp; 2 &amp; 3 &amp;”，重音会落在第 1、3、5 个音（E、B、B）上；数成 6/8，“1 la li 2 la li”，重音在第 1、4 个音（E、E）上。跟原曲比，哪个更像？</p></details></li>
+<li><b>Happy Birthday（生日快乐）</b>：3/4，从第 3 拍的弱起开始，开头“祝你”是附点八分 + 十六分。第 2 节 ⑨ 有它的 TAB。拍手唱一遍，找出强拍（每小节第 1 拍）落在哪个字上。
+<details><summary>答案</summary><p>“祝你 | <b>生</b>日快 | <b>乐</b>”：强拍落在“生”和“乐”上。英文是“Happy | <b>birth</b>day to | <b>you</b>”。因为从弱起开始，最后一小节通常会相应缩短（OMT Example 13）。</p></details></li>
+</ol>
+<p>和后面模块的连接：G3 开始练耳，每个音程配一首参考曲，节奏数清楚了才能把旋律准确地唱出来；G11 布鲁斯会把 12/8 和 shuffle 用到 12 小节布鲁斯上；G15 扒歌时，“扒直切分节奏”的四个步骤会直接用上。</p>
+
+<section class="handoff" id="handoff">
+<h2>9. 带去原资料的 3 个问题</h2>
+<p>读讲义只是搭了骨架。下面三个问题讲义没讲透，答案要到原文里找（「本周」页里有嵌好的原文）。</p>
+<ol class="ask">
+<li>单拍子里，因为休止符、连音线、附点而没有发音的拍，怎么数、怎么写？以弱起开始的曲子，最后一小节为什么会变短？（OMT Simple Meter → Counting in Simple Meter，Example 12、13）</li>
+<li>复拍子拍号上面的数字表示什么？为什么在复拍子里，附点音符不会让拍写进括号，而在单拍子里会？（OMT Compound Meter → Time Signatures、Counting in Compound Meter）</li>
+<li>听一首歌时，怎么一步步把一段直切分扒下来？拍级切分和分拍级切分怎么区分？tresillo 和真三连音又怎么区分？（OMT Rhythm and Meter in Pop Music）</li>
+</ol>
+<p>读完回到网站，在路线图里勾掉 G2 的第 3、4 步，然后用 <code>/quiz 节奏、拍号与读谱</code> 让 AI 反问你。</p>
+</section>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs, text) {
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (text) e.textContent = text;
+    return e;
+  }
+  function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;"); }
+
+  // ── 全局地图的九行：概念 → 核心事实 → 在琴上 ──
+  var rows = [
+    ["① 拍与速度", "稳定的脉动；BPM = 每分钟几拍", "节拍器响，脚跟着点"],
+    ["② 小节与拍号", "上：每小节几拍 下：几分音符一拍", "4/4 数 1 2 3 4，3/4 数 1 2 3"],
+    ["③ 时值", "每一级都是上一级的一半", "四分弹一下，八分弹两下"],
+    ["④ 附点与连音线", "附点加一半，连音线把时值相加", "连音线：弹一下，按住不再弹"],
+    ["⑤ 细分与数法", "1 & 2 &、1 e & a、1 trip let", "右手按细分“下 上”地摆"],
+    ["⑥ 单拍子与复拍子", "每拍分成 2 份 vs 分成 3 份", "3/4 三拍，6/8 两大拍"],
+    ["⑦ 摇摆与 shuffle", "谱上直八分，弹成长短约 2:1", "布鲁斯 shuffle 根音律动"],
+    ["⑧ 重音、反拍与切分", "重音放到弱拍或拍与拍之间", "军鼓打 2、4，扫弦切分"],
+    ["⑨ 读 TAB", "6 条线是弦，数字是品", "最上面一线是 1 弦"]
+  ];
+  var g = $("rows");
+  rows.forEach(function (r, i) {
+    var y = 34 + i * 47, h = 36, mid = y + h / 2 + 5;
+    var a = el("a", { href: "#c" + (i + 1) });
+    a.appendChild(el("rect", { "class": "box-key", x: 8, y: y, width: 176, height: h, rx: 5 }));
+    a.appendChild(el("text", { "class": "t1", x: 18, y: mid }, r[0]));
+    g.appendChild(a);
+    g.appendChild(el("path", { "class": "arrow", d: "M186 " + (y + h / 2) + " H228", "marker-end": "url(#ar)" }));
+    g.appendChild(el("rect", { "class": "box", x: 232, y: y, width: 238, height: h, rx: 5 }));
+    g.appendChild(el("text", { "class": "t2", x: 244, y: mid }, r[1]));
+    g.appendChild(el("path", { "class": "arrow", d: "M472 " + (y + h / 2) + " H514", "marker-end": "url(#ar)" }));
+    g.appendChild(el("rect", { "class": "box", x: 518, y: y, width: 234, height: h, rx: 5 }));
+    g.appendChild(el("text", { "class": "t2", x: 530, y: mid }, r[2]));
+  });
+
+  // ── 发声：拨弦用 Karplus–Strong，节拍器和鼓用振荡器与噪声 ──
+  var ctx = null, bus = null, dry = null, cache = {}, noiseBuf = null;
+  function ac() {
+    if (!ctx) {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return null;
+      ctx = new AC();
+      var lp = ctx.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 3800;
+      bus = ctx.createGain(); bus.connect(lp); lp.connect(ctx.destination);
+      dry = ctx.createGain(); dry.gain.value = 0.9; dry.connect(ctx.destination);
+      noiseBuf = ctx.createBuffer(1, ctx.sampleRate, ctx.sampleRate);
+      var nd = noiseBuf.getChannelData(0);
+      for (var i = 0; i < nd.length; i++) nd[i] = Math.random() * 2 - 1;
+    }
+    if (ctx.state === "suspended") ctx.resume();
+    return ctx;
+  }
+  function buffer(midi) {
+    if (cache[midi]) return cache[midi];
+    var sr = ctx.sampleRate, f = 440 * Math.pow(2, (midi - 69) / 12);
+    var N = Math.max(2, Math.floor(sr / f - 0.5));
+    var T60 = 2.6 - Math.min(1.4, (midi - 40) / 30);
+    var d = Math.min(0.99995, Math.pow(0.001, 1 / (f * T60)) / Math.cos(Math.PI * f / sr));
+    var len = Math.floor(sr * (T60 + 0.2));
+    var b = ctx.createBuffer(1, len, sr), y = b.getChannelData(0), prev = 0, i;
+    for (i = 0; i < N; i++) { prev = 0.55 * prev + 0.45 * (Math.random() * 2 - 1); y[i] = prev; }
+    for (i = N; i < len; i++) y[i] = d * 0.5 * (y[i - N] + (i - N - 1 >= 0 ? y[i - N - 1] : 0));
+    var fade = Math.floor(sr * 0.15);
+    for (i = 0; i < fade; i++) y[len - 1 - i] *= i / fade;
+    // 延迟线实际长度是 N + 0.5 个采样，用播放速率把音高校正到准确频率
+    cache[midi] = { buf: b, rate: f / (sr / (N + 0.5)) };
+    return cache[midi];
+  }
+  function pluck(midi, t, vel) {
+    var o = buffer(midi), src = ctx.createBufferSource(), gn = ctx.createGain();
+    src.buffer = o.buf; src.playbackRate.value = o.rate;
+    gn.gain.value = 0.3 * (vel || 1);
+    src.connect(gn); gn.connect(bus);
+    src.start(t);
+  }
+  function env(node, t, vol, len) {
+    var gn = ctx.createGain();
+    gn.gain.setValueAtTime(0.0001, t);
+    gn.gain.exponentialRampToValueAtTime(vol, t + 0.002);
+    gn.gain.exponentialRampToValueAtTime(0.0001, t + len);
+    node.connect(gn); gn.connect(dry);
+  }
+  function blip(t, f, vol, len) { var o = ctx.createOscillator(); o.frequency.value = f; env(o, t, vol, len); o.start(t); o.stop(t + len + 0.02); }
+  function hiss(t, vol, len, hp) {
+    var s = ctx.createBufferSource(), f = ctx.createBiquadFilter();
+    s.buffer = noiseBuf; f.type = "highpass"; f.frequency.value = hp;
+    s.connect(f); env(f, t, vol, len);
+    s.start(t, Math.random() * 0.5); s.stop(t + len + 0.02);
+  }
+  function kick(t) {
+    var o = ctx.createOscillator();
+    o.frequency.setValueAtTime(150, t); o.frequency.exponentialRampToValueAtTime(48, t + 0.13);
+    env(o, t, 0.95, 0.28); o.start(t); o.stop(t + 0.32);
+  }
+  var SND = {
+    hi: function (t) { blip(t, 1760, 0.45, 0.06); },
+    beat: function (t) { blip(t, 1175, 0.32, 0.05); },
+    tick: function (t) { blip(t, 1175, 0.16, 0.04); },
+    sub: function (t) { blip(t, 880, 0.12, 0.035); },
+    kick: kick,
+    snare: function (t) { hiss(t, 0.5, 0.16, 1500); blip(t, 200, 0.25, 0.07); },
+    hat: function (t, v) { hiss(t, v || 0.12, 0.04, 7000); }
+  };
+  // 一个音符记号：鼓/节拍器的名字，或者逗号隔开的 MIDI 音高（同时弹）
+  function hit(tok, t, vel) {
+    if (SND[tok]) { SND[tok](t); return; }
+    tok.split(",").forEach(function (m, i) { pluck(Number(m), t + i * 0.006, vel); });
+  }
+
+  // ── ▶ 按钮：data-rh 是以拍为单位的时值，r 开头是休止，可以写 1/3 ──
+  function frac(s) { var p = s.split("/"); return p.length === 2 ? Number(p[0]) / Number(p[1]) : Number(s); }
+  function playSeq(durs, bpm, notes, click) {
+    if (!ac()) return;
+    var beat = 60 / bpm, st = ctx.currentTime + 0.08, pos = 0, k = 0, i;
+    durs.forEach(function (d) {
+      if (!d.rest) { hit(notes[k % notes.length], st + pos * beat, 0.9); k++; }
+      pos += d.v;
+    });
+    if (click) for (i = 0; i < Math.round(pos); i++) SND.tick(st + i * beat);
+  }
+  document.querySelectorAll("[data-rh]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var durs = b.dataset.rh.trim().split(/\s+/).map(function (tk) {
+        var r = tk.charAt(0) === "r";
+        return { rest: r, v: frac(r ? tk.slice(1) : tk) };
+      });
+      playSeq(durs, Number(b.dataset.bpm || 80), (b.dataset.notes || "45").split(" "), !!b.dataset.click);
+    });
+  });
+
+  // ── 时值层级图：点一行，60 BPM 弹一个 4/4 小节 ──
+  var VALS = [["全音符", 1, "4 拍"], ["二分音符", 2, "每个 2 拍"], ["四分音符", 4, "每个 1 拍"], ["八分音符", 8, "每个 ½ 拍"], ["十六分音符", 16, "每个 ¼ 拍"]];
+  var vg = $("valRows");
+  VALS.forEach(function (v, i) {
+    var y = 8 + i * 45, x0 = 130, w = 622, n = v[1], cw = w / n;
+    var grp = el("g", { "class": "val", role: "button", tabindex: "0", "data-n": n, "aria-label": "播放：" + v[0] + "，" + v[2] });
+    grp.appendChild(el("text", { "class": "t1", x: 4, y: y + 15 }, v[0]));
+    grp.appendChild(el("text", { "class": "t2", x: 4, y: y + 32 }, v[2]));
+    for (var k = 0; k < n; k++) grp.appendChild(el("rect", { x: (x0 + k * cw + 1).toFixed(1), y: y, width: (cw - 2).toFixed(1), height: 34, rx: 3 }));
+    vg.appendChild(grp);
+  });
+  function playVal(e) {
+    var gEl = e.target.closest && e.target.closest(".val");
+    if (!gEl) return;
+    var n = Number(gEl.getAttribute("data-n")), durs = [];
+    for (var i = 0; i < n; i++) durs.push({ rest: false, v: 4 / n });
+    playSeq(durs, 60, ["45"], true);
+  }
+  vg.addEventListener("click", playVal);
+  vg.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); playVal(e); } });
+
+  // ── TAB：生日快乐前两句，[第几个十六分, 弦, 品] ──
+  var OPEN = [64, 59, 55, 50, 45, 40], SN = ["e", "B", "G", "D", "A", "E"];
+  var HB = [
+    { beats: 1, cnt: [[0, "3"], [3, "a"]], ev: [[0, 3, 0], [3, 3, 0]] },
+    { beats: 3, cnt: [[0, "1"], [4, "2"], [8, "3"]], ev: [[0, 3, 2], [4, 3, 0], [8, 2, 1]] },
+    { beats: 3, cnt: [[0, "1"], [4, "(2)"], [8, "3"], [11, "a"]], ev: [[0, 2, 0], [8, 3, 0], [11, 3, 0]] },
+    { beats: 3, cnt: [[0, "1"], [4, "2"], [8, "3"]], ev: [[0, 3, 2], [4, 3, 0], [8, 2, 3]] },
+    { beats: 3, cnt: [[0, "1"], [4, "(2)"], [8, "(3)"]], ev: [[0, 2, 1]] }
+  ];
+  function tabText() {
+    var lines = ["   "], s;
+    for (s = 0; s < 6; s++) lines.push(SN[s] + " |");
+    HB.forEach(function (bar) {
+      var w = 1 + bar.beats * 4, cnt = [], row, j;
+      for (j = 0; j < w; j++) cnt.push(" ");
+      bar.cnt.forEach(function (c) {
+        var at = 1 + c[0] - (c[1].charAt(0) === "(" ? 1 : 0);
+        for (var q = 0; q < c[1].length; q++) cnt[at + q] = c[1].charAt(q);
+      });
+      lines[0] += cnt.join("") + " ";
+      for (s = 0; s < 6; s++) {
+        row = [];
+        for (j = 0; j < w; j++) row.push("-");
+        bar.ev.forEach(function (e) { if (e[1] === s + 1) row[1 + e[0]] = String(e[2]); });
+        lines[s + 1] += row.join("") + "|";
+      }
+    });
+    return '<span class="cnt">' + lines[0] + "</span>\n" + lines.slice(1).join("\n");
+  }
+  $("tab").innerHTML = tabText();
+  $("tabPlay").addEventListener("click", function () {
+    if (!ac()) return;
+    var beat = 60 / 100, t0 = ctx.currentTime + 0.08, pos = 0;
+    SND.hi(t0); SND.beat(t0 + beat);  // 预备拍：1、2，弱起落在第 3 拍
+    var st = t0 + 2 * beat;
+    HB.forEach(function (bar) {
+      bar.ev.forEach(function (e) { pluck(OPEN[e[1] - 1] + e[2], st + (pos + e[0] / 4) * beat, 0.95); });
+      pos += bar.beats;
+    });
+  });
+  // ── 节拍器 ──
+  var METER = { "2/4": [2, false], "3/4": [3, false], "4/4": [4, false], "6/8": [2, true], "9/8": [3, true], "12/8": [4, true] };
+  var DIVS = { s: [[1, "四分"], [2, "八分"], [3, "三连音"], [4, "十六分"]], c: [[1, "只数大拍"], [3, "八分 la li"], [6, "十六分"]] };
+  var SYL = { s: { 2: ["&"], 3: ["trip", "let"], 4: ["e", "&", "a"] }, c: { 3: ["la", "li"], 6: ["ta", "la", "ta", "li", "ta"] } };
+  var PRESETS = {
+    ladder: { meter: "4/4", bpm: 60, div: 1, swing: 50, accent: "one", gtr: "none" },
+    cmp: { meter: "3/4", bpm: 90, div: 2, swing: 50, accent: "one", gtr: "none" },
+    straight: { meter: "4/4", bpm: 100, div: 2, swing: 50, accent: "one", gtr: "none" },
+    swing: { meter: "4/4", bpm: 100, div: 2, swing: 67, accent: "one", gtr: "none" },
+    back: { meter: "4/4", bpm: 81, div: 2, swing: 50, accent: "back", gtr: "none" },
+    shuffle: { meter: "4/4", bpm: 90, div: 2, swing: 67, accent: "back", gtr: "shuffle" },
+    tres: { meter: "4/4", bpm: 96, div: 4, swing: 50, accent: "tres", gtr: "none" },
+    slow: { meter: "12/8", bpm: 52, div: 3, swing: 50, accent: "back", gtr: "none" }
+  };
+  // 按小节自动切换的设置：细分阶梯每 4 小节换一次，3/4 与 6/8 每 2 小节换一次（八分音符速度不变）
+  var PLANS = {
+    ladder: { bars: 4, items: [{ div: 1 }, { div: 2 }, { div: 3 }, { div: 4 }] },
+    cmp: { bars: 2, items: [{ meter: "3/4", bpm: 90, div: 2 }, { meter: "6/8", bpm: 60, div: 3 }] }
+  };
+  var M = { bpm: 80, meter: "4/4", div: 2, swing: 50, accent: "one", gtr: "none", plan: null, planBars: 4 };
+  var run = null, queue = [], beatLog = [];
+  var ladderEl = $("ladder"), gridEl = $("grid"), shown = "", cells = [];
+
+  function isComp(m) { return METER[m || M.meter][1]; }
+  function beatsOf(m) { return METER[m || M.meter][0]; }
+  function swingOn() { return !isComp() && M.div === 2 && M.swing > 50; }
+  function syl(meter, div, st) { var s = st % div; return s ? SYL[isComp(meter) ? "c" : "s"][div][s - 1] : String(Math.floor(st / div) + 1); }
+  function isAcc(c, st) {
+    var b = Math.floor(st / c.div), s = st % c.div;
+    if (c.accent === "back") return s === 0 && b % 2 === 1;
+    if (c.accent === "tres") return [0, 3, 6].indexOf(st % 8) >= 0;
+    return st === 0;
+  }
+  function cfgOf() { return { meter: M.meter, div: M.div, accent: M.accent }; }
+
+  // keep：不清掉“按小节自动切换”
+  function set(p, keep) {
+    for (var k in p) M[k] = p[k];
+    if (p.accent === "tres") { if (isComp()) M.meter = "4/4"; M.div = 4; }
+    if (p.gtr === "shuffle") { M.meter = "4/4"; M.div = 2; if (M.swing === 50) M.swing = 67; if (M.accent === "tres") M.accent = "one"; }
+    var ok = DIVS[isComp() ? "c" : "s"].map(function (d) { return d[0]; });
+    if (ok.indexOf(M.div) < 0) M.div = isComp() ? 3 : 2;
+    if (M.accent === "tres" && (isComp() || M.div !== 4)) M.accent = "one";
+    if (M.gtr === "shuffle" && (isComp() || M.div !== 2)) M.gtr = "none";
+    if (!keep) { M.plan = null; ladderEl.checked = false; }
+    // 手动改了格子的结构，就从下一下重新开始数这一小节
+    if (run && !keep && ("meter" in p || "div" in p || "accent" in p || "gtr" in p)) { run.step = 0; run.bar = 0; }
+    sync();
+  }
+
+  function voice(st, t) {
+    var b = Math.floor(st / M.div), s = st % M.div;
+    if (M.accent === "back") {
+      if (s === 0) { SND[b % 2 ? "snare" : "kick"](t); SND.hat(t, 0.1); } else SND.hat(t, 0.07);
+    } else if (M.accent === "tres") {
+      if ([0, 3, 6].indexOf(st % 8) >= 0) SND.kick(t);
+      if (s === 0) SND.tick(t); else SND.hat(t, 0.06);
+    } else if (s === 0) SND[b === 0 ? "hi" : "beat"](t);
+    else SND.sub(t);
+    if (M.gtr === "note") pluck(45, t, s === 0 ? 0.9 : 0.6);
+    else if (M.gtr === "shuffle") {
+      // 每拍两下：E5（6 弦空弦 + 5 弦 2 品）两拍、E6（+ 5 弦 4 品）两拍交替
+      var top = Math.floor(st / 2) % 2 ? 49 : 47;
+      pluck(40, t, s ? 0.55 : 0.85); pluck(top, t + 0.006, s ? 0.45 : 0.7);
+    }
+  }
+
+  function tick() {
+    if (!run) return;
+    while (run.next < ctx.currentTime + 0.12) {
+      if (run.step >= beatsOf() * M.div) { run.step = 0; run.bar++; }
+      if (run.step === 0 && M.plan) set(M.plan[Math.floor(run.bar / M.planBars) % M.plan.length], true);
+      var st = run.step, t = run.next;
+      voice(st, t);
+      queue.push({ t: t, step: st, c: cfgOf() });
+      if (st % M.div === 0) { beatLog.push(t); if (beatLog.length > 32) beatLog.shift(); }
+      var base = 60 / M.bpm / M.div, d = base;
+      if (swingOn()) d = 2 * base * (st % 2 ? 1 - M.swing / 100 : M.swing / 100);
+      run.next += d;
+      run.step++;
+    }
+    // 标签页在后台时 requestAnimationFrame 会停，这里也画一次
+    paint();
+  }
+  function buildGrid(c) {
+    var n = beatsOf(c.meter), h = "", b, s, st;
+    for (b = 0; b < n; b++) {
+      h += '<div class="gbeat">';
+      for (s = 0; s < c.div; s++) {
+        st = b * c.div + s;
+        h += '<span class="gc' + (s ? "" : " b") + (isAcc(c, st) ? " acc" : "") + '">' + esc(syl(c.meter, c.div, st)) + "</span>";
+      }
+      h += "</div>";
+    }
+    gridEl.innerHTML = h;
+    cells = gridEl.querySelectorAll(".gc");
+    shown = c.meter + "|" + c.div + "|" + c.accent;
+  }
+  function light(c, st) {
+    if (c.meter + "|" + c.div + "|" + c.accent !== shown) buildGrid(c);
+    for (var i = 0; i < cells.length; i++) cells[i].classList.toggle("now", i === st);
+  }
+  function paint() {
+    // 画面跟着“听到”的时刻走，所以减掉输出延迟
+    var t = ctx.currentTime - (ctx.outputLatency || 0), cur = null;
+    while (queue.length && queue[0].t <= t) cur = queue.shift();
+    if (cur) light(cur.c, cur.step);
+  }
+  function loop(r) {
+    if (run !== r) return;
+    paint();
+    requestAnimationFrame(function () { loop(r); });
+  }
+  function start() {
+    if (!ac()) { $("status").textContent = "这个浏览器不支持 Web Audio，节拍器用不了。"; return; }
+    if (run) clearInterval(run.timer);
+    run = { next: ctx.currentTime + 0.1, step: 0, bar: 0, timer: 0 };
+    queue = []; beatLog = [];
+    buildGrid(cfgOf());
+    tick();
+    run.timer = setInterval(tick, 25);
+    loop(run);
+    sync();
+  }
+  function stop() {
+    if (!run) return;
+    clearInterval(run.timer);
+    run = null; queue = [];
+    sync();
+  }
+
+  function sync() {
+    var comp = isComp(), ds = DIVS[comp ? "c" : "s"], i, cnt = [];
+    $("go").textContent = run ? "停止" : "开始";
+    $("bpm").value = M.bpm; $("bpmVal").textContent = M.bpm;
+    $("meter").value = M.meter;
+    $("divs").innerHTML = "<span>细分</span>" + ds.map(function (d) {
+      return '<button class="btn' + (d[0] === M.div ? " on" : "") + '" data-div="' + d[0] + '">' + d[1] + "</button>";
+    }).join("");
+    $("swing").value = M.swing; $("swing").disabled = comp || M.div !== 2;
+    $("swingVal").textContent = M.swing + "%";
+    $("accent").value = M.accent; $("gtr").value = M.gtr;
+    for (i = 0; i < beatsOf() * M.div; i++) cnt.push(syl(M.meter, M.div, i));
+    var dn = ds.filter(function (d) { return d[0] === M.div; })[0][1];
+    $("status").innerHTML = "<b>" + M.meter + "</b>　" + M.bpm + " BPM（一拍 = " + (comp ? "附点四分音符" : "四分音符") + "）　细分：" + dn +
+      (swingOn() ? "，摇摆 " + M.swing + "%" : "") + "<br>数：" + esc(cnt.join(" "));
+    var lg = {
+      one: "高的“滴”是每小节第 1 拍，中间的是其他拍，轻的是细分。",
+      back: "底鼓在第 1、3 拍，军鼓在第 2、4 拍，踩镲打细分：这就是反拍重音。",
+      tres: "底鼓按 3+3+2 个十六分音符落下，每两拍三下，像一个“假三连音”。"
+    }[M.accent];
+    if (comp) lg += " 复拍子的一拍是附点四分音符，分成三个八分：1 la li。";
+    if (!comp && M.div === 2) lg += " 摇摆 " + M.swing + "%：每拍前一个八分占这一拍的 " + M.swing + "%。50% 是直八分，67% 约等于三连音的 2:1。";
+    if (M.plan === PLANS.ladder.items) lg += " 正在做细分阶梯：每 4 小节换一次细分。";
+    if (M.plan === PLANS.cmp.items) lg += " 正在交替：两小节 3/4（♩ = 90），两小节 6/8（一拍 = 60）。八分音符的速度一样快，只有重音变了。";
+    $("legend").textContent = lg;
+    if (!run) buildGrid(cfgOf());
+  }
+
+  $("go").addEventListener("click", function () { if (run) stop(); else start(); this.blur(); });
+  $("bpm").addEventListener("input", function () { set({ bpm: Number(this.value) }, true); });
+  document.querySelectorAll("[data-bump]").forEach(function (b) {
+    b.addEventListener("click", function () { set({ bpm: Math.max(40, Math.min(200, M.bpm + Number(b.dataset.bump))) }, true); });
+  });
+  $("meter").addEventListener("change", function () { set({ meter: this.value }); });
+  $("divs").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-div]");
+    if (b) set({ div: Number(b.dataset.div) });
+  });
+  $("swing").addEventListener("input", function () { set({ swing: Number(this.value) }, true); });
+  $("accent").addEventListener("change", function () { set({ accent: this.value }); });
+  $("gtr").addEventListener("change", function () { set({ gtr: this.value }); });
+  ladderEl.addEventListener("change", function () {
+    if (this.checked) {
+      if (isComp()) M.meter = "4/4";
+      M.plan = PLANS.ladder.items; M.planBars = PLANS.ladder.bars;
+      if (run) { run.step = 0; run.bar = 0; }
+    } else M.plan = null;
+    set({}, true);
+  });
+  $("presets").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-preset]");
+    if (!b) return;
+    var name = b.dataset.preset;
+    set(PRESETS[name]);
+    if (PLANS[name]) { M.plan = PLANS[name].items; M.planBars = PLANS[name].bars; ladderEl.checked = name === "ladder"; }
+    start();
+    b.blur();
+  });
+
+  // ── 跟拍测试：每一下和最近的大拍比，早了是负数，晚了是正数 ──
+  var taps = [];
+  function fmtMs(x) { return (x >= 0 ? "晚 " : "早 ") + Math.abs(x).toFixed(0) + " 毫秒"; }
+  function drawStrip() {
+    var h = '<line class="axis" x1="0" y1="20" x2="560" y2="20"/><line class="zero" x1="280" y1="6" x2="280" y2="34"/>' +
+      '<text x="80" y="44" text-anchor="middle">早 100 毫秒</text><text x="280" y="44" text-anchor="middle">正好</text><text x="480" y="44" text-anchor="middle">晚 100 毫秒</text>';
+    taps.forEach(function (ms) { h += '<circle class="tp" cx="' + Math.max(4, Math.min(556, 280 + ms * 2)).toFixed(1) + '" cy="20" r="5"/>'; });
+    $("strip").innerHTML = h;
+  }
+  function tap() {
+    var pad = $("pad");
+    pad.classList.add("hit"); setTimeout(function () { pad.classList.remove("hit"); }, 90);
+    if (!run) { $("tapMsg").textContent = "先点「开始」，再跟着大拍点。"; return; }
+    if (taps.length >= 16) taps = [];
+    var lat = ctx.outputLatency || ctx.baseLatency || 0, t = ctx.currentTime, best = null;
+    beatLog.forEach(function (b) { var d = t - (b + lat); if (best === null || Math.abs(d) < Math.abs(best)) best = d; });
+    if (best === null) return;
+    taps.push(best * 1000);
+    drawStrip();
+    if (taps.length < 16) { $("tapMsg").textContent = "第 " + taps.length + " / 16 下：" + fmtMs(best * 1000); return; }
+    var mean = taps.reduce(function (a, x) { return a + x; }, 0) / taps.length;
+    var sd = Math.sqrt(taps.reduce(function (a, x) { return a + (x - mean) * (x - mean); }, 0) / taps.length);
+    var where = Math.abs(mean) < 15 ? "基本在拍上" : mean > 0 ? "整体偏晚（拖）" : "整体偏早（抢）";
+    var steady = sd < 20 ? "很稳" : sd < 35 ? "还算稳" : "不太稳，每一下的偏差忽大忽小";
+    $("tapMsg").textContent = "16 下：平均" + fmtMs(mean) + "，" + where + "；波动 ±" + sd.toFixed(0) + " 毫秒，" + steady + "。再点一下开始新的一轮。";
+  }
+  $("pad").addEventListener("pointerdown", function (e) { e.preventDefault(); tap(); });
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== " " || e.ctrlKey || e.metaKey || e.altKey) return;
+    var tg = e.target, tn = tg && tg.tagName;
+    if (tn === "SELECT" || tn === "TEXTAREA" || (tn === "INPUT" && tg.type !== "range")) return;
+    // 节拍器开着、或者焦点在点击框上时，空格就是“点一下”
+    if (!run && tg !== $("pad")) return;
+    e.preventDefault();
+    if (!e.repeat) tap();
+  });
+  drawStrip();
+  sync();
+})();
+</script>
+</main>
+</body>
+</html>

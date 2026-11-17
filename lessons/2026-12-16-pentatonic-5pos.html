@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>G10 讲义：五声音阶</title>
+<style>
+:root {
+  color-scheme: light;
+  --paper: #eef1eb; --sheet: #fbfcf9; --ink: #1b2533; --ink-2: #3f4a58; --pencil: #5f6975;
+  --rule: #d6ddd2; --rule-soft: #e5e9e1; --blue: #2557a7; --blue-wash: #e9eff8;
+  --marker: #e2f25a; --red: #b3322a; --red-wash: #f6e3e0; --code-bg: #f2f5ef; --good: #2e7a33;
+  --font-text: "DengXian", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-note: "KaiTi", "STKaiti", "楷体", serif;
+  --font-code: "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --paper: #13161b; --sheet: #1a1e25; --ink: #e4e8ed; --ink-2: #c3cad3; --pencil: #98a2ae;
+    --rule: #2e343d; --rule-soft: #242930; --blue: #86abe8; --blue-wash: #1f2836;
+    --marker: #d2e255; --red: #f08378; --red-wash: #3a2422; --code-bg: #15191f; --good: #6fc275;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.75 var(--font-text); }
+a { color: var(--blue); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+code { font-family: var(--font-code); font-size: 0.88em; background: var(--code-bg); padding: 0.1em 0.3em; border-radius: 3px; }
+.top { max-width: 900px; margin: 0 auto; padding: 18px 20px 0; display: flex; justify-content: space-between; gap: 12px; font-size: 14px; color: var(--pencil); }
+main { max-width: 900px; margin: 10px auto 48px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; padding: 36px 52px 48px; }
+p, li, dd, .note { max-width: 44em; }
+h1 { font-size: 27px; line-height: 1.35; margin: 0 0 10px; }
+h2 { font-size: 21px; margin: 48px 0 14px; padding-top: 20px; border-top: 1px solid var(--rule); }
+h3 { font-size: 17.5px; margin: 0 0 6px; }
+.lead { font-size: 17px; color: var(--ink-2); }
+.note { font-family: var(--font-note); color: var(--red); font-size: 17px; }
+.meta { display: grid; grid-template-columns: 7em 1fr; gap: 4px 14px; margin: 18px 0; font-size: 15px; }
+.meta dt { color: var(--pencil); } .meta dd { margin: 0; }
+.toc { background: var(--blue-wash); border-radius: 6px; padding: 12px 18px; font-size: 15px; }
+.toc ol { margin: 4px 0 0; padding-left: 1.4em; columns: 2; column-gap: 28px; }
+figure { margin: 16px 0; }
+figure > svg { width: 100%; height: auto; display: block; }
+.concept { border-left: 3px solid var(--rule); padding: 2px 0 2px 18px; margin: 28px 0; }
+.concept dl { margin: 8px 0 0; }
+.concept dt { font-size: 14px; font-weight: 700; color: var(--pencil); margin-top: 10px; }
+.concept dd { margin: 2px 0 0; }
+.concept dd.myth { color: var(--red); font-family: var(--font-note); font-size: 16.5px; }
+.play { font: 13px var(--font-text); color: var(--blue); background: var(--sheet); border: 1px solid var(--blue); border-radius: 999px; padding: 2px 11px; cursor: pointer; margin: 4px 6px 4px 0; white-space: nowrap; }
+.play::before { content: "▶ "; font-size: 10px; }
+.play:hover { background: var(--blue-wash); }
+table { border-collapse: collapse; width: 100%; font-size: 15px; margin: 10px 0 18px; }
+th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--rule); }
+th { color: var(--pencil); font-weight: 400; font-size: 14px; border-bottom-color: var(--ink-2); }
+details { border: 1px solid var(--rule); border-radius: 5px; padding: 8px 14px; margin: 8px 0 18px; }
+summary { cursor: pointer; color: var(--blue); }
+.q { margin: 20px 0 6px; } .q b { color: var(--pencil); font-weight: 400; font-size: 14px; margin-right: 6px; }
+ol.drill li { margin: 10px 0; }
+ol.drill .std { display: block; font-size: 14px; color: var(--pencil); }
+.handoff { background: var(--red-wash); border-radius: 6px; padding: 14px 20px; }
+.handoff h2 { border: 0; margin-top: 0; padding-top: 0; }
+.lab { border: 1px solid var(--rule); border-radius: 6px; padding: 14px 16px; margin: 14px 0 20px; }
+.ctl { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; margin-bottom: 8px; font-size: 14px; }
+.btn { font: 13.5px var(--font-text); color: var(--ink); background: var(--sheet); border: 1px solid var(--rule); border-radius: 5px; padding: 3px 10px; cursor: pointer; }
+.btn:hover { border-color: var(--ink-2); }
+.btn.on { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); font-weight: 700; background: var(--blue-wash); }
+.btn.primary { background: var(--ink); color: var(--sheet); border-color: var(--ink); }
+.fb-scroll { overflow-x: auto; }
+.fb { display: block; width: 100%; min-width: 700px; height: auto; }
+.fb .fret { stroke: var(--rule); stroke-width: 2; }
+.fb .nut { stroke: var(--ink); stroke-width: 5; }
+.fb .string { stroke: var(--pencil); }
+.fb .inlay { fill: var(--rule); }
+.fb .sname, .fb .fnum { fill: var(--pencil); font-size: 12px; }
+.fb .sname { text-anchor: end; } .fb .fnum { text-anchor: middle; }
+.fb .cell rect { fill: transparent; cursor: pointer; }
+.fb .cell:hover rect { fill: var(--blue-wash); }
+.fb .win { fill: rgba(37, 87, 167, 0.09); stroke: var(--blue); stroke-width: 1.5; stroke-dasharray: 5 4; pointer-events: none; }
+.fb .dot { stroke-width: 1.5; pointer-events: none; }
+.fb .dot.tone { fill: var(--sheet); stroke: var(--ink); }
+.fb .dot.root { fill: var(--ink); stroke: var(--ink); }
+.fb .dot.color { fill: var(--red-wash); stroke: var(--red); stroke-width: 2; }
+.fb .dot.dim { opacity: 0.22; }
+.fb .dl { font-size: 11px; font-weight: 700; text-anchor: middle; fill: var(--ink); pointer-events: none; }
+.fb .dl.root { fill: var(--sheet); }
+.fb .dl.color { fill: var(--red); }
+.fb .dl.dim { opacity: 0.22; }
+@media (max-width: 720px) { main { padding: 22px 16px 32px; } .toc ol { columns: 1; } .meta { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="top"><a href="../index.html#/lessons">返回讲义列表</a><span>G10 五声音阶 · 阶段四 · 电吉他的语言</span></div>
+<main>
+<h1>五声音阶：5 个把位打通全指板</h1>
+<p class="lead">五声音阶是电吉他即兴的母语。别再只困在 5 品 Pattern 1 里机械上下爬：把 5 个把位精准挂到 CAGED 和弦骨架上，用 Fret Science 的矩形+堆叠（Rectangle &amp; Stack）规律彻底打通全琴颈。</p>
+<dl class="meta">
+  <dt>学完能做到</dt><dd>不看图从任意把位起手串联 A/G/E 小调五声；说清每个把位里 1、♭3、5、♭7 位置；能用“大小调五声关系”和留白写出带呼吸感的乐句。</dd>
+  <dt>主资料</dt><dd>OMT: Pentatonic Harmony + JustinGuitar Blues 1 &amp; 2 + Fret Science + StichMethod</dd>
+</dl>
+
+<nav class="toc" aria-label="目录"><b>目录</b><ol>
+  <li><a href="#map">全局地图</a></li>
+  <li><a href="#concepts">逐个概念</a></li>
+  <li><a href="#lab">交互指板与伴奏实验室</a></li>
+  <li><a href="#drills">上琴练习</a></li>
+  <li><a href="#choices">分歧点对照</a></li>
+  <li><a href="#reading">读原资料指南</a></li>
+  <li><a href="#quiz">自测 5 题</a></li>
+  <li><a href="#songs">在歌里听一听</a></li>
+  <li><a href="#handoff">带去原资料的 3 个问题</a></li>
+</ol></nav>
+
+<h2 id="map">1. 全局地图</h2>
+<figure><svg viewBox="0 0 760 254" role="img" aria-label="本模块概念全局地图"><g font-size="13" fill="var(--pencil)"><text x="8" y="20">核心概念</text><text x="225" y="20">理论要点</text><text x="515" y="20">在指板与耳朵上</text></g><rect x="8" y="34" width="185" height="34" rx="4" fill="var(--blue-wash)" stroke="var(--blue)"/><text x="18" y="56" font-size="13.5" font-weight="700" fill="var(--ink)">① 五声为什么安全</text><rect x="225" y="34" width="260" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="235" y="56" font-size="12.5" fill="var(--ink)">小调五声 1 ♭3 4 5 ♭7（去掉 2 与 ♭6）</text><rect x="515" y="34" width="235" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="525" y="56" font-size="12.5" fill="var(--ink)">抽掉全部半音与三全音，怎么弹都不刺耳</text><rect x="8" y="76" width="185" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="18" y="98" font-size="13.5" font-weight="700" fill="var(--ink)">② 关系五声共用</text><rect x="225" y="76" width="260" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="235" y="98" font-size="12.5" fill="var(--ink)">A 小调五声 = C 大调五声 (同音不同家)</text><rect x="515" y="76" width="235" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="525" y="98" font-size="12.5" fill="var(--ink)">一盒两用：盯准 1/♭3/5 还是 1/3/5 改家感</text><rect x="8" y="118" width="185" height="34" rx="4" fill="var(--blue-wash)" stroke="var(--blue)"/><text x="18" y="140" font-size="13.5" font-weight="700" fill="var(--ink)">③ 5 把位挂 CAGED</text><rect x="225" y="118" width="260" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="235" y="140" font-size="12.5" fill="var(--ink)">P1(Em型) P2(Dm型) P3(Cm型) P4(Am型) P5(Gm型)</text><rect x="515" y="118" width="235" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="525" y="140" font-size="12.5" fill="var(--ink)">记住和弦指型就同时记住了五声把位落脚点</text><rect x="8" y="160" width="185" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="18" y="182" font-size="13.5" font-weight="700" fill="var(--ink)">④ 矩形+堆叠几何</text><rect x="225" y="160" width="260" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="235" y="182" font-size="12.5" fill="var(--ink)">3品宽矩形(4-5/1-♭3) + 2品宽堆叠(1-♭3/4-5)</text><rect x="515" y="160" width="235" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="525" y="182" font-size="12.5" fill="var(--ink)">跨 3–2 弦整体右移 1 品，零死记推遍全颈</text><rect x="8" y="202" width="185" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="18" y="224" font-size="13.5" font-weight="700" fill="var(--ink)">⑤ 纵横连接与呼吸</text><rect x="225" y="202" width="260" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="235" y="224" font-size="12.5" fill="var(--ink)">把位内纵向乐句 + 沿 3/2 弦滑音横移换盒</text><rect x="515" y="202" width="235" height="34" rx="4" fill="var(--sheet)" stroke="var(--rule)"/><text x="525" y="224" font-size="12.5" fill="var(--ink)">强拍落和弦音、留空、重复与动机变奏</text></svg></figure>
+
+<h2 id="concepts">2. 逐个概念</h2>
+<section class="concept" id="c1"><h3>① 为什么五声音阶怎么弹都几乎不会出错？</h3><dl><dt>是什么</dt><dd>自然小调去掉第 2 级和 ♭6 级，得到<b>小调五声（1 ♭3 4 5 ♭7）</b>；大调音阶去掉第 4 级和第 7 级，得到<b>大调五声（1 2 3 5 6）</b>。被删掉的正是全音阶里构成小二度摩擦与三全音的两个音。</dd><dt>为什么需要</dt><dd>没有半音与三全音的五声音阶，无论落在伴奏哪个和弦上都很和谐。代价是：太安全、全曲不变色容易套路化。</dd><dt>在指板上</dt><dd>在吉他上记住最核心的小调五声公式：每根弦固定弹 <b>2 个音</b>！因此 5 个把位刚好把全指板分成 5 个无缝拼接的格子。</dd><dt>听起来</dt><dd><button class="play" data-mode="scale" data-notes="45,48,50,52,55,57,60,62,64,67,69,72">A 小调五声 P1 上行</button><button class="play" data-mode="scale" data-notes="45,47,49,52,54,57,59,61,64,66,69">A 大调五声 (对比明亮度)</button></dd><dt>常见误解</dt><dd class="myth">“五声音阶是初学者的拐杖，高手不用它。”B.B. King、Eric Johnson、John Mayer、Guthrie Govan 一辈子都在弹五声，秘密在于他们把和弦音、推弦微音高和跨弦跳进融了进去。</dd></dl></section>
+<section class="concept" id="c2"><h3>② A 小调五声 = C 大调五声（一图两用）</h3><dl><dt>是什么</dt><dd>A 小调五声（A C D E G）和 C 大调五声（C D E G A）拥有<b>一模一样的 5 个音</b>。区别只在谁是主音（1）：以 A 为中心时，A=1, C=♭3, D=4, E=5, G=♭7；以 C 为中心时，C=1, D=2, E=3, G=5, A=6。</dd><dt>为什么需要</dt><dd>用同一套手型在 Am 伴奏和 C 大调伴奏上能弹出完全不同的味道，前提是你的眼睛知道当前和弦的 1 和 3 在哪里。</dd><dt>在指板上</dt><dd>实战检验：在 Pattern 1（5～8 品）里，6 弦 5 品/4 弦 7 品/1 弦 5 品是 A（Am 的根音）；6 弦 8 品/3 弦 5 品/1 弦 8 品是 C（C 大调的根音）！</dd><dt>听起来</dt><dd><button class="play" data-mode="seq" data-notes="45,52,57,60,60,62,64,67,69">在 Am 上弹 A 小调五声</button><button class="play" data-mode="seq" data-notes="48,52,55,60,62,64,67,64,60">在 C 上强调 C-E-G</button></dd><dt>常见误解</dt><dd class="myth">“大调五声需要背另外 5 个完全不同的指型。”只要把小调五声 Pattern 1 整体往低音方向挪 3 品（比如 A 大调五声 = F♯ 小调五声 Pattern 1 在 2 品），5 个把位全部复用！</dd></dl></section>
+<section class="concept" id="c3"><h3>③ 5 个把位与 CAGED 的精准对应</h3><dl><dt>是什么</dt><dd>不要孤立地背“Pattern 1～5”，要把每个盒子钉死在一个小调和弦指型上：<br>• <b>Pattern 1 (5–8品)</b>：包住 E 型 Am 横按（6 弦 5 品根音）<br>• <b>Pattern 2 (7–10品)</b>：包住 D 型 Am（4 弦 7 品根音）<br>• <b>Pattern 3 (9–13品)</b>：包住 C 型 Am（5 弦 12 品根音）<br>• <b>Pattern 4 (12–15/0–3品)</b>：包住 A 型 Am（5 弦 12/0 品根音）<br>• <b>Pattern 5 (2–5品)</b>：包住 G 型 Am（6 弦 5 品根音下延）</dd><dt>为什么需要</dt><dd>在下方实验室逐个切换 P1～P5 聚焦窗口，看清每个框里的黑色根音圆点！</dd><dt>在指板上</dt><dd>每次练新把位，先按响它里面对应的那个 Am 和弦形状，再开始弹五声音阶，脑子里“和弦与音阶”就焊死了。</dd><dt>听起来</dt><dd><button class="play" data-mode="scale" data-notes="57,60,62,64,67,69">A 小调五声 3 弦横向滑音串联</button></dd><dt>常见误解</dt><dd class="myth">“只会 Pattern 1 就够应付大多数歌了。”一旦歌里出现高把位推弦需求或需要用双音伴奏和弦变化，只卡在 5 品会让你立刻词穷。</dd></dl></section>
+<section class="concept" id="c4"><h3>④ Fret Science 矩形+堆叠 &amp; 乐句呼吸法则</h3><dl><dt>是什么</dt><dd>Keith Martin（Fret Science）发现：任何五声音阶全指板，本质上只有两个积木——<b>宽 3 品的矩形</b>（两根相邻弦上 5-♭7 / 1-♭3，或 1-♭3 / 4-5）和<b>宽 2 品的堆叠</b>！只要沿着 3 弦和 2 弦横向滑音（记住 3–2 弦右移 1 品），不用背盒子也能随意穿梭。</dd><dt>为什么需要</dt><dd>好的独奏靠乐句（Phrasing）：1) 强拍落在 1、♭3、5 上；2) <b>留空呼吸</b>（弹 2 小节停 1 小节）；3) <b>重复与微调</b>；4) 用推弦连接相邻音（如 4 音推全音到 5 音）。</dd><dt>在指板上</dt><dd>在 Am 伴奏上先强迫自己<b>只用 A、C、E 三个音</b>弹 2 分钟，再放开 D 和 G，这是治好“音阶上下乱跑症”的特效药。</dd><dt>听起来</dt><dd><button class="play" data-mode="scale" data-notes="62,64,67,69,64,62,60,57">经典五声问答乐句示范</button></dd><dt>常见误解</dt><dd class="myth">“弹得越快越多音，即兴就越高级。”B.B. King 只用一个音加揉弦和留白就能震撼全场——节奏、空间和落点永远大于速度。</dd></dl></section>
+
+<h2 id="lab">3. 交互指板与伴奏实验室</h2>
+<p>点下方预设快速切换把位与音阶/和弦；点任意一格都能发声，开启持续音即可直接对着指板练习即兴与听辨。</p>
+<div class="lab">
+  <div class="ctl" id="lab-presets"></div>
+  <div class="ctl">
+    <button class="btn on" id="lab-mode" data-m="name">显示：音名 / 级数切换</button>
+    <button class="btn primary" id="lab-play">播放示例</button>
+    <button class="btn" id="lab-drone">持续音伴奏：关</button>
+  </div>
+  <p id="lab-desc" style="font-size:14.5px;margin:4px 0 8px"></p>
+  <div class="fb-scroll"><svg class="fb" id="lab-svg" viewBox="0 0 880 215"></svg></div>
+  <p style="font-size:13.5px;color:var(--pencil);margin:8px 0 0"><a href="../index.html#/fretboard">前往主站完整指板与五度圈实验室 ↗</a>　｜　<a href="../index.html#/ear">前往练耳与节奏实验室 ↗</a></p>
+</div>
+
+<h2 id="drills">4. 上琴练习</h2>
+<ol class="drill"><li><b>五把位逐个打通</b>（70 BPM）：每天吃透 1 个新把位（P1→P5），每个把位都要说出 1、♭3、5、♭7 在哪根弦；第 4 天从 2 品到 15 品斜线滑音全贯通。<span class="std">重点验证：按节拍稳定、说得出级数与音名。</span></li><li><b>一盒两家持续音对比</b>（开持续音）：在 P1(5–8品) 里分别开 A 和 C 持续音伴奏即兴，刻意停在各自的和弦三音（C vs E）上。<span class="std">重点验证：按节拍稳定、说得出级数与音名。</span></li><li><b>三音限定即兴（去套路）</b>（伴奏 2 分钟）：在 Am 伴奏上只允许用 A、C、E 三个音做节奏与推弦变化，两分钟后再加进 D 和 G。<span class="std">重点验证：按节拍稳定、说得出级数与音名。</span></li><li><b>乐句跨把位搬家</b>（3 个经典乐句）：挑 3 个经典 2 小节五声乐句，把它们各自平移到另外两个完全不同的把位用不同指法弹出来。<span class="std">重点验证：按节拍稳定、说得出级数与音名。</span></li></ol>
+
+<h2 id="choices">5. 分歧点对照</h2>
+<table>
+  <thead><tr><th>容易混淆的两面</th><th>核心区别</th><th>实战怎么选</th></tr></thead>
+  <tbody><tr><td><b>垂直盒子上下爬 vs 沿 3/2 弦斜向连接</b></td><td>手掌固定不易出错 vs 旋律如人声般连贯流畅</td><td>斜向滑音穿破盒子边界，才会有真正电吉他的歌唱感</td></tr><tr><td><b>A 大调五声 vs A 小调五声</b></td><td>甜美乡村/Soul (1 2 3 5 6) vs 狂野摇滚/布鲁斯 (1 ♭3 4 5 ♭7)</td><td>在 A7 布鲁斯上把两者混在一起用（I7 用大五声，IV7 切小五声）是顶级高手习惯</td></tr></tbody>
+</table>
+
+<h2 id="reading">6. 读原资料指南</h2>
+<ul><li><a href="https://www.justinguitar.com/modules/essential-blues-lead-guitar" target="_blank" rel="noopener">JustinGuitar: Essential Blues Lead (Pattern 1–2) ↗</a> — 学习最稳固的起手乐句与推弦指法</li><li><a href="https://fretscience.com/" target="_blank" rel="noopener">Fret Science: Rectangle &amp; Stack ↗</a> — 用两个几何模块一劳永逸推导出全指板五声</li><li><a href="https://viva.pressbooks.pub/openmusictheory/chapter/pentatonic-harmony/" target="_blank" rel="noopener">OMT: Pentatonic Harmony ↗</a> — 从和声理论理解五声音阶在流行摇滚里的结构角色</li></ul>
+
+<h2 id="quiz">7. 自测 5 题</h2>
+<div class="q"><b>1.</b> A 小调五声 Pattern 1（5～8 品）包住的是哪个 Am 横按指型？</div><details><summary>答案</summary><p>E 型 Am 横按（根音在 6 弦 5 品与 1 弦 5 品）。</p></details><div class="q"><b>2.</b> 小调五声音阶去掉了自然小调的哪两个音？大调五声又去掉了大调的哪两个音？</div><details><summary>答案</summary><p>小调五声去掉了 2 和 ♭6；大调五声去掉了 4 和 7（导音）。</p></details><div class="q"><b>3.</b> 为什么在 A 大三和弦伴奏上弹 A 小调五声的 C 音（♭3），不仅不难听反而超有味道？</div><details><summary>答案</summary><p>在布鲁斯与摇滚语境里，C 对 A 大和弦是核心蓝调音（♭3），配合四分之一推弦或滑往 C♯ 会产生极强的张力美感。</p></details><div class="q"><b>4.</b> 不看图，说出 A 小调五声在 2 弦上从 0 到 15 品的所有音名与品位。</div><details><summary>答案</summary><p>0(E) – 3(D? 注意2弦空弦B！重来：2弦0品B不在内！是 1品C – 3品D – 5品E – 8品G – 10品A – 13品C – 15品D！)。</p></details><div class="q"><b>5.</b> 上琴题：只用 3 弦和 4 弦，从第 2 品一路连贯上行到第 14 品弹 A 小调五声。</div><details><summary>答案</summary><p>4 弦：2(E)–5(G)–7(A) → 滑到 3 弦：5(C)–7(D)–9(E)–12(G)–14(A)。</p></details>
+
+<h2 id="songs">8. 在歌里听一听</h2>
+<ul><li><b>Sunshine of Your Love</b>（Cream）：D–D–C–D–A♭–G–F–D 经典五声加 ♭5 Riff <button class="play" data-mode="seq" data-notes="50,50,48,50,44,43,41,38">试听核心片段</button></li><li><b>Gravity</b>（John Mayer）：G 大调五声滑音、留白与极简动机教科书 <button class="play" data-mode="seq" data-notes="43,47,50,52,55">试听核心片段</button></li><li><b>Cliffs of Dover</b>（Eric Johnson）：G 大调五声跨弦跳音（String Skipping）与干净泛音 <button class="play" data-mode="seq" data-notes="55,59,62,64,67">试听核心片段</button></li></ul>
+
+<section class="handoff" id="handoff">
+<h2>9. 带去原资料的 3 个问题</h2>
+<ol><li>什么是“B.B. Box（B.B. King 常用五声高频盒子）”？它在 Pattern 2 里的哪个位置、核心包含哪几个音？</li><li>在和弦外即兴时，如果把 A 小调五声音阶整体向上移 2 品变成 B 小调五声弹在 Am7 上（五声音阶叠加 Pentatonic Substitution），会发生什么色彩？</li><li>怎么用“五声音阶 + 1 个调式特征音”迅速转化出多利亚或混合利底亚味道？</li></ol>
+</section>
+</main>
+
+<script>
+(function(){
+  const PRESETS = [{"label": "A 小调五声（全指板）", "root": "A", "type": "minorPenta", "win": null, "desc": "红点忽略无特征音，黑实心圆是根音 A"}, {"label": "Pattern 1 · Em型 (5–8品)", "root": "A", "type": "minorPenta", "win": [5, 8], "desc": "最经典把位：6弦5品/4弦7品/1弦5品是根音 A"}, {"label": "Pattern 2 · Dm型 (7–10品)", "root": "A", "type": "minorPenta", "win": [7, 10], "desc": "4弦7品与 2弦10品是根音 A，B.B. Box 就在这一区！"}, {"label": "Pattern 3 · Cm型 (9–13品)", "root": "A", "type": "minorPenta", "win": [9, 13], "desc": "5弦12品与 2弦10品衔接高把位"}, {"label": "Pattern 4 · Am型 (12–15品)", "root": "A", "type": "minorPenta", "win": [12, 15], "desc": "5弦12品与 3弦14品，也是空弦0–3品高八度版本"}, {"label": "Pattern 5 · Gm型 (2–5品)", "root": "A", "type": "minorPenta", "win": [2, 5], "desc": "6弦5品往下延伸，和 P1 左边界无缝拼在一起"}];
+  const LET = "CDEFGAB", LPC = [0,2,4,5,7,9,11];
+  const ACC = {"-2":"𝄫","-1":"♭","0":"","1":"♯","2":"𝄪"};
+  const SHARP = ["C","C♯","D","D♯","E","F","F♯","G","G♯","A","A♯","B"];
+  const OPEN = [64, 59, 55, 50, 45, 40];
+  const TYPES = {
+    major: {g:"音阶",ivs:["1","2","3","4","5","6","7"],c:[]},
+    minor: {g:"音阶",ivs:["1","2","♭3","4","5","♭6","♭7"],c:[]},
+    harmonic: {g:"音阶",ivs:["1","2","♭3","4","5","♭6","7"],c:["7"]},
+    melodic: {g:"音阶",ivs:["1","2","♭3","4","5","6","7"],c:["6","7"]},
+    minorPenta: {g:"音阶",ivs:["1","♭3","4","5","♭7"],c:[]},
+    majorPenta: {g:"音阶",ivs:["1","2","3","5","6"],c:[]},
+    blues: {g:"音阶",ivs:["1","♭3","4","♭5","5","♭7"],c:["♭5"]},
+    majorBlues: {g:"音阶",ivs:["1","2","♭3","3","5","6"],c:["♭3"]},
+    dorian: {g:"音阶",ivs:["1","2","♭3","4","5","6","♭7"],c:["6"]},
+    phrygian: {g:"音阶",ivs:["1","♭2","♭3","4","5","♭6","♭7"],c:["♭2"]},
+    phrygianDominant: {g:"音阶",ivs:["1","♭2","3","4","5","♭6","♭7"],c:["♭2","3"]},
+    lydian: {g:"音阶",ivs:["1","2","3","♯4","5","6","7"],c:["♯4"]},
+    mixolydian: {g:"音阶",ivs:["1","2","3","4","5","6","♭7"],c:["♭7"]},
+    maj: {g:"和弦",ivs:["1","3","5"],c:["3"]},
+    min: {g:"和弦",ivs:["1","♭3","5"],c:["♭3"]},
+    maj7: {g:"和弦",ivs:["1","3","5","7"],c:["3","7"]},
+    dom7: {g:"和弦",ivs:["1","3","5","♭7"],c:["3","♭7"]},
+    m7: {g:"和弦",ivs:["1","♭3","5","♭7"],c:["♭3","♭7"]},
+    m7b5: {g:"和弦",ivs:["1","♭3","♭5","♭7"],c:["♭3","♭7"]},
+    dom7s9: {g:"和弦",ivs:["1","3","5","♭7","♯9"],c:["3","♯9"]}
+  };
+  function parseN(n){
+    let acc=0; for(const ch of n.slice(1)) acc+=ch==="♯"?1:ch==="♭"?-1:0;
+    return {li:LET.indexOf(n[0]), pc:(LPC[LET.indexOf(n[0])]+acc+120)%12};
+  }
+  function parseD(lab){
+    let acc=0,i=0; const cs=[...lab];
+    while(i<cs.length&&/[♯♭𝄪𝄫]/u.test(cs[i])) acc+=cs[i++]==="♯"?1:cs[i-1]==="♭"?-1:cs[i-1]==="𝄪"?2:-2;
+    const d=Number(cs.slice(i).join("")), st=(d-1)%7;
+    return {st, semis:LPC[st]+12*Math.floor((d-1)/7)+acc};
+  }
+  function spell(root,lab){
+    const r=parseN(root), g=parseD(lab), li=(r.li+g.st)%7, pc=(r.pc+g.semis)%12;
+    return LET[li]+(ACC[String(((pc-LPC[li]+18)%12)-6)]||"");
+  }
+
+  let ctx=null, drone=null;
+  const freq=m=>440*Math.pow(2,(m-69)/12);
+  function ac(){ if(!ctx){ const A=window.AudioContext||window.webkitAudioContext; if(A) ctx=new A(); } if(ctx&&ctx.state==="suspended") ctx.resume(); return ctx; }
+  function play(midi,delay=0,vel=0.9){
+    const c=ac(); if(!c) return;
+    const sr=c.sampleRate, f=freq(midi), N=Math.max(2,Math.floor(sr/f-0.5)), len=Math.floor(sr*1.5);
+    const buf=c.createBuffer(1,len,sr), y=buf.getChannelData(0);
+    for(let i=0;i<N;i++) y[i]=Math.random()*2-1;
+    for(let i=N;i<len;i++) y[i]=0.996*0.5*(y[i-N]+y[i-N-1]);
+    const s=c.createBufferSource(); s.buffer=buf; const g=c.createGain(); g.gain.value=0.28*vel;
+    s.connect(g).connect(c.destination); s.start(c.currentTime+0.01+delay);
+  }
+  function stopDrone(){
+    if(!drone) return;
+    try{ drone.g.gain.setTargetAtTime(0.0001,drone.c.currentTime,0.08); setTimeout(()=>drone.os.forEach(o=>{try{o.stop();}catch(_){}}),300); }catch(_){}
+    drone=null;
+  }
+  function startDrone(pc){
+    stopDrone(); const c=ac(); if(!c) return;
+    const f1=freq(40+((pc-4+12)%12)), f2=f1*1.5;
+    const lp=c.createBiquadFilter(); lp.type="lowpass"; lp.frequency.value=420;
+    const g=c.createGain(); g.gain.value=0.0001; lp.connect(g).connect(c.destination);
+    g.gain.setTargetAtTime(0.13,c.currentTime,0.15);
+    const os=[[f1,"sawtooth",0.55],[f2,"triangle",0.25]].map(([f,t,v])=>{const o=c.createOscillator(),og=c.createGain();o.type=t;o.frequency.value=f;og.gain.value=v;o.connect(og).connect(lp);o.start();return o;});
+    drone={pc,os,g,c};
+  }
+
+  let curP=0, mode="name";
+  function draw(){
+    const P=PRESETS[curP], T=TYPES[P.type]||TYPES.major, rp=parseN(P.root).pc;
+    const map={};
+    T.ivs.forEach(lab=>{ map[(rp+parseD(lab).semis)%12]={lab,name:spell(P.root,lab),root:lab==="1",col:T.c.includes(lab)}; });
+    document.getElementById("lab-presets").innerHTML = PRESETS.map((x,i)=>`<button class="btn ${i===curP?"on":""}" data-p="${i}">${x.label}</button>`).join("");
+    document.getElementById("lab-desc").textContent = P.desc + "　（黑实心 = 根音 · 红框 = 特征音/3·7音）";
+    document.getElementById("lab-mode").textContent = "当前显示：" + (mode==="name"?"音名":"级数") + "（点击切换）";
+    const db = document.getElementById("lab-drone");
+    db.textContent = drone ? `持续音：${P.root}（点击关闭）` : `持续音伴奏：${P.root}`;
+    db.classList.toggle("on", !!drone);
+
+    const L=44,OPENW=38,FW=51,TOP=18,SS=28,FRETS=15;
+    const fx=f=>f===0?L+OPENW/2:L+OPENW+(f-0.5)*FW, sy=s=>TOP+s*SS;
+    let g="";
+    if(P.win){
+      const x1=P.win[0]===0?L:L+OPENW+(P.win[0]-1)*FW, x2=P.win[1]===0?L+OPENW:L+OPENW+P.win[1]*FW;
+      g+=`<rect class="win" x="${x1}" y="${sy(0)-13}" width="${x2-x1}" height="${5*SS+26}" rx="6"/>`;
+    }
+    for(let k=0;k<=FRETS;k++){ const x=L+OPENW+k*FW; g+=`<line class="${k===0?"nut":"fret"}" x1="${x}" y1="${sy(0)}" x2="${x}" y2="${sy(5)}"/>`; }
+    [3,5,7,9,15].forEach(f=>{ g+=`<circle class="inlay" cx="${fx(f)}" cy="${(sy(2)+sy(3))/2}" r="4.5"/>`; });
+    g+=`<circle class="inlay" cx="${fx(12)}" cy="${(sy(1)+sy(2))/2}" r="4.5"/><circle class="inlay" cx="${fx(12)}" cy="${(sy(3)+sy(4))/2}" r="4.5"/>`;
+    for(let s=0;s<6;s++){
+      g+=`<line class="string" x1="${L+OPENW}" y1="${sy(s)}" x2="${L+OPENW+FRETS*FW}" y2="${sy(s)}" style="stroke-width:${(0.8+s*0.3).toFixed(2)}"/>`;
+      g+=`<text class="sname" x="${L-8}" y="${sy(s)+4}">${s+1} ${SHARP[OPEN[s]%12]}</text>`;
+    }
+    for(let f=1;f<=FRETS;f++) g+=`<text class="fnum" x="${fx(f)}" y="${sy(5)+26}">${f}</text>`;
+    g+=`<text class="fnum" x="${fx(0)}" y="${sy(5)+26}">空</text>`;
+    for(let s=0;s<6;s++){
+      for(let f=0;f<=FRETS;f++){
+        const pc=(OPEN[s]+f)%12, x=fx(f), y=sy(s), cw=f===0?OPENW:FW;
+        let mk="";
+        if(map[pc]){
+          const n=map[pc], cls=n.root?"root":n.col?"color":"tone", dim=(P.win&&(f<P.win[0]||f>P.win[1]))?" dim":"";
+          mk=`<circle class="dot ${cls}${dim}" cx="${x}" cy="${y}" r="10.5"/><text class="dl ${cls}${dim}" x="${x}" y="${y+4}">${mode==="deg"?n.lab:n.name}</text>`;
+        }
+        g+=`<g class="cell" data-m="${OPEN[s]+f}"><rect x="${x-cw/2}" y="${y-SS/2}" width="${cw}" height="${SS}"/>${mk}</g>`;
+      }
+    }
+    document.getElementById("lab-svg").innerHTML = g;
+  }
+
+  document.addEventListener("click",e=>{
+    const p=e.target.closest(".play");
+    if(p){
+      const arr=p.dataset.notes.split(",").map(Number), mode=p.dataset.mode;
+      if(mode==="chord") arr.forEach((m,i)=>play(m,i*0.035));
+      else if(mode==="seq") arr.forEach((m,i)=>play(m,i*0.18));
+      else arr.forEach((m,i)=>play(m,i*0.26));
+      return;
+    }
+    const pb=e.target.closest("#lab-presets button");
+    if(pb){ curP=Number(pb.dataset.p); if(drone) startDrone(parseN(PRESETS[curP].root).pc); draw(); return; }
+    const cell=e.target.closest(".cell");
+    if(cell){ play(Number(cell.dataset.m)); return; }
+  });
+  document.getElementById("lab-mode").addEventListener("click",()=>{ mode=mode==="name"?"deg":"name"; draw(); });
+  document.getElementById("lab-play").addEventListener("click",()=>{
+    const P=PRESETS[curP], T=TYPES[P.type]||TYPES.major, base=40+((parseN(P.root).pc-4+12)%12);
+    const semis=T.ivs.map(x=>parseD(x).semis);
+    if(T.g==="和弦") semis.forEach((s,i)=>play(base+s,i*0.04));
+    else [...semis,12].forEach((s,i)=>play(base+s,i*0.25));
+  });
+  document.getElementById("lab-drone").addEventListener("click",()=>{
+    if(drone) stopDrone(); else startDrone(parseN(PRESETS[curP].root).pc);
+    draw();
+  });
+  draw();
+})();
+</script>
+</body>
+</html>
